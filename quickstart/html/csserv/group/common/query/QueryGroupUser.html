@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--$Id: QueryGroupUser.html,v 1.5 2013/03/29 07:50:45 fuzn Exp $-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>集团产品查询</title>
+</head>
+<body jwcid="@Body">
+<div class="e_wrapper"><div class="e_wrapper2">	
+	<div class="c_form" jwcid="QueryCondPart@Part">
+		<input type="text" jwcid="@TextField" id="CUST_ID" name="CUST_ID" value="ognl:condition.CUST_ID" style="display:none"/>
+	</div>
+	   <!-- 表格 开始 -->
+	   <div jwcid="GroupProductPart@Part" element="div">
+			<div class="c_scroll c_scroll-table-10"><div class="c_table">
+				<table>
+					<thead>
+						<tr>
+							<th>集团服务号码</th>
+							<th>产品名称</th>
+							<th>开户时间</th>								
+						</tr>
+					</thead>
+					<tbody>
+						<tr jwcid="@Foreach" source="ognl:infoList" value="ognl:info"  element="tr" >						
+							<td><a jwcid="@Redirect"  value="ognl:info.SERIAL_NUMBER" serialNumber="ognl:info.SERIAL_NUMBER" onclick="$.setReturnValue(['SERIAL_NUMBER',$(this).attr('serialNumber')], true)"/></td> 							                   
+							<td><span jwcid="@Insert" value="ognl:info.PRODUCT_NAME" raw="true"/></td>								
+							<td><span jwcid="@Insert" value="ognl:formatDate('yyyy-MM-dd HH:mm:ss',info.OPEN_DATE)" raw="true"/></td>
+						 </tr> 			 			
+					</tbody>
+				</table>
+				</div></div>
+		<!-- 表格 结束 -->
+				<!-- 分页 开始 -->
+					<div jwcid="@NavBar" name="ActiveNav" id="ActiveNav" cond="QueryCondPart" part=GroupProductPart listener="queryGroupUsersByCustid" pageSize="20" count="ognl:infosCount"></div>
+				<!-- 分页 结束 -->
+		</div>
+		
+		<!-- 区域 结束 -->
+</div></div>
+
+</body>
+</html>

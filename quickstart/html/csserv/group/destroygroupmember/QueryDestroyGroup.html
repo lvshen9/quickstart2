@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>集团用户信息查询</title>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/destroygroupmember/QueryDestroyGroup.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+	
+	<div class="c_box">
+		<!-- 表单 开始 -->
+		<div class="c_form">
+			<ul class="ul">
+				<li class="li">
+					<span class="label">集团服务号码</span>
+					<span class="e_input"><span>
+						<input type="text" name="cond_GROUP_SERIAL_NUMBER" jwcid="@TextField" value="ognl:getParameter('cond_GROUP_SERIAL_NUMBER')"/>
+					</span></span>
+				</li>
+			</ul>
+			<div class="submitPlace"></div>
+			<div class="submit">
+				<button class="e_button-form"><i class="e_ico-search"></i><span>查询</span></button>
+			</div>
+		</div>
+		<!-- 表单 结束 -->
+		<!-- 表格 开始 -->
+		<div class="c_scroll c_scroll-x c_scroll-table-10"><div class="c_table">
+			<table>
+				<thead>
+					<tr>
+						<th id="col_CUST_NAME">集团客户名称</th>
+						<th id="col_GROUP_ID">集团客户编码</th>
+						<th id="col_USER_ID">集团用户标识</th>
+						<th id="col_GROUP_SN">集团服务号码</th>
+						<th id="col_GROUP_PRODUCT">集团产品名称</th>
+						<th id="col_OPEN_DATE">开户时间</th>
+						<th id="col_CLASS_ID">集团客户级别</th>
+						<th id="col_JURISTIC_NAME">法人代表</th>
+						<th id="col_ENTERPRISE_TYPE_CODE">企业类型</th>
+						<th id="col_CALLING_TYPE_CODE">行业类别</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><span jwcid="@Insert" value="ognl:info.CUST_NAME" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.GROUP_ID"　raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.USER_ID"　raw="false"/></td>
+						<td><a jwcid="@Redirect" value="ognl:info.SERIAL_NUMBER" sn="ognl:info.SERIAL_NUMBER" groupUserId="ognl:info.USER_ID"
+							productId="ognl:info.PRODUCT_ID"
+							groupId="ognl:info.GROUP_ID"  productName="ognl:info.PRODUCT_NAME" onclick="$.setReturnValue(['cond_GROUP_USER_ID',$(this).attr('groupUserId'),'cond_GROUP_PRODUCT',$(this).attr('productId'),'cond_GROUP_ID',$(this).attr('groupId'),'POP_cond_GROUP_ID',$(this).attr('groupId'),'cond_GROUP_SERIAL_NUMBER',$(this).attr('sn')],true)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_NAME"　raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.OPEN_DATE" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CLASS_NAME"　raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.JURISTIC_NAME" raw="true"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.ENTERPRISE_TYPE_NAME"　raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.CALLING_TYPE_NAME" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div>
+		<!-- 表格 结束 -->
+				
+	</div>
+
+</div></div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/param/bboss/managebboss.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+		<script>
+			function onGroupBbossManageCreateBtnSubmitClick(){
+				//查询条件校验
+				if(!$.validate.verifyAll("QueryCondPart")) {
+					return false;
+				}
+				
+				//查询
+				ajaxSubmit('QueryCondPart,infonav', 'queryBbossTrade', null, 'QueryListPart,ctrlInfoPart', 
+					new function(data){
+						$("#ctrlInfoPart").attr("style","display:;");
+				});
+			}
+			
+			//发送受理报文
+			function sendCreate(){
+				var tradeIdList = new Wade.DatasetList();
+				//var  eos=$("#EOS").val();
+				var eos=new Wade.DataMap($("#EOS").val());
+				var chks = $('[id =sel]');
+				var isCheck = false;
+				var o_list = new Wade.DatasetList();
+				chks.each(function(idx,item){
+
+					isCheck = $.attr(this,"checked");				
+					if (isCheck)
+					{
+						var order_id = $('[name =ORDER_ID]')[idx];
+						o_list.add($(order_id).text());
+						var trade_id = $('[name =TRADE_ID]')[idx];//$.table.get("infoTable").getSelected("TRADE_ID");
+						tradeIdList.add($(trade_id).text());											
+					}
+				});
+				
+				if (tradeIdList ==null || tradeIdList.length==0){
+					alert('请选择要发送的受理报文');
+					return;
+				}
+				for (var i = 0, sizei = o_list.length; i < sizei; i++)
+				{
+					if (o_list.get(i) != o_list.get(sizei-1))
+					{
+						alert('请选择同一笔订单下的专线业务一起发送');
+						return;
+					}
+				}
+				
+				ajaxSubmit(this, 'sendCreateDataBefore', 
+							'&PRODUCT_TRADE_ID='+tradeIdList+'&EOSDATA='+eos, 
+								'QueryListPart,ctrlInfoPart', null, function(error_code,error_info,derr){
+					showDetailErrorInfo(error_code,error_info,derr);
+				});
+			}
+			
+			
+		</script>
+	</head>
+	<body jwcid="@Body">
+		<div class="m_wrapper">
+			<div class="m_wrapper2">
+			
+				<!-- 查询区域 开始 -->
+				<div class="c_box">
+					<!-- 标题 开始 -->
+					<div class="c_title">
+						<div class="text">
+							管理流程受理报文查询
+						</div>
+						<div class="fn">
+							<button type="button" class="l_ml" onclick="sendCreate()">
+								<i class="e_ico-send"></i><span>发送受理报文</span>
+							</button>
+						</div>
+					</div>
+					<!-- 标题 结束 -->
+
+					<!-- 提示区 -->
+					<div class="c_box" jwcid="ctrlInfoPart@Part" id="ctrlInfoPart" style="display: none;">
+						<div class="c_tip">
+							<span jwcid="@Insert" value="ognl:ctrlInfo.strHint" raw="false" />
+						</div>
+					</div>
+					<div class="wrapper" jwcid="@Any" style="ognl:condition.cond_IS_ESOP == null?'':'display:none'">
+					<!-- 表单 开始 -->
+					<div class="c_form c_form-col-3 c_form-label-6" jwcid="QueryCondPart@Part">
+						<ul class="ul">
+							<li class="li">
+								<span class="label">集团客户编码：</span>
+								<span class="e_input"><span> <input jwcid="@TextField" id="cond_GROUP_ID" name="cond_GROUP_ID" type="text"
+											value="ognl:condition.cond_GROUP_ID" desc="集团服务号码" /> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label"><span class="e_required">商品名称：</span> </span>
+								<span class="e_select"><span><span> <select jwcid="@Select" name="cond_POSPECNUMBER" id="cond_POSPECNUMBER"
+												source="ognl:pageutil.getList('TD_F_PO','POSPECNUMBER','POSPECNAME')" value="ognl:condition.cond_POSPECNUMBER" textField="POSPECNAME"
+												valueField="POSPECNUMBER" desc="商品名称" nullable="no"
+												onchange="ajaxSubmit(null,'ajaxSetPospecNumber','POSPECNUMBER='+ this.value,'productpart')" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label"><span class="e_required">产品名称：</span> </span>
+								<span class="e_select"><span><span>
+											<div jwcid="productpart@Part" id="productpart">
+												<select jwcid="@Select" name="cond_PRODUCTSPECNUMBER" id="cond_PRODUCTSPECNUMBER"
+													source="ognl:pageutil.getList('TD_F_POPRODUCT','PRODUCTSPECNUMBER','PRODUCTSPECNAME','POSPECNUMBER',getContext().getData().getString('POSPECNUMBER'))"
+													value="ognl:condition.cond_PRODUCTSPECNUMBER" textField="PRODUCTSPECNAME" valueField="PRODUCTSPECNUMBER" desc="产品名称" nullable="no" />
+											</div> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">下发开始时间：</span>
+								<span class="e_elements"><span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField"
+												name="cond_START_DATE" id="cond_START_DATE" value="ognl:condition.cond_START_DATE" desc="下发开始时间" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">下发结束时间：</span>
+								<span class="e_elements"><span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField"
+												name="cond_END_DATE" id="cond_END_DATE" value="ognl:condition.cond_END_DATE" desc="下发结束时间" /> </span> </span> </span>
+							</li>
+						</ul>
+						<div class="submitPlace"></div>
+						<div class="submit">
+							<button class="e_button-form" id="bsubmit" name="bsubmit" onclick="onGroupBbossManageCreateBtnSubmitClick();">
+								<i class="e_ico-search"></i><span>查询</span>
+							</button>
+						</div>
+					</div>
+					<!-- 表单 结束 -->
+					</div>
+					<!-- 表格 开始 -->
+					<div jwcid="QueryListPart@Part" element="div">
+						<div class="c_scroll c_scroll-table-10"><div class="c_table">
+							<table jwcid="infoTable@Table" id="infoTable" name="infoTable">
+								<thead>
+									<tr>
+										<th >
+											选择
+										</th>
+										<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="ORDER_ID" class="desc">
+											<span>订单ID</span>
+										</th>
+										<th  onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="TRADE_ID" class="desc">
+											<span>台帐ID</span>
+										</th>
+										<th  onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="MERCH_ORDER_ID" class="desc">
+											<span>集团商品订单编码</span>
+										</th>
+										<th  onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="PRODUCT_ORDER_ID" class="desc">
+											<span>集团产品订单编码</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="MPRODUCT_ID" class="desc">
+											<span>商品名称</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="PRODUCT_ID" class="desc">
+											<span>产品名称</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="PRODUCT_OFFER_ID" class="desc">
+											<span>产品订购关系</span>
+										</th>
+										<th  onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="GROUP_ID" class="desc">
+											<span>集团编码</span>
+										</th>
+										<th  onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="USER_ID" class="desc">
+											<span>用户标识</span>
+										</th>
+										<th>
+											操作
+										</th>
+									</tr>
+								</thead>
+								<tbody jwcid="@Any" name="infoTableValues" id="infoTableValues">
+									<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr">
+										<td class="e_center">
+											<input jwcid="@Checkbox" id="sel" name="sel"/>
+										</td>
+										<td>
+											<span jwcid="@Insert" id="ORDER_ID" name="ORDER_ID" value="ognl:info.ORDER_ID" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" id="TRADE_ID" name="TRADE_ID" value="ognl:info.TRADE_ID" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" id="MERCH_ORDER_ID" name="MERCH_ORDER_ID" value="ognl:info.MERCH_ORDER_ID" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" id="PRODUCT_ORDER_ID" name="PRODUCT_ORDER_ID" value="ognl:info.PRODUCT_ORDER_ID" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert"
+												value="ognl:pageutil.getStaticValue('TD_B_PRODUCT',new java.lang.String[]{'PRODUCT_ID'},'PRODUCT_NAME',new java.lang.String[]{info.MPRODUCT_ID})"
+												raw="true" />
+										</td>
+										<td>
+											<span jwcid="@Insert"
+												value="ognl:pageutil.getStaticValue('TD_B_PRODUCT',new java.lang.String[]{'PRODUCT_ID'},'PRODUCT_NAME',new java.lang.String[]{info.PRODUCT_ID})"
+												raw="true" />
+										</td>
+										<td>
+											<span jwcid="@Insert" id="PRODUCT_OFFER_ID" name="PRODUCT_OFFER_ID" value="ognl:info.PRODUCT_OFFER_ID" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" id="GROUP_ID" name="GROUP_ID" value="ognl:info.GROUP_ID" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" id="USER_ID" name="USER_ID" value="ognl:info.USER_ID" raw="false" />
+										</td>
+										<td>
+											<a id="product_pop" jwcid="@Redirect" checkId="ognl:'ctag'+info.RSRV_STR22" tradeid="ognl:info.TRADE_ID" productId="ognl:info.PRODUCT_ID"
+												method="Ctr" userid="ognl:info.USER_ID" myFlag="0" flowInfo="ognl:info.RSRV_VALUE_CODE" productName="ognl:info.PRODUCT_ID"
+												productOfferId="ognl:info.PRODUCT_OFFER_ID" productOrderId="ognl:info.PRODUCT_ORDER_ID" merchSpecCode="ognl:info.MERCH_SPEC_CODE"
+												productSpecCode="ognl:info.PRODUCT_SPEC_CODE" groupId="ognl:info.GROUP_ID" orderid="ognl:info.ORDER_ID" 
+												pospecnumber="ognl:info.MPRODUCT_ID" value="填写子产品受理信息" onclick="popProductParamPage(this)" afterAction="afterMessage()" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div></div>
+						<!-- 表格 结束 -->
+						<!-- 翻页（替换为页面组件） 开始 -->
+						<div jwcid="@NavBar" name="infonav" id="infonav" cond="QueryCondPart" part="QueryListPart" listener="queryBbossTrade" pageSize="10"
+							count="ognl:infoCount"></div>
+						<!-- 翻页 结束 -->
+						<input type="hidden" jwcid="@Any" id="MPRODUCT_ID" value="ognl:condition.MPRODUCT_ID" raw="false" />
+					</div>
+				</div>
+				<!-- 查询区域 结束 -->
+				</div>
+		</div>
+		<textarea jwcid="@TextArea" name="ESOP" id="ESOP" value="ognl:esop" style="display:none"/>
+		<textarea jwcid="@TextArea" name="EOS" id="EOS" value="ognl:eos" style="display:none"/>
+		
+		
+	</body>
+</html>

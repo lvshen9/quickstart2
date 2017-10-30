@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>查看消息</title>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box">
+
+<div class="c_article c_article-big">
+	<div class="title"><span jwcid="@Insert" value="ognl:info.INFO_TOPIC" /></div>
+	<div class="info">发送时间：<span jwcid="@Insert" value="ognl:@com.ailk.common.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.SEND_TIME)"/> &nbsp;&nbsp;发送人：<span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.INFO_AUTH)"/></div>
+	<div class="content">
+		<span jwcid="@Insert" value="ognl:info.INFO_CONTENT" raw="true" />
+	</div>
+
+	<div>
+		<button name="reply" jwcid="@Button" parameters="ognl:info" keys="INFO_ID,INST_ID" topic="ognl:info.INFO_TOPIC"  class="e_button" onclick="javascript:openNav('回复消息-' + this.getAttribute('topic'),'biz.info.MessageEdit','queryMessage','MODE=REPLY&' + this.getAttribute('parameters'))"><i class="e_ico-speak"></i><span>回复</span></button>
+		<button type="button" class="e_button"  onclick="javascript:closeNav();"><i class="e_ico-cancel"></i><span>关闭</span></button>
+	</div>	
+</div>
+
+</div>
+</div></div>
+</body>
+</html>

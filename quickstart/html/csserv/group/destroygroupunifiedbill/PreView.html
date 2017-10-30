@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+<div id="previewInfoPart">
+<div class="c_box">
+	<span jwcid="@saleserv:GroupCustInfo" groupUserInfo="ognl:grpCustInfo"/>
+</div>
+<div class="c_box">
+	<span jwcid="@saleserv:MemberUserInfo" userInfo="ognl:mebUserInfo"/>
+</div>
+<div jwcid="@saleserv:ProductElementView" model="ognl:useElementinfo" headText="用户元素信息"  showHeads="包名,元素标识,元素类型,元素名称,操作方式" showFields="PACKAGE_NAME,ELEMENT_ID,ELEMENT_TYPE_NAME,ELEMENT_NAME,STATE_NAME"/>
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">业务受理信息</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表单 开始 -->
+	<div class="c_form c_form-col-2 c_form-label-5">
+		<ul class="ul">
+			<li class="li col-2">
+				<span class="label"><span class="e_required">备注：</span></span>
+				<span class="e_textarea">
+					<span class="e_textareaTop"><span></span></span>
+					<span class="e_textareaContent">
+					<textarea
+						jwcid="@TextArea" 
+						name="pam_REMARK" 
+						id="pam_REMARK"
+						type="text"
+						value="ognl:pamRemark"
+						desc="备注"
+						nullable="no"
+						raw="true" style="height:36px;"></textarea>
+					</span>
+					<span class="e_textareaBottom"><span></span></span>
+				</span>
+			</li>
+			
+		</ul>
+	</div>
+	<!-- 表单 结束 -->
+
+</div>
+<!-- 区域 结束 -->
+<input type="button" id="bsubmit" value="下一步" class="e_button" style="display:none" /> 
+</div>
+</div></div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#bsubmit").bind("click", function() {
+		return $.validate.verifyAll('previewInfoPart');
+	});
+});
+</script>
+</html>

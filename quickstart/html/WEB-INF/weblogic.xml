@@ -1,0 +1,25 @@
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd">
+
+<weblogic-web-app>
+  <charset-params>
+    <input-charset>
+      <resource-path>/*</resource-path>
+      <java-charset-name>UTF-8</java-charset-name>
+    </input-charset>
+  </charset-params>
+
+  <!--develop mode need disable-->
+  <container-descriptor>
+    <servlet-reload-check-secs>-1</servlet-reload-check-secs>
+    <resource-reload-check-secs>-1</resource-reload-check-secs>
+  </container-descriptor>
+  <jsp-descriptor>
+    <jsp-param>
+      <param-name>pageCheckSeconds</param-name>
+      <param-value>-1</param-value>
+    </jsp-param>
+  </jsp-descriptor>
+
+  <context-root>/</context-root>
+
+</weblogic-web-app>

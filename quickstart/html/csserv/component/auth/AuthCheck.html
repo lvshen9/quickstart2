@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>身份校验</title>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/auth/AuthCheck.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/person/eform/CommonEForm.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/epaper/dualscreen/DualControl.js"></script>
+
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="c_box" id="authCheckForm">
+	<div class="c_form c_form-label-5 c_form-col-2">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">验证方式：</span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="cond_CHECK_MODE" source="ognl:checkMode"  textField="value" valueField="key" desc="验证方式" onChange="$.authCheck.setAuthCheckArea()"/>
+				</span></span></span>
+			</li>
+			<li class="li" id="PsptScanPart">
+				<span class="label">&nbsp;</span>
+				<button class="e_button" id="PsptScanBtn" onclick="readCardInfo()"><span>读取二代身份证信息</span></button>
+			</li>
+		</ul>
+	</div>
+
+	<div class="c_form c_form-label-5 c_form-col-2">
+		<ul class="ul">
+			<li class="li" name="checkMode0">
+				<span class="label">证件类型：</span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="cond_PSPT_TYPE_CODE" source="ognl:pageutil.getStaticList('TD_S_PASSPORTTYPE')" selected="ognl:getParameter('PSPT_TYPE_CODE')" textField="DATA_NAME" valueField="DATA_ID" desc="证件类型"/>
+				</span></span></span>
+			</li>
+			<li class="li" name="checkMode0">
+				<span class="label">证件号码：</span>
+				<span class="e_input"><span><input type="text" id="cond_PSPT_ID" name="cond_PSPT_ID" value="" desc="证件号码" datatype="pspt" nullable="no"/></span></span>
+			</li>
+			<li class="li" id="checkMode2">
+				<span class="label">SIM卡号：</span>
+				<span class="e_input"><span><input type="text" id="cond_SIM_NO" name="cond_SIM_NO" value=""/></span></span>
+			</li>
+			<li class="li" id="checkMode6">
+				<span class="label">VIP卡号：</span>
+				<span class="e_input"><span><input type="text" id="cond_VIP_ID" name="cond_VIP_ID" value=""/></span></span>
+			</li>
+			<li class="li" name="checkMode7">
+				<span class="label">短信验证码：</span>
+				<span class="e_input"><span><input jwcid="@TextField" name="cond_VERIFY_CODE" value="" /></span></span>
+			</li>
+			<li class="li" name="checkMode7">
+				<button id="sendVerifyCodeBtn"><i class="e_ico-refresh"></i><span>发送短信验证码</span></button>
+			</li>
+			<li class="li">
+				<span class="label">服务号码：</span>
+				<span class="e_input"><span><input jwcid="@TextField" name="cond_SERIAL_NUMBER" value="ognl:getParameter('SERIAL_NUMBER')" disabled="true"/></span></span>
+			</li>
+			<li class="li" id="checkMode1">
+				<span class="label">服务密码：</span>
+				<span class="e_input"><span><input type="password" id="cond_USER_PASSWD" name="cond_USER_PASSWD" value="" datatype="numeric" desc="服务密码" nullable="no" maxLength="6" equsize="6"/></span></span>
+				<!--  
+				<span class="e_elements">
+					<button class="e_button-right" id="IMG_cond_USER_PASSWD" name="IMG_cond_USER_PASSWD" title="密码小键盘输入" onclick="return $.authCheck.inputPassWD(this);"><span>小键盘</span></button>
+					<span class="e_input e_input-left"><span><input type="password" id="cond_USER_PASSWD" name="cond_USER_PASSWD" value="" datatype="pinteger" desc="服务密码" maxLength="6" equalsize="6"/></span></span>
+				</span>
+				-->
+			</li>
+			<li class="li" style="display:none;">
+				<span class="label"></span>
+				<button><i class="e_ico-check"></i><span>IVR用户密码校验</span></button>
+			</li>
+		</ul>
+	</div>
+
+	<div class="c_submit">
+		<input jwcid="@Hidden" name="DISABLED_AUTH" value="ognl:getParameter('DISABLED_AUTH','')" />
+		<input jwcid="@Hidden" name="HANDLER" value="ognl:getParameter('HANDLER','POP_AUTH_PARAMS')" />
+		<button id="auth_ok_btn" name="auth_ok_btn" class="e_button-page-ok" onClick="$.authCheck.submitAuthCheck()"><i></i><span>确定</span></button>
+		<button class="e_button-page-cancel" onClick="$.authCheck.cancelAuthCheck();"><i></i><span>取消</span></button>
+	</div>
+	<OBJECT classid="clsid:94239215-5889-4C52-9ABE-C28FA2F50215" visible="false" width="0" height="0" id="AxtScr" name="AxtScr">
+	    <param name="SysCode" value="DualScreen"/>
+	    <param name="TradeType" value="99007"/>
+	</OBJECT>	
+</div>
+<script language="javascript">
+    initDoulScrActiveXPage("NoOpenDualControl");
+</script>
+</body>
+</html>

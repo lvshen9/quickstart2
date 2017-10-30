@@ -1,0 +1,21 @@
+* { margin:0; padding:0; list-style:none; outline:0 none;}
+html,body { height:100%; overflow:hidden;}
+body { font-size:12px; overflow-x:hidden; overflow-y:auto; position:relative; background:#539bdb;}
+.m_menu { margin-top:-1px; overflow:hidden; zoom:1; background:#8bb5da;}
+.m_menu .unfold,
+.m_menu .fold { display:block; height:28px; background:url(../../base/img/quickstart.png) no-repeat right -28px; line-height:28px; padding:0 20px 0 10px; color:#fff; font-weight:bold; text-decoration:none; position:relative; margin-top:-1px; cursor:pointer;}
+.m_menu .fold { background-position:right 0;}
+.m_menu .fold span,
+.m_menu .unfold span { width:100%; display:block; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.m_menu .unfold:hover { background-position:right -84px;}
+.m_menu .fold:hover { background-position:right -56px;}
+.m_menu .sub { margin:8px 8px 9px;}
+.m_menu .sub .top { background:url(../../base/img/quickstart.png) no-repeat 0 -112px; padding-left:4px;}
+.m_menu .sub .top span { display:block; height:4px; overflow:hidden; background:url(../../base/img/quickstart.png) no-repeat right -112px;}
+.m_menu .sub .bottom { background:url(../../base/img/quickstart.png) no-repeat 0 -116px; padding-left:4px;}
+.m_menu .sub .bottom span { display:block; height:4px; overflow:hidden; background:url(../../base/img/quickstart.png) no-repeat right -116px;}
+.m_menu .sub ul { padding:4px 0; border-left:1px solid #377ec1; border-right:1px solid #377ec1; background:#e7eef4;}
+.m_menu .sub li { zoom:1;}
+.m_menu .sub a { text-decoration:none; color:#000; display:block; padding:2px 12px; line-height:18px; border-top:1px solid #e7eef4; border-bottom:1px solid #e7eef4; zoom:1;}
+.m_menu .sub .on a { color:#0c0; border-color:#c4d8ea; background-color:#fff;}
+.m_menu .sub li a:hover { color:#f60; background-color:#f3f7fa; border-color:#c4d8ea;}

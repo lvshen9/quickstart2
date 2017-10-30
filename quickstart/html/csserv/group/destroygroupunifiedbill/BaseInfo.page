@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: BaseInfo.page,v 1.6 2013/04/19 02:00:12 liming2 Exp $ -->
+
+<page-specification class="com.ailk.csview.group.destroygroupunifiedbill.BaseInfo">
+	<property-specification name="condition" type="com.ailk.common.data.IData"/>
+	<property-specification name="productInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="compProductInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="userInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="infos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="productCtrlInfo" type="com.ailk.common.data.IData"/>
+	<property-specification name="groupInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="mebCustInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="mebUserInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="hidden" type="java.lang.String"/>
+</page-specification>

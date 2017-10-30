@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/saleserv.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/group/param/bboss/bboss.js" ></script>
+	</head>
+	<body jwcid="@Body">
+		<div class="m_wrapper">
+			<div class="m_wrapper2">
+				<form jwcid="@Form">
+					<!-- 区域 开始 -->
+					<div class="c_box">
+						<div class="c_title">
+							<div class="text">
+								选择加入集团产品
+							</div>
+						</div>
+						<div class="c_form">
+							<ul class="ul">
+								<li class="li">
+									<span class="label">组合包：</span>
+									<span class="e_input"><span><input jwcid="@TextField" name="PRODUCT_NAME" type="text"
+												value="ognl:@com.ailk.biz.util.StaticUtil@getStaticValue(getVisit(), 'TD_B_PRODUCT', 'PRODUCT_ID', 'PRODUCT_NAME',productGoodInfos.GOOD_INFO.BASE_PRODUCT)"
+												title="组合包" /> </span> </span>
+								</li>
+							</ul>
+						</div>
+
+						<div class="c_table c_table-row-10" id="powerDiv">
+							<table>
+								<thead>
+									<tr>
+										<th col="X_TAG" style="display: none">
+											TAG
+										</th>
+										<th col="IS_SELECTED">
+											<span>选择</span>
+										</th>
+										<th col="USER_ID">
+											<span>用户ID</span>
+										</th>
+										<th col="PRODUCT_ID_B">
+											<span>产品编码</span>
+										</th>
+										<th col="PRODUCT_NAME">
+											<span>产品名称</span>
+										</th>
+										<th col="X_OP">
+											<span>订购BBoss产品</span>
+										</th>
+										<th col="X_OP">
+											<span>修改BBoss产品</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr jwcid="@Foreach" source="ognl:products" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+										<td style="display: none">
+											0
+										</td>
+										<td>
+											<input type="checkbox" jwcid="@Checkbox" name="ognl:'ctag'+info.USER_ID" id="ognl:'ctag'+info.USER_ID" class="e_checkbox" 
+												checked="ognl:info.IS_EXIST=='true'?'true':''" checkId="ognl:'ctag'+info.USER_ID" 
+												productId="ognl:info.PRODUCT_ID_B" disabled="ognl:info.IS_EXIST=='true'?'true':''"/>
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.USER_ID" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.PRODUCT_ID_B" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.PRODUCT_NAME" />
+										</td>
+										<input type="hidden" jwcid="@Any" desc="选择的产品元素" value="" name="ognl:'selectedElements_'+info.PRODUCT_ID_B"
+											id="ognl:'selectedElements_'+info.PRODUCT_ID_B" />
+										<input type="hidden" jwcid="@Any" desc="选择的产品参数" value="" name="ognl:'productParam_'+info.PRODUCT_ID_B"
+											id="ognl:'productParam_'+info.PRODUCT_ID_B" />
+										<td>
+											<a jwcid="@Redirect" id="REDIRECT" disabled="ognl:info.IS_EXIST=='true'?'true':''" checkId="ognl:'ctag'+info.USER_ID" 
+												productId="ognl:info.PRODUCT_ID_B" merchId="ognl:info.PRODUCT_ID_A" grpUserId="ognl:info.USER_ID"
+												mebstate="ognl:info.PRODUCT_STATUS_CODE" productName="ognl:info.PRODUCT_NAME" value="设置成员参数"
+												onclick="bbossSetUserParam(this)" afterAction="setChgMemPage(this)"/>
+										</td>
+										<td>
+											<a jwcid="@Redirect" id="REDIRECT" disabled="ognl:info.IS_EXIST=='true'?'':'true'" checkId="ognl:'ctag'+info.USER_ID" productId="ognl:info.PRODUCT_ID_B"
+												merchId="ognl:info.PRODUCT_ID_A" productName="ognl:info.PRODUCT_NAME" grpUserId="ognl:info.USER_ID"
+												mebstate="ognl:info.PRODUCT_STATUS_CODE" value="修改成员参数" onclick="modifyMemberParam(this)" afterAction="setChgMemPage(this)"/>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<input style="display: none" jwcid="@TextArea" name="productGoodInfos" id="productGoodInfos" value="ognl:productGoodInfos" desc="商产品信息" />
+							<!--存放商产品信息，改造前是放在TD中的-->
+							<input type="hidden" jwcid="@Any" name="selectedCheckBox" id="selectedCheckBox" value="" />
+							<input type="hidden" jwcid="@Any" name="MEB_EPARCHY_CODE" id="MEB_EPARCHY_CODE" value="ognl:memEparchCode" />
+							<input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:productGoodInfos.GOOD_INFO.BASE_PRODUCT" />
+							<input type="hidden" jwcid="@Any" name="GRP_USER_ID" id="GRP_USER_ID" value="ognl:grpUserId" />
+							<input type="hidden" jwcid="@Any" name="GRP_SN" id="GRP_SN" value="ognl:grpSn" />
+							<input type="hidden" jwcid="@Any" name="MEB_SERIAL_NUMBER" id="MEB_SERIAL_NUMBER" value="ognl:memSerialNumber" />
+							<input type="hidden" jwcid="@Any" name="MEB_USER_ID" id="MEB_USER_ID" value="ognl:memUserId" />
+							<input type="button" id="bnext" value="下一步" class="e_button" style="display: none" onclick="return validateParamForNext('ChgMb')" />  
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

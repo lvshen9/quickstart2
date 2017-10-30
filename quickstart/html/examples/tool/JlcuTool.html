@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head" includeJs="ognl:'js/i18n.' + getLanguage() + '.js'">
+<script jwcid="@Script" src="scripts/examples/tool/jlcutool.js"></script>
+</head>
+
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+	<div class="c_box">
+		<div class="c_title">
+			<div class="text">JLCU入参</div>
+		</div>
+		<div class="c_form c_form-col-1" id="RunCond">
+			<ul class="ul">
+				<li class="li">
+					<span class="label">JLCU名称：</span>
+					<span class="e_input"><span><input type="text" jwcid="@TextField" name="X_TRANS_CODE" 
+						value="ognl:condition.X_TRANS_CODE==null?'JLCU_CustList':condition.X_TRANS_CODE"/></span></span>
+				</li>
+				<li class="li col-3">
+						<span class="label">JLCU参数：</span>
+						<span class="e_textarea">
+							<span class="e_textareaTop"><span></span></span>
+							<span class="e_textareaContent"><textarea jwcid="@TextArea" name="JLCU_PARAM" 
+							value="ognl:condition.JLCU_PARAM==null?'{}':condition.JLCU_PARAM" style="height:150px;"></textarea></span>
+							<span class="e_textareaBottom"><span></span></span>
+						</span>
+					</li>
+			</ul>
+			<div class="submitPlace"></div>
+			<div class="submit"><button class="e_button-form" onclick="return runJlcu();"><i class="e_ico-search"></i><span>执行</span></button></div>
+		</div>
+	</div>
+
+	<div class="c_box">
+		<div jwcid="ResultPart@Part" element="div">
+			<div class="c_title">
+				<div class="text">JLCU出参</div>
+			</div>
+			<div class="c_form c_form-col-3 c_form-label-5" id="createarea" >
+				<ul class="ul">
+					<li class="li col-3">
+						<span class="label">返回结果：</span>
+						<span class="e_textarea">
+							<span class="e_textareaTop"><span></span></span>
+							<span class="e_textareaContent"><textarea jwcid="@TextArea" name="RESULT" value="ognl:result" style="height:150px;"></textarea></span>
+							<span class="e_textareaBottom"><span></span></span>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div></div>
+</body>
+</html>

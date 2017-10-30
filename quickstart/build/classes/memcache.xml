@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+
+<memcache>
+    
+    <default-datacenter>center1</default-datacenter>
+    
+    <datacenter name="center1" >
+        
+        <cluster name="session_cache">
+            <address master="127.0.0.1:11211"/>
+        </cluster>
+        
+        <cluster name="codecode_cache">
+            <address master="127.0.0.1:11211" />
+        </cluster>
+
+        <cluster name="staticparam_cache">
+            <address master="127.0.0.1:11211" />
+        </cluster>
+
+        <cluster name="bcc_cache">
+            <address master="127.0.0.1:11211" />
+        </cluster>
+        
+        
+    </datacenter>
+     
+</memcache>

@@ -1,0 +1,6 @@
+<!-- Register Component Page -->
+<page name="component.calendar.Calendar" specification-path="/component/calendar/Calendar.page" version="1212"/>
+<page name="component.upload.Upload" specification-path="/component/upload/Upload.page" version="1212"/>
+
+<!-- Register Exception Page -->
+<page name="Exception" specification-path="/Exception.page" version="1212"/>

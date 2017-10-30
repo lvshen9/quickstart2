@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>Dynamic Tree</title>
+<script jwcid="@Script" src="scripts/examples/component/dynamictree.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="l_col l_col-2">
+	<div class="l_li1">
+
+		<div class="c_scroll" style="height:500px;">
+			<div jwcid="areaTree@Tree" listener="ognl:listeners.loadSimpleTree" 
+				async="true" expandPath="HNAN-0735" 
+				checkBoxType="radio"
+				textAction="areaTreeTextAction(nodedata)"
+				checkBoxAction="areaTreeCheckBoxAction(nodedata)"></div>
+		</div>
+	</div>
+	<div class="l_li2">
+		<div class="c_scroll" style="height:500px;">
+			<div jwcid="departTree@Tree" listener="ognl:listeners.loadAdvancedTree" async="true" expandPath="ALL_DEPT"></div>
+		</div>
+	</div>
+</div>
+</div></div>
+</body>
+</html>

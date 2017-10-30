@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>我的收藏</title>
+<script jwcid="@Script" src="biz/scripts/favo.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">收藏菜单</div>
+	</div>
+	
+	<div>
+		<div class="c_scroll c_scroll-table-10"><div class="c_table" id="cust" uiid="cust">
+			<table>
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="menus_ctrl" name="menus_ctrl" onclick="javascript:checkedAll('menus', checked)"/></th>
+						<th>菜单编号</th>
+						<th>菜单名称</th>
+						<th>收藏员工</th>
+						<th>收藏时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" >
+						<td><input type="checkbox" id="menus" name="menus" jwcid="@Any" value="ognl:info.MENU_ID" /></td>
+						<td><span jwcid="@Insert" value="ognl:info.MENU_ID" raw="true"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.MENU_TITLE" raw="true"/></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.CREATE_STAFF_ID)" raw="true" /></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.decodeTimestamp('yyyy-MM-dd HH:mm', info.CREATE_TIME)" raw="true"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div>
+	</div>
+
+
+</div>
+</div></div>
+</body>
+</html>

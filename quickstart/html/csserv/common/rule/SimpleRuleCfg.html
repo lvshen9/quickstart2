@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/common/rule/simplerulecfg.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">简单规则配置</div>
+	</div>
+	<!-- 标题 结束 -->
+	
+	<!-- 表单 开始 -->
+	<div class="c_form c_form-col-3 c_form-label-8" jwcid="EditPart@Part">
+		<ul class="ul">
+			<li class="li">
+				<span class="label" title="td_bre_business.TRADE_TYPE_CODE"><span class="e_required">业务类型编码：</span></span>
+				<span class="e_input"><span>
+					<input type="text" jwcid="@TextField" name="TRADE_TYPE_CODE" id="TRADE_TYPE_CODE" value="ognl:editInfo.TRADE_TYPE_CODE"
+                 		disabled="false" nullable="no" desc="业务类型编码" onchange="changeRuleTwigCode();"/>
+                </span></span>
+			</li>
+			<li class="li">
+				<span class="label" title="td_bre_business.RULE_TWIG_CODE"><span class="e_required">规则类型：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="RULE_TWIG_CODE" id="RULE_TWIG_CODE" value="ognl:editInfo.RULE_TWIG_CODE" 
+							source="ognl:pageutil.getStaticList('RULE_TWIG_CODE')" addDefault="false"
+							 textField="DATA_NAME" valueField="DATA_ID" titleField="DATA_NAME"
+                            disabled="false" nullable="no" desc="规则类型" onchange="changeRuleTwigCode();"/>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label" title="td_bre_business.TIPS_TYPE"><span class="e_required">规则提示类型：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="TIPS_TYPE" id="TIPS_TYPE" value="ognl:editInfo.TIPS_TYPE" 
+							source="ognl:pageutil.getStaticList('TIPS_TYPE')" addDefault="false"
+							 textField="DATA_NAME" valueField="DATA_ID" titleField="DATA_NAME"
+                            disabled="false" nullable="no" desc="规则提示类型" />
+				</span></span></span>
+			</li>
+			<li class="li col-3">
+				<span class="label" title="td_bre_business.TIPS_INFO,如：该用户是开机状态，不能办理报开业务 ！"><span class="e_required">提示信息：</span></span>
+				<span class="e_input"><span>
+					<input type="text" jwcid="@TextField" name="TIPS_INFO" id="TIPS_INFO" value="ognl:editInfo.TIPS_INFO"
+                 		disabled="false" nullable="no" desc="提示信息"/>
+                </span></span>
+			</li>
+			<li class="li">
+				<span class="label" title="td_bre_definition.SCRIPT_ID,如：IsOpenState，能大概看出此规则的作用"><span class="e_required">关联脚本编码：</span></span>
+				<span class="e_input"><span>
+					<input type="text" jwcid="@TextField" name="SCRIPT_ID" id="SCRIPT_ID" value="ognl:editInfo.SCRIPT_ID"
+                 		disabled="false" nullable="no" desc="关联脚本编码"/>
+                </span></span>
+			</li>
+			<li class="li">
+				<span class="label" title="td_bre_definition.SCRIPT_DESCRIPTION,对关联脚本编码的说明,简单描述此规则的作用"><span class="e_required">关联脚本描述：</span></span>
+				<span class="e_input"><span>
+					<input type="text" jwcid="@TextField" name="SCRIPT_DESCRIPTION" id="SCRIPT_DESCRIPTION" value="ognl:editInfo.SCRIPT_DESCRIPTION"
+                 		disabled="false" nullable="no" desc="关联脚本描述"/>
+                </span></span>
+			</li>
+			<li class="li">
+				<span class="label" title="td_bre_definition.SCRIPT_TYPE,如果是sql判断则关联脚本编码为sql_ref,如果是java方法则执行一段java逻辑"><span class="e_required">脚本执行类型：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="SCRIPT_TYPE" id="SCRIPT_TYPE" value="ognl:editInfo.SCRIPT_TYPE" 
+							source="ognl:pageutil.getStaticList('SCRIPT_TYPE')" addDefault="false"
+							 textField="DATA_NAME" valueField="DATA_ID" titleField="DATA_NAME"
+                            disabled="false" nullable="no" desc="脚本执行类型" />
+				</span></span></span>
+			</li>
+			<li class="li col-2">
+				<span class="label" title="td_bre_definition.SCRIPT_PATH,执行的java逻辑的类路径,目前约定在com.ailk.personserv.service.rule路径下"><span class="e_required">脚本执行路径：</span></span>
+				<span class="e_input"><span>
+					<input type="text" jwcid="@TextField" name="SCRIPT_PATH" id="SCRIPT_PATH" value="ognl:editInfo.SCRIPT_PATH"
+                 		disabled="false" nullable="no" desc="脚本执行路径"/>
+                </span></span>
+			</li>
+			<li class="li">
+				<span class="label" title="td_bre_definition.SCRIPT_METHOD,目前只能为run方法"><span class="e_required">脚本执行方法：</span></span>
+				<span class="e_input"><span>
+					<input type="text" jwcid="@TextField" name="SCRIPT_METHOD" id="SCRIPT_METHOD" value="ognl:editInfo.SCRIPT_METHOD"
+                 		disabled="true" nullable="no" desc="脚本执行方法"/>
+                </span></span>
+			</li>
+		</ul>
+	</div>
+	<!-- 表单 结束 -->
+	
+	<!-- 提交 开始 -->
+	<div class="c_submit">
+		<button jwcid="@Button" name="bSubmit" class="e_button-page-ok" onclick="submitSimpleRuleCfg();"><i></i><span>提交</span></button>
+	</div>
+	<!-- 提交 结束 -->
+	
+</div>
+<!-- 区域 结束 -->
+
+</div></div>
+</body>
+</html>

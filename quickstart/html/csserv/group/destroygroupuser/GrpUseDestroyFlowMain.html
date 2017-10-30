@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/fee/FeeMgr.js"></script>
+</head>
+<body jwcid="@Body">
+
+<div class="c_guide">
+	<div class="c_guideFn">
+		<a id="flowimg" name="flowimg" class="unfoldFlow" href="javascript:void(0);"></a>
+	</div>
+	<div class="c_guideStep">
+		<ul id="flowguide">
+			<li name="guide_begin" id="guide_begin" class="first" stepname="begin" stepindex="0"><a href="javascript:void(0)">开始</a></li>
+		</ul>
+	</div>
+<div class="c_flow" id="flow" name="flow" style="height:100px; display:none;">
+		<div class="fn">
+			<div class="left e_dis"><a href="javascript:void(0);"><span></span></a></div>
+			<div class="right"><a href="javascript:void(0);"><span></span></a></div>
+		</div>
+		<div class="content">
+			<div class="node">
+				<a href="javascript:void(0);" id="flow_start" name="flow_start" class="start" style="left:31px; top:18px;">开始</a>
+				<a href="javascript:void(0);" id="flow_editBaseInfo" name="flow_editBaseInfo" class="step" style="left:124px; top:18px;"><span>基本信息</span></a>
+				<a href="javascript:void(0);" id="flow_needMailInfo" name="flow_needMailInfo" class="judge" style="left:232px; top:12px;">是否邮寄</a>
+				<a href="javascript:void(0);" id="flow_editLogInfo" name="flow_editLogInfo" class="step" style="left:349px; top:18px;"><span>备注信息</span></a>
+				<a href="javascript:void(0);" id="flow_end" name="flow_end" class="end" style="left:523px; top:18px;">结束</a>
+			</div>
+			<div class="line">
+				<div class="l right" style="left:109px; top:32px;"></div>
+				<div class="l right" style="left:197px; top:32px;"></div>
+				<div class="l right" style="left:334px; top:32px;"></div>
+				<div class="l right" style="left:421px; top:32px;"></div>
+				<div class="l right" style="left:508px; top:32px;"></div>
+				<div class="l" style="left:284px; top:74px; width:65px;"></div>
+				<div class="v" style="left:282px; top:57px; height:20px;"></div>
+				<div class="l" style="left:420px; top:74px; width:56px;"></div>
+				<div class="v top" style="left:473px; top:50px; height:27px;"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="c_guideShadow"></div>
+	<span jwcid="@Foreach" source="ognl:config.getStepSet('step')" value="ognl:step" index="ognl:rowIndex">
+	<iframe class="c_guideFrame" jwcid="@Any" src="about:blank" type="iframe" id="ognl:step.name" name="ognl:step.name" index="ognl:rowIndex" height="0px" frameborder="0"></iframe>
+	</span>
+	
+	<div class="c_guideSubmit">
+		<a href="javascript:void(0);" id="bback" name="bback">上一步</a>
+		<a href="javascript:void(0);" id="bnext" name="bnext">下一步</a>
+	</div>
+</div>
+<span jwcid="@PageFlow" flow="ognl:pageName"></span>
+<input jwcid="@TextField"  id="ESOPTAG" name="ESOPTAG" value="ognl:getParameter('IBSYSID')"/>
+<div jwcid="SubmitPart@saleserv:CSSubmit" callBean="com.ailk.csview.group.destroygroupuser.GrpUseDestroyFlowMainHttpHandler" listener="submit" isGrp="true" style="display:none" element="div"/>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+		if($('#ESOPTAG').val() !='' ){
+			$('#CSSUBMIT_BUTTON').attr('affirmAction','window.closeNav();');
+		}
+});
+</script>
+</html>

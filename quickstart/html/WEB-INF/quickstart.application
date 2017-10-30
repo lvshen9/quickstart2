@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd"[
+  <!ENTITY public SYSTEM "public.application">
+  <!ENTITY biz SYSTEM "biz.application">
+  <!ENTITY frame  SYSTEM "frame.application">
+]>
+<application name="quickstart" engine-class="com.ailk.web.BaseEngine">
+	<description>quickstart</description>
+	
+	<property name="org.apache.tapestry.disable-caching" value="true"/>
+	<property name="org.apache.tapestry.enable-reset-service" value="true"/>
+	<property name="org.apache.tapestry.template-encoding" value="UTF-8"/>
+	<property name="org.apache.tapestry.output-encoding" value="UTF-8"/>
+	<property name="org.apache.tapestry.page-login" value="Home"/>
+	<property name="org.apache.tapestry.page-exception" value="Exception"/>
+	<property name="org.apache.tapestry.visit-class">com.ailk.biz.BizVisit</property>
+	<!-- 默认欢迎页value可选[基础风格:Base.Main; Desktop风格:Desktop;] -->
+	<property name="org.apache.tapestry.page-main" value="Base.Main"/>
+	
+	<extension 
+		name="org.apache.tapestry.specification-resolver-delegate" 
+		class="com.ailk.web.view.specificatioin.SpecificationResolverDelegate" 
+		immediate="yes">
+	</extension>
+  
+  	&public;
+  	&biz;
+  	&frame;
+  	
+  	<!--部门管理(new)-->
+  	<page name="examples.depart.departManager" specification-path="/examples/depart/DepartManager.page" version="1212"/>
+	
+	<!-- 组件使用示例 -->
+	<page name="examples.component.StaticTree" specification-path="/examples/component/StaticTree.page" version="1212"/>
+	<page name="examples.component.DynamicTree" specification-path="/examples/component/DynamicTree.page" version="1212"/>
+	<page name="examples.component.Tabset" specification-path="/examples/component/Tabset.page" version="1212"/>	
+	<page name="examples.component.FormElement" specification-path="/examples/component/FormElement.page" version="1212"/>
+
+	<!-- 功能使用示例,配置了extension后不注册也能正常访问访问 -->
+	<!--
+	<page name="examples.cust.CustList" specification-path="/examples/cust/CustList.page" version="1212"/>
+	<page name="examples.cust.CustEdit" specification-path="/examples/cust/CustEdit.page" version="1212"/>
+	<page name="examples.cust.CustMgr" specification-path="/examples/cust/CustMgr.page" version="1212"/>
+	<page name="examples.cache.LocalCacheTest" specification-path="/examples/cache/LocalCacheTest.page" version="1212"/>
+	<page name="examples.cust.CustFlowMain" specification-path="/examples/cust/CustFlowMain.page" version="1212"/>
+	<page name="examples.cust.CustFlowBase" specification-path="/examples/cust/CustFlowBase.page" version="1212"/>
+	<page name="examples.cust.CustFlowMail" specification-path="/examples/cust/CustFlowMail.page" version="1212"/>
+	<page name="examples.cust.CustFlowLog" specification-path="/examples/cust/CustFlowLog.page" version="1212"/>
+	-->
+	
+	<page name="examples.tool.JlcuTool" specification-path="/examples/tool/JlcuTool.page" version="1212"/>
+</application>

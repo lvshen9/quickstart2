@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>身份校验</title>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/auth/UserList.js"></script>
+</head>
+
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+
+	<div class="c_scroll c_scroll-x c_scroll-table-10"><div class="c_table">
+	<table>
+		<thead>
+			<tr>
+  				<th>选择</th>
+				<th>服务号码</th>
+				<th>客户名称</th>
+				<th>用户类型</th>
+				<th>注销标识</th>
+				<th>注销时间</th>
+				<th>归属品牌</th>
+				<th>归属地区</th>
+				<th>开户时间</th>
+				<th>最后停机时间</th>
+			</tr>
+		</thead>
+		<tbody id="userList">
+			<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex">
+				<td><input type="radio" jwcid="@Any" name="user" value="ognl:info.USER_ID" /></td>
+				<td><span jwcid="@Insert" value="ognl:info.SERIAL_NUMBER" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:info.CUST_NAME" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_B_USERTYPE', 'USER_TYPE_CODE', 'USER_TYPE', info.USER_TYPE_CODE)" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('USER_REMOVETAG', info.REMOVE_TAG)" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:info.DESTROY_TIME" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_S_BRAND', 'BRAND_CODE', 'BRAND', info.BRAND_CODE)" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.EPARCHY_CODE)" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:info.OPEN_DATE" raw="false"/></td>
+				<td><span jwcid="@Insert" value="ognl:info.LAST_STOP_TIME" raw="false"/></td>
+			</tr>
+		</tbody>
+	</table>
+	</div></div>
+
+	<div class="c_submit">
+	<button class="e_button-page-ok" id="submitBtn"><i></i><span>确定</span></button>
+	<button class="e_button-page-cancel" id="cancelBtn"><i></i><span>取消</span></button>
+	</div>
+
+</body>
+</html>

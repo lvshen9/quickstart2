@@ -1,0 +1,18 @@
+<page name="biz.org.AreaTree" specification-path="/biz/org/AreaTree.page" version="1212"/>
+<page name="biz.org.DeptTree" specification-path="/biz/org/DeptTree.page" version="1212"/>
+<page name="biz.org.StaffSelect" specification-path="/biz/org/StaffSelect.page" version="1212"/>
+<page name="biz.org.ManagerSelect" specification-path="/biz/org/ManagerSelect.page" version="1212"/>
+<page name="biz.org.CustManagerGrant" specification-path="/biz/org/CustManagerGrant.page" version="1212"/>
+<page name="biz.org.GrantList" specification-path="/biz/org/GrantList.page" version="1212"/>
+
+<page name="biz.info.MessageHandler" specification-path="/biz/info/MessageHandler.page" version="1212"/>
+<page name="biz.info.BulletinList" specification-path="/biz/info/BulletinList.page" version="1212"/>
+<page name="biz.info.BulletinEdit" specification-path="/biz/info/BulletinEdit.page" version="1212"/>
+<page name="biz.info.BulletinView" specification-path="/biz/info/BulletinView.page" version="1212"/>
+<page name="biz.info.MessageList" specification-path="/biz/info/MessageList.page" version="1212"/>
+<page name="biz.info.MessageEdit" specification-path="/biz/info/MessageEdit.page" version="1212"/>
+<page name="biz.info.MessageView" specification-path="/biz/info/MessageView.page" version="1212"/>
+
+<page name="biz.favo.FavoriteMenu" specification-path="/biz/favo/FavoriteMenu.page" version="1212"/>
+
+<library id="biz" specification-path="/com/ailk/biz/view/jwcs/component.library" />

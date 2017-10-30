@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>集团信息查询</title>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/selectgroup/SelectGroupPopupPage.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+    <!-- 查询区域 开始 -->
+	<div class="c_box">
+        <!-- 查询条件区域 开始 -->
+		<div class="c_form" jwcid="QueryCondPart@Part">
+            <ul class="ul">
+                <li class="li">
+                    <span class="label"><span class="e_required"> 查询方式：</span></span>
+                    <span class="e_select"><span><span>
+                        <select name="QueryType" id="QueryType"  onchange="javascript:changeQueryType()">
+                           <option value="1" selected>集团客户名称</option>
+                           <option value="0" >集团客户编码</option>
+                           <option value="3">集团服务号码</option>
+                           <option value="2">集团客户证件</option>
+                         </select>
+                    </span></span></span>
+                </li>
+                <li class="li" id="bGroupId" >
+                	<span class="label"><span  id="labGroupId" >集团客户名称：</span></span>
+						<span class="e_input"><span>											
+							<input type="text" jwcid="@TextField" id="cond_groupId" name="cond_groupId" value="ognl:condition.cond_groupId" desc="集团客户编码"/>
+						</span></span> 		 
+                </li>
+                <li class="li" id="bPstType" style="display:none">
+                    <span class="label"><span class="e_required">证件类型：</span></span>
+                    <span class="e_select"><span><span>
+                        <select jwcid="@Select" id="cond_pstType" name="cond_pstType" 
+								source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('PSPT_TYPE_CODE')"
+								value="ognl:condition.cond_pstType" textField="DATA_NAME" valueField="DATA_ID"
+								desc="证件类型" addDefault="false"/>
+					</span></span></span>
+                </li>
+                <li class="li" id="bPstNum" style="display:none">
+                    <span class="label"><span class="e_required">证件号码：</span></span>
+                    <span class="e_input"><span>
+											<input type="text" jwcid="@TextField" id="cond_pstNum" name="cond_pstNum" value="ognl:condition.cond_pstNum" desc="证件号码"/>
+									</span></span>
+                </li>
+            </ul>
+            <div class="submitPlace"></div>
+						<div class="submit"><button id="queryBtn" class="e_button-form" onclick="return queryCustInfos();"><i class="e_ico-search"></i><span>查询</span></button></div>
+        </div>
+        <!-- 查询条件区域 结束 -->
+    
+    <!-- 表单 开始 -->
+    <div jwcid="GroupCustPart@Part" element="div">
+    <div class="c_scroll c_scroll-table-10"><div class="c_table">
+        <table scroll="true">
+            <thead>
+					<tr> 
+						<th id="col_DEPART_ID">集团客户标识</th>
+						<th id="col_DEPART_ID">集团客户编码</th>
+						<th id="col_DEPART_ID1">集团客户名称</th>
+						<th id="col_DEPART_ID2">集团类型</th>
+						<th id="col_DEPART_ID2">集团客户级别</th>
+					</tr>
+			</thead>
+            <tbody>
+                <tr jwcid="@Foreach" source="ognl:infos" value="ognl:info"  element="tr">
+                						<td><span jwcid="@Insert" value="ognl:info.CUST_ID" raw="true"/></td>
+										<td><a jwcid="@Redirect" 
+                            value="ognl:info.GROUP_ID" group_id="ognl:info.GROUP_ID" cust_id="ognl:info.CUST_ID" onclick="$.setReturnValue(['POP_cond_GROUP_ID',$(this).attr('group_id'),'POP_cond_GROUP_ID',$(this).attr('group_id'),'POP_cond_GRPCUST_ID',$(this).attr('cust_id')],true)"/>
+                   						</td>
+										<td><span jwcid="@Insert" value="ognl:info.CUST_NAME" raw="true"/></td>
+										<td><span jwcid="@Insert" value="ognl:info.GROUP_TYPE_NAME" raw="false"/></td>
+										<td><span jwcid="@Insert" value="ognl:info.CLASS_NAME" raw="true"/></td>
+					       </tr>
+            </tbody>
+        </table>
+    </div></div>
+    <!-- 分页 开始 -->
+	<div jwcid="@NavBar" name="ActiveNav" id="ActiveNav" cond="QueryCondPart" part="GroupCustPart" listener="queryGroupCusts" needCount="false" pageSize="20" count="ognl:infosCount"></div>
+	<!-- 分页 结束 -->
+    </div>
+    <!-- 表单 结束 -->
+    </div>
+    <!-- 查询区域 结束 -->
+  </div></div>
+</body>
+</html>

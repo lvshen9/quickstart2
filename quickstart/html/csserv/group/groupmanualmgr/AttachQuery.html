@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--$Id: AttachQuery.html,v 1.1 2013/04/11 13:25:09 cheny Exp $-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/saleserv.js"></script>
+		<script>
+			function getSelectValue(){                   
+				if(!$.validate.verifyAll("QueryCondPart")) {
+					return false;
+				}
+				//设置查询类型
+				ajaxSubmit('QueryCondPart,infonav', 'queryFileInfo', null,'QueryListPart,ctrlInfoPart', 
+					new function(data){
+						$("#ctrlInfoPart").attr("style","display:;");
+				});
+			    return true;
+			}
+			
+			function deleteFile(){
+			
+				if(!queryBox(this, 'trades'))
+				{
+					return;
+				}
+			
+				MessageBox.confirm("提示信息","确定要删除文件吗",function(btn){
+					
+					if ('ok' == btn){
+					
+						var check = $("input[name='trades']:checked");
+						
+						var param = "";
+						
+						for (var i = 0; i < check.length; i++)
+						{
+							param+= check[i].value + ',';
+						}
+					
+						ajaxSubmit('QueryCondPart,infonav,QueryListPart', 'deleteFile', '&param='+param,'QueryListPart');
+					
+					}
+					
+				});
+			}
+		</script>
+	</head>
+	<body jwcid="@Body">
+		<div class="m_wrapper">
+			<div class="m_wrapper2">
+				<div class="c_box">
+					<div class="c_title">
+						<div class="text">
+							附件查询
+						</div>
+						<div class="fn">
+							<button type="button" class="l_ml" onclick="checkedOther('trades')">
+								<i class="e_ico-unselect"></i><span>反选</span>
+							</button>
+							<button type="button" class="l_ml" onclick="deleteFile();">
+								<i class="e_ico-delete"></i><span>删除</span>
+							</button>
+						</div>
+					</div>
+
+					<!-- 提示区 -->
+					<div class="c_box" jwcid="ctrlInfoPart@Part" id="ctrlInfoPart" style="display: none;">
+						<div class="c_tip">
+							<span jwcid="@Insert" value="ognl:ctrlInfo.strHint" raw="false" />
+						</div>
+					</div>
+
+					<div class="c_form c_form-label-7 c_form-col-3" jwcid="QueryCondPart@Part">
+						<ul class="ul">
+							<li class="li">
+								<span class="label">集团客户编码：</span>
+								<span class="e_input"><span> <input jwcid="@TextField" id="cond_GROUP_ID" name="cond_GROUP_ID" type="text"
+											value="ognl:condition.cond_GROUP_ID" desc="集团服务号码" /> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">文件名称：</span>
+								<span class="e_input"><span> <input jwcid="@TextField" id="cond_FILE_NAME" name="cond_FILE_NAME" type="text"
+											value="ognl:condition.cond_FILE_NAME" desc="文件名称" /> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">商品名称：</span>
+								<span class="e_select"><span><span> <select jwcid="@Select" name="cond_POSPECNUMBER" id="cond_POSPECNUMBER"
+												source="ognl:pageutil.getList('TD_F_PO','POSPECNUMBER','POSPECNAME')" value="ognl:condition.cond_POSPECNUMBER" textField="POSPECNAME"
+												valueField="POSPECNUMBER" desc="商品名称" onchange="ajaxSubmit(null,'ajaxSetPospecNumber','cond_POSPECNUMBER='+ this.value,'productpart')" />
+									</span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">产品名称：</span>
+								<span class="e_select"><span><span>
+											<div jwcid="productpart@Part" id="productpart">
+												<select jwcid="@Select" name="cond_PRODUCTSPECNUMBER" id="cond_PRODUCTSPECNUMBER"
+													source="ognl:pageutil.getList('TD_F_POPRODUCT','PRODUCTSPECNUMBER','PRODUCTSPECNAME','POSPECNUMBER',getContext().getData().getString('cond_POSPECNUMBER'))"
+													value="ognl:condition.cond_PRODUCTSPECNUMBER" textField="PRODUCTSPECNAME" valueField="PRODUCTSPECNUMBER" desc="产品名称" />
+											</div> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">下发开始时间：</span>
+								<span class="e_elements"> <span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField"
+												name="cond_START_DATE" id="cond_START_DATE" value="ognl:condition.cond_START_DATE" desc="下发开始时间" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">下发结束时间：</span>
+								<span class="e_elements"><span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField"
+												name="cond_END_DATE" id="cond_END_DATE" value="ognl:condition.cond_END_DATE" desc="下发结束时间" /> </span> </span> </span>
+							</li>
+						</ul>
+
+						<div class="submitPlace"></div>
+						<div class="submit">
+							<button class="e_button-form" id="bsubmit" name="bsubmit" onclick="return getSelectValue();">
+								<i class="e_ico-search"></i><span>查询</span>
+							</button>
+						</div>
+					</div>
+					
+					<div jwcid="QueryListPart@Part" element="div">
+						<div class="c_table c_table-row-10">
+							<table jwcid="@Table" name="infoTable" id="infoTable">
+								<thead>
+									<tr>
+										<th>
+											<input type="checkbox" class="e_checkbox" onclick="checkedAll('trades', checked)" />
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="FILE_ID" class="desc">
+											<span>文件编号</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="FILE_NAME" class="desc">
+											<span>文件名称</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="FILE_SIZE" class="desc">
+											<span>文件大小</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'date', null, 'desc')" col="CREA_TIME" class="desc">
+											<span>导入时间</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="GROUP_ID" class="desc">
+											<span>集团客户编码</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="MERCH_SPEC_CODE" class="desc">
+											<span>商品编码</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="PRODUCT_SPEC_CODE" class="desc">
+											<span>产品编码</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="PRODUCT_ORDER_ID" class="desc">
+											<span>产品订单号</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody jwcid="@Any" name="infoTableValues" id="infoTableValues">
+									<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr">
+										<td class="e_center">
+											<input jwcid="@Checkbox" id="trades" name="trades" value="ognl:info.FILE_ID" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.FILE_ID" raw="false" />
+										</td>
+										<td>
+											<a jwcid="@Any" href="ognl:'attach?action=download&fileId=' + info.FILE_ID+'&realName='+info.FILE_NAME" target="_blank">
+												<span jwcid="@Insert"
+													value="ognl:info.FILE_NAME" raw="false" />
+											</a>
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.FILE_SIZE" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:formatDate('yyyy-MM-dd',info.CREA_TIME)" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.GROUP_ID" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.MERCH_SPEC_CODE" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.PRODUCT_SPEC_CODE" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.PRODUCT_ORDER_ID" raw="false" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- 分页 开始 -->
+						<div jwcid="@NavBar" name="infonav" id="infonav" cond="QueryCondPart" part="QueryListPart" listener="queryBbossTradeOtherInfo" pageSize="10"
+							count="ognl:infoCount"></div>
+						<!-- 分页 结束 -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

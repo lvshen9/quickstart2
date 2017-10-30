@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>集团计费新增-预览</title>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/fee/FeeMgr.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/groupfee/GroupFee.js"></script>
+<script language="javascript">
+	$(document).ready(function(){
+		initGrpFeeList();
+	});
+</script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+
+<!-- 基本信息 开始 -->
+<div class="c_box">
+	<span jwcid="@saleserv:GroupCustInfo" groupUserInfo="ognl:grpCustInfo"/>
+</div>
+<div class="c_box">
+	<span jwcid="@saleserv:MemberUserInfo" userInfo="ognl:mebUserInfo"/>
+</div>
+<div jwcid="@saleserv:ProductElementView" model="ognl:memberProduct" headText="（集团成员产品）" headField="PRODUCT_NAME" showHeads="包名,元素标识,元素类型,元素名称,操作方式" showFields="PACKAGE_NAME,ELEMENT_ID,ELEMENT_TYPE_NAME,ELEMENT_NAME,STATE_NAME"/>
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">业务受理信息</div>
+	</div>
+	<div class="c_form c_form-col-3 c_form-label-6">
+		<ul class="ul">
+			<li class="li col-3">
+				<span class="label">备注：</span>
+				<span class="e_textarea">
+					<span class="e_textareaTop"><span></span></span>
+					<span class="e_textareaContent">
+							<textarea
+								jwcid="@TextArea" 
+								name="parm_REMARK"
+								id="parm_REMARK" 
+								type="text"
+								value="ognl:pamRemark"
+								title="备注"
+								raw="true">
+							</textarea>
+					</span>
+					<span class="e_textareaBottom"><span></span></span>
+				</span>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 隐藏域数据开始 -->
+<textarea jwcid="@TextArea" name="SELECTED_ELEMENTS" id="SELECTED_ELEMENTS" value="ognl:info" style="display:none"></textarea>
+<textarea jwcid="@TextArea" id="GRP_FEE_LIST" name="GRP_FEE_LIST" value="ognl:grpFeeList" type="text" style="display:none"/>
+<!-- 隐藏域数据结束 -->
+<!-- 基本信息 结束 -->
+</div></div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+@import "../../base/css/frame.css";
+
+html { padding:74px 0 0 0;}
+.m_header { margin-top:-74px;}
+.m_header .logo { background-image:url(../img/logo.png);}
+.m_task { margin-left:201px;}
+.m_task .fn .favo,
+.m_task .fn .screen { display:none;}
+.m_side { padding-top:26px; margin-top:-27px; border-top:1px solid #abceee;}
+.m_main { padding:0;}
+
+.s_noside .m_task { margin:0;}

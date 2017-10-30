@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ailk.csview.group.creategroupuser.Power100">
+	<property-specification name="userInfos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="packages" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="products" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="canSelectProducts" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="info" type="com.ailk.common.data.IData"/>
+	<property-specification name="temp" type="com.ailk.common.data.IData"/>
+	<property-specification name="grpProductTreeSelected" type="java.lang.String"/>
+	<property-specification name="rowIndex" type="int"/>
+	<property-specification name="brandCode" type="java.lang.String"/>
+	<property-specification name="grpCompixProduct" type="java.lang.String"/>
+</page-specification>

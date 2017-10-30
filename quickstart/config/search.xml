@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<search>
+    
+    <code name="TD_B_SYSTEMGUIMENU"   connect="default-cluster" />
+    <code name="TD_B_PLATSVC"         connect="default-cluster" />
+    <code name="TD_B_PACKAGE_ELEMENT" connect="default-cluster" />
+    <code name="SALEACTIVE"           connect="default-cluster" />
+    <code name="SALEACTIVE_FOR_IMEI"  connect="default-cluster" />
+    <code name="TF_F_CUST_GROUP"      connect="default-cluster" />
+    
+    <code name="MPHONE_DATA_0730" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0731" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0732" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0733" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0734" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0735" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0736" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0737" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0738" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0739" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0743" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0744" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0745" connect="mphone-idle-cluster" />
+    <code name="MPHONE_DATA_0746" connect="mphone-idle-cluster" />
+    
+    <cluster name="default-cluster">
+        <address>10.154.59.151:11000</address>
+    </cluster>
+    
+    <cluster name="mphone-idle-cluster">
+        <address>10.154.59.151:11000</address>
+    </cluster>
+
+</search>

@@ -1,0 +1,5 @@
+* { margin:0; padding:0; list-style:none; outline:0 none;}
+html,body { height:100%; overflow:hidden;}
+
+body { background:url(../img/welcome.png) #fff no-repeat right bottom; text-align:left;}
+.welcome { position:absolute; top:6%; left:5%; font-size:14px; font-family:verdana; line-height:1.8; color:#3a6ea5;}

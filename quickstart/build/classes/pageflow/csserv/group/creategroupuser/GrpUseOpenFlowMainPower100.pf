@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="CreateGroupUser" desc="集团产品开户">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="chooseProductElement"
+		transdata="GROUP_ID,CUST_ID,PRODUCT_ID,BUSI_TYPE,COMPIX_PRODUCT,GRP_USER_EPARCHYCODE" 
+		/>
+	<step
+		name="chooseProductElement"
+		desc="产品订购"
+		page="csserv.group.creategroupuser.ProductInfo"
+	    listener="initial"
+		nextstep="switchAccount"
+		nextbutton="bnext"
+		monitor="EFFECT_NOW,postInfoPart,SERIAL_NUMBER,acctInfoPart,DYNATABLE_RES_RECORD,SELECTED_GRPPACKAGE_LIST,SELECTED_ELEMENTS,productParamPart,PRODUCT_ID"
+		transdata="NEED_MAIL,COMPIX_ACCOUNT,acctInfoPart,SELECTED_GRPPACKAGE_LIST,SELECTED_ELEMENTS,CUST_ID,PRODUCT_ID,GRP_USER_EPARCHYCODE,TRADE_TYPE_CODE"
+		submitdata="EFFECT_NOW,postInfoPart,SERIAL_NUMBER,acctInfoPart,DYNATABLE_RES_RECORD,SELECTED_GRPPACKAGE_LIST,SELECTED_ELEMENTS,productParamPart,CUST_ID,PRODUCT_ID,GRP_USER_EPARCHYCODE"
+		/>
+	<switch name="switchAccount" expression="COMPIX_ACCOUNT" default="0" desc="付费账户定制">
+		<case value="0" nextstep="createUserPreview" desc="否"/>
+		<case value="1" nextstep="editGroupAccountInfo" desc="是"/>
+	</switch>
+	<step
+		name="editGroupAccountInfo"
+		desc="付费账户定制"
+		page="csserv.group.creategroupuser.AccountInfo"
+		listener="initial"
+		nextstep="createUserPreview"
+		nextbutton="bnext"
+		monitor="pay_PLAN_MODE_CODE,itemcodes,IS_CHECK_ALL,pay_FEE_TYPE,pay_LIMIT_TYPE,pay_LIMIT,pay_COMPLEMENT_TAG,chooseProductElement@TRADE_TYPE_CODE"
+		transdata="PRODUCT_CTRL_INFO,SELECTED_ELEMENTS,chooseProductElement@GRP_USER_EPARCHYCODE"
+		submitdata="itemcodes,PayItemPart"
+		/>
+	<step
+		name="createUserPreview"
+		desc="集团产品受理确认"
+		page="csserv.group.creategroupuser.PreView"
+		listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		nextbutton="bnext"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

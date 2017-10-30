@@ -1,0 +1,68 @@
+* { margin:0; padding:0; list-style:none; outline:0 none;}
+html,body { width:100%; height:100%; overflow:hidden;}
+body { position:relative; font-size:12px; background:#e2edf3; font-family:simsun; line-height:14px;}
+a { text-decoration:none; outline:0 none;}
+a img { border:0 none;}
+input { font-size:12px;}
+
+
+.bg { height:254px; position:absolute; top:50%; margin-top:-127px; background:url(../img/login-bg.png) no-repeat; width:100%; background-size:100% 100%; *background:none; *filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='frame/skin/base/img/login-bg.png',sizingMethod='scale');}
+@media \0screen { .bg { background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='frame/skin/base/img/login-bg.png',sizingMethod='scale');}}
+.pannel { width:588px; height:390px; position:absolute; top:50%; left:50%; margin-top:-230px; margin-left:-294px;}
+.pannel .sub { width:124px; height:86px; position:absolute; left:566px; top:8px;}
+.pannel .sub-em { background:url(../img/login-sub.png) no-repeat;}
+.pannel .logo { height:101px; background:url(../img/login-logo.png) no-repeat;}
+.pannel .pannelBg { height:290px; position:absolute; top:101px; width:100%; left:0; background:url(../img/login-s.png) no-repeat 0 -73px; filter:alpha(opacity=70)\9; opacity:0.7;}
+.pannel .head { position:absolute; left:60px; top:120px; width:146px; height:146px; background:url(../img/login-s.png) no-repeat 0 -363px;}
+.pannel .login { position:relative; overflow:hidden; zoom:1;}
+.pannel .login .content { margin-left:240px; height:186px;}
+.pannel .login .maxHeight { height:100%; width:1px; display:inline-block; *display:inline; zoom:1; vertical-align:middle; margin-right:-7px; *margin-right:-1px;}
+.pannel .login ul { display:inline-block; *display:inline; zoom:1; vertical-align:middle; margin-top:-8px; width:280px;}
+.pannel .login li { overflow:hidden; zoom:1; margin-top:8px; width:100%; position:relative;}
+.pannel .login .label { float:left; line-height:30px; font-size:14px;}
+.pannel .login .me_input-verify,
+.pannel .login .me_input { width:200px; height:30px; background:url(../img/login-s.png) no-repeat; float:left; padding:0 10px;}
+.pannel .login .me_input-verify input,
+.pannel .login .me_input input { background:transparent; border:0 none; width:100%; height:30px; float:left; font-family:verdana; line-height:30px;}
+.pannel .login .me_input-verify { width:143px;}
+.pannel .login .me_input-focus { background-position:-220px 0;}
+.pannel .login .me_input-dis { background-position:-146px -363px;}
+.pannel .login .me_input-dis input { color:#999;}
+.pannel .login .me_select { width:200px; height:30px; background:url(../img/login-s.png) no-repeat; float:left; padding:0 10px; position:relative;}
+.pannel .login .me_select span { display:block; height:16px; overflow:hidden; position:relative; width:200px; top:6px; }
+.pannel .login .me_select select { display:inline; height:20px; font-size:12px; position:relative; margin-top:-2px; margin-left:-2px; width:204px; float:left; background:#fff; font-family:verdana;}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+	.pannel .login .me_select select { border:0 none;}
+}
+.pannel .login img { width:80px; height:21px; position:absolute; right:64px; top:4px;}
+.pannel .login .me_select-focus { background-position:-220px 0;}
+.pannel .login .me_select-focus select { background:#ffa;}
+.pannel .login .me_button { width:52px; height:30px; background:url(../img/login-s.png) no-repeat -440px 0; float:left; text-align:center; color:#000; line-height:30px; padding-right:5px;}
+.pannel .login .me_button:hover { background-position:-497px 0;}
+.pannel .login .remember { text-align:center; margin-top:5px;}
+.pannel .login .remember label:hover { color:#f60;}
+.pannel .login .remember input { vertical-align:middle; width:13px; height:13px; overflow:hidden; margin-right:5px;}
+.pannel .login .submit { margin-top:10px; text-align:center;}
+.pannel .login .submit button { width:151px; height:43px; border:0 none; background:url(../img/login-s.png) no-repeat 0 -30px; line-height:100; overflow:hidden; cursor:pointer;}
+.pannel .login .submit button:hover { background-position:-151px -30px;}
+
+
+
+.info { position:absolute; bottom:20px; text-align:center; width:100%;}
+.info .download { line-height:16px; margin-top:10px;}
+.info .download i { width:16px; height:16px; display:inline-block; vertical-align:middle; margin-right:3px; background:url(../img/login-s.png) no-repeat;}
+.info .download a { color:#000; margin:0 6px; display:inline-block; cursor:pointer;}
+.info .download a:hover { color:#f60;}
+.info .download .help i	 { background-position:-524px -363px;}
+.info .download .tool i	 { background-position:-540px -363px;}
+.info .download .print i { background-position:-556px -363px;}
+.info .download .safe i	 { background-position:-572px -363px;}
+
+
+
+
+
+
+
+
+

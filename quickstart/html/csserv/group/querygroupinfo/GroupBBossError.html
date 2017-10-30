@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/querygroupinfo/groupinfoquery.js"></script>
+		<script>
+			function onGroupBbossErrorQueryBtnSubmitClick(){
+				//查询条件校验
+				if(!$.validate.verifyAll("QueryCondPart")) {
+					return false;
+				}
+				
+				//查询
+				ajaxSubmit('QueryCondPart,infonav', 'queryPoError', null, 'QueryListPart,ctrlInfoPart', 
+					new function(data){
+						$("#ctrlInfoPart").attr("style","display:;");
+				});
+			}
+		</script>
+	</head>
+	<body jwcid="@Body">
+		<div class="m_wrapper">
+			<div class="m_wrapper2">
+
+				<!-- 区域 开始 -->
+				<div class="c_box">
+					<!-- 标题 开始 -->
+					<div class="c_title">
+						<div class="text">
+							商品订单处理失败查询
+						</div>
+					</div>
+					<!-- 标题 结束 -->
+					
+					<!-- 提示区 -->
+					<div class="c_box" jwcid="ctrlInfoPart@Part" id="ctrlInfoPart" style="display: none;">
+						<div class="c_tip">
+							<span jwcid="@Insert" value="ognl:ctrlInfo.strHint" raw="false" />
+						</div>
+					</div>
+					
+					<!-- 表单 开始 -->
+					<div class="c_form" jwcid="QueryCondPart@Part">
+						<ul class="ul">
+							<li class="li">
+								<span class="label"><span class="e_required">集团客户编码：</span>
+								</span>
+								<span class="e_input"><span> <input
+											jwcid="@TextField" name="cond_GROUP_ID" type="text" nullable="no"
+											value="ognl:condition.cond_GROUP_ID" desc="集团客户编码" /> </span>
+								</span>
+							</li>
+							<li class="li">
+								<span class="label"><span class="e_required">商品名称：</span>
+								</span>
+								<span class="e_select"><span><span> <select
+												jwcid="POSPECNUMBER@Select" name="cond_POSPECNUMBER"
+												id="cond_POSPECNUMBER"
+												source="ognl:@com.ailk.biz.util.StaticUtil@getList(getVisit(),'TD_F_PO','POSPECNUMBER','POSPECNAME')"
+												value="ognl:condition.cond_POSPECNUMBER"
+												textField="POSPECNAME" valueField="POSPECNUMBER" desc="商品名称"
+												nullable="no" /> </span>
+								</span>
+								</span>
+							</li>
+						</ul>
+						<div class="submitPlace"></div>
+						<div class="submit">
+							<button class="e_button-form" id="bsubmit" name="bsubmit"
+								onclick="onGroupBbossErrorQueryBtnSubmitClick()">
+								<i class="e_ico-search"></i><span>查询</span>
+							</button>
+						</div>
+					</div>
+					<!-- 表单 结束 -->
+					<!-- 表格 开始 -->
+					<div jwcid="QueryListPart@Part" element="div">
+						<div class="c_scroll c_scroll-table-10">
+							<div class="c_table">
+								<table jwcid="@Table" name="infoTable">
+									<thead>
+										<tr>
+											<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="GROUP_ID" class="desc">
+												<span>集团客户</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="MERCH_SPEC_NAME" class="desc">
+												<span>商品名称</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="PRODUCT_SPEC_NAME" class="desc">
+												<span>产品名称</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="ATTR_VALUE" class="desc">
+												<span>错误编码</span>
+											</th>
+											<th>
+												错误描述
+											</th>
+											<th onclick="javascript:$.sortTable(this,'date', null, 'desc')" col="UPDATE_TIME" class="desc">
+												<span>下发时间</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="UPDATE_STAFF_NAME" class="desc">
+												<span>操作员工</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'date', null, 'desc')" col="OPERATE_TIME" class="desc">
+												<span>操作时间</span>
+											</th>
+										</tr>
+									</thead>
+									<tbody jwcid="@Any" name="infoTableValues" id="infoTableValues">
+										<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info"
+											element="tr">
+											<td>
+												<span jwcid="@Insert" value="ognl:info.GROUP_ID" raw="false" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.MERCH_SPEC_NAME" raw="true" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.PRODUCT_SPEC_NAME" raw="true" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.ATTR_VALUE"
+													raw="false" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.RSRV_STR10"
+													raw="false" />
+											</td>
+											<td>
+												<span jwcid="@Insert"
+													value="ognl:@com.ailk.common.util.Utility@decodeTimestamp('yyyy-MM-dd',info.UPDATE_TIME)"
+													raw="false" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.UPDATE_STAFF_NAME" raw="true" />
+											</td>
+											<td>
+												<span jwcid="@Insert"
+													value="ognl:@com.ailk.common.util.Utility@decodeTimestamp('yyyy-MM-dd',info.OPERATE_TIME)"
+													raw="false" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- 表格 结束 -->
+					<!-- 分页 开始 -->
+					<div jwcid="@NavBar" name="infonav" id="infonav"
+						cond="QueryCondPart" part="QueryListPart" listener="queryPoError"
+						pageSize="10" count="ognl:infoCount"></div>
+					<!-- 分页 结束 -->
+				</div>
+				<!-- 区域 结束 -->
+
+			</div>
+		</div>
+	</body>
+</html>

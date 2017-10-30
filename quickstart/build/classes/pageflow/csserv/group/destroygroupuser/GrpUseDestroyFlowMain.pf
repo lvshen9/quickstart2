@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="CreateGroupUser" desc="集团产品注销">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="editBaseDatum"
+		/>
+	<step
+		name="editBaseDatum"
+		desc="基本资料"
+		page="csserv.group.destroygroupuser.BaseInfo"
+		listener="initial"
+		nextstep="switchProduct"
+		nextbutton="bnext"
+		monitor="GRP_USER_ID,PRODUCT_ID,CUST_ID"
+		transdata="GRP_USER_ID,PRODUCT_ID,CUST_ID,TRADE_TYPE_CODE,COMPIX_PRODUCT,GRP_USER_EPARCHYCODE"
+		submitdata="GRP_USER_ID,IF_BOOKING,PRODUCT_ID,GRP_BRAND_CODE,IF_CENTRETYPE,EOS,GRP_USER_EPARCHYCODE"
+		/>
+	<switch name="switchProduct" expression="COMPIX_PRODUCT" default="0" desc="选择修改其他资料">
+		<case value="0" nextstep="Preview" desc="否"/>
+		<case value="B" nextstep="processBBossOtherInfo" desc="是"/>
+	 </switch>
+	    
+	<step
+		name="processBBossOtherInfo"
+		desc="BBOSS订单附加信息"
+		page="csserv.group.creategroupuser.EntireCustomerUserParamInfo"
+	    listener="initDstUs"
+		nextstep="Preview"
+		submitdata="productGoodInfos,BBossParamInfo"
+		transdata="CUST_ID,GROUP_ID,PRODUCT_ID,GRP_USER_ID,TRADE_TYPE_CODE,editBaseDatum@GRP_USER_EPARCHYCODE"
+		nextbutton="bnext"
+		monitor="ALL"
+		
+		/>
+	<step
+		name="Preview"
+		desc="注销确认"
+		page="csserv.group.destroygroupuser.PreView"
+		listener="initial"
+		nextstep="end"
+		nextbutton="bsubmit"
+		backbutton="bback"
+		submitdata="param_REMARK,param_REMOVE_REASON,DEVELOP_STAFF_ID"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

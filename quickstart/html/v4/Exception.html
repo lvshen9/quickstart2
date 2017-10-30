@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title><span jwcid="@Label" code="web.tapestry.page.excep.title" /></title>
+</head>
+<body jwcid="@Body">
+
+<div class="m_wrapper"><div class="m_wrapper2">
+	<!-- 弹窗 开始 -->
+	<div class="c_box">
+		<!--信息框开始-->
+		<div class="c_msg c_msg-error">
+			<div class="title"><span jwcid="@Insert" value="ognl:message" raw="false" /></div>
+		</div>
+		<!--信息框结束-->
+		<div class="c_submit">
+			<a href="javascript:backClick();void(0);" id="back" class="e_button e_button-page"><i class="e_ico-left"></i><span><span jwcid="@Label" code="web.tapestry.page.excep.back" /></span></a>
+		</div>
+	</div>
+</div></div>
+
+<input id="backPage" name="backPage" jwcid="@Any" type="hidden" value="ognl:backPage" />
+
+<script jwcid="@Script" src="v4/component/exception/exception.js" wade="true"></script>
+</body>
+</html>

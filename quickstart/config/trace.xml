@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+
+<trace>
+    
+    <clazz>com.wade.trace.impl.LazyWorkTrace</clazz>
+    
+    <log>
+        <directory>/home/app/logs</directory>
+        <suffix>.log</suffix>
+        <max-backup-index>3</max-backup-index>    
+    </log>
+            
+    <mapping>
+        <server name="app-node01-*"   ip="127.0.0.1" />
+    </mapping>
+    
+</trace>

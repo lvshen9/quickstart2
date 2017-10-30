@@ -1,0 +1,4 @@
+@import "../../base/css/login.css";
+
+.pannel .logo { background-image:url(../img/login-logo.png);}
+.pannel .sub { display:none;}

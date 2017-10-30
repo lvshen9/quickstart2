@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/querygroupinfo/groupinfoquery.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/querygroupinfo/GrpProvCprt.js"></script>
+		<script>
+			function onGroupProvCprtQueryBtnSubmitClick(){
+				//查询条件校验
+				if(!$.validate.verifyAll("QueryCondPart")) {
+					return false;
+				}
+				
+				//查询
+				ajaxSubmit('QueryCondPart,infonav', 'queryProvCprt', null, 'QueryListPart,ctrlInfoPart', 
+					new function(data){
+						$("#ctrlInfoPart").attr("style","display:;");
+				});
+			}
+		</script>
+	</head>
+	<body jwcid="@Body">
+		<div class="m_wrapper">
+			<div class="m_wrapper2">
+
+				<!-- 区域 开始 -->
+				<div class="c_box">
+					<!-- 标题 开始 -->
+					<div class="c_title">
+						<div class="text">
+							跨省工单状态
+						</div>
+						<div class="fn">
+							<div jwcid="@Conditional" condition="ognl:condition.EOS != null">
+								<button type="button" class="l_ml" onclick="sendEndEsopFlow();">
+									<i class="e_ico-send"></i><span>结束ESOP流程</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<!-- 标题 结束 -->
+
+					<!-- 提示区 -->
+					<div class="c_box" jwcid="ctrlInfoPart@Part" id="ctrlInfoPart" style="display: none;">
+						<div class="c_tip">
+							<span jwcid="@Insert" value="ognl:ctrlInfo.strHint" raw="false" />
+						</div>
+					</div>
+
+					<!-- 表单 开始 -->
+					<div class="c_form c_form-col-3	 c_form-label-10" jwcid="QueryCondPart@Part">
+						<ul class="ul">
+							<li class="li">
+								<span class="label"><span class="e_required">商品名称：</span> </span>
+								<span class="e_select"><span><span> <select jwcid="@Select" name="cond_MERCH_SPEC_CODE" id="cond_MERCH_SPEC_CODE"
+												source="ognl:@com.ailk.biz.util.StaticUtil@getList(getVisit(),'TD_F_PO','POSPECNUMBER','POSPECNAME')"
+												value="ognl:condition.cond_MERCH_SPEC_CODE" textField="POSPECNAME" valueField="POSPECNUMBER" desc="商品名称" nullable="no" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">同步状态：</span>
+								<span class="e_select"><span><span> <select jwcid="@Select" name="cond_SYNC_STATE" id="cond_SYNC_STATE"
+												textField="DATA_NAME" valueField="DATA_ID" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('GRP_STATE_TYPE')"
+												value="ognl:condition.cond_SYNC_STATE" desc="同步状态" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">是否需要反馈：</span>
+								<span class="e_select"><span><span> <select jwcid="@Select" name="cond_IF_PROVCPRT" id="cond_IF_PROVCPRT"
+												textField="DATA_NAME" valueField="DATA_ID" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('IF_PROVCPRT')"
+												value="ognl:condition.cond_IF_PROVCPRT" desc="是否需要反馈" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">是否已反馈：</span>
+								<span class="e_select"><span><span> <select jwcid="@Select" name="cond_IF_ANS" textField="DATA_NAME" valueField="DATA_ID"
+												id="cond_IF_ANS" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('IF_ANS')" value="ognl:condition.cond_IF_ANS" desc="是否已反馈" /> </span>
+								</span> </span>
+							</li>
+							<li class="li">
+								<span class="label">全网EC客户编码：</span>
+								<span class="e_input"><span> <input jwcid="@TextField" id="cond_EC_CODE" name="cond_EC_CODE" type="text"
+											value="ognl:condition.cond_EC_CODE" desc="全网EC客户编码" /> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">商品全网订单号：</span>
+								<span class="e_input"><span> <input jwcid="@TextField" id="cond_MERCH_ORDER_ID" name="cond_MERCH_ORDER_ID" type="text"
+											value="ognl:condition.cond_MERCH_ORDER_ID" desc="商品全网订单号" /> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label"><span class="e_required">状态同步时间(起)：</span> </span>
+								<span class="e_elements"> <span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField"
+												name="cond_START_DATE" id="cond_START_DATE" nullable="no" value="ognl:condition.cond_START_DATE" desc="状态同步时间(起)" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label"><span class="e_required">状态同步时间(止)：</span> </span>
+								<span class="e_elements"> <span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField"
+												name="cond_END_DATE" id="cond_END_DATE" nullable="no" value="ognl:condition.cond_END_DATE" desc="状态同步时间(止)" /> </span> </span> </span>
+							</li>
+						</ul>
+						<div class="submitPlace"></div>
+						<div class="submit">
+							<button class="e_button-form" id="bsubmit" name="bsubmit" onclick="onGroupProvCprtQueryBtnSubmitClick()">
+								<i class="e_ico-search"></i><span>查询</span>
+							</button>
+						</div>
+					</div>
+					<!-- 表单 结束 -->
+
+					<!-- 表格 开始 -->
+					<div jwcid="QueryListPart@Part" element="div">
+						<div class="c_scroll c_scroll-table-10">
+							<div class="c_table">
+								<table jwcid="@Table" name="infoTable">
+									<thead>
+										<tr>
+											<th style="display: none">
+												TAG
+											</th>
+											<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="EC_SERIAL_NUMBER" class="desc">
+												<span>全网EC客户编码</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="EC_NAME" class="desc">
+												<span>全网EC客户名称</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="SYNC_STATE" class="desc">
+												<span>同步状态</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="POSPECNAME" class="desc">
+												<span>商品规格</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="PO_ORDER_ID" class="desc">
+												<span>商品全网订单号</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'date', null, 'desc')" col="SYN_TIME" class="desc">
+												<span>订单下发时间</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="IF_PROVCPRT" class="desc">
+												<span>是否需要反馈</span>
+											</th>
+											<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="IF_ANS" class="desc">
+												<span>是否已反馈</span>
+											</th>
+											<th>
+												工单详情
+											</th>
+										</tr>
+									</thead>
+									<tbody jwcid="@Any" name="infoTableValues" id="infoTableValues">
+										<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr">
+											<td style="display: none">
+												0
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.EC_SERIAL_NUMBER" raw="true" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.EC_NAME" raw="true" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:pageutil.getStaticValue('GRP_STATE_TYPE',info.SYNC_STATE)" raw="false" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_F_PO', 'POSPECNUMBER', 'POSPECNAME',info.MERCH_SPEC_CODE)" raw="false" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.PO_ORDER_ID" raw="true" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:info.SYN_TIME" raw="true" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:pageutil.getStaticValue('IF_PROVCPRT',info.IF_PROVCPRT)" raw="false" />
+											</td>
+											<td>
+												<span jwcid="@Insert" value="ognl:pageutil.getStaticValue('IF_ANS',info.IF_ANS)" raw="false" />
+											</td>
+											<td>
+												<a jwcid="@Redirect" sync_state="ognl:info.SYNC_STATE" if_provcprt="ognl:info.IF_PROVCPRT" if_ans="ognl:info.IF_ANS"
+													sync_sequence="ognl:info.SYNC_SEQUENCE" ec_serial_number="ognl:info.EC_SERIAL_NUMBER" method="DetailInfo"
+													memch_order_id="ognl:info.PO_ORDER_ID" trade_id="ognl:info.TRADE_ID" onclick="popParamPage(this)" value="查看工单详情"
+													afterAction="$.endPageLoading()" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- ESOP数据 -->
+						<textarea jwcid="@TextArea" name="EOS" id="EOS" value="ognl:condition.EOS" style="display: none"></textarea>
+						<!-- 表格 结束 -->
+						<!-- 分页 开始 -->
+						<div jwcid="@NavBar" name="infonav" id="infonav" cond="QueryCondPart" part="QueryListPart" listener="queryProvCprt" pageSize="10"
+							count="ognl:infoCount"></div>
+						<!-- 分页 结束 -->
+					</div>
+				</div>
+				<!-- 区域 结束 -->
+			</div>
+		</div>
+	</body>
+</html>

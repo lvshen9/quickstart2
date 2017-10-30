@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--$Id: BbossOrderOpenExtends.html,v 1.2 2013/04/11 13:29:54 cheny Exp $-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>BBOSS工单开通反馈属性</title>
+		<script src="scripts/group/param/bboss/bboss.js"
+			language="JavaScript" />
+	</head>
+	<body jwcid="@Body">
+		<div class="m_wrapper">
+			<div class="m_wrapper2">
+				<div class="c_box">
+					<div class="c_title">
+						<div class="text">
+							反馈属性配置
+						</div>
+					</div>
+				</div>
+				<div jwcid="QueryListPart@Part" element="div">
+					<div class="c_table c_table-row-10">
+						<table jwcid="@Table" name="infoTable">
+							<thead>
+								<tr>
+									<th id="col_X_TAG" style="display: none">
+										<span>TAG</span>
+									</th>
+									<th style="display: none" id="col_PARAM_CODE">
+										<span>属性ID</span>
+									</th>
+									<th style="display: none" id="col_PARA_CODE6">
+										<span>依赖关系</span>
+									</th>
+									<th id="col_PARAM_NAME" class="l_colLi">
+										<span>属性名称</span>
+									</th>
+									<th id="col_PARAM_VALUE" class="l_colLi">
+										<span>属性值</span>
+									</th>
+									<th id="col_INPUT" class="l_colLi">
+										<span>输入</span>
+									</th>
+									<th id="col_PARAM_ATTR" class="l_colLi">
+										<span>备注</span>
+									</th>
+									<th style="display: none" id="col_CGROUP">
+										<span>产品属性组</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody jwcid="@Any" name="infoTableValues" id="infoTableValues">
+								<tr jwcid="@Foreach" source="ognl:poProductExtends"
+									value="ognl:info" element="tr">
+									<td style="display: none">
+										0
+									</td>
+									<td style="display: none">
+										<span jwcid="@Any" type="text" name="PRODUCT_PARAM_CODE"
+											id="PRODUCT_PARAM_CODE" value="ognl:info.PARA_CODE1" />
+									</td>
+									<td style="display: none">
+										<span jwcid="@Any" type="text"
+											id="ognl:'PARA_CODE6_'+info.PARA_CODE1"
+											name="ognl:'PARA_CODE6_'+info.PARA_CODE1"
+											value="ognl:info.PARA_CODE6" />
+									</td>
+									<td>
+										<span jwcid="@Insert"
+											class="ognl:(info.PARA_CODE3==0 || info.PARA_CODE6 != null) ?'e_required':''"
+											id="ognl:'PARAM_NAME_'+info.PARA_CODE1"
+											value="ognl:info.PARAM_NAME" />
+									</td>
+									<td>
+										<span jwcid="@Insert" value="ognl:info.PARAM_VALUE" />
+									</td>
+									<td>
+										<div id="ognl:'div_'+info.PARA_CODE1"
+											name="ognl:'div_'+info.PARA_CODE1" jwcid="@Any">
+											<div jwcid="@Conditional"
+												condition="ognl:info.VALUE_LIST != null">
+												<div jwcid="@Conditional"
+													condition="ognl:info.PARA_CODE5==0">
+													<span class="e_select"><span><span><select
+																	name="ognl:'PARAM_VALUE_'+info.PARA_CODE1"
+																	disabled="ognl:info.PARA_CODE11==1?true:false"
+																	cgParam="ognl:info.PARA_CODE12" jwcid="SEL1@Select"
+																	source="ognl:info.VALUE_LIST"
+																	value="ognl:pageData.getData().none"
+																	paraCode="ognl:info.PARA_CODE1"
+																	onchange="changeValue(this);productParamValueOnchange(this);"
+																	desc="ognl:info.PARAM_NAME"
+																	nullable="ognl:info.PARA_CODE3==0?'no':''" /> </span>
+													</span>
+													</span>
+												</div>
+												<div jwcid="@Conditional"
+													condition="ognl:info.PARA_CODE5!=0">
+													<div class="inputFct">
+														<table>
+															<tr>
+																<td class="input">
+																	<div>
+																		<span class="e_select"><span><span><select
+																						name="ognl:'PARAM_VALUE_'+info.PARA_CODE1"
+																						disabled="ognl:info.PARA_CODE11==1?true:false"
+																						cgParam="ognl:info.PARA_CODE12"
+																						jwcid="SEL2@Select" source="ognl:@info.VALUE_LIST"
+																						value="ognl:info.PARAM_VALUE"
+																						paraCode="ognl:info.PARA_CODE1"
+																						onchange="changeValue(this);"
+																						userId="ognl:pageData.getData().getString('BBOSS_USER_ID')"
+																						desc="ognl:info.PARAM_NAME"
+																						nullable="ognl:info.PARA_CODE3==0?'no':''" /> </span>
+																		</span>
+																		</span>
+																	</div>
+																</td>
+																<td class="fct" jwcid="@Any"
+																	style='ognl: ( info . PARA_CODE5 == null &amp; amp; &amp; amp; info .PARA_CODE12==info.PARA_CODE1)?"": "display:none"'>
+																	<input type="button" class="e_button"
+																		style="width: 48px;" jwcid="@Any"
+																		id="ognl:'BUTTON_'+info.PARA_CODE1"
+																		name="ognl:'BUTTON_'+info.PARA_CODE1" value="添加"
+																		onclick="addGroupParams(this)" />
+																</td>
+															</tr>
+														</table>
+													</div>
+												</div>
+											</div>
+											<div jwcid="@Conditional"
+												condition="ognl:info.VALUE_LIST == null">
+												<div class="inputFct">
+													<table>
+														<tr>
+															<td class="input">
+																<div jwcid="@Conditional"
+																	condition="ognl:info.DATA_TYPE == 'date'">
+																	<input name="ognl:'PARAM_VALUE_'+info.PARA_CODE1"
+																		jwcid="@TextField" cgParam="ognl:info.PARA_CODE12"
+																		enterAction="changeValue(this);"
+																		disabled="ognl:info.PARA_CODE11==1?true:false"
+																		onchange="changeValue(this);"
+																		value="ognl:info.PARAM_VALUE"
+																		desc="ognl:info.PARAM_NAME" class="e_input"
+																		datatype="date" format="ognl:info.DATA_FORMAT"
+																		nullable="ognl:info.PARA_CODE3==0?'no':''" />
+																</div>
+																<div jwcid="@Conditional"
+																	condition="ognl:info.DATA_TYPE != 'date'">
+																	<input name="ognl:'PARAM_VALUE_'+info.PARA_CODE1"
+																		jwcid="@TextField" cgParam="ognl:info.PARA_CODE12"
+																		enterAction="changeValue(this);"
+																		disabled="ognl:info.PARA_CODE11==1?true:false"
+																		onchange="changeValue(this);"
+																		value="ognl:info.PARAM_VALUE"
+																		desc="ognl:info.PARAM_NAME" class="e_input"
+																		format="ognl:info.DATA_FORMAT"
+																		datatype="ognl:info.DATA_TYPE"
+																		nullable="ognl:info.PARA_CODE3==0?'no':''"
+																		maxsize="ognl:info.PARA_CODE13!=''?info.PARA_CODE13:10000" />
+																</div>
+															</td>
+															<td class="fct" jwcid="@Any"
+																style='ognl: ( info . PARA_CODE5 == null &amp; amp; &amp; amp; info .PARA_CODE12==info.PARA_CODE1)?"": "display:none"'>
+																<input type="button" class="e_button"
+																	style="width: 48px;" jwcid="@Any"
+																	id="ognl:'BUTTON_'+info.PARA_CODE1"
+																	name="ognl:'BUTTON_'+info.PARA_CODE1" value="添加"
+																	onclick="addGroupParams(this)" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td>
+										<span jwcid="@Insert" class="ognl:''"
+											id="ognl:'PARAM_DESC_'+info.PARA_CODE1"
+											value="ognl:info.PARAM_DESC" />
+									</td>
+									<td style="display: none">
+										<span jwcid="@Any" type="text"
+											id="ognl:'CGROUP_'+info.PARA_CODE1" value="ognl:info.CGROUP" />
+									</td>
+									<td style="display: none">
+										<span jwcid="@Any" type="text"
+											id="ognl:'RSRV_STR1_'+info.PARA_CODE12"
+											name="ognl:'RSRV_STR1_'+info.PARA_CODE12"
+											value="ognl:info.PARA_CODE1" />
+									</td>
+									<td style="display: none">
+										<span jwcid="@Any" type="text"
+											id="ognl:'PARA_CODE12_'+info.PARA_CODE1"
+											name="ognl:'PARA_CODE12_'+info.PARA_CODE1"
+											value="ognl:info.PARA_CODE12" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 输入区结束 -->
+		<div class="c_submit">
+			<button class="e_button-page-ok" onclick="setExtendsParam()"><i></i><span>确定</span></button>
+			<button class="e_button-page-cancel" onclick="setReturnValue('','')"><i></i><span>取消</span></button>
+		</div>
+	</body>
+</html>

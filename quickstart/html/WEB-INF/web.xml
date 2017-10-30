@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4"
+    xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<!-- app 服务应用配置开始 -->
+	<servlet>
+		<servlet-name>wsdl</servlet-name>
+		<servlet-class>com.ailk.service.server.wsdl.WSDLServer</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>wsdl</servlet-name>
+		<url-pattern>/wsdl</url-pattern>
+	</servlet-mapping>
+	
+	<!-- App 服务调用 ,Web侧不需要配置 -->
+	<filter>
+		<filter-name>service</filter-name>
+		<filter-class>com.ailk.service.server.hessian.Hessian2Server</filter-class>
+		<!--
+		<init-param>
+			<param-name>service-sec</param-name>
+			<param-value>com.ailk.service.server.sec.ServiceSecurity</param-value>
+		</init-param>
+		<init-param>
+			<param-name>service-bcc</param-name>
+			<param-value>com.ailk.service.server.bcc.ServiceBCCIntercept</param-value>
+		</init-param>
+		-->
+	</filter>
+	<filter-mapping>
+		<filter-name>service</filter-name>
+		<url-pattern>/service</url-pattern>
+	</filter-mapping>
+	<!-- app 服务应用配置结束 -->
+	
+	<!-- App 初始化 ,Web侧不需要配置 -->
+	<servlet>
+		<servlet-name>appprepare</servlet-name>
+		<servlet-class>com.ailk.biz.AppPrepareServlet</servlet-class>
+		<init-param>
+			<param-name>datajob</param-name>
+			<param-value>com.ailk.biz.service.BizDataLoader</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>appprepare</servlet-name>
+		<url-pattern>/appprepare</url-pattern>
+	</servlet-mapping>
+	<!-- app 服务应用配置结束 -->
+	
+	<!-- web 前端应用配置开始 -->
+	<!-- 前台应用SNA单点登录 Session处理Filter-->
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.ailk.sna.filter.SessionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<servlet-name>quickstart</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<servlet-name>impexp</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<servlet-name>attach</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<servlet-name>handler</servlet-name>
+	</filter-mapping>
+	
+	<!-- 前台应用Session校验Filter-->
+	<filter>
+		<filter-name>SessionVerifyFilter</filter-name>
+		<filter-class>com.ailk.biz.view.BizSessionFilter</filter-class>
+		<init-param>
+			<param-name>page-login</param-name>
+			<param-value>Home</param-value>
+		</init-param>
+		<init-param>
+			<param-name>page-error</param-name>
+			<param-value>Exception</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SessionVerifyFilter</filter-name>
+		<servlet-name>quickstart</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionVerifyFilter</filter-name>
+		<servlet-name>impexp</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionVerifyFilter</filter-name>
+		<servlet-name>attach</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionVerifyFilter</filter-name>
+		<servlet-name>handler</servlet-name>
+	</filter-mapping>
+	
+	
+	<!-- 导入导出 -->
+	<servlet>
+		<servlet-name>impexp</servlet-name>
+		<servlet-class>com.ailk.web.servlet.impexp.ImpExpServlet</servlet-class>
+		<init-param>
+			<param-name>pool-size</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>impexp</servlet-name>
+		<url-pattern>/impexp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 前台台界面配置：页面请求，所有前台模块都需要配置 -->
+	<servlet>
+		<servlet-name>quickstart</servlet-name>
+		<servlet-class>com.ailk.web.servlet.PageServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>quickstart</servlet-name>
+		<url-pattern>/quickstart</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>quickstart</servlet-name>
+		<url-pattern>/preload</url-pattern>
+	</servlet-mapping>
+
+	<!-- 文件处理配置：上传下载，所有前台模块都需要配置-->
+	<servlet>
+		<servlet-name>attach</servlet-name>
+		<servlet-class>com.ailk.web.servlet.file.FileServlet</servlet-class>
+		<init-param>
+			<param-name>action</param-name>
+			<param-value>com.ailk.biz.ftpmgr.FtpFileAction</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>attach</servlet-name>
+		<url-pattern>/attach</url-pattern>
+	</servlet-mapping>
+
+	<!--图片验证码配置：效验码，所有前台模块都需要配置 -->
+	<servlet>
+		<servlet-name>image</servlet-name>
+		<servlet-class>com.ailk.web.servlet.file.ImageServlet</servlet-class>
+		<init-param>
+			<param-name>image-class</param-name>
+			<param-value>com.ailk.base.util.VerifyImage</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>image</servlet-name>
+		<url-pattern>/image</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>handler</servlet-name>
+		<servlet-class>com.ailk.web.servlet.HttpHandlerServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>handler</servlet-name>
+		<url-pattern>/handler</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<welcome-file-list>
+		<welcome-file>quickstart</welcome-file>
+	</welcome-file-list>
+	<!-- web 前端应用配置结束 -->
+</web-app>

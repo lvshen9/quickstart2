@@ -1,0 +1,27 @@
+<?xml version ='1.0' encoding = 'UTF-8'?>
+<redis>
+<default-datacenter>default-datacenter</default-datacenter>
+    <datacenter name="default-datacenter">
+	   
+	    <cluster name="sec" desc="权限缓存">
+	        <heartbeat-second>15</heartbeat-second>
+	         <pool-size>1</pool-size>
+	
+	        <address master="127.0.0.1:6379" />
+	    </cluster>
+	     <cluster name="sna" desc="会话缓存">
+            <!-- 心跳时间,单位:秒,默认:5 -->
+            <heartbeat-second>2</heartbeat-second>
+            <!-- 连接池活跃连接数,默认:5 -->
+            <pool-size>5</pool-size>
+            <address master="127.0.0.1:6379" />
+        </cluster>
+        <cluster name="mq" desc="会话缓存">
+            <!-- 心跳时间,单位:秒,默认:5 -->
+            <heartbeat-second>2</heartbeat-second>
+            <!-- 连接池活跃连接数,默认:5 -->
+            <pool-size>5</pool-size>
+            <address master="127.0.0.1:6379" />
+        </cluster>
+	    </datacenter>
+</redis>

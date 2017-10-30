@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="DestroyGroupUnifiedBill" desc="集团融合计费退订">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="choiceDestroyGroupUnifiedBill"
+		/>
+	<step
+		name="choiceDestroyGroupUnifiedBill"
+		desc="基本信息"
+		page="csserv.group.destroygroupunifiedbill.BaseInfo"
+		nextstep="destroyGroupUnifiedBillPreview"
+		nextbutton="bnext"
+		monitor="cond_SERIAL_NUMBER,PRODUCT_ID"
+		transdata="CUST_NAME,cond_SERIAL_NUMBER,GROUP_ID,MEB_CUST_NAME,MEB_USER_ID,MEB_EPARCHY_CODE,PRODUCT_ID,GRP_USER_ID,CUST_ID"
+		submitdata="cond_SERIAL_NUMBER,GRP_USER_ID,IF_CENTRETYPE,PRODUCT_ID"
+		/>
+	<step
+		name="destroyGroupUnifiedBillPreview"
+		desc="退订确认"
+		page="csserv.group.destroygroupunifiedbill.PreView"
+	    listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		nextbutton="bsubmit"
+		submitdata="pam_REMARK"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

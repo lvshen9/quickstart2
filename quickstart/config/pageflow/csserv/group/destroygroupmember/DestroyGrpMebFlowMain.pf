@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="CreateGroupUser" desc="成员产品退订">
+	<step
+		name="begin"
+		desc="开始"
+		transdata="SERIAL_NUMBER"
+		nextstep="choiceDestoryMember"
+		/>
+	<step
+		name="choiceDestoryMember"
+		desc="基本信息"
+		page="csserv.group.destroygroupmember.BaseInfo"
+		listener="initial"
+		nextstep="destroyGroupMemberPreview"
+		nextbutton="bnext"
+		monitor="cond_SERIAL_NUMBER,PRODUCT_ID"
+		transdata="CUST_NAME,cond_SERIAL_NUMBER,GROUP_ID,MEB_CUST_NAME,MEB_USER_ID,MEB_EPARCHY_CODE,PRODUCT_ID,GRP_USER_ID,CUST_ID"
+		submitdata="cond_SERIAL_NUMBER,GRP_USER_ID,IF_CENTRETYPE,PRODUCT_ID,MEB_EPARCHY_CODE"
+		/>
+	<step
+		name="destroyGroupMemberPreview"
+		desc="退订确认"
+		page="csserv.group.destroygroupmember.PreView"
+	    listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		nextbutton="bsubmit"
+		submitdata="parm_REMARK"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

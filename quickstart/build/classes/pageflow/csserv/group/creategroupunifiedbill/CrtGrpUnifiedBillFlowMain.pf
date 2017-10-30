@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="CreateGroupUser" desc="集团融合计费受理">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="editBaseDatum"
+		/>
+	<step
+		name="editBaseDatum"
+		desc="基本资料"
+		page="csserv.group.creategroupunifiedbill.BaseInfo"
+		listener="initial"
+		nextstep="groupUnifiedBillPreview"
+		nextbutton="bnext"
+		monitor="CUST_ID,PRODUCT_ID,GRP_USER_ID,GRP_SN,MEB_USER_ID,MEB_SERIAL_NUMBER"
+		transdata="CUST_ID,PRODUCT_ID,GRP_USER_ID,GRP_SN,MEB_USER_ID,MEB_SERIAL_NUMBER,BUSI_TYPE,MEB_EPARCHY_CODE,GROUP_ID,PRODUCT_CTRL_INFO,MEB_CUST_ID,MEB_BRAND_CODE,MEB_PRODUCT_ID"
+		submitdata="CUST_ID,PRODUCT_ID,GRP_USER_ID,MEB_USER_ID,MEB_SERIAL_NUMBER,MEB_BRAND_CODE,MEB_PRODUCT_ID,MEB_EPARCHY_CODE"
+		/>
+	<step
+		name="groupUnifiedBillPreview"
+		desc="集团产品受理确认"
+		page="csserv.group.creategroupunifiedbill.PreView"
+		listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		submitdata="PLAN_INFO,parm_REMARK,SELECTED_ELEMENTS,IF_CENTRETYPE"
+		nextbutton="end"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

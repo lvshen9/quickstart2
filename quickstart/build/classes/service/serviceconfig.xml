@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE serviceconfig PUBLIC "-//AILK WADE//WADE 4.0//CN"
+  "http://www.wade.com/service/dtd/serviceconfig.dtd" [
+  <!ENTITY common SYSTEM "classpath:common.xml">
+  <!ENTITY resserv SYSTEM "classpath:resserv.xml">
+]>
+
+<serviceconfig>
+	<config>
+		<package name="quickstart" dir="/quickstart"/>
+		<package name="saleserv" dir="/saleserv"/>
+		<package name="acctmanm" dir="/acctmanm"/>
+	</config>
+	<service subsys="quickstart">
+		<entity name="QCS_CustMgrByName" path="com.ailk.quickstart.service.cust.CustService@queryCusts" svc="quickstart@QCS_CustMgrByName.svc" />
+		<entity name="QCS_CustMgrById" route="routeByStaff12121" path="com.ailk.quickstart.service.cust.CustService@queryCust" svc="quickstart@QCS_CustMgrById.svc" />
+		<entity name="TCS_CustMgrEdit" route="routeByStaff" path="com.ailk.quickstart.service.cust.CustService@editCust" svc="quickstart@TCS_CustMgrEdit.svc" />
+		<entity name="QCS_QueryAreasByParent" route="routeByEparchy" path="com.ailk.quickstart.service.examples.ExamplesService@queryAreasByParent" svc="quickstart@QCS_QueryAreasByParent.svc" />
+		<entity name="QCS_QueryDepartsByParent" route="routeByStaff" path="com.ailk.quickstart.service.examples.ExamplesService@queryDepartsByParent" svc="quickstart@QCS_QueryDepartsByParent.svc" />
+		<entity name="QCS_QueryDepartKindsByEparchy" route="routeByStaff" path="com.ailk.quickstart.service.examples.ExamplesService@queryDepartKindsByEparchy" svc="quickstart@QCS_QueryDepartKindsByEparchy.svc" />
+		<entity name="QCS_CustMgrForImport" path="com.ailk.quickstart.service.cust.CustService@importCusts" svc="quickstart@QCS_CustMgrForImport.svc" />
+		<entity name="QCS_CustMgrForExport" path="com.ailk.quickstart.service.cust.CustService@exportCusts" svc="quickstart@QCS_CustMgrForExport.svc" />
+	</service>
+	&common;
+	&resserv;
+</serviceconfig>

@@ -1,0 +1,6 @@
+	<page name="Home" specification-path="/frame/Home.page" version="1212"/>
+	<page name="Main" specification-path="/frame/Main.page" version="1212"/>
+	<page name="Sidebar" specification-path="/frame/Sidebar.page" version="1212"/>
+	<page name="Welcome" specification-path="/frame/Welcome.page" version="1212"/>
+	<page name="Logout" specification-path="/frame/Logout.page" version="1212"/>
+	

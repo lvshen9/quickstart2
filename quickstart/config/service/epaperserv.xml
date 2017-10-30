@@ -1,0 +1,152 @@
+<service subsys="csserv">
+	<!-- 印章管理员角色证书查询 -->
+	<entity route="routeByEparchy" name="CS.CaLogQrySVC.getEpaperLog" path="com.ailk.epaperservice.query.cert.CaLogQrySVC@getEpaperLog"/>
+	<entity route="routeToCen" name="CS.HallInfoQrySVC.queryHall" path="com.ailk.epaperservice.query.cert.HallInfoQrySVC@queryHall"/>
+	<entity route="routeToCen" name="CS.SealAdmCertQrySVC.querySealAdmCert" path="com.ailk.epaperservice.query.cert.SealAdmCertQrySVC@querySealAdmCert"/>
+	<entity route="routeToCen" name="CS.SealAdmCertQrySVC.querySealAdmCertById" path="com.ailk.epaperservice.query.cert.SealAdmCertQrySVC@querySealAdmCertById"/>
+	<entity route="routeToCen" name="CS.SealAdmCertQrySVC.queryAdmCerId" path="com.ailk.epaperservice.query.cert.SealAdmCertQrySVC@queryAdmCerId"/>
+	
+	<!-- 营业厅证书查询 -->
+	<entity route="routeToCen" name="CS.HallSealCertQrySVC.queryHallSealCert" path="com.ailk.epaperservice.query.cert.HallSealCertQrySVC@queryHallSealCert"/>
+	<entity route="routeToCen" name="CS.HallSealCertQrySVC.queryHallSealCertById" path="com.ailk.epaperservice.query.cert.HallSealCertQrySVC@queryHallSealCertById"/>
+	<entity route="routeToCen" name="CS.HallSealCertQrySVC.queryHallCertByDeptID" path="com.ailk.epaperservice.query.cert.HallSealCertQrySVC@queryHallCertByDeptID"/>
+	
+	<!-- 电子印模查询 -->
+	<entity route="routeToCen" name="CS.MouLageQrySVC.queryStaticInfo" path="com.ailk.epaperservice.query.moulage.MouLageQrySVC@queryStaticInfo"/>
+	<entity route="routeToCen" name="CS.MouLageQrySVC.queryMoulage" path="com.ailk.epaperservice.query.moulage.MouLageQrySVC@queryMoulage"/>
+	<entity route="routeToCen" name="CS.MouLageQrySVC.queryMoulageById" path="com.ailk.epaperservice.query.moulage.MouLageQrySVC@queryMoulageById"/>
+	
+	<!-- 电子印章查询 -->
+	<entity route="routeToCen" name="CS.EpaperSealQrySVC.querySealUniqe" path="com.ailk.epaperservice.query.seal.EpaperSealQrySVC@querySealUniqe"/>
+	<entity route="routeToCen" name="CS.EpaperSealQrySVC.querySeal" path="com.ailk.epaperservice.query.seal.EpaperSealQrySVC@querySeal"/>
+	<entity route="routeToCen" name="CS.EpaperSealQrySVC.querySealById" path="com.ailk.epaperservice.query.seal.EpaperSealQrySVC@querySealById"/>
+	<entity route="routeToCen" name="CS.EpaperSealQrySVC.querySealByHallCertId" path="com.ailk.epaperservice.query.seal.EpaperSealQrySVC@querySealByHallCertId"/>
+	
+	<!-- 日志查询 -->
+	
+	<!-- 电子模板查询 -->
+	<entity route="routeToCen" name="CS.EDocTemplateQrySVC.queryTemplate" path="com.ailk.epaperservice.query.edoctemplate.EDocTemplateQrySVC@queryTemplate"/>
+	<entity route="routeToCen" name="CS.EDocTemplateQrySVC.queryTemplateById" path="com.ailk.epaperservice.query.edoctemplate.EDocTemplateQrySVC@queryTemplateById"/>
+	<entity route="routeToCen" name="CS.EDocTemplateQrySVC.queryTemplateByParam" path="com.ailk.epaperservice.query.edoctemplate.EDocTemplateQrySVC@queryTemplateByParam"/>
+	
+	<!-- 业务受理查询 -->
+	<entity route="routeToCen" name="CS.TradeTypeInfoQrySVC.qryTradeTypeByEpachyCodeAndprtTradeTeeTag" path="com.ailk.csservice.common.query.param.TradeTypeInfoQrySVC@qryTradeTypeByEpachyCodeAndprtTradeTeeTag"/>
+	<entity route="routeByEparchy" name="CS.EpaperTradeQrySVC.getTradeInfo" path="com.ailk.epaperservice.query.epaper.EpaperTradeQrySVC@getTradeInfo"/>
+	<entity route="routeByEparchy" name="CS.EpaperTradeQrySVC.getTradeInfoById" path="com.ailk.epaperservice.query.epaper.EpaperTradeQrySVC@getTradeInfoById"/>
+	<entity route="routeByEparchy" name="CS.EpaperTradeQrySVC.getTradeInfoByOrderId" path="com.ailk.epaperservice.query.epaper.EpaperTradeQrySVC@getTradeInfoByOrderId"/>
+	<entity route="routeByEparchy" name="CS.EpaperTradeQrySVC.getOrderTypeCodeByOrderId" path="com.ailk.epaperservice.query.epaper.EpaperTradeQrySVC@getOrderTypeCodeByOrderId"/>
+	<entity route="routeByEparchy" name="CS.TradeBeanQrySVC.getTradeMainInfo" path="com.ailk.epaperservice.query.epaper.TradeBeanQrySVC@getTradeMainInfo"/>
+	
+	<!-- 电子受理单查询 -->
+	<entity route="routeByEparchy" name="CS.EpaperBeanQrySVC.getEpaperByPk" path="com.ailk.epaperservice.query.epaper.EpaperBeanQrySVC@getEpaperByPk"/>
+	<entity route="routeByEparchy" name="CS.EpaperBeanQrySVC.queryEpaperTrade" path="com.ailk.epaperservice.query.epaper.EpaperBeanQrySVC@queryEpaperTrade"/>
+	<entity route="routeByEparchy" name="CS.EpaperBeanQrySVC.queryEpaperTradeByOrderID" path="com.ailk.epaperservice.query.epaper.EpaperBeanQrySVC@queryEpaperTradeByOrderID"/>
+	
+	<!-- 电子受理单文件配置查询 -->
+	<entity route="routeByEparchy" name="CS.EpaperFileBeanQrySVC.queryFileByPk" path="com.ailk.epaperservice.query.epaper.EpaperFileBeanQrySVC@queryFileByPk"/>
+	
+	
+	
+	<!-- 电子模板印章关系查询 -->
+	<entity route="routeToCen" name="CS.EpaperRelaQrySVC.matchTemplateSeal" path="com.ailk.epaperservice.query.moulage.EpaperRelaQrySVC@matchTemplateSeal"/>
+	
+	<!-- 营业厅模板印章关系查询 -->
+	<entity route="routeToCen" name="CS.EpaperRelationQrySVC.queryEpaperRela" path="com.ailk.epaperservice.query.rela.EpaperRelationQrySVC@queryEpaperRela"/>
+	<entity route="routeToCen" name="CS.EpaperRelationSVC.setEdocSealRela" path="com.ailk.epaperservice.rela.EpaperRelationSVC@setEdocSealRela"/>
+	<entity route="routeToCen" name="CS.EpaperRelationSVC.deleEdocSealRela" path="com.ailk.epaperservice.rela.EpaperRelationSVC@deleEdocSealRela"/>
+	
+	
+	<!-- 二进制库文件查询 -->
+	<entity route="routeToCen" name="CS.TradeLibQrySVC.queryLibObj" path="com.ailk.epaperservice.query.epaper.TradeLibQrySVC@queryLibObj"/>
+	<entity route="routeToCen" name="CS.TradeLibQrySVC.getCacheLib" path="com.ailk.epaperservice.query.epaper.TradeLibQrySVC@getCacheLib"/>
+	<entity route="routeToCen" name="CS.TradeLibQrySVC.queryLibObjFromCache" path="com.ailk.epaperservice.query.epaper.TradeLibQrySVC@queryLibObjFromCache"/>
+	
+	<entity route="routeToCen" name="CS.EpaperLibQrySVC.queryLibObjFromCache" path="com.ailk.epaperservice.query.epaper.EpaperLibQrySVC@queryLibObjFromCache"/>
+	
+	<!-- 广告素材查询 -->
+	<entity route="routeToCen" name="CS.MaterialInfoQrySVC.queryMaterial" path="com.ailk.epaperservice.query.dualscreen.MaterialInfoQrySVC@queryMaterial"/>
+	<entity route="routeToCen" name="CS.MaterialInfoQrySVC.queryAllMaterial" path="com.ailk.epaperservice.query.dualscreen.MaterialInfoQrySVC@queryAllMaterial"/>
+	
+	
+	<!-- 序列查询 -->
+	<entity route="routeToCen" name="CS.SeqQrySVC.getEpaperId" path="com.ailk.epaperservice.query.seq.SeqQrySVC@getEpaperId"/>
+	
+	
+	
+	<!-- 印章管理员角色证书申请与吊销 -->
+	<entity route="routeToCen" name="CS.SealAdmCertBeanSVC.insertSealAdmCert" path="com.ailk.epaperservice.cert.SealAdmCertBeanSVC@insertSealAdmCert"/>
+	<entity route="routeToCen" name="CS.SealAdmCertBeanSVC.cancelSealAdmCert" path="com.ailk.epaperservice.cert.SealAdmCertBeanSVC@cancelSealAdmCert"/>
+	
+	<!-- 营业厅证书申请与吊销 -->
+	<entity route="routeToCen" name="CS.HallSealCertBeanSVC.insertHallSealCert" path="com.ailk.epaperservice.cert.HallSealCertBeanSVC@insertHallSealCert"/>
+	<entity route="routeToCen" name="CS.HallSealCertBeanSVC.cancelHallSealCert" path="com.ailk.epaperservice.cert.HallSealCertBeanSVC@cancelHallSealCert"/>
+	
+	<!-- 电子印模操作 -->
+	<entity route="routeToCen" name="CS.MoulageBeanSVC.insertMoulage" path="com.ailk.epaperservice.moulage.MoulageBeanSVC@insertMoulage"/>
+	<entity route="routeToCen" name="CS.MoulageBeanSVC.editMoulage" path="com.ailk.epaperservice.moulage.MoulageBeanSVC@editMoulage"/>
+	<entity route="routeToCen" name="CS.MoulageBeanSVC.deleteMoulage" path="com.ailk.epaperservice.moulage.MoulageBeanSVC@deleteMoulage"/>
+	<entity route="routeToCen" name="CS.MoulageBeanSVC.approveMoulage" path="com.ailk.epaperservice.moulage.MoulageBeanSVC@approveMoulage"/>
+	<entity route="routeToCen" name="CS.TradeLibBeanSVC.creataLibObj" path="com.ailk.epaperservice.epaper.TradeLibBeanSVC@creataLibObj"/>
+	
+	<entity route="routeToCen" name="CS.EpaperLibBeanSVC.creataLibObj" path="com.ailk.epaperservice.epaper.EpaperLibBeanSVC@creataLibObj"/>
+	<entity route="routeToCen" name="CS.EpaperLibBeanSVC.deleteFileById" path="com.ailk.epaperservice.epaper.EpaperLibBeanSVC@deleteFileById"/>
+	<entity route="routeToCen" name="CS.EpaperLibBeanSVC.creataLibObjNoCrypt" path="com.ailk.epaperservice.epaper.EpaperLibBeanSVC@creataLibObjNoCrypt"/>
+	
+	<!-- 电子印章操作 -->
+	<entity route="routeToCen" name="CS.EpaperSealBeanSVC.insertSeal" path="com.ailk.epaperservice.seal.EpaperSealBeanSVC@insertSeal"/>
+	<entity route="routeToCen" name="CS.EpaperSealBeanSVC.approveSeal" path="com.ailk.epaperservice.seal.EpaperSealBeanSVC@approveSeal"/>
+	<entity route="routeToCen" name="CS.EpaperSealBeanSVC.updateSeal" path="com.ailk.epaperservice.seal.EpaperSealBeanSVC@updateSeal"/>
+	<entity route="routeToCen" name="CS.EpaperSealBeanSVC.deleteSeal" path="com.ailk.epaperservice.seal.EpaperSealBeanSVC@deleteSeal"/>
+	<entity route="routeToCen" name="CS.EpaperSealBeanSVC.updateSealSignTimeBySealId" path="com.ailk.epaperservice.seal.EpaperSealBeanSVC@updateSealSignTimeBySealId"/>
+	<entity route="routeToCen" name="CS.EpaperSealBeanSVC.updateSealSignValueBySealId" path="com.ailk.epaperservice.seal.EpaperSealBeanSVC@updateSealSignValueBySealId"/>
+	
+	<!-- 电子模板操作 -->
+	<entity route="routeToCen" name="CS.EDocTemplateBeanSVC.createTemplate" path="com.ailk.epaperservice.edoctemplate.EDocTemplateBeanSVC@createTemplate"/>
+	<entity route="routeToCen" name="CS.EDocTemplateBeanSVC.updateTemplate" path="com.ailk.epaperservice.edoctemplate.EDocTemplateBeanSVC@updateTemplate"/>
+	<entity route="routeToCen" name="CS.EDocTemplateBeanSVC.delTemplate" path="com.ailk.epaperservice.edoctemplate.EDocTemplateBeanSVC@delTemplate"/>
+	<entity route="routeToCen" name="CS.EDocTemplateBeanSVC.approveTemplate" path="com.ailk.epaperservice.edoctemplate.EDocTemplateBeanSVC@approveTemplate"/>
+	<entity route="routeToCen" name="CS.EDocTemplateBeanSVC.releaseTemplate" path="com.ailk.epaperservice.edoctemplate.EDocTemplateBeanSVC@releaseTemplate"/>
+	
+	
+	<!-- 日志操作-->
+	<entity route="routeToCen" name="CS.EpaperModuleOperLogSVC.insertEpaperModuleOperLog" path="com.ailk.epaperservice.epaper.EpaperModuleOperLogSVC@insertEpaperModuleOperLog"/>
+	
+	<entity route="routeByEparchy" name="CS.EpaperBeanSVC.updatePDFSignTimeByTradeId" path="com.ailk.epaperservice.epaper.EpaperBeanSVC@updatePDFSignTimeByTradeId"/>
+	
+	
+	<!-- 库操作-->
+	
+	
+	<!-- 电子受理单操作-->
+	<entity route="routeByEparchy" name="CS.EpaperCrtBeanSVC.cmbEpaper" path="com.ailk.epaperservice.epaper.EpaperCrtBeanSVC@cmbEpaper"/>
+	<entity route="routeByEparchy" name="CS.EpaperCrtBeanSVC.scanEpaper" path="com.ailk.epaperservice.epaper.EpaperCrtBeanSVC@scanEpaper"/>
+	
+	<!-- 电子受理单作废-->
+	<entity route="routeByEparchy" name="CS.EpaperTradeBeanSVC.epaperTradeInvalid" path="com.ailk.epaperservice.epaper.EpaperTradeBeanSVC@epaperTradeInvalid"/>
+	<!-- 下发客户139邮箱 -->
+	<entity route="routeByEparchy" name="CS.EpaperTradeBeanSVC.sendMail" path="com.ailk.epaperservice.epaper.EpaperTradeBeanSVC@sendMail"/>
+	<entity route="routeByEparchy" name="CS.EpaperTradeBeanSVC.sendMailBatch" path="com.ailk.epaperservice.epaper.EpaperTradeBeanSVC@sendMailBatch"/>
+	
+	
+	<!-- 广告素材操作-->
+	<entity route="routeToCen" name="CS.MaterialBeanSVC.addMaterial" path="com.ailk.epaperservice.dualscreen.MaterialBeanSVC@addMaterial"/>
+	<entity route="routeToCen" name="CS.MaterialBeanSVC.updateMaterialTag" path="com.ailk.epaperservice.dualscreen.MaterialBeanSVC@updateMaterialTag"/>
+	<entity route="routeToCen" name="CS.MaterialBeanSVC.deleMaterial" path="com.ailk.epaperservice.dualscreen.MaterialBeanSVC@deleMaterial"/>
+	
+	<!-- CMCA接口-->
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByRoleCertReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByRoleCertReq"/>	
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByStampCertReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByStampCertReq"/>
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByStampSignReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByStampSignReq"/>
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByStampSignInvalidReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByStampSignInvalidReq"/>
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByStampEvidencReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByStampEvidencReq"/>
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByStampVerityReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByStampVerityReq"/>
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByAcceptVerityReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByAcceptVerityReq"/>
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByAcceptSignReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByAcceptSignReq"/>
+	
+	
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByAcceptEvidenceReq" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByAcceptEvidenceReq"/>
+	<entity route="routeToCen" name="CS.CMCAUtilSVC.callCmcaByEpaperInvalid" path="com.ailk.epaperservice.cmca.CMCAUtilSVC@callCmcaByEpaperInvalid"/>
+	
+	<!-- 无纸业务类型中间配置-->
+	<entity route="routeByEparchy" name="CS.EkpInfoQrySVC.getEpaperSkipStr" path="com.ailk.epaperservice.query.common.EkpInfoQrySVC@getEpaperSkipStr"/>
+</service>

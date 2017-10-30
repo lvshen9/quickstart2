@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<script jwcid="@Script" src="scripts/examples/component/localcachetest.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box">
+	<div class="c_title" jwcid="@Conditional" condition="ognl:1<0">
+		<div class="text"><span jwcid="@Insert" value='客户查询'></span></div>
+	</div>
+	<div class="c_form c_form-col c_form-label-4" id="QueryCond">
+		<ul class="ul">
+			<li class="li">
+				<span class="label label-info" jwcid="@Any" title="ognl:getLabel('page.custdemo.custname.title')">TYPE_ID:</span>
+				<span class="e_input"><span><input type="text" jwcid="@TextField" name="TYPE_ID" value="ognl:condition.typeId"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label label-info" jwcid="@Any" title="ognl:getLabel('page.custdemo.custname.title')">PDATA_ID:</span>
+                <span class="e_input"><span><input type="text" jwcid="@TextField" name="PDATA_ID" value="ognl:condition.pDataId"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label label-info" jwcid="@Any" title="ognl:getLabel('page.custdemo.custname.title')">DATA_ID:</span>
+                <span class="e_input"><span><input type="text" jwcid="@TextField" name="DATA_ID" value="ognl:condition.dataId"/></span></span>
+			</li>
+            
+            <!--
+            <li class="li">
+                <span class="label">列表测试1：</span>
+				<span class="e_select"><span><span>
+					<select  jwcid="@Select" name="CHNL_CHNL_KINDID" id="CHNL_CHNL_KINDID"
+							source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('CHNL_CHNL_KINDID')"
+							textField="TEXT" valueField="VALUE" value="000"
+							desc="客户性别" disabled="false" />    		
+				</span></span></span>
+            </li>
+            
+            <li class="li">
+                <span class="label">列表测试2：</span>
+				<span class="e_select"><span><span>
+                    <select jwcid="@Select" name="USERTYPE" id="USERTYPE"
+                            source="ognl:@com.ailk.biz.util.StaticUtil@getList(getVisit(), 'TD_B_USERTYPE','USER_TYPE_CODE','USER_TYPE')"
+                            textField="USER_TYPE" valueField="USER_TYPE_CODE" value="3"
+                            desc="用户类型" disabled="false" />
+				</span></span></span>
+            </li>
+            -->
+			<li class="li submit">
+				<!--<button onclick="return loadFromDB();" type="button" class="e_button-form"><span>从数据库加载</span></button> -->
+                <button onclick="return qByTypeId();" type="button" class="e_button-form"><span>根据TYPE_ID查列表</span></button>
+                <button onclick="return qByTypeIdPdataId();" type="button" class="e_button-form"><span>根据TYPE_ID,PDATA_ID查列表</span></button>
+                <button onclick="return qByTypeIdDataId();" type="button" class="e_button-form"><span>根据TYPE_ID,DATA_ID查DATA_NAME</span></button>
+                <button onclick="return qByTypeIdDataIdList();" type="button" class="e_button-form"><span>根据TYPE_ID,DATA_ID查列表</span></button>
+			</li>
+		</ul>
+	</div>
+	<div class="c_title">
+		<div class="text">查询结果</div>
+		<div class="fn">
+		</div>
+	</div>
+	<!-- 刷新的Part 开始 -->
+	<div jwcid="QueryPart@Part" id="QueryPart" element="div">
+		<div class="c_scroll c_scroll-table-10">
+		<div class="c_table ">
+			<table jwcid="@Table" name="CustTable" >
+				<thead>
+					<tr>
+						<th col="typeId">TYPE_ID</th>
+						<th col="dataId">DATA_ID</th>
+						<th col="dataName">DATA_NAME</th>
+						<th col="pDataId">PDATA_ID</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:datas" value="ognl:data" index="ognl:rowIndex" element="tr">
+						<td><span jwcid="@Insert" value="ognl:data.TYPE_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:data.DATA_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:data.DATA_NAME"></span></td>
+						<td><span jwcid="@Insert" value="ognl:data.PDATA_ID"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		<!-- 分页 开始 -->
+		<!-- 分页 结束 -->
+	</div>
+	<!-- 刷新的Part 结束 -->
+	
+
+</div>
+</div></div>
+</body>
+</html>

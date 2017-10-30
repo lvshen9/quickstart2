@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>集团产品成员新增</title>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupunifiedbill/BaseInfo.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/grprule/grprule.js"></script> 
+		
+	</head>
+	<body jwcid="@Body">
+	<div class="m_wrapper"><div class="m_wrapper2">
+		<!-- 区域 开始 -->
+		<div class="c_box">
+			<!-- 标题 开始 -->
+			<div class="c_title">
+				<div class="text">集团客户查询</div>
+			</div>
+			<!-- 标题 结束 -->
+			<!-- 表单 开始 -->
+			<div class="c_form">
+				<ul class="ul">
+					<li class="li">
+						<span jwcid="@saleserv:SelectGroup" afterErrorAction="selectGroupErrorAfterAction();" afterAction="selectGroupAfterAction(data);"/>
+					</li>
+					<li class="li">
+						 <span jwcid="@saleserv:SelectGroupBySN" refreshPart="GroupInfoPart,GroupUserPart,CompProductInfoPart,ProductCtrlInfoPart" afterAction="afterGetGrpBySn(data);"/>
+					</li>
+				</ul>
+				<!-- div class="submitPlace"></div>
+				<div class="submit">
+					<button class="e_button-form"><i class="e_ico-search"></i><span>查询</span></button>
+				</div> -->
+			</div>
+			<!--  表单结束 -->
+			<!-- 参数列表 开始 -->
+			<div  jwcid="GroupInfoPart@Part">
+				<span jwcid="@saleserv:GroupCustInfo" groupUserInfo="ognl:info" hasTitle="false"/>
+			</div>
+			<!-- 参数列表 结束 -->
+		</div>
+		<!-- 区域 结束 -->
+		<!-- 区域 开始 -->
+		<div class="c_box">
+			<!-- 标题 开始 -->
+			<div class="c_title">
+				<div class="text">融合用户信息</div>
+			</div>
+			<!-- 标题 结束 -->
+			<!-- 表单 开始 -->
+			<div class="c_form">
+				<ul class="ul">
+					<li class="li">
+						 <span jwcid="@saleserv:SelectMemberInfo" afterAction="selectMemberInfoAfterAction(data);" afterErrorAction="selectMemberInfoAfterErrorAction();"/>
+					</li>
+				</ul>
+				<!-- div class="submitPlace"></div>
+				<div class="submit">
+					<button class="e_button-form"><i class="e_ico-search"></i><span>查询</span></button>
+				</div> -->
+			</div>
+			<!--  表单结束 -->
+			<!-- 参数列表 开始 -->
+			<span jwcid="@saleserv:MemberCustInfo"  hasTitle="false"/>
+			<span jwcid="@saleserv:MemberUserInfo" userInfo="ognl:memUserInfo" hasTitle="false"/>
+			<span jwcid="@saleserv:UserAcctDayInfo" hasTitle="false"/>	
+			
+			<!-- 参数列表 结束 -->
+		</div>
+		<!-- 区域 结束 -->
+		
+		<!-- 分栏 开始 -->
+		<div class="l_col">
+			<!-- 第 1 栏 开始 -->
+			<div class="l_left" style="width:300px;">
+				<div jwcid="GroupTreePart@Part" element="div">
+					<!-- 产品列表 开始 -->
+					<div class="c_box" id="treePar">
+						<span jwcid="@saleserv:GroupProductsTree"
+								    parentTypeCode="1000"
+								    multiSelect="false"
+								    operType="GROUP_CREATE_USER"
+								    checkboxAction="queryProduct(nodedata);"
+								    init="false"
+								    async="false"
+								    method="loadGrpTreeForOrderedOneTime"  
+								    rootName="集团已订购产品"
+								    treeHight="310px"/>
+					</div>
+			   </div>
+			</div>
+			<!-- 第 1 栏 结束 -->
+			<!-- 第 2 栏 开始 -->
+			<div class="l_auto">
+				
+				<!-- 产品详情 开始 -->
+				<span jwcid="@saleserv:JudgeMebAcctDay"/>			
+				<div id="CompProductRefreshPart" style="display:none">
+					<div jwcid="ProductCtrlInfoPart@Part" element="div">
+						<textarea jwcid="@TextArea" name="PRODUCT_CTRL_INFO" id="PRODUCT_CTRL_INFO" value="ognl:productCtrlInfo" style="display:none"></textarea>
+						<div jwcid="@Conditional" condition="ognl:productCtrlInfo.IfCentreType.ATTR_VALUE != null">	 
+								
+							<!-- 表单 开始 -->
+							<div class="c_form">
+								<ul class="ul">
+									<li class="li">
+										<span class="label">融合IMS信息：</span>
+										<span class="text" id="IMSTYPENAME">
+											<span jwcid="@Insert" value="ognl:productCtrlInfo.IfCentreType.TYPE_NAME"  encode="false" />
+										</span>
+									</li>
+								</ul>
+							</div>
+							<!-- 表单 结束 -->
+						
+						</div>
+					</div>
+					<div jwcid="CompProductInfoPart@Part" element="div" >
+						<div class="c_box">
+							<span jwcid="@saleserv:ProductExplain" productInfo="ognl:productInfo"/>
+						</div>
+						<div class="c_box">
+							<span jwcid="@saleserv:GrpUserList" useInfos="ognl:useInfos" ifCheck="true" titleInfo="ognl:productInfo.PRODUCT_NAME" clickAction="chooseUserProducts($(this))" />
+						</div>
+					</div>
+				</div>
+				<!-- 产品详情 结束 -->
+			</div>
+			<!-- 第 2 栏 结束 -->
+		</div>
+		<!-- 分栏 结束 -->
+		 <div jwcid="GroupUserPart@Part" element="div" style="display: none;">
+		 	<input jwcid="@Any" name="TRADE_TYPE_CODE" id="TRADE_TYPE_CODE" value="ognl:productCtrlInfo.TradeTypeCode.ATTR_VALUE"/>
+		 	<input jwcid="@Any" id="PRODUCT_ID" name="PRODUCT_ID" value="ognl:userInfo.PRODUCT_ID" encode="false" />
+		 	<input jwcid="@Any" name="IF_CENTRETYPE" id="IF_CENTRETYPE" value="ognl:productCtrlInfo.IF_CENTRETYPE" desc="CENTER业务判断"/>
+			<input jwcid="@Any" id="GRP_SN" name="GRP_SN" value="ognl:userInfo.SERIAL_NUMBER"  encode="false" />
+			<input jwcid="@Any" id="GRP_USER_ID" name="GRP_USER_ID" value="ognl:userInfo.USER_ID"  encode="false" />
+			<input jwcid="@Any" id="GRP_PRODUCT_NAME" name="GRP_PRODUCT_NAME" value="ognl:userInfo.PRODUCT_NAME"  encode="false" />
+ 		 </div>	
+		<input type="hidden" name="BUSI_TYPE" id="BUSI_TYPE" value="CrtUB"/>
+		<input type="button" id="bnext" value="下一步" class="e_button" onclick="validate();return false;" style="display:none"/>
+	</div></div>
+	</body>
+</html>

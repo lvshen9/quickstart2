@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+<link jwcid="@Style" href="frame/skin/quickstart/css/login.css" rel="stylesheet" type="text/css" />
+<script jwcid="@Script" src="frame/scripts/login.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="bg"></div>
+<div class="pannel">
+	<div class="pannelBg"></div>
+	<div class="logo"></div>
+	<div class="sub"></div>
+	<div class="head"></div>
+	<div id="login_div" class="login">
+		<div class="content">
+			<div class="maxHeight"></div>
+			<ul>
+				<li>
+					<div class="label">用户名：</div>
+					<div class="value">
+						<span class="me_input"><input name="STAFF_ID" jwcid="@TextField" nullable="no" value="ognl:'SUPERUSR'" desc="用户名" /></span>
+					</div>
+				</li>
+				<li>
+					<div class="label">密　码：</div>
+					<div class="value">
+					
+						<span class="me_input"><input name="PASSWORD"  jwcid="@Password" value="ognl:'Linkage123'" desc="密码"  /></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="remember"><label for="remember"><input id="remember" type="checkbox" />记住用户名</label></div>
+		<div class="submit"><button id="login_btn" type="button">登录</button></div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head" includeJs="ognl:'js/i18n.' + getLanguage() + '.js'">
+<script jwcid="@Script" src="scripts/examples/cust/custlist.js"></script>
+</head>
+
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box" id="log">
+	<div class="c_title">
+		<div class="text">备注信息</div>
+	</div>
+	<div class="c_form c_form-col-2 c_form-label-5">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">备注：</span></span>
+				<span class="e_input"><span><input type="text" name="REMARK" jwcid="@TextField" value="ognl:log.REMARK" desc="备注" nullable="no"/></span></span>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="c_submit" style="display:none">
+		<button class="e_button-page" id="bback" name="bback"><i class="e_ico-pre"></i><span>上一步</span></button>
+		<button class="e_button-page" id="bnext" name="bnext"><i class="e_ico-next"></i><span>下一步</span></button>
+	</div>
+</div>
+</div></div>
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	$("#bnext").bind("click",function(){
+		return $.validate.verifyAll("log");
+	});
+});
+</script>
+
+</body>
+</html>

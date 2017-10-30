@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: PreView.page,v 1.3 2013/04/19 03:18:36 liming2 Exp $ -->
+  
+<page-specification class="com.ailk.csview.group.destroygroupunifiedbill.PreView">
+
+    <property-specification name="useElementinfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="useElementinfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="rowIndex" type="int"/>
+    <property-specification name="info" type="com.ailk.common.data.IData"/>
+    <property-specification name="grpCustInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="mebUserInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="pamRemark"  type="java.lang.String"/>
+</page-specification>

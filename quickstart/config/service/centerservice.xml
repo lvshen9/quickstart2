@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE centerservice PUBLIC "-//AILK WADE//WADE 4.0//CN"
+  "http://www.wade.com/service/dtd/wade-center.dtd" >
+
+<centerservice>
+
+	<center name="base" desc="基础中心">
+		<group name="common" />
+	</center>
+	
+	<center name="ord" desc="订单中心">
+		<group name="order" />
+	</center>
+	
+	<center name="upc" desc="产品中心">
+		<group name="product" />
+	</center>
+	
+</centerservice>

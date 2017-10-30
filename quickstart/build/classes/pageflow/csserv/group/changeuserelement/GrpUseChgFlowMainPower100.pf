@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="ChangeUserElement" desc="集团产品变更">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="chooseProductElement"
+		transdata="POP_cond_GROUP_ID,CUST_ID,PRODUCT_ID,BUSI_TYPE,COMPIX_PRODUCT,GRP_USER_ID,GRP_USER_EPARCHYCODE"
+		submitdata="GRP_USER_ID"
+		/>
+	<step
+		name="chooseProductElement"
+		desc="产品订购"
+		page="csserv.group.changeuserelement.ProductInfo"
+	    listener="initial"
+		nextstep="Preview"
+		nextbutton="bnext"
+		monitor="DYNATABLE_RES_RECORD,SELECTED_GRPPACKAGE_LIST,SELECTED_ELEMENTS,productParamPart"
+		transdata="PRODUCT_CTRL_INFO,SELECTED_GRPPACKAGE_LIST,SELECTED_ELEMENTS,PRODUCT_ID,CUST_ID,GRP_USER_ID,GRP_USER_EPARCHYCODE"
+		submitdata="postInfoPart,DYNATABLE_RES_RECORD,SELECTED_GRPPACKAGE_LIST,SELECTED_ELEMENTS,productParamPart,CUST_ID,GRP_USER_ID,PRODUCT_ID,GRP_USER_EPARCHYCODE"
+		/>
+	<step
+		name="Preview"
+		desc="产品变更确认"
+		page="csserv.group.changeuserelement.PreView"
+		listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

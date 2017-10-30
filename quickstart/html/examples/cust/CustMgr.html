@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head" includeJs="ognl:'js/i18n.' + getLanguage() + '.js'">
+<script jwcid="@Script" src="scripts/examples/cust/custmgr.js"></script>
+</head>
+
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box">
+	<div class="c_title">
+		<div class="text"><span jwcid="@Insert" value='客户查询'></span></div>
+		<div class="fn">
+			<span jwcid="@Import" 
+				name="importFile" 
+				serviceName="1005" 
+				config="export/custmgr.xml"
+				ftpSite="quickstart"
+				beforeAction="importBeforeAction"
+				action="importAction"
+				cond="QueryCond"
+				fileType="excel"
+				></span>
+			<span jwcid="@Export"
+				name="exportFile" 
+				serviceName="1007" 
+				config="export/custmgr.xml"
+				fileName="测试导出"
+				cond="QueryCond"
+				ftpSite="quickstart"
+				beforeAction="exportBeforeAction"
+				action="exportAction"
+				fileType="{'.xls':'.xls'}"
+				></span>
+		</div>
+	</div>
+	<div class="c_form" id="QueryCond">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">客户名称：</span>
+				<!--
+					<span class="e_input"><span><input type="text" jwcid="@TextField" name="CUST_NAME" value="ognl:condition.custName" desc="客户名称" nullable="no"/></span></span>
+				-->
+				<span class="e_input"><span>
+					<input jwcid="@Search"
+						name="SEARCH_CUST_NAME"
+						page="ognl:page.getPageName()"
+						defaultText=""
+						listener="initCustNames"
+						searchCode="CUST_NAME"
+						valueCode="CUST_NAME"
+						dynamic="false"
+					/>
+				</span></span>
+			</li>
+			<li class="li">
+				<span class="label">客户标识：</span>
+				<span class="e_elements">
+					<input jwcid="@Popup" 
+						value="ognl:edit.CUST_ID" 
+						showButton="true" 
+						popupPage="examples.cust.CustList" 
+						title="选择关联客户" 
+						showFlush="true" 
+						showClose="true" 
+						text="ognl:edit.CUST_NAME"
+						name="CUST_ID" 
+						disabled="false"
+						cond="createarea"
+						desc="弹出"
+						afterAction="afterPopupAction()"
+						nullable="no"
+						/>
+				</span>
+			</li>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit"><button type="button" class="e_button-form" onclick="return queryCusts();"><i class="e_ico-search"></i><span>查询</span></button></div>
+	</div>
+	<div jwcid="QueryPart@Part" id="QueryPart" element="div" uiid="custTable">
+		<div class="c_scroll c_scroll-table-10">
+		<div class="c_table">
+			<table jwcid="@Table" 
+				name="CustTable"
+				rowClick="tableRowClick" 
+				rowDBClick="tableRowDBClick" 
+				contextMenu="新增:tableAddRow,删除:tableDeleteRow,清空:tableCleanRow,group1:清空所有:tableCleanRows">
+				<thead>
+					<tr>
+						<th col="CHK_CUST_ID" colcss="e_center"><input type="checkbox" onclick="checkedOther('custids');" /></th>
+						<th col="CUST_NAME">客户姓名</th>
+						<th col="CUST_ID">客户标识</th>
+						<th col="VIP_ID">VIP标识</th>
+						<th col="USER_ID">用户标识</th>
+						<th col="VIP_TYPE_CODE_DESC">VIP类型</th>
+						<th col="VIP_TYPE_CODE" style="display:none">VIP类型</th>
+						<th col="JOIN_DATE">创建时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:custs" value="ognl:cust" index="ognl:rowIndex" element="tr" class="ognl:rowIndex % 2 == 1 ? 'even' : ''" status="2" >
+						<td class="e_center"><input jwcid="@Checkbox" name="custids" value="ognl:cust.CUST_ID" onclick="checkTableRow($(this))"/></td>
+						<td><a jwcid="@Redirect" custId="ognl:cust.CUST_ID" vipId="ognl:cust.VIP_ID" value="ognl:cust.CUST_NAME" cols="40" onclick="queryCust($(this).attr('vipId'),$(this).attr('custId'));" /></td>
+						<td><span jwcid="@Insert" value="ognl:cust.CUST_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.VIP_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.USER_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('VIP_TYPE_CODE', cust.VIP_TYPE_CODE)"></span></td>
+						<td style="display:none"><span jwcid="@Insert" value="ognl:cust.VIP_TYPE_CODE"></span></td>
+						<td><span jwcid="@Insert" value="ognl:formatDate('yyyy-MM-dd',pageutil.getSysDate())"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		<div jwcid="@NavBar" name="custnav" cond="QueryCond" part="QueryPart" listener="queryCusts" needCount="false" pageSize="10" count="ognl:custsCount"></div>
+	</div>
+</div>
+<div class="c_box">
+	<div jwcid="EditPart@Part" element="div">
+	<div class="c_title">
+		<div class="text">客户详情</div>
+	</div>
+	<div class="c_form c_form-col-3 c_form-label-10" id="createarea" >
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">客户姓名：</span></span>
+				<span class="e_input"><span><input type="text" name="CUST_NAME" jwcid="@TextField" value="ognl:edit.CUST_NAME" desc="客户姓名"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label">客户标识：</span>
+				<span class="e_input"><span><input type="text" name="CUST_ID" jwcid="@TextField" value="ognl:edit.CUST_ID" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">VIP标识：</span>
+				<span class="e_input"><span><input type="text" name="VIP_ID" jwcid="@TextField" value="ognl:edit.VIP_ID" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">用户标识：</span>
+				<span class="e_input"><span><input type="text" name="USER_ID" jwcid="@TextField" value="ognl:edit.USER_ID" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">VIP类型：</span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" 
+						name="VIP_TYPE_CODE" 
+						valueField="DATA_ID" 
+						textField="DATA_NAME" 
+						titleField="DATA_NAME" 
+						source="ognl:pageutil.getStaticList('VIP_TYPE_CODE')"
+						value="ognl:edit.VIP_TYPE_CODE"></select>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label">余额：</span>
+				<span class="e_input"><span><input jwcid="@Money" name="FEE" value="ognl:edit.VIP_ID" scale="2"></input></span></span>
+			</li>
+			<li class="li">
+				<span class="label">入网开始时间：</span>
+				<span class="e_elements">
+					<span class="e_input e_input-left"><span>
+						<input type="text" name="JOIN_START_DATE" maxName="JOIN_END_DATE" jwcid="@DatePopup" value="ognl:edit.JOIN_DATE" desc="入网开始时间" datatype="date" format="yyyy-MM-dd" />
+					</span></span>
+				</span>
+			</li>
+			<li class="li">
+				<span class="label">入网结束时间：</span>
+				<span class="e_elements">
+					<span class="e_input e_input-left"><span>
+						<input type="text" name="JOIN_END_DATE" minName="JOIN_START_DATE" jwcid="@DatePopup" value="ognl:edit.JOIN_DATE" desc="入网结束时间" datatype="date" format="yyyy-MM-dd" />
+					</span></span>
+				</span>
+			</li>
+			<li class="li">
+				<span class="label">上传附件：</span>
+				<span class="e_elements">
+					<input jwcid="FILE_FIELD1@Upload" name="FILE_FIELD1" ftpSite="quickstart" filePath="upload/attach" fileSize="20" fileTypes="*.xls;*.xlsx" value="ognl:edit.FILE_FIELD1" fileLimit="4" />
+				</span>
+			</li>
+			<li class="li">
+				<span class="label">VIP起始时间:</span>
+				<span class="e_elements">
+					<span class="e_input e_input-left"><span>
+						<input type="text" disabled="ognl:edit.VIP_CARD_START_DATE==null" name="VIP_CARD_START_DATE" min="2013-06-20" jwcid="@DateField" value="ognl:edit.VIP_CARD_START_DATE" desc="VIP起始时间" datatype="date" format="yyyy-MM-dd" />
+					</span></span>
+				</span>
+			</li>
+			<li class="li">
+				<span class="label">VIP结束时间：</span>
+				<span class="e_elements">
+					<span class="e_input e_input-left"><span>
+						<input type="text" name="VIP_CARD_END_DATE" max="2013-06-01" jwcid="@DateField" value="ognl:edit.VIP_CARD_END_DATE" desc="VIP结束时间" datatype="date" format="yyyy-MM-dd" />
+					</span></span>
+				</span>
+			</li>
+			<li class="li">
+				<span class="label">弹出：</span>
+				<span class="e_elements">
+					<input jwcid="@Popup" 
+						value="ognl:edit.CUST_ID" 
+						showButton="true" 
+						popupPage="examples.cust.CustList" 
+						title="选择关联客户" 
+						showFlush="true" 
+						showClose="true" 
+						text="ognl:edit.CUST_NAME"
+						name="CUST_IDS" 
+						disabled="false"
+						cond="createarea"
+						desc="弹出"
+						afterAction="afterPopupAction()"
+						nullable="no"
+						/>
+				</span>
+			</li>
+			<li class="li">
+				<span class="label">关联客户：</span>
+				<span class="e_elements">
+					<span jwcid="@Flip" name="flipName" degree="1" readonly="false" minsize="0" maxsize="20" />
+				</span>
+			</li>
+			<li class="li col-3">
+				<span class="label">备注：</span>
+				<span class="e_textarea">
+					<span class="e_textareaTop"><span></span></span>
+					<span class="e_textareaContent"><textarea jwcid="@TextArea" name="REMARK" value="ognl:cust.REMARK" style="height:36px;"></textarea></span>
+					<span class="e_textareaBottom"><span></span></span>
+				</span>
+			</li>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit">
+			<button class="e_button-form" type="button" id="baddrow" name="baddrow" onclick="return addTableRow();"><i class="e_ico-add"></i><span>新增</span></button>
+			<button class="e_button-form" type="button" id="buptrow" name="buptrow" onclick="return updateTableRow();"><i class="e_ico-edit"></i><span>修改</span></button>
+			<button class="e_button-form" type="button" id="bdelrow" name="bdelrow" onclick="return deleteTableRow();"><i class="e_ico-delete"></i><span>删除</span></button>
+			<button class="e_button-form" type="button" id="balldata" name="balldata" onclick="return getTableData();"><i class="e_ico-import"></i><span>获取全表数据</span></button>
+			<button class="e_button-form" type="button" id="balldata" name="balldata" onclick="disabledArea('createarea', true);"><i class="e_ico-import"></i><span>获取全表数据</span></button>
+		</div>
+	</div>
+	
+	<div class="c_submit" id="TestPart">
+		<button class="e_button-page" type="button" id="breset" name="breset" onclick="return resetArea('EditPart',true);"><i class="e_ico-reset"></i><span>重置</span></button>
+		<button class="e_button-page e_button-page-ok" type="button" id="bupdate" name="bupdate" onclick="return editCust();"><i></i><span>保存</span></button>
+	</div>
+	</div>
+
+</div>
+
+<div class="c_box" id="ImpExpPort" jwcid="ImpExpPort@Part">
+	<div class="c_title">
+		<div class="text">同步导入导出</div>
+	</div>
+	<div class="c_form c_form-col-3 c_form-label-5">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><a href="attach?action=downloadweb&filePath=template/客户资料导出模板.xlsx" target="_blank">模板文件下载</a></span>
+				<span class="e_elements">
+					<input jwcid="@SimpleUpload" name="FILE_ID" ftpSite="quickstart" filePath="a/b/c/d" fileSize="20" fileTypes="*.xls;*.xlsx" />
+				</span>
+			</li>
+		</ul>
+	</div>
+	<div class="c_submit" id="TestPart">
+		<button class="e_button-page" type="button" id="bimport" name="bimport" onclick="return importData();"><i class="e_ico-import"></i><span>导入</span></button>
+		<button class="e_button-page" type="button" id="bexport" name="bexport" onclick="return exportData();"><i class="e_ico-export"></i><span>导出</span></button>
+	</div>
+
+</div>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ailk.csview.group.destroygroupmember.DestroyGrpMebFlowMain">
+	<property-specification name="step" type="com.ailk.common.data.IData"/>
+	<property-specification name="rowIndex" type="int"/>
+</page-specification>

@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/changeuserelement/Power100.js"></script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+
+
+
+
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 参数列表 开始 -->
+	<div class="c_form c_form-text">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">组合包：</span>
+				<span class="text"><span jwcid="@Insert" value="ognl:info.PRODUCT_NAME"/></span><!-- 这里用 insert 组件显示纯文本，别用 input 框 -->
+			</li>
+		</ul>
+	</div>
+	<!-- 参数列表 结束 -->
+</div>
+<!-- 区域 结束 -->
+
+
+<div id="powerDiv">
+<!-- 区域 开始 -->
+<div class="c_box">
+<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">必选产品</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div jwcid="productPart@Part" id="productPart" element="div">
+	<div class="c_table c_table-row-5">
+		<table>
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="e_checkbox" onclick="javascript:checkBoxChange('productPart', this.checked);"  /></th>
+					<th>产品编码</th>
+					<th>产品名称</th>
+					<th>服务号码</th>
+					<th>用户标识</th>
+					<th>开户时间</th>
+					<th>已有动力100优惠</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:products" value="ognl:temp" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+					<td class="e_center"><input type="checkbox" id="itemcodes" name="itemcodes" jwcid="@Checkbox" class="e_checkbox" value="ognl:temp.PRODUCT_ID_B+','+temp.PRODUCT_NAME+','+temp.USER_ID+','+temp.DISCNT_CODE" checked="ognl:(temp.IS_EXIST_UU =='true' )?'true':''"disabled="ognl:(temp.IS_EXIST_UU =='true' )?'true':''"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_ID_B"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_NAME"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.SERIAL_NUMBER"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.USER_ID"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.OPEN_DATE"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.DISCNT_NAME"/></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<!-- 表格 结束 -->
+</div>
+<!-- 区域 结束 -->
+
+
+
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">可选产品</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div jwcid="canSelectProductPart@Part" id="canSelectProductPart" element="div">
+	<div class="c_table c_table-row-5">
+		<table>
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="e_checkbox" onclick="javascript:checkBoxChange('canSelectProductPart', this.checked);"   /></th>
+					<th>产品编码</th>
+					<th>产品名称</th>
+					<th>服务号码</th>
+					<th>用户标识</th>
+					<th>开户时间</th>
+					<th>已有动力100优惠</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:canSelectProducts" value="ognl:temp" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'" >
+					<td class="e_center"><input type="checkbox" id="itemcodes" name="itemcodes" jwcid="@Checkbox" class="e_checkbox" value="ognl:temp.PRODUCT_ID_B+','+temp.PRODUCT_NAME+','+temp.USER_ID+','+temp.DISCNT_CODE" checked="ognl:(temp.IS_EXIST_UU =='true' )?'true':''" disabled="ognl:(temp.IS_EXIST_UU=='true' )?'true':''"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_ID_B"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_NAME"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.SERIAL_NUMBER"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.USER_ID"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.OPEN_DATE"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.DISCNT_NAME"/></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<!-- 表格 结束 -->
+	
+        <input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:info.PRODUCT_ID"/>
+        <input type="hidden" jwcid="@Any" name="CUST_ID" id="CUST_ID" value="ognl:info.CUST_ID"/>
+        <input  type="hidden" jwcid="@Any" name="BUSI_TYPE" id="BUSI_TYPE" value="ognl:info.BUSI_TYPE"/>
+        <input  type="hidden" jwcid="@Any" name="GRP_USER_ID" id="GRP_USER_ID" value="ognl:getData().getString('GRP_USER_ID')"/>
+        <input type="hidden" jwcid="@Any" name="GROUP_ID" id="GROUP_ID" value="ognl:info.GROUP_ID"/>
+        <textarea jwcid="@TextArea" id="grpProductTreeSelected" name="grpProductTreeSelected" value="ognl:grpProductTreeSelected" style="display:none"/>
+        <textarea jwcid="@TextArea" id="grpCompixProduct" name="grpCompixProduct" value="ognl:grpCompixProduct" style="display:none"/>
+        <textarea jwcid="@TextArea" id="selectedCheckBox" name="selectedCheckBox" value="" style="display:none"/>
+        <input type="hidden" jwcid="@Any" name="BRAND_CODE" id="BRAND_CODE" value="ognl:brandCode"/>
+        <input type="button" id="bnext" value="下一步" class="e_button" onclick="if (!validateNext()){ return false;}" style="display:none;"/>
+</div>
+<!-- 区域 结束 -->
+</div>
+</div></div></body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>Dynamic Tree</title>
+<script jwcid="@Script" src="scripts/examples/component/tree.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="l_col l_col-1">
+	<div class="l_li1">
+		<div class="c_scroll" style="height:500px;">
+			<div jwcid="mytree@Tree" listener="ognl:listeners.loadTreeData" expandPath="root"></div>
+		</div>
+	</div>
+</div>
+
+<script language="javascript">
+//<!--
+$(staticTreePageOnLoad);
+//-->
+</script>
+</div></div>
+</body>
+</html>

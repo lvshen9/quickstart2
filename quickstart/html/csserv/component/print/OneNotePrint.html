@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>一单清打印</title>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/print/PrintMgr.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/print/OneNotePrint.js"></script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+
+<!-- 区域 开始 -->
+<div class="c_box" jwcid="UserPart@Part">
+
+	<!-- 表单 开始 -->
+	<div class="c_form">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">用户服务号码：</span>
+				<span class="e_input"><span><input jwcid="@TextField" name="SERIAL_NUMBER" value="ognl:cond.SERIAL_NUMBER" desc="手机号码"
+												enterAction="$.oneNotePrint.queryPrintTrade()" class="e_input" type="text" datatype="mbphone" nullable="no"/></span></span>
+			</li>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit">
+			<button jwcid="@Button" name="bquery" class="e_button-form" onclick="$.oneNotePrint.queryPrintTrade()"><i class="e_ico-search"></i><span>查询</span></button>
+		</div>
+	</div>
+	<!-- 表单 结束 -->
+	<!-- 参数列表 开始 -->
+	<div class="c_form c_form-label-4 c_form-col-3 c_form-text">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">客户名称：</span>
+				<span class="text"><span jwcid="@Insert" value="ognl:cond.CUST_NAME" raw="false"/></span>
+			</li>
+		</ul>
+	</div>
+	<!-- 参数列表 结束 -->
+</div>	
+	
+<div class="c_box" jwcid="PrintListPart@Part">
+	<!-- 表格 开始 -->
+	<div class="c_table c_table-row-10">
+		<table id="printTable">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="e_checkbox" id="SELALL" name="SELALL" onclick="$.oneNotePrint.checkPrintTrade()"/></th>
+					<th>业务流水号</th>
+					<th>服务号码</th>
+					<th>业务类型</th>
+					<th>受理时间</th>
+					<th>打印标志</th>
+					<th>受理员工编码</th>
+					<th>受理部门编码</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+		            <td><input type="checkbox" name="PRINT_TRADEID" jwcid="@Checkbox" value="ognl:info.TRADE_ID" checked="ognl:info.TAGSET == 1 ? false : (info.TAGSET == 2 ? false : true)"/></td> 	                                          
+					<td><span jwcid="@Insert" value="ognl:info.TRADE_ID" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.SERIAL_NUMBER" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.TRADE_TYPE" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.ACCEPT_DATE" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.TAGSET ==1? '已打印':(info.TAGSET ==2?'已打印':'未打印')" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_STAFF','STAFF_ID', 'STAFF_NAME', getVisit().getStaffId())" raw="false"/></td>
+					<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_DEPART','DEPART_ID', 'DEPART_NAME', getVisit().getDepartId())" raw="false"/></td>
+					<td style="display:none"><span jwcid="@Insert" value="ognl:info.TRADE_TYPE_CODE" raw="false"/></td>
+					<td style="display:none"><span jwcid="@Insert" value="ognl:info.USER_ID" raw="false"/></td>
+					<td style="display:none"><span jwcid="@Insert" value="ognl:info.TRADE_EPARCHY_CODE" raw="false"/></td>
+					<td style="display:none"><span jwcid="@Insert" value="ognl:info.TRADE_ATTR" raw="false"/></td>	
+					<td style="display:none"><span jwcid="@Insert" value="ognl:info.TAGSET" raw="false"/></td>										    				     	
+		    	</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 表格 结束 -->
+	<!-- 提示 开始 -->
+	<div class="c_tip">
+		默认勾选的为未打印业务免填单
+	</div>
+	<!-- 提示 结束 -->
+	<!-- 提交 开始 -->
+	<div class="c_submit">
+		<button jwcid="@Button" name="bprint" class="e_button-page" onclick="$.oneNotePrint.getPrintInfo()"><i class="e_ico-print"></i><span>打印</span></button>
+		<div jwcid="@Conditional" condition="ognl:getData().getString('POP_TAG','false') == 'true'">
+		<button jwcid="@Button" name="close_print" class="e_button-page" onclick="$.oneNotePrint.closeOneNote()"><i class="e_ico-cancel"></i><span>关闭</span></button>
+		</div>
+	</div>
+	<!-- 提交 结束 -->
+	<input jwcid="@Hidden" name="TRADEIDS"  value=""/>
+	<input jwcid="@Hidden" name="POP_TAG"  value="ognl:getData().getString('POP_TAG','false')"/>
+</div>
+<!-- 区域 结束 -->
+
+</div></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/common/ucamgr/UcaCacheClear.js"></script>
+<title>UCA缓存清空</title>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<!-- 区域 开始 -->
+<div class="c_box">
+
+   <!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">UCA缓存清空</div>
+	</div>
+   <!-- 标题 结束 -->
+
+   <!-- 表单 开始 -->
+   <div class="c_form" jwcid="queryForm@Part">
+      <ul class="ul">
+         <li class="li">
+			 <span class="label" id="ConditionLabel"><span class="e_required">服务号码：</span></span>
+			 <span class="e_input">
+			 	 <span><input type="text" jwcid="@TextField" id="cond_SERIAL_NUMBER" name="cond_SERIAL_NUMBER"  value="ognl:condition.cond_SERIAL_NUMBER" nullable="no" desc="服务号码"/></span>
+			 </span>
+		 </li>
+      </ul>
+	  <div class="submitPlace"></div>
+	  <div class="submit">
+		  <button class="e_button-form" onclick="return queryUcaInfo();"><i class="e_ico-cancel"></i><span>清空</span></button>
+	  </div>
+   </div>
+   <!-- 表单 结束 -->
+
+   <!-- refreshtable数据区开始 -->
+	<div id="refreshtable"  jwcid="refreshtable@Part" optimize="true">
+		<!-- 表格 开始 -->
+		<div class="c_scroll c_scroll-x c_scroll-table-20"><div class="c_table">
+			<table jwcid="table1@Table">
+				<thead>
+					<tr>
+						<th>缓存对象</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr id="tr_0" jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+						<td><span jwcid="@Insert" value="ognl:info.KEY" raw="false"/></td>
+					</tr>
+				</tbody>
+			</table>
+	    </div></div>
+	    <!-- 表格 结束 -->
+	    <!-- 翻页（替换为页面组件） 开始
+		<span jwcid="@NavBar" name="pageNav" cond="queryForm" listener="queryGroupInfo" part="refreshtable" count="ognl:pageCount"/>
+	    	翻页 结束 -->
+	  </div>
+
+</div>
+<!-- 区域 结束-->
+
+</div></div>
+</body>
+</html>

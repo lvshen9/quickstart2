@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>接口信息查询</title>
+<script jwcid="@Script" language="JavaScript" src="scripts/csserv/common/intf/interfaces.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+	
+<div class="c_box">
+	<div class="c_title" jwcid="IntfCheckedCondPart@Part">
+		<div class="text">接口信息查询</div>
+		<div class="fn">
+			<label for="cond_HTTP">
+				<input jwcid="@Checkbox" id="cond_HTTP" name="cond_HTTP" checked="true" value="ognl:condition.cond_HTTP" onclick="clickIntf('cond_HTTP');" />
+				<font color="red">普通HTTP接口</font>
+			</label>
+			
+			<label for="cond_IBOSS_LD">
+				<input jwcid="@Checkbox" id="cond_IBOSS_LD" name="cond_IBOSS_LD" value="ognl:condition.cond_IBOSS_LD" onclick="clickIntf('cond_IBOSS_LD');" />
+				<font color="red">IBOSS落地接口</font>
+			</label>
+			
+			<!-- <label for="cond_IBOSS_FQ">
+				<input jwcid="@Checkbox" id="cond_IBOSS_FQ" name="cond_IBOSS_FQ" value="ognl:condition.cond_IBOSS_FQ" onclick="clickIntf('cond_IBOSS_FQ');" />
+				<font color="red">IBOSS发起接口</font>
+			</label> -->
+			<label></label>
+			<button jwcid="@Any" name="QUERY_BTN" id="QUERY_BTN" onclick="invokeInterface()"><i class="e_ico-export"></i><span>调用接口</span></button>
+			<button jwcid="@Any" name="QUERY_IBOSS" id="QUERY_IBOSS" onclick="invokeIBossInterface()"><i class="e_ico-export"></i><span>调用IBOSS接口</span></button>
+		</div>
+	</div>
+	<div class="c_form c_form-label-7 c_form-col-2" jwcid="QueryCondPart@Part">
+		<ul class="ul">
+			<li class="li">
+			<span class="label"><span class="e_required">子模块：</span></span>
+			<span class="e_select"><span><span>
+				<select jwcid="@Select" id="cond_SUBSYS_CODE" name="cond_SUBSYS_CODE" 
+				source="ognl:pageutil.getListDataSource('sys', 'TD_S_SUBSYS', 'SUBSYS_CODE', 'SUBSYS_NAME')" 
+				valueField="SUBSYS_CODE" textField="SUBSYS_NAME" value="ognl:condition.cond_SUBSYS_CODE"
+				titleField="SUBSYS_NAME" 
+				onchange="getInterfaceBySubsys(this.value);" nullable="no" desc="子模块" />
+			</span></span></span>
+			</li>
+			<li class="li">
+			<span class="label"><span class="e_required">接口名称：</span></span>
+			<span class="e_select"><span><span>
+				<select jwcid="@Select" id="cond_INTERFACE_NAME" name="cond_INTERFACE_NAME" source="ognl:interfaces" 
+				valueField="INTER_ID" textField="INTER_NAME" value="ognl:condition.cond_INTERFACE_NAME"
+				titleField="INTER_NAME" 
+				onchange="getInterfaceById(this.value);" desc="接口名称" />
+			</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">接口地址：</span></span>
+				<span class="e_input"><span>
+					<input jwcid="@TextField" name="cond_INTERFACE_ADDR" id="cond_INTERFACE_ADDR" value="ognl:condition.cond_INTERFACE_ADDR" />
+				</span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">接口编码：</span></span>
+				<span class="e_input"><span>
+					<input jwcid="@TextField" name="cond_INTERFACE_CODE" id="cond_INTERFACE_CODE" value="ognl:condition.cond_INTERFACE_CODE" />
+				</span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">开发人员：</span></span>
+				<span class="e_input"><span>
+					<input jwcid="@TextField" readonly="true" name="cond_UPDATE_STAFF_ID" id="cond_UPDATE_STAFF_ID" value="ognl:condition.cond_UPDATE_STAFF_ID" />
+				</span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">接口场景：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" id="cond_INTERFACE_SCENE" name="cond_INTERFACE_SCENE" source="ognl:interfacescenes" 
+					valueField="SCENE_ID" textField="SCENE_NM" value="ognl:condition.cond_INTERFACE_SCENE"
+					titleField="SCENE_NM" 
+					onchange="getSceneById(this.value);" nullable="no" desc="接口名称" />
+				</span></span></span>
+			</li>
+			<li class="li">
+			<span class="label"><span class="e_required">登陆信息：</span></span>
+			<span class="e_textarea">
+				<span class="e_textareaTop"><span></span></span>
+				<span class="e_textareaContent">
+					<textarea type="text" jwcid="@TextArea" id="cond_LOGIN_INFO" name="cond_LOGIN_INFO" value="ognl:condition.cond_LOGIN_INFO" nullable="yes" rows="3" maxsize="10000" style="height:55px;" desc="登陆信息" />
+				</span>
+				<span class="e_textareaBottom"><span></span></span>
+			</span>
+			</li>
+			<li class="li">
+			<span class="label"><span class="e_required">场景参数信息：</span></span>
+			<span class="e_textarea">
+				<span class="e_textareaTop"><span></span></span>
+				<span class="e_textareaContent">
+					<textarea type="text" jwcid="@TextArea" id="cond_PARAM_INFO" name="cond_PARAM_INFO" value="ognl:sceneInfo" nullable="yes" rows="8" maxsize="10000" style="height:55px;" desc="参数信息" />
+				</span>
+				<span class="e_textareaBottom"><span></span></span>
+			</span>
+			</li>
+		</ul>
+	</div>
+	
+	<!-- 分页信息 开始-->
+	<div class="c_title c_title-2" jwcid="PageCheckedCondPart@Part">
+		<div class="text">分页信息</div>
+		<div class="fn">
+			<label for="cond_ISCHECKED">
+				<input jwcid="@Checkbox" id="cond_ISCHECKED" name="cond_ISCHECKED" value="ognl:condition.cond_ISCHECKED" onclick="clickPagination();" />
+				<font color="red">是否分页查询</font>
+			</label>
+		</div>
+	</div>
+	
+	<div jwcid="PageInfoCondPart@Part">
+		<div id="DIV_PAGE_INFO" style="display:none" class="c_form c_form-label-7 c_form-col-5">
+			<ul class="ul">
+				<li class="li"></li>
+				
+				<li class="li">
+					<span class="e_elements e_required">
+					<span class="e_label e_label-left"><span class="e_required">X_PAGINCOUNT:</span></span>
+					<span class="e_input e_input-right" style="width:50px"><span>
+						<input jwcid="@TextField" datatype="pinteger" name="cond_PAGE_COUNT" id="cond_PAGE_COUNT" value="ognl:condition.cond_PAGE_COUNT"/>
+					</span></span>
+					</span>
+				</li>
+					
+				<li class="li">
+					<span class="e_elements e_required">
+					<span class="e_label e_label-left"><span class="e_required">X_PAGINSIZE:</span></span>
+					<span class="e_input e_input-right" style="width:50px"><span>
+						<input jwcid="@TextField" datatype="pinteger" name="cond_PAGE_SIZE" id="cond_PAGE_SIZE" value="ognl:condition.cond_PAGE_SIZE"/>
+					</span></span>
+					</span>
+				</li>
+				
+				<li class="li">
+					<span class="e_elements e_required">
+					<span class="e_label e_label-left"><span class="e_required">X_PAGINCURRENT:</span></span>
+					<span class="e_input e_input-right" style="width:50px"><span>
+						<input jwcid="@TextField" datatype="pinteger" name="cond_PAGE_CURRENT" id="cond_PAGE_CURRENT" value="ognl:condition.cond_PAGE_CURRENT"/>	
+					</span></span>
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 分页信息 结束-->
+	
+</div>
+
+<div class="c_box">
+	<div class="c_form c_form-label-5 c_form-col-1" jwcid="InterfaceResultPart@Part">
+		<ul class="ul">
+			<li class="li">
+			<span class="label">返回信息：</span>
+			<span class="e_textarea">
+				<span class="e_textareaTop""><span></span></span>
+				<span class="e_textareaContent">
+					<textarea type="text" readonly="true" jwcid="@TextArea" id="RESULTS" name="RESULTS" value="ognl:tipInfo" nullable="yes" rows="10" maxsize="20000" desc="返回信息" style="height:250px;"/>
+				</span>
+				<span class="e_textareaBottom"><span></span></span>
+			</span>
+			</li>
+		</ul>
+	</div>
+	
+	<!-- 翻页 开始 -->
+	<!--
+	 <div jwcid="@NavBar"  name="pagin" id="pagin" listener="invokeInterface" pageSize="10" cond="QueryCondPart,PageInfoCondPart" part="InterfaceResultPart" count="ognl:count"/>
+	-->
+	<!-- 翻页 结束 -->
+</div>
+
+</div></div>
+</body>
+
+</html>

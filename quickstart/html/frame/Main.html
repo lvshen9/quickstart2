@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="s_quickstart">
+<head jwcid="@Head">
+<title>quickstart</title>
+<link jwcid="@Style" href="frame/skin/quickstart/css/frame.css" rel="stylesheet" type="text/css" />
+<script jwcid="@Script" src="frame/scripts/main.js"></script>
+<script jwcid="@Script" src="frame/scripts/adapter.js"></script>
+<script jwcid="@Script" src="frame/scripts/navtabset.js"></script>
+<script jwcid="@Script" src="biz/scripts/message/box.js"></script>
+</head>
+<body jwcid="@Body">
+
+<!-- 顶部 开始 -->
+<div class="m_header">
+	<div class="logo"></div>
+	<div class="fn">
+		<div class="user">
+			<span class="name">Lvshen</span>
+		</div>
+		<a id="btn_exit" href="#nogo" class="exit">退出</a>
+	</div>
+</div>
+<!-- 顶部 结束 -->
+
+<!-- 任务栏 开始 -->
+<div class="m_task">
+	<div class="bg"></div>
+	<div class="fn">
+		<ul>
+			<li class="closeAll"><b></b><i></i></li>
+			<li class="screen"><b></b><i></i></li>
+			<li class="favo"><b></b><i></i></li>
+		</ul>
+	</div>
+	<div id="tab_ct_div" class="task">
+		<table>
+			<tr id="tab_ct_tr">
+			</tr>
+		</table>
+	</div>
+</div>
+<!-- 任务栏 结束 -->
+
+
+<!-- 侧栏 结束 -->
+<div class="m_side"><div class="m_sideContent">
+	<iframe id="side_frame" class="m_sideFrame" frameborder="0"></iframe>
+</div></div>
+<!-- 侧栏 结束 -->
+
+<a href="#nogo" class="m_slip"></a>
+
+
+<div id="main_ct" class="m_main">
+
+</div>
+
+
+<!-- 消息盒子 开始 -->
+<div id="msg_box" class="m_msg" style="display:none;">
+	<div class="content">
+		<a href="#nogo" class="close" onclick="javascript:$.message.box.hideBox();"></a>
+		<div class="list">
+			<ul id="msg_list">
+				
+			</ul>
+			<div class="more">
+				<a href="#nogo" onclick="javascript:$.message.box.removeVisited();">[移除已读]</a>
+				<a href="#nogo" onclick="javascript:$.message.box.removeAll();">[清空]</a>
+			</div>
+		</div>
+	</div>
+	<!--[if IE 6]><iframe class="cover"></iframe><![endif]-->
+</div>
+<!-- 消息盒子 结束 -->
+<!-- 消息盒子（最小化） 开始 -->
+<a id="msg_mini" href="#nogo" class="m_miniMsg" onclick="javascript:$.message.box.showBox();">0</a>
+<!-- 消息盒子（最小化） 结束 -->
+<iframe id="msg_frame" style="width:0px;height:0px;display:none;" frameWidth="0" frameHeight="0"></iframe>
+
+<div id="main_cover" class="m_cover" style="display:none"><!--[if IE 6]><iframe></iframe><div></div><![endif]--></div>
+
+</body>
+</html>

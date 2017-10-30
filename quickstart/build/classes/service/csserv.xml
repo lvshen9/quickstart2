@@ -1,0 +1,1081 @@
+﻿<service subsys="csserv">
+	<!-- mvel test1 -->
+	<entity route="routeByEparchy" name="CS.MvelTestSVC.testMvel" path="com.ailk.csservice.common.mveltest.MvelTestSVC@testMvel"/>
+
+    <!-- rule规则 -->
+    <entity route="routeToCen" name="CS.Bre.LoadDefinitionCache" path="com.ailk.csservice.common.query.bre.BreEngineCacheQrySvc@loadBreDefinition"/>
+    <entity route="routeToCen" name="CS.Bre.LoadParameterCache" path="com.ailk.csservice.common.query.bre.BreEngineCacheQrySvc@loadBreParameter"/>
+
+    <!-- rule规则ForGrp -->
+    <entity route="routeToCg" name="CS.chkGrpUserOpen" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpUserOpen"/>
+    <entity route="routeToCg" name="CS.chkGrpUserChg" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpUserChg"/>
+    <entity route="routeToCg" name="CS.chkGrpUserDestroy" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpUserDestroy"/>
+
+    <entity route="routeToCg" name="CS.chkGrpSale" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpSale"/>
+    <entity route="routeToCg" name="CS.chkVpmnToCntrx" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkVpmnToCntrx"/>
+	<entity route="routeByEparchy" name="CS.chkCrtGrpUnifiedBill" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkCrtGrpUnifiedBill"/>
+    <entity route="routeToCg" name="CS.chkCloseGrpMain" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkCloseGrpMain"/>
+
+    <!-- rule规则ForGrpMeb -->
+    <entity route="routeBySn" name="CS.chkGrpMebOrder" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpMebOrder"/>
+    <entity route="routeBySn" name="CS.chkGrpMebChg" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpMebChg"/>
+    <entity route="routeBySn" name="CS.chkGrpMebDestory" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpMebDestory"/>
+    <entity route="routeByEparchy" name="CS.chkGrpMebPayMod" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpMebPayMod"/>
+    <entity route="routeByEparchy" name="CS.chkGrpMebSale" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpMebSale"/>
+    <entity route="routeByEparchy" name="CS.chkGrpMeberSale" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chkGrpMeberSale"/>
+    <entity route="routeByEparchy" name="CS.chk" path="com.ailk.csservice.group.common.checkmgr.CheckForGrpSVC@chk"/>
+
+    <!-- AEE服务 -->
+    <entity route="routeByEparchy" name="CS.TradeFinishSVC.finish" path="com.ailk.csservice.common.trade.TradeFinishSVC@finish"/>
+    <entity route="routeByEparchy" name="CS.TradePfSVC.sendPf" path="com.ailk.csservice.common.trade.TradePfSVC@sendPf"/>
+    <entity route="routeByEparchy" name="CS.TradePfSVC.backPf" path="com.ailk.csservice.common.trade.TradePfSVC@backPf"/>
+    <entity route="routeByEparchy" name="CS.TradePfSVC.getPf" path="com.ailk.csservice.common.trade.TradePfSVC@getPf"/>
+    <entity route="routeBySn" name="CS.TradeSyncSVC.sync" path="com.ailk.csservice.common.trade.TradeSyncSVC@sync"/>
+    <entity route="routeBySn" name="CS.TradeMoveSVC.move" path="com.ailk.csservice.common.trade.TradeMoveSVC@move"/>
+
+    <!-- 送cg资料到crm -->
+    <entity route="routeToCg" name="CS.CgToCrmSVC.queryInfoByTradeId" path="com.ailk.csservice.group.common.cgtocrm.CgToCrmSVC@queryInfoByTradeId"/>
+    <entity route="routeToCg" name="CS.CgToCrmSVC.queryTradeId" path="com.ailk.csservice.group.common.cgtocrm.CgToCrmSVC@queryTradeId"/>
+    <entity route="routeToCg" name="CS.CgToCrmSVC.execCgToCrm" path="com.ailk.csservice.group.common.cgtocrm.CgToCrmSVC@execCgToCrm"/>
+    <entity route="routeToCg" name="CS.CgToCrmSVC.execSYNCByTradeId" path="com.ailk.csservice.group.common.cgtocrm.CgToCrmSVC@execSYNCByTradeId"/>
+
+    <!-- 二次短信确认 -->
+    <entity route="routeBySn" name="CS.TwoCheckSVC.twoCheck" path="com.ailk.csservice.common.sms.TwoCheckSmsSVC@twoCheck"/>
+    <entity route="routeBySn" name="CS.TwoCheckSVC.queryDataMapByOutTradeId" path="com.ailk.csservice.common.sms.TwoCheckSmsSVC@queryDataMapByOutTradeId"/>
+    <entity route="routeBySn" name="CS.TwoCheckSVC.updateTwoCheckByOutTradeId" path="com.ailk.csservice.common.sms.TwoCheckSmsSVC@updateTwoCheckByOutTradeId"/>
+    <entity route="routeBySn" name="CS.TwoCheckSmsSVC.twoCheck2Back" path="com.ailk.csservice.common.sms.TwoCheckSmsSVC@twoCheck2Back"/>
+
+    <!-- auth组件 -->
+    <entity route="routeBySn" name="CS.GetInfosSVC.getInfos" path="com.ailk.csservice.common.component.auth.GetInfosSVC@getInfos"/>
+    <entity route="routeBySn" name="CS.GetInfosSVC.getUCAInfos" path="com.ailk.csservice.common.component.auth.GetInfosSVC@getUCAInfos"/>
+    <entity route="routeBySn" name="CS.AuthCheckSVC.authCheck" path="com.ailk.csservice.common.component.auth.AuthCheckSVC@authCheck"/>
+    <entity route="routeByEparchy" name="CS.GetInfosSVC.getAuthBroadbandUser" path="com.ailk.csservice.common.component.auth.GetInfosSVC@getAuthBroadbandUser"/>
+    <entity route="routeByEparchy" name="CS.GetInfosSVC.getBroadbandUCAInfos" path="com.ailk.csservice.common.component.auth.GetInfosSVC@getBroadbandUCAInfos"/>
+    <entity route="routeByEparchy" name="CS.AuthCheckSVC.authBroadbandCheck" path="com.ailk.csservice.common.component.auth.AuthCheckSVC@authBroadbandCheck"/>
+    <entity route="routeBySn" name="CS.UserListSVC.queryUserBySn" path="com.ailk.csservice.common.component.auth.UserListSVC@queryUserBySn"/>
+    <entity route="routeBySn" name="CS.UserListSVC.queryUserList" path="com.ailk.csservice.common.component.auth.UserListSVC@queryUserList"/>
+	<entity route="routeBySn" name="CS.UserInfoQrySVC.getNormalUserInfoBySN" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getNormalUserInfoBySN"/>
+	<entity route="routeBySn" name="CS.AuthCheckSVC.sendSmsVerifyCode" path="com.ailk.csservice.common.component.auth.AuthCheckSVC@sendSmsVerifyCode"/>
+	
+   	<!-- 互联网秘密校验 -->
+   	<entity route="routeBySn" name="CS.AuthCheckSVC.checkUserNetPWD" path="com.ailk.csservice.common.component.auth.AuthCheckSVC@checkUserNetPWD"/>
+
+    <!-- 打印组件 -->
+    <entity route="routeToCen" name="CS.PrintNoteSVC.getPrintConfig" path="com.ailk.csservice.common.component.print.PrintNoteSVC@getPrintConfig"/>
+    <entity route="routeByEparchy" name="CS.PrintNoteSVC.getPrintData" path="com.ailk.csservice.common.component.print.PrintNoteSVC@getPrintData"/>
+    <entity route="routeByEparchy" name="CS.PrintNoteSVC.getStaffPrintTicket" path="com.ailk.csservice.common.component.print.PrintNoteSVC@getStaffPrintTicket"/>
+    <entity route="routeByEparchy" name="CS.PrintNoteSVC.regPrintTicketLog" path="com.ailk.csservice.common.component.print.PrintNoteSVC@regPrintTicketLog"/>
+    <entity route="routeByEparchy" name="CS.PrintNoteSVC.setTradePrintTag" path="com.ailk.csservice.common.component.print.PrintNoteSVC@setTradePrintTag"/>
+	<!-- 一单清打印 -->
+    <entity route="routeBySn" name="CS.PrintNoteSVC.getOneNotePrintData" path="com.ailk.csservice.common.component.print.PrintNoteSVC@getOneNotePrintData"/>
+    <entity route="routeByEparchy" name="CS.PrintNoteSVC.getSnByOrder" path="com.ailk.csservice.common.component.print.PrintNoteSVC@getSnByOrder"/>
+    <entity route="routeBySn" name="CS.PrintNoteSVC.queryPrintTrades" path="com.ailk.csservice.common.component.print.PrintNoteSVC@queryPrintTrades"/>
+    <entity route="routeBySn" name="CS.PrintNoteSVC.updataPrintTag" path="com.ailk.csservice.common.component.print.PrintNoteSVC@updataPrintTag"/>
+    <!-- 打印接口使用 -->
+    <entity route="routeByEparchy" name="CS.PrintNoteSVC.insertPrintNoteLog" path="com.ailk.csservice.common.component.print.PrintNoteSVC@insertPrintNoteLog"/>
+    <entity route="routeByEparchy" name="CS.PrintNoteSVC.cancelPrintNoteLog" path="com.ailk.csservice.common.component.print.PrintNoteSVC@cancelPrintNoteLog"/>
+
+	<!--费用组件-->
+	<entity route="routeToCen" name="CS.FeeMgrSVC.getTradeFee" path="com.ailk.csservice.common.fee.FeeMgrSVC@getTradeFee"/>
+	<entity route="routeToCen" name="CS.FeeMgrSVC.getFeeConfigInfos" path="com.ailk.csservice.common.fee.FeeMgrSVC@getFeeConfigInfos"/>
+	<entity route="routeToCen" name="CS.FeeMgrSVC.getScoreInfo" path="com.ailk.csservice.common.fee.FeeMgrSVC@getScoreInfo"/>
+	<entity route="routeToCen" name="CS.FeeMgrSVC.getScorerate" path="com.ailk.csservice.common.fee.FeeMgrSVC@getScorerate"/>
+	<entity route="routeToCen" name="CS.FeeMgrSVC.queryUserScore" path="com.ailk.csservice.common.fee.FeeMgrSVC@queryUserScore"/>
+	
+	<!--POS机-->
+	<entity route="routeByEparchy" name="CS.PosMgrSVC.getPosPubInfo" path="com.ailk.csservice.common.pos.PosMgrSVC@getPosPubInfo"/>
+	<entity route="routeByEparchy" name="CS.PosMgrSVC.getPosTradeId" path="com.ailk.csservice.common.pos.PosMgrSVC@getPosTradeId"/>
+	<entity route="routeByEparchy" name="CS.PosMgrSVC.recordPosLog" path="com.ailk.csservice.common.pos.PosMgrSVC@recordPosLog"/>
+	<entity route="routeByEparchy" name="CS.PosMgrSVC.recordCancelPosLog" path="com.ailk.csservice.common.pos.PosMgrSVC@recordCancelPosLog"/>
+
+	<!--发展员工-->
+	<entity route="routeToCen" name="CS.DevelopStaffSVC.getDevelopStaffConfig" path="com.ailk.csservice.common.developstaff.DevelopStaffSVC@getDevelopStaffConfig"/>
+
+	<!-- 区域查询 -->
+	<entity route="routeToCen" name="CS.AreaInfoQrySVC.getAreaByParentAreaCode" path="com.ailk.csservice.common.query.sysorg.AreaInfoQrySVC@getAreaByParentAreaCode"/>
+
+    <!-- 平台业务组件服务 -->
+    <entity route="routeToCen" name="CS.PlatComponentSVC.getPlatSvcs" path="com.ailk.csservice.common.component.plat.PlatComponentSVC@getPlatSvcs"/>
+   	<entity route="routeToCen" name="CS.PlatComponentSVC.getPlatSvcsByBizTypeCodes" path="com.ailk.csservice.common.component.plat.PlatComponentSVC@getPlatSvcsByBizTypeCodes"/>
+    <entity route="routeByEparchy" name="CS.PlatComponentSVC.getUserPlatSvcs" path="com.ailk.csservice.common.component.plat.PlatComponentSVC@getUserPlatSvcs"/>
+    <entity route="routeToCen" name="CS.PlatComponentSVC.getPlatSvcByServiceId" path="com.ailk.csservice.common.component.plat.PlatComponentSVC@getPlatSvcByServiceId"/>
+    <entity route="routeByEparchy" name="CS.PlatComponentSVC.getPlatSwitch" path="com.ailk.csservice.common.component.plat.PlatComponentSVC@getPlatSwitch"/>
+	<entity route="routeByEparchy" name="CS.PlatComponentSVC.getBookingViedoMeeting" path="com.ailk.csservice.common.component.plat.PlatComponentSVC@getBookingViedoMeeting"/>
+
+ 	<!-- add by yiyb -->
+    <entity route="routeByEparchy" name="CS.SelectedElementSVC.getUserOpenElements4GBoss" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getUserOpenElements4GBoss"/>
+    <!-- end -->
+
+    <!-- 产品组件 -->
+    <entity route="routeByEparchy" name="CS.ProductComponentSVC.transmit" path="com.ailk.csservice.common.component.product.ProductComponentSVC@transmit"/>
+    <entity route="routeToCen" name="CS.ProductTreeSVC.getProductTreeByProductType" path="com.ailk.csservice.common.component.product.ProductTreeSVC@getProductTreeByProductType"/>
+    <entity route="routeToCen" name="CS.ProductTreeSVC.getCanTransProduct" path="com.ailk.csservice.common.component.product.ProductTreeSVC@getCanTransProduct"/>
+    <entity route="routeToCen" name="CS.PackageSVC.getPackagesByProduct" path="com.ailk.csservice.common.component.product.PackageSVC@getPackagesByProduct"/>
+    <entity route="routeToCen" name="CS.PackageSVC.getGrpPackagesByProduct" path="com.ailk.csservice.common.component.product.PackageSVC@getGrpPackagesByProduct"/>
+    <entity route="routeToCg" name="CS.PackageSVC.getMemberPackageElements" path="com.ailk.csservice.common.component.product.PackageSVC@getMemberPackageElements"/>
+    <entity route="routeToCg" name="CS.PackageSVC.getMemberProductPackages" path="com.ailk.csservice.common.component.product.PackageSVC@getMemberProductPackages"/>
+    <entity route="routeToCg" name="CS.PackageSVC.getMemberProductSalePackages" path="com.ailk.csservice.common.component.product.PackageSVC@getMemberProductSalePackages"/>
+    <entity route="routeToCen" name="CS.PackageSVC.getPackageElements" path="com.ailk.csservice.common.component.product.PackageSVC@getPackageElements"/>
+    <entity route="routeByEparchy" name="CS.SelectedElementSVC.getUserElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getUserElements"/>
+	<entity route="routeByEparchy" name="CS.SelectedElementSVC.getUserNetNpElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getUserNetNpElements"/>
+    <entity route="routeByEparchy" name="CS.SelectedElementSVC.getUserOpenElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getUserOpenElements"/>
+    <entity route="routeByEparchy" name="CS.SelectedElementSVC.dealSelectedElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@dealSelectedElements"/>
+    <entity route="routeByEparchy" name="CS.SelectedElementSVC.dealSelectedElementsForChg" path="com.ailk.csservice.common.component.product.SelectedElementSVC@dealSelectedElementsForChg"/>
+    <entity route="routeToCen" name="CS.SelectedElementSVC.getElementAttrs" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getElementAttrs"/>
+    <entity route="routeToCg" name="CS.SelectedElementSVC.getGrpUserOpenElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getGrpUserOpenElements"/>
+    <entity route="routeToCg" name="CS.SelectedElementSVC.getGrpUserChgElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getGrpUserChgElements"/>
+    <entity route="routeToCg" name="CS.SelectedElementSVC.getGrpUserChgElementsPreTrade" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getGrpUserChgElementsPreTrade"/>
+  	<entity route="routeToCg" name="CS.SelectedElementSVC.getBBossManageElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getBBossManageElements"/>
+    <entity route="routeByEparchy" name="CS.SelectedElementSVC.getGrpMebChgElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getGrpMebChgElements"/>
+    <entity route="routeByEparchy"  name="CS.SelectedElementSVC.getGrpMebOpenElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@getGrpMebOpenElements"/>
+    <entity route="routeToCg" name="CS.SelectedElementSVC.dealBBossElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@dealBBossElements"/>
+    <entity route="routeByEparchy" name="CS.SelectedElementSVC.memBBossElements" path="com.ailk.csservice.common.component.product.SelectedElementSVC@memBBossElements"/>
+
+    <!-- CustomerInfoQrySVC -->
+    <entity route="routeBySn" name="CS.CustomerInfoQrySVC.getCustAndUserInfoBySn" path="com.ailk.csservice.common.query.cust.CustomerInfoQrySVC@getCustAndUserInfoBySn"/>
+    <entity route="routeToCg"  name="CS.CustomerInfoQrySVC.getAccountUniteByCustName" path="com.ailk.csservice.common.query.cust.CustomerInfoQrySVC@getAccountUniteByCustName"/>
+    <entity route="routeToCg"  name="CS.CustomerInfoQrySVC.getVpnNoByCustId" path="com.ailk.csservice.common.query.cust.CustomerInfoQrySVC@getVpnNoByCustId"/>
+    <entity route="routeByEparchy"  name="CS.CustomerInfoQrySVC.getAccountUniteByCustPersonName" path="com.ailk.csservice.common.query.cust.CustomerInfoQrySVC@getAccountUniteByCustPersonName"/>
+    <entity route="routeBySn" name="CS.CustomerInfoQrySVC.getCustInfoByPspt" path="com.ailk.csservice.common.query.cust.CustomerInfoQrySVC@getCustInfoByPspt"/>
+	<entity route="routeBySn" name="CS.CustBlackInfoQrySVC.qryBlackCustInfo" path="com.ailk.csservice.common.query.cust.CustBlackInfoQrySVC@qryBlackCustInfo"/>
+    <entity route="routeBySn" name="CS.CustomerInfoQrySVC.getCustUserInfoByPspt" path="com.ailk.csservice.common.query.cust.CustomerInfoQrySVC@getCustUserInfoByPspt"/>
+    <entity route="routeBySn" name="CS.CustomerInfoQrySVC.getCustInfoByCustId" path="com.ailk.csservice.common.query.cust.CustomerInfoQrySVC@getCustInfoByCustId"/>
+
+	<!-- TcsGrpIntfSVC -->
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.dealBbossGroupBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@dealBbossGroupBiz"/>
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.dealBbossMemBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@dealBbossMemBiz"/>
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.dealBbossOrderStateBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@dealBbossOrderStateBiz"/>
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.dealBbossOrderDealFaildBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@dealBbossOrderDealFaildBiz"/>
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.dealBbossOrderOpenBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@dealBbossOrderOpenBiz"/>
+	<entity route="routeToCen" name="CS.TcsGrpIntfSVC.synBBossPoInfo" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@synBBossPoInfo"/>
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.synBBossGrpMgrBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@synBBossGrpMgrBiz"/>
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.bbossPayBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@bbossPayBiz"/>
+	<entity route="routeToCg" name="CS.TcsGrpIntfSVC.dealBbossMebOrderOpenBiz" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@dealBbossMebOrderOpenBiz"/>
+    <entity route="routeBySn" name="CS.SynMebWordOrderSVC.dealMebWordOrder" path="com.ailk.csservice.group.bbossBiz.SynMebWordOrder.SynMebWordOrderSVC@dealMebWordOrder"/>       
+	<entity route="routeBySn" name="CS.BbossPayBizSVC.crtBbossPayBiz" path="com.ailk.csservice.group.bbossBiz.bbossPayBiz.BbossPayBizSVC@crtBbossPayBiz"/>
+	<entity route="routeToCen" name="CS.TcsGrpIntfSVC.rigistFtpfileTab" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@rigistFtpfileTab"/>
+    <entity route="routeToCg" name="CS.BbossPayBizSVC.bbossPayBizOrderOpenChkMeb" path="com.ailk.csservice.group.bbossBiz.bbossPayBiz.BbossPayBizSVC@bbossPayBizOrderOpenChkMeb"/>
+    <entity route="routeBySn" name="CS.BbossMemberBizSVC.getOrderInfo" path="com.ailk.csservice.group.bbossBiz.bbossMemQry.BbossMemberBizSVC@getOrderInfo"/>
+    <entity route="routeToCg" name="CS.TcsGrpIntfSVC.getOrderInfo" path="com.ailk.csservice.group.groupintf.transtrade.TcsGrpIntfSVC@getOrderInfo"/>
+    
+	<!-- GroupBBossManageDaoSVC -->
+	<entity route="routeToCg" name="CS.GroupBBossManageDaoSVC.queryBbossTradeByEsop" path="com.ailk.csservice.common.query.bboss.GroupBBossManageDaoSVC@queryBbossTradeByEsop"/>
+
+    <!-- CustVipInfoQrySVC -->
+    <entity route="routeBySn" name="CS.CustVipInfoQrySVC.getCustVipInfo" path="com.ailk.csservice.common.query.cust.CustVipInfoQrySVC@getCustVipInfo"/>
+
+	<!-- TaxGrpTicketApplySVC -->
+	<entity route="routeByEparchy" name="CS.TaxGrpTicketApplySVC.printGrpTaxTicketApply" path="com.ailk.csservice.common.tax.TaxGrpTicketApplySVC@printGrpTaxTicketApply"/>
+	<entity route="routeToCg" name="CS.TaxGrpTicketApplySVC.getTradeFeeTaxInfosForCG" path="com.ailk.csservice.common.tax.TaxGrpTicketApplySVC@getTradeFeeTaxInfosForCG"/>
+	
+	<entity route="routeToCg" name="CS.ChangeApproveReceiptStateQrySVC.ChangeApproveReceiptSta" path="com.ailk.csservice.common.query.log.ChangeApproveReceiptStateQrySVC@ChangeApproveReceiptSta"/>
+	
+    <!-- TaxGrpTicketSVC -->
+    <entity route="routeByEparchy" name="CS.TaxGrpTicketSVC.printGrpTaxTicket" path="com.ailk.csservice.common.tax.TaxGrpTicketSVC@printGrpTaxTicket"/>
+    <entity route="routeByEparchy" name="CS.TaxGrpTicketSVC.getGrpTaxTicketNo" path="com.ailk.csservice.common.tax.TaxGrpTicketSVC@getGrpTaxTicketNo"/>
+    <entity route="routeByEparchy" name="CS.TaxGrpTicketSVC.delGrpTaxTicket" path="com.ailk.csservice.common.tax.TaxGrpTicketSVC@delGrpTaxTicket"/>
+    <entity route="routeByEparchy" name="CS.TaxGrpTicketSVC.rePrintGrpTaxTicket" path="com.ailk.csservice.common.tax.TaxGrpTicketSVC@rePrintGrpTaxTicket"/>
+    <!-- GrpInfoQrySVC -->
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.qryGrpInfoByGrpName" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@qryGrpInfoByGrpName"/>
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.qryGrpInfoByGrpPspt" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@qryGrpInfoByGrpPspt"/>
+
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.queryGroupInfosById" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryGroupInfosById"/>
+	<entity route="routeToCg" name="CS.GrpInfoQrySVC.queryGrpProuctByUserId" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryGrpProuctByUserId"/>
+	<entity route="routeByEparchy" name="CS.GrpInfoQrySVC.getGroupInfo" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@getGroupInfo"/>
+
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.queryGroupCustInfo1" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryGroupCustInfo1"/>
+
+    <entity route="routeBySn" name="CS.GrpMebInfoQrySVC.qryGrpMebProductInfo" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@qryGrpMebProductInfo"/>
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.queryCustGroupInfoByMpCustCode" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryCustGroupInfoByMpCustCode"/>
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.getGroupCustInfoForPay" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@getGroupCustInfoForPay"/>
+	<entity route="routeByEparchy" name="CS.GrpInfoQrySVC.queryUBRelaGroupInfo" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryUBRelaGroupInfo"/>
+	<entity route="routeByEparchy" name="CS.GrpInfoQrySVC.queryUBRelaBbGroupInfo" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryUBRelaBbGroupInfo"/>
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.queryCustGroupInfosBySerialNum" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryCustGroupInfosBySerialNum"/>
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.getGrpProductinfoByProductId" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@getGrpProductinfoByProductId"/>
+	<entity route="routeToCg" name="CS.GrpInfoQrySVC.qryGroupProductInfoByGroupId" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@qryGroupProductInfoByGroupId"/>
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.qryGroupProductInfoBySn" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@qryGroupProductInfoBySn"/>
+    <entity route="routeToCg" name="CS.GrpInfoQrySVC.getGroupByMpGroup" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@getGroupByMpGroup"/>
+
+    <!-- GrpMebInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.GrpMebInfoQrySVC.qryRelaUUInfoTheDb" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@qryRelaUUInfoTheDb"/>
+    <entity route="routeToCg" name="CS.GrpMebInfoQrySVC.getGrpPreInfoByGrpId" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@getGrpPreInfoByGrpId"/>
+    <entity route="routeByEparchy" name="CS.GrpMebInfoQrySVC.getGroupInfoByMember" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@getGroupInfoByMember"/>
+    <entity route="routeByEparchy" name="CS.GrpMebInfoQrySVC.queryGrpMebBySN" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@queryGrpMebBySN"/>
+    <entity route="routeByEparchy" name="CS.GrpMebInfoQrySVC.qryRelaBBInfoTheDb" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@qryRelaBBInfoTheDb"/>
+
+    <!-- CustGrpPreBusQrySVC -->
+    <entity route="routeToCg" name="CS.CustGrpPreBusQrySVC.queryPrebusiness" path="com.ailk.csservice.common.query.cust.CustGrpPreBusQrySVC@queryPrebusiness"/>
+    <entity route="routeBySn" name="CS.CustGrpPreBusQrySVC.queryPrebusinessByEeparchyCode" path="com.ailk.csservice.common.query.cust.CustGrpPreBusQrySVC@queryPrebusinessByEeparchyCode"/>
+    <entity route="routeToCg" name="CS.CustGrpPreBusQrySVC.queryPrebusinessByCg" path="com.ailk.csservice.common.query.cust.CustGrpPreBusQrySVC@queryPrebusinessByCg"/>
+    <entity route="routeToCg" name="CS.CustGrpPreBusQrySVC.queryApplyDetailForMeb" path="com.ailk.csservice.common.query.cust.CustGrpPreBusQrySVC@queryApplyDetailForMeb"/>
+    <entity route="routeToCg" name="CS.CustGrpPreBusQrySVC.queryApplyDetailforGrp" path="com.ailk.csservice.common.query.cust.CustGrpPreBusQrySVC@queryApplyDetailforGrp"/>
+    <entity route="routeToCg" name="CS.CustGrpPreBusQrySVC.queryApplyAttrforGrp" path="com.ailk.csservice.common.query.cust.CustGrpPreBusQrySVC@queryApplyAttrforGrp"/>
+
+	<!-- uca cust -->
+    <entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryCustInfoByCustId"  path="com.ailk.bizservice.query.UcaInfoQrySVC@qryCustInfoByCustId"/>
+
+    <entity route="routeBySn" name="CS.UcaInfoQrySVC.qryPerInfoByCustId" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryPerInfoByCustId"/>
+    <entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryPerInfoByUserId" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryPerInfoByUserId"/>
+
+    <entity route="routeToCg" name="CS.UcaInfoQrySVC.qryGrpInfoByCustId" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryGrpInfoByCustId"/>
+    <entity route="routeToCg" name="CS.UcaInfoQrySVC.qryGrpInfoByGrpId"   path="com.ailk.bizservice.query.UcaInfoQrySVC@qryGrpInfoByGrpId"/>
+
+	<!-- uca user -->
+	<entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryUserInfoByUserId" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryUserInfoByUserId"/>
+	<entity route="routeToCg"      name="CS.UcaInfoQrySVC.qryUserInfoByUserIdForGrp" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryUserInfoByUserIdForGrp"/>
+
+    <entity route="routeBySn" name="CS.UcaInfoQrySVC.qryUserMainProdInfoBySn" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryUserMainProdInfoBySn"/>
+    <entity route="routeToCg" name="CS.UcaInfoQrySVC.qryUserMainProdInfoBySnForGrp" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryUserMainProdInfoBySnForGrp"/>
+
+    <entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryUserMainProdInfoByUserId"       path="com.ailk.bizservice.query.UcaInfoQrySVC@qryUserMainProdInfoByUserId"/>
+    <entity route="routeToCg"      name="CS.UcaInfoQrySVC.qryUserMainProdInfoByUserIdForGrp" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryUserMainProdInfoByUserIdForGrp"/>
+
+	<entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryUserMainProdInfoBySnEparchyCode" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryUserMainProdInfoBySn"/>
+	<entity route="routeBySn" name="CS.UserInfoQrySVC.queryUserEparchyAndBrandCode" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@queryUserEparchyAndBrandCode"/>
+
+	<!-- uca acct -->
+    <entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryAcctInfoByUserId"       path="com.ailk.bizservice.query.UcaInfoQrySVC@qryAcctInfoByUserId"/>
+    <entity route="routeToCg"      name="CS.UcaInfoQrySVC.qryAcctInfoByUserIdForGrp" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryAcctInfoByUserIdForGrp"/>
+
+    <entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryAcctInfoByAcctId" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryAcctInfoByAcctId"/>
+    <entity route="routeToCg"      name="CS.UcaInfoQrySVC.qryAcctInfoByAcctIdForGrp" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryAcctInfoByAcctIdForGrp"/>
+
+	<!-- uca payrela -->
+    <entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryPayRelaByUserId"    path="com.ailk.bizservice.query.UcaInfoQrySVC@qryPayRelaByUserId"/>
+    <entity route="routeToCg"      name="CS.UcaInfoQrySVC.qryPayRelaByUserIdForGrp" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryPayRelaByUserIdForGrp"/>
+
+	<entity route="routeByEparchy" name="CS.UcaInfoQrySVC.qryDefaultPayRelaByUserId" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryDefaultPayRelaByUserId"/>
+    <entity route="routeToCg"      name="CS.UcaInfoQrySVC.qryDefaultPayRelaByUserIdForGrp" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryDefaultPayRelaByUserIdForGrp"/>
+    <entity route="routeToCg"      name="CS.UcaInfoQrySVC.qryLastPayRelaByUserId" path="com.ailk.bizservice.query.UcaInfoQrySVC@qryLastPayRelaByUserId"/>
+
+	<!--uca cacheclear  -->
+	<entity route="routeToCg"      name="CS.UcaCookieClearSVC.clear" path="com.ailk.csservice.common.ucamgr.UcaCacheClearSVC@clear"/>
+
+    <!-- CustPersonInfoQrySVC -->
+
+    <!-- CustBlackInfoQrySVC -->
+    <entity route="routeBySn" name="CS.CustBlackInfoQrySVC.isBlackCust" path="com.ailk.csservice.common.query.cust.CustBlackInfoQrySVC@qryBlackCustInfo"/>
+
+    <!-- AcctInfoQrySVC -->
+    <entity route="routeToCen" name="CS.AcctInfoQrySVC.getAcctUserInfoByCustIDForGrp" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getAcctUserInfoByCustIDForGrp"/>
+    <entity route="routeToCen" name="CS.AcctInfoQrySVC.getAcctUserInfoByCustIDForGrpNoPage" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getAcctUserInfoByCustIDForGrpNoPage"/>
+    <entity route="routeToCg" name="CS.AcctInfoQrySVC.getAcctInfoByContractNoForGrp" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getAcctInfoByContractNoForGrp"/>
+    <entity route="routeToCg" name="CS.AcctInfoQrySVC.getAcctInfoByCustIDForGrp" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getAcctInfoByCustIDForGrp"/>
+    <entity route="routeToCg" name="CS.AcctInfoQrySVC.getAcctInfoByCustIDForGroupAccPay" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getAcctInfoByCustIDForGroupAccPay"/>
+    <entity route="routeToCg" name="CS.AcctInfoQrySVC.getRelationAAByActIdATagForCg" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getRelationAAByActIdATagForCg"/>
+    <entity route="routeToCen" name="CS.AcctInfoQrySVC.getRelationAAByActIdATagAllDb" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getRelationAAByActIdATagAllDb"/>
+    <entity route="routeByEparchy" name="CS.AcctInfoQrySVC.getRelationAAByActIdB" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getRelationAAByActIdB"/>
+    <entity route="routeToCg" name="CS.AcctInfoQrySVC.getRelationAAByActIdBForGrp" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getRelationAAByActIdB"/>
+    <entity route="routeToCen" name="CS.AcctInfoQrySVC.getRelationAAByActIdBAllDb" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getRelationAAByActIdBAllDb"/>
+    <entity route="routeToCg" name="CS.AcctInfoQrySVC.getRelationAAByActIdBTagForCg" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getRelationAAByActIdBTagForCg"/>
+    <entity route="routeByEparchy" name="CS.AcctInfoQrySVC.getRelAAByActIdAReltypecode" path="com.ailk.csservice.common.query.acct.AcctInfoQrySVC@getRelAAByActIdAReltypecode"/>
+
+    <!-- AcctConsignInfoQrySVC -->
+    <entity route="routeToCg" name="CS.AcctConsignInfoQrySVC.getConsignInfoByAcctIdForGrp" path="com.ailk.csservice.common.query.acct.AcctConsignInfoQrySVC@getConsignInfoByAcctIdForGrp"/>
+    <entity route="routeByEparchy" name="CS.AcctConsignInfoQrySVC.getConsignInfoByAcctId" path="com.ailk.csservice.common.query.acct.AcctConsignInfoQrySVC@getConsignInfoByAcctId"/>
+
+    <!-- UserInfoQrySVC -->
+
+    <!-- user and product info byuserid -->
+
+    <entity route="routeBySn" name="CS.UserInfoQrySVC.getUserInfoBySnCrmOneDb" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoBySnCrmOneDb"/>
+    <entity route="routeBySn" name="CS.UserInfoQrySVC.getUserInfoBySnAll" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoBySnAll"/>
+
+	<!--user info bySerailNumber -->
+	 <entity route="routeBySn"  name="CS.UserInfoQrySVC.queryUserInfoBySN" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@queryUserInfoBySN"/>
+
+	<!-- user no product info  byuserid -->
+	<!-- user no product info  bysn -->
+	<entity route="routeBySn" name="CS.UserInfoQrySVC.getUserInfoBySnNoProduct" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoBySnNoProduct"/>
+
+    <!-- user and product info bysn -->
+
+    <entity route="routeBySn" name="CS.UserInfoQrySVC.getAllDestroy" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getAllDestroy"/>
+    <entity route="routeByEparchy" name="CS.UserInfoQrySVC.getRelaUserInfoByCstId" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getRelaUserInfoByCstId"/>
+
+    <entity route="routeToCg" name="CS.UserInfoQrySVC.getUserInfoByCstIdForGrp" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoByCstIdForGrp"/>
+    <entity route="routeToCg" name="CS.UserInfoQrySVC.getUserInfoByCstId" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoByCstId"/>
+    <entity route="routeToCen" name="CS.UserInfoQrySVC.getUserID" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserID"/>
+    <entity route="routeByEparchy" name="CS.UserInfoQrySVC.queryMaxSerialMumber" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@queryMaxSerialMumber"/>
+    <entity route="routeToCg" name="CS.UserInfoQrySVC.getUserInfoByCustID" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoByCustID"/>
+    <entity route="routeToCg" name="CS.UserInfoQrySVC.getUserInfoByCstIdProIdForGrp" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoByCstIdProIdForGrp"/>
+    <entity route="routeToCg" name="CS.UserInfoQrySVC.getUserInfoAccountInfoByCstIdProIdForGrp" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoAccountInfoByCstIdProIdForGrp"/>
+    <entity route="routeBySn" name="CS.UserInfoQrySVC.getUserInfoBySn3" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoBySn3"/>
+    <entity route="routeBySn" name="CS.UserInfoQrySVC.getUserInfoByCstIdProId" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoByCstIdProId"/>
+    <entity route="routeByEparchy" name="CS.UserInfoQrySVC.getGrpUserInfoByUserId" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getGrpUserInfoByUserId"/>
+    <entity route="routeBySn" name="CS.UserInfoQrySVC.getUserInfoBySN" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfoBySN"/>
+    <entity route="routeByEparchy" name="CS.UserInfoQrySVC.getMemInfo" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getMemInfo"/>
+    <entity route="routeToCg" name="CS.UserInfoQrySVC.getUserInfo" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserInfo"/>
+    <entity route="routeToCg" name="CS.UserInfoQrySVC.getGrpUserInfoByUserIdForGrp" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getGrpUserInfoByUserIdForGrp"/>
+	<entity route="routeBySn" name="CS.UserInfoQrySVC.getUserStateBySN" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserStateBySN"/>
+	<entity route="routeToCg" name="CS.UserInfoQrySVC.qryUserByGroupIdAndProductIdForGrp" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@qryUserByGroupIdAndProductIdForGrp"/>
+
+    <!-- UserSvcInfoQrySVC -->
+    <entity route="routeBySn" name="CS.UserSvcInfoQrySVC.queryUserServices" path="com.ailk.csservice.common.query.user.UserSvcInfoQrySVC@queryUserServices"/>
+    <entity route="routeByEparchy" name="CS.UserSvcInfoQrySVC.querySvcByUserIDandSVC" path="com.ailk.csservice.common.query.user.UserSvcInfoQrySVC@querySvcByUserIDandSVC"/>
+    <entity route="routeBySn" name="CS.UserSvcInfoQrySVC.getElementFromPackageByUser" path="com.ailk.csservice.common.query.user.UserSvcInfoQrySVC@getElementFromPackageByUser"/>
+    <entity route="routeToCg" name="CS.UserSvcInfoQrySVC.getValidElementFromPackageByUserA" path="com.ailk.csservice.common.query.user.UserSvcInfoQrySVC@getValidElementFromPackageByUserA"/>
+    <entity route="routeByEparchy" name="CS.UserSvcInfoQrySVC.getSvcUserId" path="com.ailk.csservice.common.query.user.UserSvcInfoQrySVC@getSvcUserId"/>
+    <entity route="routeToCg" name="CS.UserSvcInfoQrySVC.getUserSvcBycon" path="com.ailk.csservice.common.query.user.UserSvcInfoQrySVC@getUserSvcBycon"/>
+
+    <!-- UserOtherInfoQrySVC -->
+    <entity route="routeBySn" name="CS.UserOtherInfoQrySVC.getDeptuyUserOther" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getDeptuyUserOther"/>
+    <entity route="routeToCg" name="CS.UserOtherInfoQrySVC.getSalePayInfo" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getSalePayInfo"/>
+    <entity route="routeByEparchy" name="CS.UserOtherInfoQrySVC.getNLeasedLineSalePayInfo" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getNLeasedLineSalePayInfo"/>
+    <entity route="routeByEparchy" name="CS.UserOtherInfoQrySVC.getLeasedLineSalePayInfo" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getLeasedLineSalePayInfo"/>
+	<entity route="routeByEparchy" name="CS.UserOtherInfoQrySVC.getOtherSalePayInfo" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getOtherSalePayInfo"/>
+	<entity route="routeByEparchy" name="CS.UserOtherInfoQrySVC.queryUserBussPresent" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@queryUserBussPresent"/>
+	<entity route="routeByEparchy" name="CS.UserOtherInfoQrySVC.queryGaveUserBussPresent" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@queryGaveUserBussPresent"/>
+
+	<entity route="routeToCg" name="CS.UserOtherInfoQrySVC.getUserOtherInfoByGroupExchange" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOtherInfoByGroupExchange"/>
+	<entity route="routeBySn" name="CS.UserOtherInfoQrySVC.getUserOtherByUseridRsrvcode" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOtherByUseridRsrvcode"/>
+	<entity route="routeToCg" name="CS.UserOtherInfoQrySVC.qrySumRsrvByUserId" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@qrySumRsrvByUserId"/>
+	<!--add by xuxf20140506-->
+	<entity route="routeBySn" name="CS.UserOtherInfoQrySVC.queryContractOtherInfo" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@queryContractOtherInfo"/>
+	<!--end by xuxf20140506-->
+    <!-- UserResInfoQrySVC -->
+    <entity route="routeBySn" name="CS.UserResInfoQrySVC.getUserResByUserId" path="com.ailk.csservice.common.query.user.UserResInfoQrySVC@getUserResByUserId"/>
+    <entity route="routeByEparchy" name="CS.UserResInfoQrySVC.getUserResByUserIdA" path="com.ailk.csservice.common.query.user.UserResInfoQrySVC@getUserResByUserIdA"/>
+    <entity route="routeToCg" name="CS.UserResInfoQrySVC.getUserResByUserIdAForGrp" path="com.ailk.csservice.common.query.user.UserResInfoQrySVC@getUserResByUserIdA"/>
+    <entity route="routeBySn" name="CS.UserResInfoQrySVC.getUserResMaxDateByUserId" path="com.ailk.csservice.common.query.user.UserResInfoQrySVC@getUserResMaxDateByUserId"/>
+
+    <!-- UserOtherInfoQrySVC -->
+    <entity route="routeByEparchy"  name="CS.UserOtherQrySVC.getUserOtherByUserRsrvValueCodeByEc" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOtherByUserRsrvValueCodeByEc"/>
+    <entity route="routeToCg" name="CS.UserOtherQrySVC.getUserOtherInfoForGrp" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOtherInfoForGrp"/>
+    <entity route="routeToCg" name="CS.UserOtherQrySVC.getUserOverProvinceInfo" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOverProvinceInfo"/>
+    <entity route="routeBySn" name="CS.UserOtherQrySVC.getUserOtherUserId" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOtherUserId"/>
+    <entity route="routeBySn" name="CS.UserOtherQrySVC.getUserOtherInfo" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOtherInfo"/>
+	<entity route="routeToCg" name="CS.UserOtherQrySVC.getUserOtherByUserRsrvValueCodeForGrp" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getUserOtherByUserRsrvValueCodeForGrp"/>
+
+
+    <!-- UserVpnInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.UserVpnInfoQrySVC.getMemberVpnByUserId" path="com.ailk.csservice.common.query.user.UserVpnInfoQrySVC@getMemberVpnByUserId"/>
+    <entity route="routeToCg" name="CS.UserVpnInfoQrySVC.getUserVpnByUserId" path="com.ailk.csservice.common.query.user.UserVpnInfoQrySVC@getUserVpnByUserId"/>
+    <entity route="routeToCg" name="CS.UserVpnInfoQrySVC.getUserVpn" path="com.ailk.csservice.common.query.user.UserVpnInfoQrySVC@getUserVpn"/>
+    <entity route="routeToCg" name="CS.UserVpnInfoQrySVC.getUserVPNInfoByCstId" path="com.ailk.csservice.common.query.user.UserVpnInfoQrySVC@getUserVPNInfoByCstId"/>
+
+    <!-- UserAttrInfoQrySVC -->
+    <entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getUserAttrByUserIda" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserAttrByUserIda"/>
+    <entity route="routeByEparchy" name="CS.UserAttrInfoQrySVC.getUserProductAttrByUP" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserProductAttrByUP"/>
+    <entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getUserProductAttrByUTForGrp" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserProductAttrByUTForGrp"/>
+    <entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getUserProductAttrValue" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserProductAttrValue"/>
+    <entity route="routeByEparchy" name="CS.UserAttrInfoQrySVC.getUserAttrByUserIdInstid" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserAttrByUserIdInstid"/>
+    <entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getUserAttrByUserIdInstidForGrp" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserAttrByUserIdInstid"/>
+    <entity route="routeByEparchy" name="CS.UserAttrInfoQrySVC.getuserAttrBySvcIdAndInstType" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getuserAttrBySvcIdAndInstType"/>
+    <entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getuserAttrBySvcIdAndInstTypeForGrp" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getuserAttrBySvcIdAndInstTypeForGrp"/>
+    <entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getuserAttrBySvcId" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getuserAttrBySvcId"/>
+    <entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getUserAttrByTypeCodeValue" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserAttrByTypeCodeValue"/>
+	<entity route="routeToCg" name="CS.UserAttrInfoQrySVC.getUserAttrByUserId" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@getUserAttrByUserId"/>
+	<entity route="routeToCg" name="CS.UserAttrInfoQrySVC.queryUserAllAttrs" path="com.ailk.csservice.common.query.user.UserAttrInfoQrySVC@queryUserAllAttrs"/>
+
+
+
+    <!-- UserImpuInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.UserImpuInfoQrySVC.selShortCodeByUserId" path="com.ailk.csservice.common.query.user.UserImpuInfoQrySVC@selShortCodeByUserId"/>
+    <entity route="routeByEparchy" name="CS.UserImpuInfoQrySVC.queryUserImpuInfoByUserType" path="com.ailk.csservice.common.query.user.UserImpuInfoQrySVC@queryUserImpuInfoByUserType"/>
+
+	<!-- ChangeIMSpasswdSVC -->
+    <entity route="routeByEparchy" name="CS.ChangeIMSpasswdSVC.changeIMSpasswd" path="com.ailk.csservice.group.changeimspasswd.ChangeIMSpasswdSVC@changeIMSpasswd"/>
+
+    <!-- UserGrpInfoQrySVC -->
+    <entity route="routeToCen" name="CS.UserGrpInfoQrySVC.isChinaMobileNumber" path="com.ailk.csservice.common.query.user.UserGrpInfoQrySVC@isChinaMobileNumber"/>
+    <entity route="routeToCg" name="CS.UserGrpInfoQrySVC.qryTabSqlFromAllDb" path="com.ailk.csservice.common.query.user.UserGrpInfoQrySVC@qryTabSqlFromAllDb"/>
+    <entity route="routeToCg" name="CS.UserGrpInfoQrySVC.getDumpIdByajax" path="com.ailk.csservice.common.query.user.UserGrpInfoQrySVC@getDumpIdByajax"/>
+    <entity route="routeToCg" name="CS.UserGrpInfoQrySVC.getplatsvcBybizeservgroup" path="com.ailk.csservice.common.query.user.UserGrpInfoQrySVC@getplatsvcBybizeservgroup"/>
+
+    <!-- UserBlackWhiteInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.UserBlackWhiteInfoQrySVC.getBwOpenTag" path="com.ailk.csservice.common.query.user.UserBlackWhiteInfoQrySVC@getBwOpenTag"/>
+    <entity route="routeByEparchy" name="CS.UserBlackWhiteInfoQrySVC.getBlackWhitedataByGSS" path="com.ailk.csservice.common.query.user.UserBlackWhiteInfoQrySVC@getBlackWhitedataByGSS"/>
+
+    <!-- UserGrpPkgInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.UserGrpPkgInfoQrySVC.qryECFetionProductOfferId" path="com.ailk.csservice.common.query.user.UserGrpPkgInfoQrySVC@qryECFetionProductOfferId"/>
+    <entity route="routeToCen" name="CS.UserGrpPkgInfoQrySVC.getGrpPayPlanByUserId" path="com.ailk.csservice.common.query.user.UserGrpPkgInfoQrySVC@getGrpPayPlanByUserId"/>
+    <entity route="routeToCg" name="CS.UserGrpPkgInfoQrySVC.getUserGrpPackageForGrp" path="com.ailk.csservice.common.query.user.UserGrpPkgInfoQrySVC@getUserGrpPackageForGrp"/>
+    <entity route="routeToCen" name="CS.UserGrpPkgInfoQrySVC.getGrpPayItemInfoByUserId" path="com.ailk.csservice.common.query.user.UserGrpPkgInfoQrySVC@getGrpPayItemInfoByUserId"/>
+
+    <!-- UserGrpMerchInfoQrySVC -->
+    <entity route="routeToCg" name="CS.UserGrpMerchInfoQrySVC.qryBBossBizEcMeb" path="com.ailk.csservice.common.query.user.UserGrpMerchInfoQrySVC@qryBBossBizEcMeb"/>
+    <entity route="routeToCg" name="CS.UserGrpMerchInfoQrySVC.getUserPurchase" path="com.ailk.csservice.common.query.user.UserGrpMerchInfoQrySVC@getUserPurchase"/>
+    <entity route="routeByEparchy" name="CS.UserGrpMerchInfoQrySVC.getSEL_BY_USERID_USERIDA" path="com.ailk.csservice.common.query.user.UserGrpMerchInfoQrySVC@getSEL_BY_USERID_USERIDA"/>
+    <!-- UserPlatSvcInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.UserPlatSvcInfoQrySVC.getGrpPlatSvcByUserId" path="com.ailk.csservice.common.query.user.UserPlatSvcInfoQrySvc@getGrpPlatSvcByUserId"/>
+    <entity route="routeToCen" name="CS.UserPlatSvcInfoQrySVC.getPlatSvcByUserBizType" path="com.ailk.csservice.common.query.user.UserPlatSvcInfoQrySvc@getPlatSvcByUserBizType"/>
+
+    <!-- UserOwenInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.UserOwenInfoQrySVC.getOweFeeByUserId" path="com.ailk.csservice.common.query.user.UserOwenInfoQrySVC@getOweFeeByUserId"/>
+
+    <!-- UserPostInfoQrySVC -->
+    <entity route="routeToCg" name="CS.UserPostInfoQrySVC.qryPostInfoForGrp" path="com.ailk.csservice.common.query.user.UserPostInfoQrySVC@qryPostInfoForGrp"/>
+    <entity route="routeBySn" name="CS.UserPostInfoQrySVC.qryPostInfo" path="com.ailk.csservice.common.query.user.UserPostInfoQrySVC@getUserPostInfo"/>
+
+    <!-- UserDeductInfoQrySVC -->
+    <entity route="routeToCen" name="CS.UserDeductInfoQrySVC.getUserDeductByUserId" path="com.ailk.csservice.common.query.user.UserDeductInfoQrySVC@getUserDeductByUserId"/>
+
+    <!-- UserProductInfoQrySVC -->
+    <entity route="routeByEparchy" name="CS.UserProductInfoQrySVC.GetUserProductInfo" path="com.ailk.csservice.common.query.user.UserProductInfoQrySVC@GetUserProductInfo"/>
+
+    <!-- UserSaleGoodsQrySVC -->
+    <entity route="routeBySn" name="CS.UserSaleGoodsQrySVC.getPurchaseInfoByUserId" path="com.ailk.csservice.common.query.user.UserSaleGoodsQrySVC@getPurchaseInfoByUserId"/>
+
+    <!-- ProductInfoQrySVC -->
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.getProductsByTypeForGroup" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getProductsByTypeForGroup"/>
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.getProductInfoByID" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getProductInfoByID"/>
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.queryProductByComp" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@queryProductByComp"/>
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.getResTypeByMainProduct" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getResTypeByMainProduct"/>
+    <entity route="routeByEparchy" name="CS.ProductInfoQrySVC.getUserProductElement" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getUserProductElement"/>
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.getProductByPK" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getProductByPK"/>
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.getPlusProductByProdId" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getPlusProductByProdId"/>
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.queryProductListByBrandMode" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@queryProductListByBrandMode"/>
+    <entity route="routeToCen" name="CS.ProductInfoQrySVC.getProductFromComp" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getProductFromComp"/>
+	<entity route="routeByEparchy" name="CS.ProductInfoQrySVC.queryContractInfoById" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@queryContractInfoById"/>
+    <entity route="routeToCg" name="CS.ProductInfoQrySVC.getUserProductByUserIdForGrp" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getUserProductByUserIdForGrp"/>
+	<entity route="routeToCen" name="CS.ProductInfoQrySVC.getMebProductForceDiscnt" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getMebProductForceDiscnt"/>
+	<entity route="routeToCen" name="CS.ProductInfoQrySVC.getElementByProductIdElemId" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getElementByProductIdElemId"/>
+	<entity route="routeToCen" name="CS.ProductInfoQrySVC.getBindleProductsBrand" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getBindleProductsBrand"/>
+	<entity route="routeToCen" name="CS.ProductInfoQrySVC.getrsrvstr2" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@getrsrvstr2"/>
+
+    <!-- DiscntInfoQrySVC -->
+    <entity route="routeToCg" name="CS.DiscntInfoQrySVC.queryDiscntCodeByTradeStaffID" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@queryDiscntCodeByTradeStaffID"/>
+    <entity route="routeToCg" name="CS.DiscntInfoQrySVC.querySaleActiveDiscnt" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@querySaleActiveDiscnt"/>
+    <entity route="routeToCen" name="CS.DiscntInfoQrySVC.getDiscntlist" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getDiscntlist"/>
+    <entity route="routeToCen" name="CS.DiscntInfoQrySVC.getMembDiscntByGrpProductId" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getMembDiscntByGrpProductId"/>
+    <entity route="routeToCen" name="CS.DiscntInfoQrySVC.getMembSaleDiscntByGrpProductId" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getMembSaleDiscntByGrpProductId"/>
+    <entity route="routeToCen" name="CS.DiscntInfoQrySVC.getMembVPMNDiscntByGrpProductId" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getMembVPMNDiscntByGrpProductId"/>
+    <entity route="routeToCg" name="CS.DiscntInfoQrySVC.getDiscntsByUserIdForGrp" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getDiscntsByUserIdForGrp"/>
+    <entity route="routeToCen" name="CS.DiscntInfoQrySVC.queryDiscntsByProductId" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@queryDiscntsByProductId"/>
+    <entity route="routeToCen" name="CS.DiscntInfoQrySVC.queryMembVPMNDiscntByGrpProductId" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@queryMembVPMNDiscntByGrpProductId"/>
+    <entity route="routeBySn" name="CS.DiscntInfoQrySVC.getUserSingleProductDis" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getUserSingleProductDis"/>
+    <entity route="routeToCg" name="CS.DiscntInfoQrySVC.getUserSingleProductDisForGrp" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getUserSingleProductDisForGrp"/>
+    <entity route="routeByEparchy" name="CS.DiscntInfoQrySVC.getDiscntsByUserIdDiscntCode" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getDiscntsByUserIdDiscntCode"/>
+    <entity route="routeToCen" name="CS.DiscntInfoQrySVC.getDscNameByPackageId" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getDscNameByPackageId"/>
+    <entity route="routeByEparchy" name="CS.DiscntInfoQrySVC.getMainFamUserId" path="com.ailk.csservice.common.query.product.DiscntInfoQrySVC@getMainFamUserId"/>
+
+    <!-- AttrItemInfoQrySVC -->
+    <entity route="routeToCen" name="CS.AttrItemInfoQrySVC.getAttrItemAByIDTO" path="com.ailk.csservice.common.query.product.AttrItemInfoQrySVC@getAttrItemAByIDTO"/>
+    <entity route="routeToCen" name="CS.AttrItemInfoQrySVC.getelementItemaByProductId" path="com.ailk.csservice.common.query.product.AttrItemInfoQrySVC@getelementItemaByProductId"/>
+    <entity route="routeToCen" name="CS.AttrItemInfoQrySVC.getIcbsByRatePlan" path="com.ailk.csservice.common.query.product.AttrItemInfoQrySVC@getIcbsByRatePlan"/>
+    <entity route="routeToCen" name="CS.AttrItemInfoQrySVC.getItembByIdAndType" path="com.ailk.csservice.common.query.product.AttrItemInfoQrySVC@getItembByIdAndType"/>
+    <entity route="routeToCen" name="CS.AttrItemInfoQrySVC.getAttrItemBInfoByFieldCode" path="com.ailk.csservice.common.query.product.AttrItemInfoQrySVC@getAttrItemBInfoByFieldCode"/>
+
+    <!-- ProductTypeInfoQrySVC -->
+    <entity route="routeToCen" name="CS.ProductTypeInfoQrySVC.getProductsType" path="com.ailk.csservice.common.query.product.ProductTypeInfoSVC@getProductsType"/>
+	<entity route="routeToCen" name="CS.ProductTypeInfoQrySVC.getProductIdsByProductType" path="com.ailk.csservice.common.query.product.ProductTypeInfoSVC@getProductIdsByProductType"/>
+
+    <!-- ProductCompInfoQrySVC -->
+    <entity route="routeToCen" name="CS.ProductCompInfoQrySVC.getCompProductInfoByID" path="com.ailk.csservice.common.query.product.ProductCompInfoQrySVC@getCompProductInfoByID"/>
+    <entity route="routeToCen" name="CS.ProductCompInfoQrySVC.queryRelationTypeByProductId" path="com.ailk.csservice.common.query.product.ProductCompInfoQrySVC@queryRelationTypeByProductId"/>
+    <entity route="routeToCen" name="CS.ProductCompInfoQrySVC.getRelaTypeCodeByProductId" path="com.ailk.csservice.common.query.product.ProductCompInfoQrySVC@getRelaTypeCodeByProductId"/>
+    <entity route="routeToCen" name="CS.ProductCompInfoQrySVC.getProductFromComp" path="com.ailk.csservice.common.query.product.ProductCompInfoQrySVC@getProductFromComp"/>
+
+    <!-- ProductMebInfoQrySVC -->
+    <entity route="routeToCen" name="CS.ProductMebInfoQrySVC.getMebProduct" path="com.ailk.csservice.common.query.product.ProductMebInfoQrySVC@getMebProduct"/>
+    <entity route="routeToCen" name="CS.ProductMebInfoQrySVC.getProductMebByPidB" path="com.ailk.csservice.common.query.product.ProductMebInfoQrySVC@getProductMebByPidB"/>
+    <entity route="routeToCen" name="CS.ProductMebInfoQrySVC.getProductMebByPidC" path="com.ailk.csservice.common.query.product.ProductMebInfoQrySVC@getProductMebByPidC"/>
+    <entity route="routeToCen" name="CS.ProductMebInfoQrySVC.getMebProductNoRight" path="com.ailk.csservice.common.query.product.ProductMebInfoQrySVC@getMebProductNoRight"/>
+
+    <!-- MerchInfoQrySVC -->
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.getPurchase" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getPurchase"/>
+    <entity route="routeToCen" name="CS.MerchInfoQrySVC.getParamByattrCodeName" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getParamByattrCodeName"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.getParamByProid" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getParamByProid"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.getChgDisParamByProid" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getChgDisParamByProid"/>
+    <entity route="routeToCen" name="CS.MerchInfoQrySVC.getProdAttr" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getProdAttr"/>
+    <entity route="routeToCen" name="CS.MerchInfoQrySVC.getSelectionItem" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getSelectionItem"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.getBbossAttrInfoValue" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getBbossAttrInfoValue"/>
+    <entity route="routeToCen" name="CS.MerchInfoQrySVC.qryProductAttrByGroupAttr" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@qryProductAttrByGroupAttr"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.qryBbossUserAttrForGroupNew" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@qryBbossUserAttrForGroupNew"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.queryUserAttrByAttrValue" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@queryUserAttrByAttrValue"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.queryTradeAttrByAttrCodeAttrValue" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@queryTradeAttrByAttrCodeAttrValue"/>
+	<entity route="routeToCen" name="CS.MerchInfoQrySVC.queryCitysByProValue" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@queryCitysByProValue"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.getMerchInfo" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getMerchInfo"/>
+    <entity route="routeToCen" name="CS.MerchInfoQrySVC.getParamByattrCode" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getParamByattrCode"/>
+    <entity route="routeToCg" name="CS.MerchInfoQrySVC.getMerchpInfo" path="com.ailk.csservice.common.query.product.MerchInfoQrySVC@getMerchpInfo"/>
+
+    <!-- ProductPkgInfoQrySVC -->
+    <entity route="routeBySn" name="CS.ProductPkgInfoQrySVC.getLimitByProductPackage" path="com.ailk.csservice.common.query.product.ProductPkgInfoQrySVC@getLimitByProductPackage"/>
+    <entity route="routeToCen" name="CS.ProductPkgInfoQrySVC.getPackageByProId" path="com.ailk.csservice.common.query.product.ProductPkgInfoQrySVC@getPackageByProId"/>
+
+    <!-- GrpUserPkgInfoQrySVC -->
+    <entity route="routeToCg" name="CS.GrpUserPkgInfoQrySVC.getGrpCustomizeServByUserId" path="com.ailk.csservice.common.query.product.GrpUserPkgInfoQrySVC@getGrpCustomizeServByUserId"/>
+    <entity route="routeToCg" name="CS.GrpUserPkgInfoQrySVC.getGrpCustomizeSpByUserId" path="com.ailk.csservice.common.query.product.GrpUserPkgInfoQrySVC@getGrpCustomizeSpByUserId"/>
+    <entity route="routeToCg" name="CS.GrpUserPkgInfoQrySVC.getGrpCustomizeDiscntByUserId" path="com.ailk.csservice.common.query.product.GrpUserPkgInfoQrySVC@getGrpCustomizeDiscntByUserId"/>
+    <entity route="routeToCg" name="CS.GrpUserPkgInfoQrySVC.getGrpCustomizeProductByUserId" path="com.ailk.csservice.common.query.product.GrpUserPkgInfoQrySVC@getGrpCustomizeProductByUserId"/>
+
+    <!-- PkgElemInfoQrySVC -->
+    <entity route="routeToCen" name="CS.PkgElemInfoQrySVC.queryElementTypeByPkgId" path="com.ailk.csservice.common.query.product.PkgElemInfoQrySVC@queryElementTypeByPkgId"/>
+
+	<!-- PkgInfoQrySVC -->
+    <entity route="routeToCen" name="CS.PkgInfoQrySVC.getPackageNameByPackageId" path="com.ailk.csservice.common.query.product.PkgInfoQrySVC@getPackageNameByPackageId"/>
+
+    <!-- TradeInfoQrySVC -->
+    <entity route="routeToCen" name="CS.TradeInfoQrySVC.queryInfosBhTrade" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@queryInfosBhTrade"/>
+    <entity route="routeToCg" name="CS.TradeInfoQrySVC.getTradeInfobyOrd" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getTradeInfobyOrd"/>
+    <entity route="routeToCen" name="CS.TradeInfoQrySVC.queryTradeBySnGrp" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@queryTradeBySnGrp"/>
+    <entity route="routeByEparchy" name="CS.TradeInfoQrySVC.getMainTrade" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getMainTrade"/>
+    <entity route="routeByEparchy" name="CS.TradeInfoQrySVC.getNoTrade" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getNoTrade"/>
+    <entity route="routeByEparchy" name="CS.TradeInfoQrySVC.getTradeByUserId" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getTradeByUserId"/>
+    <entity route="routeByEparchy" name="CS.TradeInfoQrySVC.getMainTradeBySnEparchyCode" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getMainTradeBySN"/>
+    <entity route="routeBySn" name="CS.TradeInfoQrySVC.getMainTradeBySN" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getMainTradeBySN"/>
+    <entity route="routeToCg" name="CS.TradeInfoQrySVC.getTradeForGrpBBoss" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getTradeForGrpBBoss"/>
+    <entity route="routeToCg" name="CS.TradeInfoQrySVC.queryTradeSet" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@queryTradeSet"/>
+    <entity route="routeBySn" name="CS.TradeInfoQrySVC.getMainTradeForGrp" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getMainTradeForGrp"/>
+    <entity route="routeByEparchy" name="CS.TradeInfoQrySVC.getMainTradeByRG" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getMainTradeByRG"/>
+    <entity route="routeToCg" name="CS.TradeInfoQrySVC.updateTradeForGrpBBoss" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@updateTradeForGrpBBoss"/>
+	<entity route="routeToCg" name="CS.TradeInfoQrySVC.updateTradeRsrvStr10" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@updateTradeRsrvStr10"/>
+	<entity route="routeToCg" name="CS.TradeInfoQrySVC.updateTradeOrderIdByTradeOffer" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@updateTradeOrderIdByTradeOffer"/>
+	<entity route="routeToCg" name="CS.TradeInfoQrySVC.delTradeRsrvTag10" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@delTradeRsrvTag10"/>
+	<entity route="routeToCg" name="CS.TradeInfoQrySVC.queryTradeByOrderProduct" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@queryTradeByOrderProduct"/>
+    <entity route="routeToCg" name="CS.TradeInfoQrySVC.updateTradeStateByPK" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@updateTradeStateByPK"/>
+    <entity route="routeToCg" name="CS.TradeInfoQrySVC.queryBbossTradeByEsop" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@queryBbossTradeByEsop"/>
+    <entity route="routeToCg" name="CS.TradeInfoQrySVC.getTradeBysubscribeIdForEsop" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getTradeBysubscribeIdForEsop"/>
+	<entity route="routeByEparchy" name="CS.TradeInfoQrySVC.queryCancelTradeByTradeId" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@queryCancelTradeByTradeId"/>
+	
+
+    <!-- TradeOtherInfoQrySVC -->
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryNeedStartPreidcTradeC" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryNeedStartPreidcTradeC"/>
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.querySubscribeTypeByTradeId" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@querySubscribeTypeByTradeId"/>
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryStartPreidcByTrade" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryStartPreidcByTrade"/>
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryBbossManageInfobyTradeIdUserId" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryBbossManageInfobyTradeIdUserId"/>
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryBbossManageDetailInfo" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryBbossManageDetailInfo"/>
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryProvCprt" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryProvCprt"/>
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryPoTradeStateAttr" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryPoTradeStateAttr"/>
+    <entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryTradeOtherByTradeIdAndRsrvValueCode" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryTradeOtherByTradeIdAndRsrvValueCode"/>
+	<entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryPreidcIdcParams" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryPreidcIdcParams"/>
+	<entity route="routeToCg" name="CS.TradeOtherInfoQrySVC.queryBbossManageInfoByEsop" path="com.ailk.csservice.common.query.trade.TradeOtherInfoQrySVC@queryBbossManageInfoByEsop"/>
+
+    <!-- TradeHistoryInfoQrySVC -->
+    <entity route="routeToCg" name="CS.TradeHistoryInfoQrySVC.queryTradeInfosWithPopedom" path="com.ailk.csservice.common.query.trade.TradeHistoryInfoQrySVC@queryTradeInfosWithPopedom"/>
+    <entity route="routeToCen" name="CS.TradeHistoryInfoQrySVC.queryHasPrivForCancel" path="com.ailk.csservice.common.query.trade.TradeHistoryInfoQrySVC@queryHasPrivForCancel"/>
+    <entity route="routeToCg" name="CS.TradeHistoryInfoQrySVC.queryTradesByCustId" path="com.ailk.csservice.common.query.trade.TradeHistoryInfoQrySVC@queryTradesByCustId"/>
+    <entity route="routeBySn" name="CS.TradeHistoryInfoQrySVC.queryCanBackTradeBySnAndTypeCode" path="com.ailk.csservice.common.query.trade.TradeHistoryInfoQrySVC@queryCanBackTradeBySnAndTypeCode"/>
+    <entity route="routeByEparchy" name="CS.TradeHistoryInfoQrySVC.queryTradeHistoryInfos" path="com.ailk.csservice.common.query.trade.TradeHistoryInfoQrySVC@queryTradeHistoryInfos"/>
+
+
+    <!-- TradeGrpMerchInfoQrySVC -->
+    <entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.queryBbossTrade" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@queryBbossTrade"/>
+    <entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.queryMerchTradebyTradeId" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@queryMerchTradebyTradeId"/>
+    <entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.queryTradeGrpMerch" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@queryTradeGrpMerch"/>
+    <entity route="routeBySn" name="CS.TradeGrpMerchInfoQrySVC.queryTradeMerchps" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@queryTradeMerchps"/>
+    <entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.queryTradeGrpMerchp" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@queryTradeGrpMerchp"/>
+	<entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.getMerchpTradeInfo" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@getMerchpTradeInfo"/>
+	<entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.upTradeMerchpState" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@upTradeMerchpState"/>
+	<entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.upTradeMerchStateC" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@upTradeMerchStateC"/>
+	<entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.upTradeMerchpStateC" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@upTradeMerchpStateC"/>
+    <entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.updMerhcpStr2ByTradeid" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@updMerhcpStr2ByTradeid"/>
+    <entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.getTradeForGrpBBoss" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@getTradeForGrpBBoss"/>
+
+    <!-- TradeGrpPkgInfoQrySVC -->
+    <entity route="routeBySn" name="CS.TradeGrpPkgInfoQrySVC.getGrpCustomizeServByTradeId" path="com.ailk.csservice.common.query.trade.TradeGrpPkgInfoQrySVC@getGrpCustomizeServByTradeId"/>
+    <entity route="routeBySn" name="CS.TradeGrpPkgInfoQrySVC.getGrpCustomizeSpByTradeId" path="com.ailk.csservice.common.query.trade.TradeGrpPkgInfoQrySVC@getGrpCustomizeSpByTradeId"/>
+    <entity route="routeBySn" name="CS.TradeGrpPkgInfoQrySVC.getGrpCustomizeDiscntByTradeId" path="com.ailk.csservice.common.query.trade.TradeGrpPkgInfoQrySVC@getGrpCustomizeDiscntByTradeId"/>
+
+    <!--TradeAttrInfoQrySVC-->
+    <entity route="routeToCg" name="CS.TradeAttrInfoQrySVC.getUserAttrByTradeIDInstid" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getUserAttrByTradeIDInstid"/>
+    <entity route="routeToCg" name="CS.TradeAttrInfoQrySVC.getUserProductAttrValuebyTradeIdAndUserId_ENDDATA" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getUserProductAttrValuebyTradeIdAndUserId_ENDDATA"/>
+    <entity route="routeToCg" name="CS.TradeAttrInfoQrySVC.getUserProductAttrValuebyTradeIdAndUserId" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getUserProductAttrValuebyTradeIdAndUserId"/>
+    <entity route="routeToCg" name="CS.TradeAttrInfoQrySVC.queryTradeGrpAttrByTradeId" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@queryTradeGrpAttrByTradeId"/>
+    <entity  route="routeToCg"  name="CS.TradeAttrInfoQrySVC.getTradeAttrByTradeIDandAttrCode" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getTradeAttrByTradeIDandAttrCode"/>
+    <entity  route="routeToCg"  name="CS.TradeAttrInfoQrySVC.getAttrByTradeID" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getAttrByTradeID"/>
+    <entity  route="routeToCg"  name="CS.TradeAttrInfoQrySVC.updStr1ByTradeid" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@updStr1ByTradeid"/>
+    <entity  route="routeToCg"  name="CS.TradeAttrInfoQrySVC.getTradeAttrByInstType" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getTradeAttrByInstType"/>
+    <entity  route="routeToCg"  name="CS.TradeAttrInfoQrySVC.getTradeAttrInfoByTradeIDAttrCode" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getTradeAttrInfoByTradeIDAttrCode"/>
+     <entity  route="routeToCg"  name="CS.TradeAttrInfoQrySVC.getTradeAttrInfoByInstType" path="com.ailk.csservice.common.query.trade.TradeAttrInfoQrySVC@getTradeAttrInfoByInstType"/>
+
+    <!--TradeSvcInfoQrySVC-->
+    <entity route="routeToCg" name="CS.TradeSvcInfoQrySVC.getElementFromPackageTrade" path="com.ailk.csservice.common.query.trade.TradeSvcInfoQrySVC@getElementFromPackageTrade"/>
+
+    <!--TradeExtInfoQrySVC-->
+    <entity route="routeToCg" name="CS.TradeExtInfoQrySVC.queryPoError" path="com.ailk.csservice.common.query.trade.TradeExtInfoQrySVC@queryPoError"/>
+    <entity route="routeToCg" name="CS.TradeExtInfoQrySVC.getTradeEsopInfoTradeId" path="com.ailk.csservice.common.query.trade.TradeExtInfoQrySVC@getTradeEsopInfoTradeId"/>
+    <entity route="routeToCg" name="CS.TradeExtInfoQrySVC.getTradeExtForEsop" path="com.ailk.csservice.common.query.trade.TradeExtInfoQrySVC@getTradeExtForEsop"/>
+    <entity route="routeToCg" name="CS.TradeExtInfoQrySVC.queryTradeExtForEsop" path="com.ailk.csservice.common.query.trade.TradeExtInfoQrySVC@queryTradeExtForEsop"/>
+    <entity route="routeToCg" name="CS.TradeExtInfoQrySVC.queryPotradeStateByTradeIdForEsop" path="com.ailk.csservice.common.query.trade.TradeExtInfoQrySVC@queryPotradeStateByTradeIdForEsop"/>
+
+    <!--TradeProductInfoQrySVC-->
+    <entity route="routeToCg" name="CS.TradeProductInfoQrySVC.queryProductTrade" path="com.ailk.csservice.common.query.trade.TradeProductInfoQrySVC@queryProductTrade"/>
+
+    <!--TradeGrpMerchMebInfoQrySVC-->
+    <entity route="routeByEparchy" name="CS.TradeGrpMerchMebInfoQrySVC.qryBBossMerchpMeb" path="com.ailk.csservice.common.query.trade.TradeGrpMerchMebInfoQrySVC@qryBBossMerchpMeb"/>
+    <entity route="routeByEparchy" name="CS.TradeGrpMerchMebInfoQrySVC.qryBBossBizMebQy" path="com.ailk.csservice.common.query.trade.TradeGrpMerchMebInfoQrySVC@qryBBossBizMebQy"/>
+    <entity route="routeToCg" name="CS.TradeGrpMerchMebInfoQrySVC.getMerchTradeInfoByOfferId" path="com.ailk.csservice.common.query.trade.TradeGrpMerchMebInfoQrySVC@getMerchTradeInfoByOfferId"/>
+
+    <!--TradePoInfoQrySVC-->
+    <entity route="routeToCg" name="CS.TradePoInfoQrySVC.orderInfoQry" path="com.ailk.csservice.common.query.trade.TradePoInfoQrySVC@orderInfoQry"/>
+    <entity route="routeToCg" name="CS.TradePoInfoQrySVC.orderMemQry" path="com.ailk.csservice.common.query.trade.TradePoInfoQrySVC@orderMemQry"/>
+
+    <!--TradeDiscntInfoQrySVC-->
+    <entity route="routeToCg" name="CS.TradeDiscntInfoQrySVC.queryDiscntTrade" path="com.ailk.csservice.common.query.trade.TradeDiscntInfoQrySVC@queryDiscntTrade"/>
+
+    <!--CommparaInfoQrySVC-->
+    <entity route="routeBySn" name="CS.CommparaInfoQrySVC.getProductAndOther" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getProductAndOther"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommpara" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommpara"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfoByAttrAndParam4" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfoByAttrAndParam4"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfoByParacode4AndAttr" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfoByParacode4AndAttr"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfoByAttrAndParam" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfoByAttrAndParam"/>
+    <entity route="routeToCg" name="CS.CommparaInfoQrySVC.orderDetailQry" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@orderDetailQry"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.queryExtendsParams" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryExtendsParams"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfo" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfo"/>
+    <entity route="routeBySn" name="CS.CommparaInfoQrySVC.queryBbossOrderOpenExtends" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryBbossOrderOpenExtends"/>
+    <entity route="routeBySn" name="CS.CommparaInfoQrySVC.queryCharacterGroup" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryCharacterGroup"/>
+    <entity route="routeBySn" name="CS.CommparaInfoQrySVC.orderMemQry" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@orderMemQry"/>
+    <entity route="routeBySn" name="CS.CommparaInfoQrySVC.queryBbossOrderExtendsRecord" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryBbossOrderExtendsRecord"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getGpDeployerVisibleConfig" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getGpDeployerVisibleConfig"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfoByParacode1AndAttr" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfoByParacode1AndAttr"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfoByAttr" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfoByAttr"/>
+    <entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfoBy5" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfoBy5"/>
+	<entity route="routeToCen" name="CS.CommparaInfoQrySVC.queryCommParaInfosByCode1" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryCommParaInfosByCode1"/>
+	<entity route="routeToCen" name="CS.CommparaInfoQrySVC.queryCommParaInfosByCode1Code2" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryCommParaInfosByCode1Code2"/>
+	<entity route="routeToCen" name="CS.CommparaInfoQrySVC.queryCommParaInfosForLpzs" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryCommParaInfosForLpzs"/>
+	<entity route="routeToCen" name="CS.CommparaInfoQrySVC.queryCommParaInfosForPresent" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryCommParaInfosForPresent"/>
+	<entity route="routeToCen" name="CS.CommparaInfoQrySVC.queryDestroyReason" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@queryDestroyReason"/>
+	<entity route="routeToCen" name="CS.CommparaInfoQrySVC.getCommparaInfoByBizCode" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getCommparaInfoByBizCode"/>
+
+    <!--AttrBizInfoQrySVC-->
+    <entity route="routeToCen" name="CS.AttrBizInfoQrySVC.getBizAttr" path="com.ailk.csservice.common.query.param.AttrBizInfoQrySVC@getBizAttr"/>
+    <entity route="routeToCen" name="CS.AttrBizInfoQrySVC.getBizAttrByIdTypeObjCodeEparchy" path="com.ailk.csservice.common.query.param.AttrBizInfoQrySVC@getBizAttrByIdTypeObjCodeEparchy"/>
+    <entity route="routeToCen" name="CS.AttrBizInfoQrySVC.getBizAttrByAttrValue" path="com.ailk.csservice.common.query.param.AttrBizInfoQrySVC@getBizAttrByAttrValue"/>
+    <entity route="routeToCen" name="CS.AttrBizInfoQrySVC.showTemplate" path="com.ailk.csservice.common.query.param.AttrBizInfoQrySVC@showTemplate"/>
+    <entity route="routeToCen" name="CS.AttrBizInfoQrySVC.CanSameAcct" path="com.ailk.csservice.common.query.product.AttrItemInfoQrySVC@CanSameAcct"/>
+    <entity route="routeToCen" name="CS.AttrBizInfoQrySVC.CanInserUserName" path="com.ailk.csservice.common.query.product.AttrItemInfoQrySVC@CanInserUserName"/>
+    <entity route="routeToCen" name="CS.AttrBizInfoQrySVC.queryProductCtrlInfo" path="com.ailk.csservice.common.query.param.AttrBizInfoQrySVC@queryProductCtrlInfo"/>
+
+    <!--AreaParamInfoQrySVC-->
+    <entity route="routeToCen" name="CS.AreaParamInfoQrySVC.queryAreaCode" path="com.ailk.csservice.common.query.param.AreaParamInfoQrySVC@queryAreaCode"/>
+
+    <!--StaticInfoQrySVC-->
+    <entity route="routeToCen" name="CS.StaticInfoQrySVC.getRoleCodeList" path="com.ailk.csservice.common.query.param.StaticInfoQrySVC@getRoleCodeList"/>
+    <entity route="routeToCen" name="CS.StaticInfoQrySVC.getStaticValueByTypeId" path="com.ailk.csservice.common.query.param.StaticInfoQrySVC@getStaticValueByTypeId"/>
+    <entity route="routeBySn" name="CS.StaticInfoQrySVC.getStaticListByTypeIdEparchy" path="com.ailk.csservice.common.query.param.StaticInfoQrySVC@getStaticListByTypeIdEparchy"/>
+
+    <!--DetailItemInfoQrySVC-->
+    <entity route="routeToCen" name="CS.DetailItemInfoQrySVC.queryGroupUserPayRelation" path="com.ailk.csservice.common.query.param.DetailItemInfoQrySVC@queryGroupUserPayRelation"/>
+
+	<!--TradeUserInfoQrySVC-->
+	 <entity route="routeToCg" name="CS.TradeUserInfoQrySVC.getTradeUserByTradeIdForGrp" path="com.ailk.csservice.common.query.trade.TradeUserInfoQrySVC@getTradeUserByTradeIdForGrp"/>
+
+    <!--TradeTypeInfoQry-->
+    <entity route="routeToCen" name="CS.TradeTypeInfoQry.getTradeTypeForGrp" path="com.ailk.csservice.common.query.param.TradeTypeInfoQrySVC@getTradeTypeForGrp"/>
+    <entity route="routeToCen" name="CS.TradeTypeInfoQrySVC.queryCancelTradeType" path="com.ailk.csservice.common.query.param.TradeTypeInfoQrySVC@queryCancelTradeType"/>
+    <entity route="routeToCen" name="CS.TradeTypeInfoQrySVC.queryUNDOTradeTypeInfos" path="com.ailk.csservice.common.query.param.TradeTypeInfoQrySVC@queryUNDOTradeTypeInfos"/>
+    <entity route="routeToCen" name="CS.TradeTypeInfoQrySVC.getTradeType" path="com.ailk.csservice.common.query.param.TradeTypeInfoQrySVC@getTradeType"/>
+
+    <!--BankInfoQrySVC-->
+    <entity route="routeToCen" name="CS.BankInfoQrySVC.queryBackCode" path="com.ailk.csservice.common.query.param.BankInfoQrySVC@queryBackCode"/>
+    <entity route="routeByDefalut" name="CS.BankInfoQrySVC.getBankBySuperBank" path="com.ailk.csservice.common.query.param.BankInfoQrySVC@getBankBySuperBank"/>
+    <entity route="routeByEparchy" name="CS.BankInfoQrySVC.getBankBySuperBankEparchy" path="com.ailk.csservice.common.query.param.BankInfoQrySVC@getBankBySuperBank"/>
+    <entity route="routeByEparchy" name="CS.BankInfoQrySVC.getBankByBank" path="com.ailk.csservice.common.query.param.BankInfoQrySVC@getBankByBank"/>
+    <entity route="routeToCen" name="CS.BankInfoQrySVC.queryBankList" path="com.ailk.csservice.common.query.param.BankInfoQrySVC@queryBankList"/>
+    <entity route="routeToCen" name="CS.BankInfoQrySVC.qrySuperBankInfo" path="com.ailk.csservice.common.query.param.BankInfoQrySVC@qrySuperBankInfo"/>
+    <entity route="routeBySn" name="CS.BankInfoQrySVC.getBankBySuperBank3" path="com.ailk.csservice.common.query.param.BankInfoQrySVC@getBankBySuperBank3"/>
+    <!--ParamInfoQrySVC-->
+    <entity route="routeToCg" name="CS.ParamInfoQrySVC.getGrpPreSavePrizeRateByCon" path="com.ailk.csservice.common.query.param.ParamInfoQrySVC@getGrpPreSavePrizeRateByCon"/>
+
+    <!--NoteItemInfoQrySVC-->
+    <entity route="routeToCen" name="CS.NoteItemInfoQrySVC.getNoteItemsByGrpForHNAN" path="com.ailk.csservice.common.query.param.NoteItemInfoQrySVC@getNoteItemsByGrpForHNAN"/>
+    <entity route="routeToCen" name="CS.NoteItemInfoQrySVC.filterNoteItemsByGrp" path="com.ailk.csservice.common.query.param.NoteItemInfoQrySVC@filterNoteItemsByGrp"/>
+    <entity route="routeToCen" name="CS.NoteItemInfoQrySVC.filterNoteItemsByGrpForHNANNew" path="com.ailk.csservice.common.query.param.NoteItemInfoQrySVC@filterNoteItemsByGrpForHNANNew"/>
+    <entity route="routeToCen" name="CS.NoteItemInfoQrySVC.queryDetItemByPageForGrp" path="com.ailk.csservice.common.query.param.NoteItemInfoQrySVC@queryDetItemByPageForGrp"/>
+    <entity route="routeToCen" name="CS.NoteItemInfoQrySVC.queryNoteItemsall" path="com.ailk.csservice.common.query.param.NoteItemInfoQrySVC@queryNoteItemsall"/>
+    <entity route="routeToCen" name="CS.NoteItemInfoQrySVC.filterNoteItemsForHNan" path="com.ailk.csservice.common.query.param.NoteItemInfoQrySVC@filterNoteItemsForHNan"/>
+
+    <!--TagInfoQrySVC-->
+    <entity route="routeToCen" name="CS.TagInfoQrySVC.getSysTagInfo" path="com.ailk.csservice.common.query.param.TagInfoQrySVC@getSysTagInfo"/>
+    <entity route="routeToCen" name="CS.TagInfoQrySVC.getTagInfo" path="com.ailk.csservice.common.query.param.TagInfoQrySVC@getTagInfo"/>
+    <entity route="routeToCen" name="CS.TagInfoQrySVC.getTagInfoBySubSys" path="com.ailk.csservice.common.query.param.TagInfoQrySVC@getTagInfoBySubSys"/>
+    <entity route="routeToCen" name="CS.TagInfoQrySVC.getCsmTagInfo" path="com.ailk.csservice.common.query.param.TagInfoQrySVC@getCsmTagInfo"/>
+    <entity route="routeToCen" name="CS.TagInfoQrySVC.getTagInfosByTagCode" path="com.ailk.csservice.common.query.param.TagInfoQrySVC@getTagInfosByTagCode"/>
+
+    <!--RouteInfoQrySVC-->
+	<entity route="routeBySn" name="CS.RouteInfoQrySVC.qryMofficeInfo" path="com.ailk.csservice.common.query.param.RouteInfoQrySVC@qryMofficeInfo"/>
+	<entity route="routeByEparchy" name="CS.RouteInfoQrySVC.qryMofficeInfoByEparchy" path="com.ailk.csservice.common.query.param.RouteInfoQrySVC@qryMofficeInfo"/>
+    <entity route="routeToCen" name="CS.RouteInfoQrySVC.getMofficeInfoBySn" path="com.ailk.csservice.common.query.param.RouteInfoQrySVC@getMofficeInfoBySn"/>
+    <entity route="routeBySn" name="CS.RouteInfoQrySVC.getEparchyCodeBySn" path="com.ailk.csservice.common.query.param.RouteInfoQrySVC@getEparchyCodeBySn"/>
+    <entity route="routeByEparchy" name="CS.RouteInfoQrySVC.qryEparchyCodeBySnForCrm" path="com.ailk.csservice.common.query.param.RouteInfoQrySVC@qryEparchyCodeBySnForCrm"/>
+
+    <!--MsisdnInfoQrySVC-->
+    <entity route="routeToCen" name="CS.MsisdnInfoQrySVC.getMsisonBySerialnumber" path="com.ailk.csservice.common.query.param.MsisdnInfoQrySVC@getMsisonBySerialnumber"/>
+
+    <!--MFileInfoQrySVC-->
+    <entity route="routeToCen" name="CS.MFileInfoQrySVC.queryFileInfo" path="com.ailk.csservice.common.query.param.MFileInfoQrySVC@queryFileInfo"/>
+
+    <!--PayRelaInfoQrySVC-->
+    <entity route="routeToCen" name="CS.PayRelaInfoQrySVC.getAdvPayRelationAllByAcctID" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getAdvPayRelationAllByAcctID"/>
+    <entity route="routeByEparchy" name="CS.PayRelaInfoQrySVC.getAdvPayRelationInfo_Pay" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getAdvPayRelationInfo_Pay"/>
+    <entity route="routeByEparchy" name="CS.PayRelaInfoQrySVC.getAdvPayRelationInfo_PayD" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getAdvPayRelationInfo_PayD"/>
+    <entity route="routeByEparchy" name="CS.PayRelaInfoQrySVC.getAdvPayRelationInfo_ALL" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getAdvPayRelationInfo_ALL"/>
+    <entity route="routeToCg" name="CS.PayRelaInfoQrySVC.getGroupPayRelationInfoByCustID" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getGroupPayRelationInfoByCustID"/>
+    <entity route="routeByEparchy"  name="CS.PayRelaInfoQrySVC.getNorPayRelationByAcctID" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getNorPayRelationByAcctID"/>
+    <entity route="routeByEparchy"  name="CS.PayRelaInfoQrySVC.getAdvPayRelationByAcctID" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getAdvPayRelationByAcctID"/>
+    <entity route="routeByEparchy"  name="CS.PayRelaInfoQrySVC.getGrpMemCountRelationByUserID" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getGrpMemCountRelationByUserID"/>
+    <entity route="routeToCg" name="CS.PayRelaInfoQrySVC.getPayrelationInfoForGrp" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getPayrelationInfoForGrp"/>
+    <entity route="routeByEparchy" name="CS.PayRelaInfoQrySVC.getPayrelationInfo" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getPayrelationInfo"/>
+    <entity route="routeByEparchy" name="CS.PayRelaInfoQrySVC.getPayrelationbyAcct" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getPayrelationbyAcct"/>
+    <entity route="routeToCg" name="CS.PayRelaInfoQrySVC.getPayRelByUserIdPayCode" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getPayRelByUserIdPayCode"/>
+
+    <entity route="routeBySn" name="CS.PayRelaInfoQrySVC.getNormalPayRelation" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getNormalPayRelation"/>
+    <entity route="routeBySn" name="CS.PayRelaInfoQrySVC.getAdvPayRelation" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getAdvPayRelation"/>
+    <entity route="routeByDefalut" name="CS.PayRelaInfoQrySVC.getPayItemDetail" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getPayItemDetail"/>
+    <entity route="routeByDefalut" name="CS.PayRelaInfoQrySVC.getNoCachePayItemDetail" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getNoCachePayItemDetail"/>
+     <entity route="routeByEparchy" name="CS.PayRelaInfoQrySVC.queryUserValidPay" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@queryUserValidPay"/>
+
+
+    <!--RelaUUInfoQrySVC-->
+    <entity route="routeBySn" name="CS.RelaUUInfoQrySVC.getRelationUU" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelationUU"/>
+    <entity route="routeBySn" name="CS.RelaUUInfoQrySVC.getRelaByUserIdBAndRelaTypeCode" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaByUserIdBAndRelaTypeCode"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getUserRelationByTradeId" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getUserRelationByTradeId"/>
+    <entity route="routeBySn" name="CS.RelaUUInfoQrySVC.getRelationUUInfoByDeputySn" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelationUUInfoByDeputySn"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getAllMebByUSERIDA" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getAllMebByUSERIDA"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getRelaUUInfoByRolForGrp" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaUUInfoByRolForGrp"/>
+    <entity route="routeBySn" name="CS.RelaUUInfoQrySVC.queryNextMonthBySnb" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@queryNextMonthBySnb"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getAllRelaUUInfoByUserIda" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getAllRelaUUInfoByUserIda"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getRelaUUInfoByUseridB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaUUInfoByUseridB"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.qryGrpUserAByUserB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@qryGrpUserAByUserB"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getRelationUUbYUserIDa" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelationUUbYUserIDa"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getSEL_BY_PK" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getSEL_BY_PK"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getSEL_BY_PKForGrp" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getSEL_BY_PK"/>
+    <entity route="routeByEparchy"  name="CS.RelaUUInfoQrySVC.getRelaUUByUserRoleACount" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaUUByUserRoleACount"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getRelaUUInfoByUserIda" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaUUInfoByUserida"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getRelaUUInfoByUserRelarIdB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaUUInfoByUserRelarIdB"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.fn_isVpmnMEM" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@fn_isVpmnMEM"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.checkMemRelaByUserIdb" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@checkMemRelaByUserIdb"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getGrpOutinfo" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getGrpOutinfo"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getUUInfoForGrp" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getUUInfoForGrp"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.qryUU" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@qryUU"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getRelationUUbYUserIDa2" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelationUUbYUserIDa2"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getMemOutGrpNumber" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getMemOutGrpNumber"/>
+    <entity route="routeToCg" name="CS.RelaUUInfoQrySVC.getRelaUUInfoByUserIdaForGrp" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaUUInfoByUserIdaForGrp"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getUUByUserIdAB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getUUByUserIdAB"/>
+	<entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.qryLastUUByUserIdB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@qryLastUUByUserIdB"/>
+	<entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getUUInfoByUserIdB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getUUInfoByUserIdB"/>
+	<entity route="routeBySn" name="CS.RelaUUInfoQrySVC.queryUuBySerialNumberB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@queryUuBySerialNumberB"/>
+	<entity route="routeToCen" name="CS.StaffAreaInfoQrySVC.getStaffAreaInfoByID" path="com.ailk.csservice.common.query.other.StaffAreaInfoQrySVC@getStaffAreaInfoByID"/>
+	<entity route="routeBySn" name="CS.RelaUUInfoQrySVC.queryRelationGroupInfo" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@queryRelationGroupInfo"/>
+	<entity route="routeToCg" name="CS.RelaUUInfoQrySVC.qryRelaUUInfoAllDb" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@qryRelaUUInfoAllDb"/>
+	<entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.qryByRelaUserIdB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@qryByRelaUserIdB"/>
+	<entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.qryByRelaUserIdARoleCodeB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@qryByRelaUserIdARoleCodeB"/>
+	<entity route="routeBySn" name="CS.RelaUUInfoQrySVC.queryRelaUUBySnb" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@queryRelaUUBySnb"/>
+	<entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.queryRelaUUByIdBRoute" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@queryRelaUUByIdBRoute"/>
+	<entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getRelaByUserIdAndRelaTypeCode" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getRelaByUserIdAndRelaTypeCode"/>
+	<entity route="routeBySn" name="CS.RelaUUInfoQrySVC.getGrpMebBySNUIdA" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getGrpMebBySNUIdA"/>
+	<entity route="routeToCen" name="CS.RelaUUInfoQrySVC.qryUUInfoAllCrmByUserIdA" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@qryUUInfoAllCrmByUserIdA"/>
+	<entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getUUInfoByUserIdAB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getUUInfoByUserIdAB"/>
+    <entity route="routeByEparchy" name="CS.RelaUUInfoQrySVC.getBBInfoByUserIdAB" path="com.ailk.csservice.common.query.rela.RelaUUInfoQrySVC@getBBInfoByUserIdAB"/>
+    
+    <!--BatTradeInfoQrySVC-->
+    <entity route="routeToCen" name="CS.BatTradeInfoQrySVC.queryBatchTypeParamsEx" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@queryBatchTypeParamsEx"/>
+    <entity route="routeToCen" name="CS.BatTradeInfoQrySVC.queryBatchTypes" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@queryBatchTypes"/>
+    <entity route="routeToCen" name="CS.BatTradeInfoQrySVC.queryBatTypeByPK" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@queryBatTypeByPK"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.batchDetialQuery" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@batchDetialQuery"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.getBatSumInfo" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@getBatSumInfo"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.batchDetialQueryVPMN" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@batchDetialQueryVPMN"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.exportbatchDetialQueryYDZF" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@exportbatchDetialQueryYDZF"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.exportbatchDetialQueryYDZFConfirm" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@exportbatchDetialQueryYDZFConfirm"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.exportbatchDetialQueryYDZFOpen" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@exportbatchDetialQueryYDZFOpen"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.exportbatchDetialQueryHYYYKOpen" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@exportbatchDetialQueryHYYYKOpen"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.exportbatchDetialQueryHYYYK" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@exportbatchDetialQueryHYYYK"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.exportbatchDetialQuery" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@exportbatchDetialQuery"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.exportbatchDetialQueryVPMN" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@exportbatchDetialQueryVPMN"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.qryTradeBatByPK" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@qryTradeBatByPK"/>
+	<entity route="routeToCen" name="CS.BatTradeInfoQrySVC.updateBatDealStartToRun" path="com.ailk.csservice.common.query.bat.BatTradeInfoQrySVC@updateBatDealStartToRun"/>
+
+    <!--PosLogSVC-->
+    <entity route="routeToCen" name="CS.TradeInfoQrySVC.queryInfosTrade" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@queryInfosTrade"/>
+    
+    <!--VatprintlogInfoQrySVC-->
+    <entity route="routeToCg" name="CS.VatPrintLogInfoQrySVC.getTaxPrintInfosForGrp" path="com.ailk.csservice.common.query.log.VatPrintLogInfoQrySVC@getTaxPrintInfosForGrp"/>
+    <entity route="routeToCg" name="CS.VatPrintLogInfoQrySVC.qryVatPrintLogForGrp" path="com.ailk.csservice.common.query.log.VatPrintLogInfoQrySVC@qryVatPrintLogForGrp"/>
+
+	<!--GrpTaxLogQrySVC-->
+    <entity route="routeToCg" name="CS.GrpTaxLogQrySVC.getTaxLogInfosForGrp" path="com.ailk.csservice.common.query.log.GrpTaxLogQrySVC@getTaxLogInfosForGrp"/>
+    
+    <entity route="routeToCg" name="CS.TaxTradePrintCollectSVC.getCollectDetailForGroup" path="com.ailk.csservice.common.query.collect.TaxTradePrintCollectSVC@getCollectDetailforGrp" />
+    
+    <!--TaxTradePrintCollectSVC-->
+    <entity route="routeToCg" name="CS.TaxTradePrintCollectSVC.getPrintCollectforGrp" path="com.ailk.csservice.common.query.collect.TaxTradePrintCollectSVC@getPrintCollectforGrp"/>
+    <entity route="routeToCg" name="CS.TaxTradePrintCollectSVC.cancelGrpTaxTicket" path="com.ailk.csservice.common.query.collect.TaxTradePrintCollectSVC@cancelGrpTaxTicket"/>
+    <entity route="routeToCg" name="CS.TaxTradePrintCollectSVC.combineGrpTaxTicket" path="com.ailk.csservice.common.query.collect.TaxTradePrintCollectSVC@combineGrpTaxTicket"/>
+	
+	<entity route="routeToCg" name="CS.TaxTradePrintCollectSVC.getTradePrintforGrp" path="com.ailk.csservice.common.query.collect.TaxTradePrintCollectSVC@getTradePrintforGrp"/>
+
+    <!--GroupTreeInfosQrySVC-->
+    <entity route="routeToCen" name="CS.GroupTreeInfosQrySVC.loadGroupProductsTreeForAll" path="com.ailk.csservice.common.query.tree.grouptree.GroupTreeInfosQrySVC@loadGroupProductsTreeForAll"/>
+    <entity route="routeToCg" name="CS.GroupTreeInfosQrySVC.loadGroupProductsTreeForOrdered" path="com.ailk.csservice.common.query.tree.grouptree.GroupTreeInfosQrySVC@loadGroupProductsTreeForOrdered"/>
+    <entity route="routeToCen" name="CS.GroupTreeInfosQrySVC.loadGrpTreeForOrderedOneTime" path="com.ailk.csservice.common.query.tree.grouptree.GroupTreeInfosQrySVC@loadGrpTreeForOrderedOneTime"/>
+    <entity route="routeBySn" name="CS.GroupTreeInfosQrySVC.loadGroupProductsTreeForMebOrdered" path="com.ailk.csservice.common.query.tree.grouptree.GroupTreeInfosQrySVC@loadGroupProductsTreeForMebOrdered"/>
+    <entity route="routeToCg" name="CS.GroupTreeInfosQrySVC.loadGroupUserGrpPackageTree" path="com.ailk.csservice.common.query.tree.grouptree.GroupTreeInfosQrySVC@loadGroupUserGrpPackageTree"/>
+    <entity route="routeToCg" name="CS.GroupTreeInfosQrySVC.loadGroupProductsTreeForOrderedSale" path="com.ailk.csservice.common.query.tree.grouptree.GroupTreeInfosQrySVC@loadGroupProductsTreeForOrderedSale"/>
+
+    <!--OtherInfoQrySVC-->
+    <entity route="routeToCg" name="CS.OtherInfoQrySVC.getOtherInfoByUserId" path="com.ailk.csservice.common.query.other.OtherInfoQrySVC@getOtherInfoByUserId"/>
+
+    <!--GrpExtInfoQrySVC-->
+    <entity route="routeToCg" name="CS.GrpExtInfoQrySVC.getComboBoxValue" path="com.ailk.csservice.common.query.cust.GrpExtInfoQrySVC@getComboBoxValue"/>
+	<entity route="routeToCg" name="CS.GrpExtInfoQrySVC.getExtendLists" path="com.ailk.csservice.common.query.cust.GrpExtInfoQrySVC@getExtendLists"/>
+	<entity route="routeToCg" name="CS.GrpExtInfoQrySVC.checkBaseServCode" path="com.ailk.csservice.common.query.cust.GrpExtInfoQrySVC@checkBaseServCode"/>
+
+    <!--GroupCutInfoQrySVC-->
+    <entity route="routeToCg" name="CS.GroupCutInfoQrySVC.getGroupCutInfoByUserId" path="com.ailk.csservice.common.query.interfaceinfo.GroupCutInfoQrySVC@getGroupCutInfoByUserId"/>
+
+    <!--ParamInfoQrySVC-->
+    <entity route="routeToCen" name="CS.ParamInfoQrySVC.getSelOnlyByAttrOrdered" path="com.ailk.csservice.common.query.param.ParamInfoQrySVC@getSelOnlyByAttrOrdered"/>
+
+    <!--DealSpecialServerParamSvc-->
+    <entity route="routeToCg" name="CS.DealSpecialServerParamSvc.loadSpecialServerParam" path="com.ailk.csservice.group.common.util.DealSpecialServerParamSvc@loadSpecialServerParam"/>
+
+    <!--以下是业务级服务，待确认处理 start -->
+
+    <entity route="routeBySn" name="CS.QueryEntityCardSVC.qryEntityCard" path="com.ailk.csservice.common.query.interboss.EntityCardQrySVC@qryEntityCard"/>
+    <entity route="routeBySn" name="CS.CostDiscountQrySVC.qryContPara" path="com.ailk.csservice.common.query.interboss.CostDiscountQrySVC@qryContPara"/>
+    <entity route="routeBySn" name="CS.CostDiscountQrySVC.qryContDiscntInfo" path="com.ailk.csservice.common.query.interboss.CostDiscountQrySVC@qryContDiscntInfo"/>
+    <entity route="routeBySn" name="CS.MobilePhoneQrySVC.qryMpAreaInfo" path="com.ailk.csservice.common.query.interboss.MobilePhoneQrySVC@qryMpAreaInfo"/>
+    <entity route="routeBySn" name="CS.SimcardQrySVC.qrySimcardInfo" path="com.ailk.csservice.common.query.interboss.SimcardQrySVC@qrySimcardInfo"/>
+
+    <entity route="routeToCg" name="CS.PayTemplateBeanSVC.qryUserothers" path="com.ailk.csservice.group.modifypayrelation.PayTemplateBeanSVC@qryUserothers"/>
+    <entity route="routeToCg" name="CS.PayTemplateBeanSVC.qryUserother" path="com.ailk.csservice.group.modifypayrelation.PayTemplateBeanSVC@qryUserother"/>
+    <entity route="routeToCen" name="CS.PayTemplateBeanSVC.showTemplate" path="com.ailk.csservice.group.modifypayrelation.PayTemplateBeanSVC@showTemplate"/>
+    <entity route="routeToCen" name="CS.PayTemplateBeanSVC.showItems" path="com.ailk.csservice.group.modifypayrelation.PayTemplateBeanSVC@showItems"/>
+    <entity route="routeToCen" name="CS.PayTemplateBeanSVC.showFeeLimit" path="com.ailk.csservice.group.modifypayrelation.PayTemplateBeanSVC@showFeeLimit"/>
+
+    <entity route="routeToCg" name="CS.GroupImsUtilSVC.shortCodeValidateSupTeleMeb" path="com.ailk.csservice.group.common.util.GroupImsUtilSVC@shortCodeValidateSupTeleMeb"/>
+    <entity route="routeToCg" name="CS.CreateBBossUserSVC.crtOrder" path="com.ailk.csservice.group.bbossBiz.createUser.CreateBBossUserSVC@crtOrder"/>
+    <entity route="routeToCg" name="CS.ChangeBBossUserSVC.crtOrder" path="com.ailk.csservice.group.bbossBiz.changeUser.ChangeBBossUserSVC@crtOrder"/>
+    <entity route="routeToCg" name="CS.DestroyBBossUserSVC.dealDelBBossBiz" path="com.ailk.csservice.group.bbossBiz.destroyUser.DestroyBBossUserSVC@dealDelBBossBiz"/>
+    <entity route="routeByEparchy" name="CS.CreateBBossMemSVC.crtOrder" path="com.ailk.csservice.group.bbossBiz.createMember.CreateBBossMemSVC@crtOrder"/>
+    <entity route="routeByEparchy" name="CS.DestroyBBossMemSVC.dealBBossMebBiz" path="com.ailk.csservice.group.bbossBiz.destroyMember.DestroyBBossMemSVC@dealBBossMebBiz"/>
+    <entity route="routeByEparchy" name="CS.ChangeBBossMemSVC.crtOrder" path="com.ailk.csservice.group.bbossBiz.changeMember.ChangeBBossMemSVC@crtOrder"/>
+    <entity route="routeToCg" name="CS.SynBbossOrderStateSVC.insetBbossOrderState" path="com.ailk.csservice.group.bbossBiz.synBBossOrderState.SynBbossOrderStateSVC@insetBbossOrderState"/>
+    <entity route="routeToCg" name="CS.SynBbossOrderStateSVC.rspDealOrderResult" path="com.ailk.csservice.group.bbossBiz.synBBossOrderState.SynBbossOrderStateSVC@rspDealOrderResult"/>
+    <entity route="routeToCen" name="CS.SynBBossPoSpecSVC.processPosSyncInfo" path="com.ailk.csservice.group.bbossBiz.synBBossPoSpec.SynBBossPoSpecSVC@processPosSyncInfo"/>
+    <entity route="routeToCg" name="CS.DealBBossFaildOrderSVC.modifyTradeError" path="com.ailk.csservice.group.bbossBiz.dealBBossFaildOrder.DealBBossFaildOrderSVC@modifyTradeError"/>
+    <entity route="routeToCg" name="CS.BBossOrderOpenSVC.dealOrderOpen" path="com.ailk.csservice.group.bbossBiz.bbossOrderOpen.BBossOrderOpenSVC@dealOrderOpen"/>
+    <entity route="routeByEparchy" name="CS.BBossOrderDealSVC.dealBbossRspMessage" path="com.ailk.csservice.group.bbossBiz.bbossOrderDeal.BBossOrderDealSVC@dealBbossRspMessage"/>
+    <entity route="routeToCg" name="CS.DestroyGroupUserSvc.destroyGroupUser" path="com.ailk.csservice.group.destroygroupuser.DestroyGroupUserSvc@destroyGroupUser"/>
+    <entity route="routeToCg" name="CS.CreateGroupUserSvc.createGroupUser" path="com.ailk.csservice.group.creategroupuser.CreateGroupUserSvc@createGroupUser"/>
+    <entity route="routeToCg" name="CS.SynBBossGrpMgrBizSVC.dealCommonData" path="com.ailk.csservice.group.bbossBiz.synBBossGrpMgrBiz.SynBBossGrpMgrBizSVC@dealCommonData"/>
+    <entity route="routeToCg" name="CS.CreateBBossUserSVC.saveChgData" path="com.ailk.csservice.group.bbossBiz.createUserForPre.CreateBBossUserSVC@saveChgData"/>
+    <entity route="routeToCg" name="CS.CreateBBossUserSVC.sendTradeInfoToBboss" path="com.ailk.csservice.group.bbossBiz.createUserForPre.CreateBBossUserSVC@sendTradeInfoToBboss"/>
+    <entity route="routeToCg" name="CS.CreateBBossUserSVC.sendEsopSLBefore" path="com.ailk.csservice.group.bbossBiz.createUserForPre.CreateBBossUserSVC@sendEsopSLBefore"/>
+
+    <entity route="routeBySn" name="CS.DestroyGroupMemberSvc.destroyGroupMember" path="com.ailk.csservice.group.destroygroupmember.DestroyGroupMemberSvc@destroyGroupMember"/>
+    <entity route="routeBySn" name="CS.CreateGroupMemberSvc.createGroupMember" path="com.ailk.csservice.group.creategroupmember.CreateGroupMemberSvc@createGroupMember"/>
+    <entity route="routeToCg" name="CS.ChangeUserElementSvc.changeUserElement" path="com.ailk.csservice.group.changeuserelement.ChangeUserElementSvc@changeUserElement"/>
+    <entity route="routeBySn" name="CS.ChangeMemElementSvc.changeMemElement" path="com.ailk.csservice.group.changememelement.ChangeMemElementSvc@changeMemElement"/>
+    <entity route="routeBySn" name="CS.CreateGroupMemberUnionpaySvc.createGroupMemberUnionPay" path="com.ailk.csservice.group.creategroupmemberunionpay.CreateGroupMemberUnionpaySvc@createGroupMemberUnionPay"/>
+    <entity route="routeBySn" name="CS.CreateGroupMemberUnionpaySvc.changeGroupMemberUnionPay" path="com.ailk.csservice.group.creategroupmemberunionpay.CreateGroupMemberUnionpaySvc@changeGroupMemberUnionPay"/>
+    <entity route="routeToCen" name="CS.ProductFeeInfoQrySVC.qryTradeTypeFeeForGrp" path="com.ailk.csservice.common.query.product.ProductFeeInfoQrySVC@qryTradeTypeFeeForGrp"/>
+
+	<entity route="routeBySn" name="CS.CreateGroupUnifiedBillSvc.createGroupMember" path="com.ailk.csservice.group.creategroupunifiedbill.CreateGroupUnifiedBillSvc@createGroupMember"/>
+    <entity route="routeBySn" name="CS.DestroyGroupUnifiedBillSvc.destroyGroupMember" path="com.ailk.csservice.group.destroygroupunifiedbill.DestroyGroupUnifiedBillSvc@destroyGroupMember"/>
+
+    <!--StaffInfoQrySVC-->
+    <entity route="routeToCen" name="CS.StaffInfoQrySVC.queryStaffInfoForBBoss" path="com.ailk.csservice.common.query.sysorg.StaffInfoQrySVC@queryStaffInfoForBBoss"/>
+
+	<!-- ProductFeeInfoQrySVC -->
+	<entity route="routeToCen" name="CS.ProductFeeInfoQrySVC.getFeeByTradeFeeMode" path="com.ailk.csservice.common.query.product.ProductFeeInfoQrySVC@getFeeByTradeFeeMode"/>
+  <entity route="routeToCen" name="CS.BatTaskSVC.queryProductInfo"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryProductInfo"  />
+  <entity route="routeToCen" name="CS.BatTaskSVC.queryPackageInfo"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryPackageInfo"  />
+
+    <!--以上是业务级服务，待确认处理 end -->
+
+
+    <!--ProductCompRelaInfoQrySVC-->
+    <entity route="routeToCen" name="CS.ProductCompRelaInfoQrySVC.getCompRelaInfoByPIDB" path="com.ailk.csservice.common.query.product.ProductCompRelaInfoQrySVC@getCompRelaInfoByPIDB"/>
+    <entity route="routeToCen" name="CS.ProductCompRelaInfoQrySVC.getCompReleInfo" path="com.ailk.csservice.common.query.product.ProductCompRelaInfoQrySVC@getCompReleInfo"/>
+    <entity route="routeToCen" name="CS.ProductCompRelaInfoQrySVC.qrySubProductInfos" path="com.ailk.csservice.common.query.product.ProductCompRelaInfoQrySVC@qrySubProductInfos"/>
+    <entity route="routeToCen" name="CS.ProductCompRelaInfoQrySVC.queryProductComp" path="com.ailk.csservice.common.query.product.ProductCompRelaInfoQrySVC@queryProductComp"/>
+    <entity route="routeToCen" name="CS.ProductCompRelaInfoQrySVC.queryProductRealByProductB" path="com.ailk.csservice.common.query.product.ProductCompRelaInfoQrySVC@queryProductRealByProductB"/>
+
+    <!--ContractSaleInfoQrySVC-->
+    <entity route="routeToCen" name="CS.ContractInfoQrySVC.getContractByDevice" path="com.ailk.csservice.common.query.product.ContractInfoQrySVC@getContractByDevice"/>
+    <entity route="routeToCen" name="CS.ContractInfoQrySVC.getProductInfosById" path="com.ailk.csservice.common.query.product.ContractInfoQrySVC@getProductInfosById"/>
+
+    <entity route="routeByEparchy" name="CS.CheckTradeSVC.checkBeforeTrade" path="com.ailk.csservice.common.rule.CheckTradeSVC@checkBeforeTrade"/>
+    <entity route="routeByEparchy" name="CS.CheckTradeSVC.checkBeforeForChoice" path="com.ailk.csservice.common.rule.CheckTradeSVC@checkBeforeForChoice"/>
+    <entity route="routeToCen" name="CS.SimpleRuleCfgSVC.createSimpleRule" path="com.ailk.csservice.common.rule.SimpleRuleCfgSVC@createSimpleRule"/>
+
+    <!-- SeqMgrSVC -->
+    <entity route="routeToCg" name="CS.SeqMgrSVC.getSYnTradeIdForGrp" path="com.ailk.csservice.common.query.seq.SeqMgrSVC@getSYnTradeIdForGrp"/>
+    <entity route="routeToCen" name="CS.SeqMgrSVC.getBatchId" path="com.ailk.csservice.common.query.seq.SeqMgrSVC@getBatchId"/>
+    <entity route="routeToCg" name="CS.SeqMgrSVC.getWlwBizCode" path="com.ailk.csservice.common.query.seq.SeqMgrSVC@getWlwBizCode"/>
+    <entity route="routeToCg" name="CS.SeqMgrSVC.getTradeId" path="com.ailk.csservice.common.query.seq.SeqMgrSVC@getTradeId"/>
+
+    <!-- BatTaskSVC 批量业务-->
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryBatTaskStart"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryBatTaskStart"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryBatchTaskList"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryBatchTaskList"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryBatDealBySN"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryBatDealBySN"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.batTaskNowRun"  path="com.ailk.csservice.common.bat.BatTaskSVC@batTaskNowRun"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.batTaskOnTimeRun"  path="com.ailk.csservice.common.bat.BatTaskSVC@batTaskOnTimeRun"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.batTaskNowCancelRun"  path="com.ailk.csservice.common.bat.BatTaskSVC@batTaskNowCancelRun"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.batTaskNowDelete"  path="com.ailk.csservice.common.bat.BatTaskSVC@batTaskNowDelete"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.querySerivceInfo"  path="com.ailk.csservice.common.bat.BatTaskSVC@querySerivceInfo"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryDiscntInfo"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryDiscntInfo"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryBatchInfo"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryBatchInfo"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryPopuTaskInfoByTaskId"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryPopuTaskInfoByTaskId"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryPopuTaskInfoBySn"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryPopuTaskInfoBySn"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryPlatInfo"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryPlatInfo"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryServiceInfoForPlat"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryServiceInfoForPlat"  />
+	<entity route="routeToCen" name="CS.GrpBatTaskSVC.batTaskNowRun"  path="com.ailk.csservice.common.bat.BatTaskSVC@batTaskNowRunForGrp"  />
+    <entity route="routeToCen" name="CS.GrpBatTaskSVC.batTaskNowCancelRun"  path="com.ailk.csservice.common.bat.BatTaskSVC@batTaskNowCancelRunForGrp"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryBatTaskBatchInfo"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryBatTaskBatchInfo"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.subAudit"  path="com.ailk.csservice.common.bat.BatTaskSVC@subAudit"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryBatDeal"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryBatDeal"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.batchRedo"  path="com.ailk.csservice.common.bat.BatTaskSVC@batchRedo"  />
+    <entity route="routeToCen" name="CS.BatTaskSVC.queryBatDealByBatchId"  path="com.ailk.csservice.common.bat.BatTaskSVC@queryBatDealByBatchId"  />
+
+	<entity route="routeToCen" name="CS.ProductInfoQrySVC.queryContractSaleByResType"  path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@queryContractSaleByResType"  />
+
+	<!-- 账期变更 -->
+    <entity route="routeByEparchy" name="CS.DiversifyAcctSVC.getNewAcctDaysByModi"  path="com.ailk.csservice.common.diversifyacct.DiversifyAcctSVC@getNewAcctDaysByModi"  />
+    <!-- 账期开户 -->
+    <entity route="routeByEparchy" name="CS.UserAcctDayInfoQrySVC.getUserAcctDayAndFirstDateInfo"  path="com.ailk.csservice.common.query.user.UserAcctDayInfoQrySVC@getUserAcctDayAndFirstDateInfo"  />
+    <!-- TradeFeeRegSVC 费用登记接口 -->
+    <entity route="routeBySn" name="CS.TradeFeeRegSVC.tradeReg" path="com.ailk.csservice.person.busi.tradefeereg.order.TradeFeeRegSVC@tradeReg"/>
+
+    <!-- HintInfoSVC 小栏框信息查询接口 -->
+    <entity route="routeBySn" name="CS.HintInfoSVC.getHintInfo" path="com.ailk.csservice.common.query.hint.HintInfoSVC@getHintInfo"/>
+    <entity route="routeBySn" name="CS.HintInfoSVC.getAllHintInfos" path="com.ailk.csservice.common.query.hint.HintInfoSVC@getAllHintInfos"/>
+
+	<!--一卡通-->
+	<entity route="routeToCg" name="CS.OneCardBookingTradeSVC.ecBizInfoReq" path="com.ailk.csservice.group.bbossBiz.oneCardBookingTrade.OneCardBookingTradeSVC@ecBizInfoReq"/>
+	<entity route="routeBySn" name="CS.BbossMemberChgSyncSVC.bbossDataUdr" path="com.ailk.csservice.group.bbossBiz.bbossMemberChgSync.BbossMemberChgSyncSVC@bbossDataUdr"/>
+	<entity route="routeBySn" name="CS.OneCardBookingTradeQuerySVC.ecBizInfoReqSelect" path="com.ailk.csservice.group.bbossBiz.oneCardBookingTradeQuery.OneCardBookingTradeQuerySVC@ecBizInfoReqSelect"/>
+	<entity route="routeBySn" name="CS.OneCardTradeSVC.getPOMbmp" path="com.ailk.csservice.group.bbossBiz.oneCardTrade.OneCardTradeSVC@getPOMbmp"/>
+	<entity route="routeBySn" name="CS.OneCardUserTradeSVC.getPOUserMbmp" path="com.ailk.csservice.group.bbossBiz.oneCardUserTrade.OneCardUserTradeSVC@getPOUserMbmp"/>
+
+    <!-- 接口测试界面 start-->
+    <entity route="routeToCen" name="CS.InterfaceInfoSVC.queryAllInterfaces"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@queryAllInterfaces"  />
+    <entity route="routeToCen" name="CS.InterfaceInfoSVC.queryInterfaceById"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@queryInterfaceById"  />
+    <entity route="routeToCen" name="CS.InterfaceInfoSVC.getInterfaceParam"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@getInterfaceParam"  />
+    <entity route="routeToCen" name="CS.InterfaceInfoSVC.getSceneById"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@getSceneById"  />
+    <entity route="routeToCen" name="CS.InterfaceInfoSVC.getSceneInfoById"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@getSceneInfoById"  />
+    <entity route="routeToCen" name="CS.InterfaceInfoSVC.upInterfaceResultById"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@upInterfaceResultById"  />
+    <entity route="routeToCen" name="CS.InterfaceCreateSVC.queryInterfaceByCode"  path="com.ailk.csservice.common.intf.InterfaceCreateSVC@queryInterfaceByCode"  />
+	<entity route="routeToCen" name="CS.InterfaceCreateSVC.createInterfaceInfos"  path="com.ailk.csservice.common.intf.InterfaceCreateSVC@createInterfaceInfos"  />
+	<entity route="routeToCen" name="CS.InterfaceCreateSVC.querySceneByInterId"  path="com.ailk.csservice.common.intf.InterfaceCreateSVC@querySceneByInterId"  />
+	<entity route="routeToCen" name="CS.InterfaceCreateSVC.createInterfaceScenes"  path="com.ailk.csservice.common.intf.InterfaceCreateSVC@createInterfaceScenes"  />
+	<entity route="routeToCen" name="CS.InterfaceCreateSVC.deleteInterfaceScene"  path="com.ailk.csservice.common.intf.InterfaceCreateSVC@deleteInterfaceScene"  />
+	<entity route="routeToCen" name="CS.InterfaceCreateSVC.updateInterfaceInfos"  path="com.ailk.csservice.common.intf.InterfaceCreateSVC@updateInterfaceInfos"  />
+	<entity route="routeToCen" name="CS.InterfaceInfoSVC.logInterface"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@logInterface"  />
+	<entity route="routeToCen" name="CS.InterfaceInfoSVC.invokeInterface"  path="com.ailk.csservice.common.intf.InterfaceInfoSVC@invokeInterface"  />
+
+	<entity route="routeByDefalut" name="CS.TradeQuerySVC.queryTradeInfo"  path="com.ailk.csservice.common.trademgr.TradeQuerySVC@queryTradeInfo"  />
+	<entity route="routeToCg" name="CS.TradeQuerySVC.querryTradeStateInfo"  path="com.ailk.csservice.common.trademgr.TradeQuerySVC@querryTradeStateInfo"  />
+    <entity route="routeByEparchy" name="CS.TradeQuerySVC.qryErrorMsg"  path="com.ailk.csservice.common.trademgr.TradeQuerySVC@qryErrorMsg"  />
+    <entity route="routeByDefalut" name="CS.TradeQuerySVC.tradePfAgain"  path="com.ailk.csservice.common.trademgr.TradeQuerySVC@tradePfAgain"  />
+	<!-- 接口测试界面 end-->
+
+	<!-- 查询RelationUU关系表 -->
+	<entity route="routeToCg" name="CS.RelationUUQrySVC.getUserRelationByBBOSSUserIdA" path="com.ailk.csservice.common.query.other.RelationUUQrySVC@getUserRelationByBBOSSUserIdA"/>
+
+	<entity route="routeToCen" name="CS.PkgExtInfoQrySVC.queryPackageExtInfo" path="com.ailk.csservice.common.query.product.PkgExtInfoQrySVC@queryPackageExtInfo"/>
+
+	<!-- weixb3 工单开通 -->
+	<entity route="routeToCg" name="CS.OrderOpenDaoSVC.modifyOrderInfoState" path="com.ailk.csservice.group.querygroupinfo.OrderOpenDaoSVC@modifyOrderInfoState"/>
+    <entity route="routeToCg" name="CS.OrderOpenDaoSVC.inserPotradeState" path="com.ailk.csservice.group.querygroupinfo.OrderOpenDaoSVC@inserPotradeState"/>
+    <entity route="routeToCg" name="CS.OrderOpenDaoSVC.inserPotradeStateAttr" path="com.ailk.csservice.group.querygroupinfo.OrderOpenDaoSVC@inserPotradeStateAttr"/>
+    <entity route="routeToCg" name="CS.OrderOpenDaoSVC.inserProductTrade" path="com.ailk.csservice.group.querygroupinfo.OrderOpenDaoSVC@inserProductTrade"/>
+
+    <!-- weixb3 跨省工单状态 -->
+    <entity route="routeToCg" name="CS.GrpProvCprtDAOSVC.updatePoTradeState" path="com.ailk.csservice.group.querygroupinfo.GrpProvCprtDAOSVC@updatePoTradeState"/>
+
+    <!-- weixb3 管理流程 -->
+    <entity route="routeToCg" name="CS.GroupBBossManageSVC.updataCreateBefor" path="com.ailk.csservice.group.querygroupinfo.GroupBBossManageSVC@updataCreateBefor"/>
+    <entity route="routeToCg" name="CS.GroupBBossManageSVC.cancelSend" path="com.ailk.csservice.group.querygroupinfo.GroupBBossManageSVC@cancelSend"/>
+    <entity route="routeBySn" name="CS.BbossManageSVC.infoRegDataOther" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@infoRegDataOther"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.updateBbossOtherFlag" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@updateBbossOtherFlag"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.updateDistinctAndAttrInfo" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@updateDistinctAndAttrInfo"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.updateMerchpTradeRsrvstr1" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@updateMerchpTradeRsrvstr1"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.serverAttInfos" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@serverAttInfos"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.checkQueryBbossInfOper" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@checkQueryBbossInfOper"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.updateStateHq" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@updateStateHq"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.changeStatusForTrade" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@changeStatusForTrade"/>
+    <entity route="routeToCg" name="CS.BbossManageSVC.dealManageInfo" path="com.ailk.csservice.common.query.bboss.BbossManageSVC@dealManageInfo"/>
+    <entity route="routeBySn" name="CS.GroupProductUnitSVC.operelementsdata" path="com.ailk.csservice.group.groupunit.GroupProductUnitSVC@operelementsdata"/>
+	<entity route="routeToCg" name="CS.GroupProductUnitSVC.getMemberBaseElementForGrp" path="com.ailk.csservice.group.groupunit.GroupProductUnitSVC@getMemberBaseElementForGrp"/>
+
+	<!-- Group Apply Begin add by xunyl -->
+    <entity route="routeBySn" name="CS.GroupProductUnitSVC.getCreateUserBaseElement" path="com.ailk.csservice.group.groupunit.GroupProductUnitSVC@getCreateUserBaseElement"/>
+    <entity route="routeBySn" name="CS.GroupProductUnitSVC.getMemberBaseElement" path="com.ailk.csservice.group.groupunit.GroupProductUnitSVC@getMemberBaseElement"/>
+    <!-- Group Apply End add by xunyl -->
+
+	<!-- GroupTradeRelationUU add and del by zhangyu11 -->
+	<entity route="routeBySn" name="CS.CreatGroupRelationUUMemberSVC.creatGroupRelationUU" path="com.ailk.csservice.group.creategroupmember.CreatGroupRelationUUMemberSVC@creatGroupRelationUU"/>
+	<entity route="routeBySn" name="CS.DestroyGroupRelationUUMemberSVC.destroyGroupRelationUU" path="com.ailk.csservice.group.destroygroupmember.DestroyGroupRelationUUMemberSVC@destroyGroupRelationUU"/>
+	<!-- GroupTradeRelationUU add and del by zhangyu11 -->
+	
+	<!-- ESOP接口，查询集团产品列表zhangyu11 -->
+	<entity route="routeToCg" name="CS.GroupProductInfoSVC.createSerialNumber" path="com.ailk.csservice.common.query.esop.GroupProductInfoSVC@createSerialNumber"/>
+	<entity route="routeToCg" name="CS.GroupProductInfoSVC.checkShortNum" path="com.ailk.csservice.common.query.esop.GroupProductInfoSVC@checkShortNum"/>
+	<entity route="routeToCg" name="CS.GroupProductInfoSVC.queryGroupProductListByIdOrNameOrNum" path="com.ailk.csservice.common.query.esop.GroupProductInfoSVC@queryGroupProductListByIdOrNameOrNum"/>
+	<entity route="routeToCg" name="CS.GroupProductInfoSVC.queryGroupProductById" path="com.ailk.csservice.common.query.esop.GroupProductInfoSVC@queryGroupProductById"/>
+	<entity route="routeToCg" name="CS.GroupProductInfoSVC.check" path="com.ailk.csservice.common.query.esop.GroupProductInfoSVC@check"/>
+	<entity route="routeBySn" name="CS.GroupProductInfoSVC.queryExchangeUserInfo" path="com.ailk.csservice.common.query.esop.GroupProductInfoSVC@queryExchangeUserInfo"/>
+	<entity route="routeBySn" name="CS.GroupProductInfoSVC.changeShotCode" path="com.ailk.csservice.common.query.esop.GroupProductInfoSVC@changeShotCode"/>
+	
+	<!-- ESOP接口，查询集团产品列表zhangyu11 -->
+	
+	<entity route="routeToCen" name="CS.SaleGoodsInfoQrySVC.querySaleGoodsByGoodsId" path="com.ailk.csservice.common.query.product.SaleGoodsInfoQrySVC@querySaleGoodsByGoodsId"/>
+
+	<entity route="routeBySn" name="CS.ChargeRemindDealSVC.chargeRemind" path="com.ailk.csservice.common.sms.ChargeRemindDealSVC@chargeRemind"/>
+	<entity route="routeBySn" name="CS.OwnerCancelEIntf.platSVCCancelE" path="com.ailk.csservice.common.sms.OwnerCancelEIntf@platSVCCancelE"/>
+	<!-- 号码回收终止携转资料 -->
+	<entity route="routeBySn" name="CS.UserNetNpMgrSVC.endUserNetNpInfo" path="com.ailk.csservice.common.netnp.UserNetNpMgrSVC@endUserNetNpInfo"/>
+	<entity route="routeByEparchy" name="CS.CommparaInfoQrySVC.getTacctInfo" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@getTacctInfo" />
+
+	<entity route="routeByEparchy" name="CS.UserInfoQrySVC.getUserStateByUserId" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@getUserStateByUserId" />
+
+	<entity route="routeBySn" name="CS.SmsSendSVC.insertSms" path="com.ailk.csservice.common.sms.SmsSendSVC@insertSms"/>
+	
+	<!--SaleservParamInfoQry-->
+	<entity route="routeToCen" name="CS.SaleservParamInfoQrySVC.querySaleservParamInfo" path="com.ailk.csservice.common.query.param.SaleservParamInfoQrySVC@querySaleservParamInfo"/>
+    <entity route="routeBySn" name="CS.PayRelaInfoQrySVC.getAdvPayRelationBySn" path="com.ailk.csservice.common.query.rela.PayRelaInfoQrySVC@getAdvPayRelationBySn"/>
+
+	<!--add by xuxf20140721-->
+	<entity route="routeBySn" name="CS.GrpMebInfoQrySVC.sendSms" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@sendSms"/>
+	<!--end by xuxf20140721-->
+
+
+	 <!--影号通过副号码查询主号码liuwei23-->
+	<entity route="routeBySn" name="CS.UserOtherInfoQrySVC.presentQry" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@presentQry"/>
+	<entity route="routeByDefalut" name="CS.CommparaInfoQrySVC.canExchangeQry" path="com.ailk.csservice.common.query.param.CommparaInfoQrySVC@canExchangeQry"/>
+	<!-- liuwei23 影号主号码-->
+	
+	<!--add by liuwei23-->
+	 <entity route="routeBySn" name="CS.TradeInfoQrySVC.getTradeInfoDESC" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getTradeInfoDESC"/>
+	<!--end by liuwei23-->
+	
+	<entity route="routeBySn" name="CS.UserOtherInfoQrySVC.getMainSnBUserOther" path="com.ailk.csservice.common.query.user.UserOtherInfoQrySVC@getMainSnBUserOther"/>
+	<!-- kangyt 合约计划受理-外围接口-->
+	<entity route="routeBySn" name="CS.ProductInfoQrySVC.queryContractInfoByIdUserID" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@queryContractInfoByIdUserID"/>
+	<entity route="routeBySn" name="CS.GrpMebInfoQrySVC.sendToSMS" path="com.ailk.csservice.common.query.cust.GrpMebInfoQrySVC@sendToSMS"/>
+	<entity route="routeToCen" name="CS.ProductInfoQrySVC.queryContractSaleList"  path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@queryContractSaleList"/> 
+	
+	<entity route="routeByEparchy" name="CS.ProductInfoQrySVC.qryContractSaleSuperInfoById" path="com.ailk.csservice.common.query.product.ProductInfoQrySVC@qryContractSaleSuperInfoById"/>
+	<entity route="routeByEparchy" name="CS.UserInfoQrySVC.queryUserInfoBySn" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@queryUserInfoBySn"/>
+
+	<entity route="routeToCg" name="CS.TradeGrpMerchInfoQrySVC.qryMerchInfoByGrpUid" path="com.ailk.csservice.common.query.trade.TradeGrpMerchInfoQrySVC@qryMerchInfoByGrpUid"/>
+	
+	<entity route="routeToCg" name="CS.GrpInfoQrySVC.queryGroupManagerInfoByCustId" path="com.ailk.csservice.common.query.cust.GrpInfoQrySVC@queryGroupManagerInfoByCustId"/>
+
+	<entity route="routeToCen" name="CS.StaffInfoQrySVC.getStaffInfo" path="com.ailk.csservice.common.query.sysorg.StaffInfoQrySVC@getStaffInfo"/>
+	
+	<entity route="routeToCen" name="CS.ParamInfoQrySVC.getHSSConfigData4ModiByUserType" path="com.ailk.csservice.common.query.param.ParamInfoQrySVC@getHSSConfigData4ModiByUserType"/>
+	
+	<entity route="routeByEparchy" name="CS.UserInfoQrySVC.validateDsekPhone" path="com.ailk.csservice.common.query.user.UserInfoQrySVC@validateDsekPhone"/>
+	
+	<entity route="routeToCg" name="CS.TradeInfoQrySVC.getTradeInfoBySn" path="com.ailk.csservice.common.query.trade.TradeInfoQrySVC@getTradeInfoBySn"/>
+	
+        
+           <!--zengqi 短信验证 begin -->
+	<entity route="routeBySn" name="CS.SmsCheckCodeSVC.sendSmsVerifyCode"  path="com.ailk.csservice.common.component.personserv.sms.checkcode.SmsCheckCodeSVC@sendSmsVerifyCode"/>
+	<entity route="routeBySn" name="CS.SmsCheckCodeSVC.checkSmsVerifyCode"  path="com.ailk.csservice.common.component.personserv.sms.checkcode.SmsCheckCodeSVC@checkSmsVerifyCode"/>
+        <entity route="routeToCen" name="CS.SmsCheckCodeSVC.checkShowSms"  path="com.ailk.csservice.common.component.personserv.sms.checkcode.SmsCheckCodeSVC@checkShowSms"/>
+	   <!--zengqi 短信验证 end-->
+  <entity route="routeByEparchy" name="CS.PrintNoteSVC.useTicketPost" path="com.ailk.csservice.common.component.print.PrintNoteSVC@useTicketPost"/>
+  <entity route="routeByEparchy" name="CS.PrintNoteSVC.useTicketPostMonth" path="com.ailk.csservice.common.component.print.PrintNoteSVC@useTicketPostMonth"/>
+  
+  <entity route="routeToCen" name="CS.BbossXmlMainInfoQrySVC.qryXmlMainInfoListByDealState" path="com.ailk.csservice.common.query.other.BbossXmlMainInfoQrySVC@qryXmlMainInfoListByDealState"/>
+  <entity route="routeToCen" name="CS.BbossXmlMainInfoQrySVC.qryXmlContentInfoBySeqId" path="com.ailk.csservice.common.query.other.BbossXmlMainInfoQrySVC@qryXmlContentInfoBySeqId"/>
+  <entity route="routeToCg" name="CS.bbossMgrOrderDelayBeanSVC.isNeedDelay" path="com.ailk.csservice.group.bbossBiz.bbossOrderRegist.bbossMgrOrderDelayBeanSVC@isNeedDelay"/>
+
+
+</service>

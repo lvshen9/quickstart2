@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--$Id: ManualQuery.html,v 1.7 2013/04/27 07:29:26 weixb3 Exp $-->
+<html xmlns="http://www.w3.org/1999/xhtml" class="">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/groupmanual/groupmanual.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+	</head>
+	<body jwcid="@Body">
+		<div class="m_wrapper">
+			<div class="m_wrapper2">
+
+				<!-- 区域 开始 -->
+				<div class="c_box">
+					<!-- 标题 开始 -->
+					<div class="c_title">
+						<div class="text">
+							BBOSS相关附件查询
+						</div>
+						<div class="fn">
+							<span class="e_elements"> <input jwcid="@Upload" ftpSite="groupserv" name="uploadtest" filePath="BBOSS" value="ognl:info.SCHE_ATTACH" />
+							</span>
+							<button type="button" class="l_ml" onclick="deleteFile();">
+								<i class="e_ico-delete"></i><span>删除</span>
+							</button>
+							<div jwcid="@Conditional" condition="ognl:condition.EOS != null">
+								<button type="button" class="l_ml" onclick="sendUploadEnd();">
+									<i class="e_ico-send"></i><span>上传结束</span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<!-- 标题 结束 -->
+
+					<!-- 提示区 -->
+					<div class="c_box" jwcid="ctrlInfoPart@Part" id="ctrlInfoPart" style="display: none;">
+						<div class="c_tip">
+							<span jwcid="@Insert" value="ognl:ctrlInfo.strHint" raw="false" />
+						</div>
+					</div>
+
+					<!-- 表单 开始 -->
+					<div class="c_form c_form-label-6 c_form-col-3" jwcid="QueryCondPart@Part">
+						<ul class="ul">
+							<li class="li">
+								<span class="label">导入起始时间：</span>
+								<span class="e_elements"> <span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField"
+												name="START_DATE" id="START_DATE" value="ognl:condition.cond_START_DATE" desc="导入起始时间" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">导入终止时间：</span>
+								<span class="e_elements"> <span class="e_input e_input-left"><span> <input type="text" jwcid="@DateField" name="END_DATE"
+												id="END_DATE" value="ognl:condition.cond_END_DATE" desc="导入终止时间" /> </span> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label"><span class="e_required">导入员工：</span> </span>
+								<span class="e_input"><span> <input jwcid="@TextField" id="CREATE_STAFF_ID" name="CREATE_STAFF_ID" type="text"
+											value="ognl:condition.cond_CREATE_STAFF_ID" desc="导入员工" nullable="no" /> </span> </span>
+							</li>
+							<li class="li">
+								<span class="label">文件名称：</span>
+								<span class="e_input"><span> <input jwcid="@TextField" id="FILE_NAME" name="FILE_NAME" type="text"
+											value="ognl:condition.cond_FILE_NAME" desc="文件名称" /> </span> </span>
+							</li>
+						</ul>
+						<div class="submitPlace"></div>
+						<div class="submit">
+							<button class="e_button-form" id="bsubmit" name="bsubmit" onclick="getSelectValue();">
+								<i class="e_ico-search"></i><span>查询</span>
+							</button>
+						</div>
+					</div>
+					<!-- 表单 结束 -->
+					<!-- 表格 开始 -->
+					<div jwcid="QueryListPart@Part" element="div">
+						<div class="c_table c_table-row-10">
+							<table jwcid="@Table" name="infoTable">
+								<thead>
+									<tr>
+										<th>
+											<input jwcid="@Checkbox" id="checkedAll" name="checkedAll" onclick="checkedAll('trades', checked)" />
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="FILE_ID" class="desc">
+											<span>文件编号</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="FILE_NAME" class="desc">
+											<span>文件名称</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'string', null, 'desc')" col="CREA_STAFF" class="desc">
+											<span>导入员工</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'int', null, 'desc')" col="FILE_SIZE" class="desc">
+											<span>文件大小</span>
+										</th>
+										<th onclick="javascript:$.sortTable(this,'date', null, 'desc')" col="CREA_TIME" class="desc">
+											<span>导入时间</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody jwcid="@Any" name="infoTableValues" id="infoTableValues">
+									<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" element="tr">
+										<td class="e_center">
+											<input jwcid="@Checkbox" id="trades" name="trades" value="ognl:info.FILE_ID" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.FILE_ID" raw="false" />
+										</td>
+										<td>
+											<a jwcid="@Any" href="ognl:'attach?action=download&fileId=' + info.FILE_ID+'&realName='+info.FILE_NAME" target="_blank"> <span
+												jwcid="@Insert" value="ognl:info.FILE_NAME" raw="false" />
+											</a>
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.CREA_STAFF" raw="false" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:info.FILE_SIZE" raw="true" />
+										</td>
+										<td>
+											<span jwcid="@Insert" value="ognl:formatDate('yyyy-MM-dd',info.CREA_TIME)" raw="false" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- ESOP数据 -->
+						<textarea jwcid="@TextArea" name="EOS" id="EOS" value="ognl:condition.EOS" style="display: none"></textarea>
+
+						<!-- 表格 结束 -->
+						<!-- 翻页（替换为页面组件） 开始 -->
+						<div jwcid="@NavBar" name="infonav" id="infonav" cond="QueryCondPart" part="QueryListPart" listener="queryFileInfo" pageSize="10"
+							count="ognl:infoCount"></div>
+						<!-- 翻页 结束 -->
+					</div>
+					<!-- 区域 结束 -->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

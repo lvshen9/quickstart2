@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/param/bboss/managebboss.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/product/productdata.js"></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupuser/onValueChange.js" ></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/group/param/bboss/commit.js" ></script>
+		<script jwcid="@Script" type="text/javascript" src="scripts/group/param/bboss/bboss.js" ></script>
+	</head>
+	<body jwcid="@Body">
+		<div class="c_form">
+			<ul class="ul">
+				<li class="li">
+					<span class="label">业务保障等级：</span>
+					<span class="e_select"><span><span> <input jwcid="@Select" name="BUS_NEED_DEGREE" textField="DATA_NAME" valueField="DATA_ID"
+									source="ognl:pageutil.getStaticList('BUS_NEED_DEGREE')" value="ognl:info.BUS_NEED_DEGREE" desc="业务保障等级" /> </span> </span> </span>
+				</li>
+			</ul>
+		</div>
+		<!-- 表单 开始 -->
+		<div jwcid="mytab@Tabset" switchAction="myTabSwitchAction(ptitle,title)">
+			<div jwcid="@TabsetContent" id="productinfotabset" title="产品信息">
+				<div class="l_col s_iframe-lower">
+					<div class="l_left" style="width: 49%;">
+						<div class="c_box">
+							<div class="c_title">
+								<div class="text">
+									待选区
+								</div>
+								<div class="fn">
+									<span class="e_elements" style="width: 250px;">
+										<button type="button" class="e_button-right">
+											<i class="e_ico-search"></i><span>搜索</span>
+										</button> <span class="e_input e_input-left"><span><input type="text" /> </span> </span> </span>
+								</div>
+							</div>
+							<div class="l_col l_col-close">
+								<div class="l_left" style="width: 50%;">
+									<div jwcid="packageList@saleserv:PackageList" element="div" productId="ognl:param.PRODUCT_ID" svcParam="ognl:cond"
+										callSvc="CS.PackageSVC.getPackagesByProduct"></div>
+								</div>
+								<div class="l_auto">
+									<div jwcid="pkgElementList@saleserv:PkgElementList" element="div" callSvc="CS.PackageSVC.getPackageElements" packageId=""></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="l_auto">
+						<div class="c_box">
+							<div class="c_title">
+								<div class="text">
+									已选区
+								</div>
+							</div>
+							<div jwcid="selectedElements@saleserv:SelectedElements" initCallSvc="CS.SelectedElementSVC.getGrpUserChgElementsPreTrade"
+								callAddElementSvc="CS.SelectedElementSVC.dealSelectedElements" element="div" initParam="ognl:cond"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div jwcid="@TabsetContent" id="orderinfotabset" title="订购信息">
+				<div class="c_scroll c_scroll-table-15">
+					<div class="c_table" jwcid="QueryListPart@Part">
+						<table jwcid="@Table" name="productParamTable" id="productParamTable">
+							<thead>
+								<tr>
+									<th id="col_X_TAG" style="display: none">
+										TAG
+									</th>
+									<th style="display: none" id="col_PARAM_CODE">
+										<span>属性ID</span>
+									</th>
+									<th col="PARAM_NAME" width="150" onclick="javascript:$.sortTable(this,'string', null, 'desc')" class="desc">
+										属性名称
+									</th>
+									<th col="PARAM_VALUE" width="150" onclick="javascript:$.sortTable(this,'string', null, 'desc')" class="desc">
+										属性值
+									</th>
+									<th col="INPUT" width="150">
+										输入
+									</th>
+									<th col="PARAM_ATTR" width="50">
+										备注
+									</th>
+									<th col="btn" onclick="javascript:$.sortTable(this,'string', null, 'desc')" class="desc">
+										新增||删除
+									</th>
+									<th style="display: none">
+										产品属性组区分标志
+									</th>
+									<!-- 非产品属性组默认为0，产品属性组则根据新增按钮点击的次数来决定 -->
+								</tr>
+							</thead>
+							<tbody>
+								<tr jwcid="@Foreach" source="ognl:pOProductPlus" value="ognl:info" element="tr"
+									style="ognl: info.VISIABLE==1?'display:none':''">
+									<td style="display: none">
+										0
+									</td>
+									<td style="display: none">
+										<span jwcid="@Any" type="text" name="PRODUCT_PARAM_CODE" id="PRODUCT_PARAM_CODE" value="ognl:info.ATTR_CODE" />
+									</td>
+									<td class="wrap">
+										<span jwcid="@Insert" class="ognl:(info.MANDATORY==0)?'e_required':''" id="ognl:'PARAM_NAME_'+info.ATTR_CODE" value="ognl:info.ATTR_NAME" />
+									</td>
+									<td class="wrap">
+										<span jwcid="@Insert" id="ognl:'PARAM_VALUE_'+info.ATTR_CODE" value="ognl:info.ATTR_VALUE" />
+									</td>
+									<!--xunyl 新建一个隐藏于用于放置属性的既有值 -->
+									<input type="hidden" jwcid="@Any" name="ognl:'OLDVALUE_'+info.ATTR_CODE" id="ognl:'OLDVALUE_'+info.ATTR_CODE" value="ognl:info.ATTR_VALUE"
+										title="属性原始值" />
+									<td class="edit" id="ognl:'div_'+info.ATTR_CODE" name="ognl:'div_'+info.ATTR_CODE" jwcid="@Any">
+
+										<div jwcid="@Conditional" condition="ognl:info.VALUE_LIST != null">
+											<!-- 说明是下拉列表 -->
+											<span class="e_select"><span><span><select name="ognl:'input_'+info.ATTR_CODE" id="ognl:'input_'+info.ATTR_CODE"
+															disabled="ognl:(info.READONLY==1)?true:false" jwcid="@Select" source="ognl:info.VALUE_LIST" valueField="OPTION_VALUE"
+															textField="OPTION_NAME" value="ognl:info.ATTR_VALUE" paraCode="ognl:info.ATTR_CODE" initMethodName="ognl:info.ONCHANGE_JS"
+															commitMethodName="ognl:info.ONSUBMIT_JS" onchange="onValueChangeUnit(this);changeValue(this);" desc="ognl:info.ATTR_NAME"
+															nullable="ognl:info.MANDATORY==0?'no':''" addDefault="ognl:(info.READONLY==1)?false:true" /> </span><span> </span>
+										</div>
+
+										<div jwcid="@Conditional" condition="ognl:info.VALUE_LIST == null">
+											<!--非下拉列表 -->
+											<div jwcid="@Conditional" condition="ognl:info.EDIT_TYPE == 'DATE'">
+												<span class="e_input"><span><input name="ognl:'input_'+info.ATTR_CODE" id="ognl:'input_'+info.ATTR_CODE" jwcid="@DateField"
+															commitMethodName="ognl:info.ONSUBMIT_JS" value="ognl:info.ATTR_VALUE" format="ognl:info.FORMAT" initMethodName="ognl:info.ONCHANGE_JS"
+															nullable="ognl:info.MANDATORY==0?'no':''" afterAction="changeValue(this);" desc="ognl:info.ATTR_NAME" /> </span> </span>
+											</div>
+											<div jwcid="@Conditional" condition="ognl:info.EDIT_TYPE == 'TEXT'">
+												<span class="e_input"><span><input jwcid="@TextField" id="ognl:'input_'+info.ATTR_CODE" name="ognl:'input_'+info.ATTR_CODE"
+															disabled="ognl:(info.READONLY==1)?true:false" paraCode="ognl:info.ATTR_CODE" initMethodName="ognl:info.ONCHANGE_JS"
+															commitMethodName="ognl:info.ONSUBMIT_JS" value="ognl:info.ATTR_VALUE" maxsize="512"
+															desc="ognl:info.ATTR_NAME" format="ognl:info.FORMAT" datatype="ognl:info.TYPE" nullable="ognl:info.MANDATORY==0?'no':''"
+															onfocusout="onValueChangeUnit(this);changeValue(this);" />
+												</span> </span>
+											</div>
+											<div jwcid="@Conditional" condition="ognl:info.EDIT_TYPE == 'UPLOAD'">
+												<span class="e_elements"><input jwcid="@SimpleUpload" ftpSite="groupserv" id="ognl:'input_'+info.ATTR_CODE"
+														desc="ognl:info.ATTR_NAME" name="ognl:'input_'+info.ATTR_CODE" afterAction="changeValueForUpload" filePath="BBOSS" needSuffix="true" value="ognl:info.ATTR_VALUE"
+														nullable="ognl:info.MANDATORY==0?'no':''" /> </span>
+											</div>
+										</div>
+
+									</td>
+									<td class="wrap">
+										<div jwcid="@Conditional" condition="ognl:info.REMARK != null">
+											<i jwcid="@Any" id="ognl:'PARAM_DESC_'+info.ATTR_CODE" title="ognl:info.REMARK" class="e_ico-help"></i>
+										</div>
+										<div jwcid="@Conditional" condition="ognl:info.REMARK == null">
+											<input type="hidden" jwcid="@Any" id="ognl:'PARAM_DESC_'+info.ATTR_CODE" />
+										</div>
+									</td>
+									<!--产品变更的情况-->
+									<td>
+										<div jwcid="@Conditional" condition="ognl:info.READONLY==0">
+											<div jwcid="@Conditional" condition="ognl:info.GROUPATTRFLAG==1">
+												<!--属性组主属性-->
+												<div jwcid="@Conditional" condition="ognl:info.ATTR_GROUP==1">
+													<!--原生主属性-->
+													<button jwcid="@Any" id="ognl:'BUTTON_'+info.ATTR_CODE" maxGroup="ognl:info.MAX_GROUP_NUM" desc="ognl:info.GROUPATTR"
+														paramCode="ognl:info.ATTR_CODE" name="ognl:'BUTTON_'+info.ATTR_CODE" value="添加" onclick="addGroupParams(this)" type="button"
+														class="e_button-right">
+														<i class="e_ico-add"></i><span>新增</span>
+													</button>
+												</div>
+	
+												<div jwcid="@Conditional" condition="ognl:info.ATTR_GROUP!=1">
+													<!--新生主属性-->
+													<button jwcid="@Any" id="ognl:'BUTTON_DEL_'+info.ATTR_CODE+'_'+info.ATTR_GROUP" value="删除" onclick="deleteGroupParams(this)"
+														type="button" class="e_button-right">
+														<i class="e_ico-delete"></i><span>删除</span>
+													</button>
+												</div>
+											</div>
+											<div jwcid="@Conditional" condition="ognl:info.GROUPATTRFLAG!=1">
+												<!-- 非主属性-->
+												<div jwcid="@Conditional" condition="ognl:info.GROUPATTRFLAG==0 && info.ATTR_GROUP!=1">
+													<!-- 属性组非主属性 -->
+													<button jwcid="@Any" style="display: none" id="ognl:'BUTTON_DEL_'+info.ATTR_CODE+'_'+info.ATTR_GROUP" value="删除"
+														onclick="deleteGroupParams(this)" type="button" class="e_button-right">
+														<i class="e_ico-delete"></i><span>删除</span>
+													</button>
+												</div>
+											</div>
+										</div>
+									</td>
+
+									<td style="display: none">
+										<input jwcid="@TextField" name="ognl:'GROUPATTR_FLAG_'+info.ATTR_CODE" id="ognl:'GROUPATTR_FLAG_'+info.ATTR_CODE"
+											value='ognl:(info.GROUPATTRFLAG==2)?"":info.ATTR_GROUP' desc="属性组间的区分标志" />
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<iframe id="frameProductOrder" name="frameProductOrder" jwcid="@TabsetFrame" height="640" title="参数信息"
+				page="csserv.group.creategroupuser.EntireCustomerUserParamInfo" listener="initCrtUs" frameborder=no
+				params="ognl:'PRODUCT_ID='+param.PRODUCT_ID+'&MPRODUCT_ID='+param.MPRODUCT_ID+'&isBbossManageCreate=1'" />
+			
+		</div>
+		<div jwcid="elementAttr@saleserv:ElementAttr" element="div"></div>
+		<!-- <input type="hidden" jwcid="@Any" name="SELECTED_ELEMENTS" id="SELECTED_ELEMENTS" value='ognl:SELECTED_ELEMENTS' title="产品元素" /> -->
+		<input jwcid="@Hidden" name="MANAGE_INFO_HIDDEN" id="MANAGE_INFO_HIDDEN" value='' />
+		<input jwcid="@Hidden" name='pramaPage' id='pramaPage' value="ognl:productCtrlInfo2.ParamInfo.ATTR_VALUE" />
+		<input jwcid="@Hidden" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:param.PRODUCT_ID" />
+		<input jwcid="@Hidden" name="MPRODUCT_ID" id="MPRODUCT_ID" value="ognl:param.MPRODUCT_ID" />
+		<input jwcid="@Hidden" name="BBOSS_USER_ID" id="BBOSS_USER_ID" value='ognl:bbossUserId' />
+		<input jwcid="@Hidden" name="TRADE_ID" id="TRADE_ID" value='ognl:tradeId' />
+		<input jwcid="@Hidden" name="PO_NUMBER" id="PO_NUMBER" value="ognl:info.POSPECNUMBER" nullable="no" />
+		<input style="display: none" jwcid="@TextArea" desc="老的产品参数" name="OLD_PRODUCT_PARAMS" id="OLD_PRODUCT_PARAMS" value="ognl:pOProductPlus" />
+		<input jwcid="@Hidden" name="PRODUCT_OFFER_ID" id="PRODUCT_OFFER_ID" value='ognl:condition.PRODUCT_OFFER_ID' />
+		<input jwcid="@Hidden" name="PRODUCT_ORDER_ID" id="PRODUCT_ORDER_ID" value='ognl:condition.PRODUCT_ORDER_ID' />
+		<input jwcid="@Hidden" name="MERCH_SPEC_CODE" id="MERCH_SPEC_CODE" value='ognl:condition.MERCH_SPEC_CODE' />
+		<input jwcid="@Hidden" name="MERCH_TRADE_ID" id="MERCH_TRADE_ID" value='ognl:merchTradeId' />
+		<input jwcid="@Hidden" name="PRODUCT_SPEC_CODE" id="PRODUCT_SPEC_CODE" value='ognl:condition.PRODUCT_SPEC_CODE' />
+		<input jwcid="@Hidden" name="GROUP_ID" id="GROUP_ID" value='ognl:condition.GROUP_ID' />
+
+		<div class="c_submit">
+			<button class="e_button-page-ok" onclick="if(productParamCommit()){setProductParamsTradeAll()}">
+				<i></i><span>确定</span>
+			</button>
+			<button class="e_button-page-cancel" onclick="setPopupReturnValue('', '')">
+				<i></i><span>取消</span>
+			</button>
+		</div>
+	</body>
+	<script>
+	function myTabSwitchAction(ptitle,title){
+		//返回false,则不会做切换动作
+		return true;
+	}
+	</script>
+</html>

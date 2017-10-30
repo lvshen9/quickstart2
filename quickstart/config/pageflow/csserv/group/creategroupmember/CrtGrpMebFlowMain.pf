@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="CreateGroupMember" desc="集团成员新增">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="editBaseDatum"
+		/>
+	<step
+		name="editBaseDatum"
+		desc="基本资料"
+		page="csserv.group.creategroupmember.BaseInfo"
+		listener="initial"
+		nextstep="switchProduct"
+		nextbutton="bnext"
+		monitor="CUST_ID,PRODUCT_ID,GRP_USER_ID,GRP_SN,MEB_USER_ID,MEB_SERIAL_NUMBER"
+		transdata="CUST_ID,PRODUCT_ID,GRP_USER_ID,GRP_SN,MEB_USER_ID,MEB_SERIAL_NUMBER,BUSI_TYPE,MEB_EPARCHY_CODE,GROUP_ID,param_IF_CENTRETYPE,MEB_CUST_ID,USER_ACCTDAY_ACCT_DAY,USER_ACCTDAY_FIRST_DATE,USER_ACCTDAY_NEXT_ACCT_DAY,USER_ACCTDAY_NEXT_FIRST_DATE,bookingDate"
+		submitdata="CUST_ID,PRODUCT_ID,GRP_USER_ID,MEB_USER_ID,MEB_SERIAL_NUMBER,bookingDate,MEB_EPARCHY_CODE"
+		/>
+	<switch name="switchProduct" expression="COMPIX_PRODUCT" default="0" desc="选择修改其他资料">
+		<case value="0" nextstep="chooseProductElement" desc="否"/>
+		<case value="D" nextstep="processCompixProduct" desc="是"/>
+		<case value="B" nextstep="processBBossProduct" desc="是"/>
+	</switch>
+	<step
+		name="processCompixProduct"
+		desc="组合产品订购"
+		page="csserv.group.creategroupmember.Power100"
+	    listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		nextbutton="bsubmit"
+		/>
+	<step
+		name="processBBossProduct"
+		desc="BBoss产品订购"
+		page="csserv.group.creategroupmember.BBoss"
+	    listener="initial"
+		nextstep="switchAccount"
+		nextbutton="bnext"
+		monitor="ALL"
+		transdata="CUST_ID,PRODUCT_ID,GRP_USER_ID,GRP_SN,MEB_USER_ID,MEB_SERIAL_NUMBER,MEB_EPARCHY_CODE"
+		submitdata="productGoodInfos"
+		/>
+	<step
+		name="chooseProductElement"
+		desc="产品订购"
+		page="csserv.group.creategroupmember.ProductInfo"
+	    listener="initial"
+		nextstep="switchAccount"
+		nextbutton="bnext"
+		monitor="productParamPart,ROLE_CODE_B,SELECTED_ELEMENTS"
+		transdata="PRODUCT_ID,GRP_USER_ID,MEB_USER_ID,TRADE_TYPE_CODE,MEB_EPARCHY_CODE,MEB_SERIAL_NUMBER,CUST_ID"
+		submitdata="DYNATABLE_RES_RECORD,SELECTED_ELEMENTS,ROLE_CODE_B,productParamPart,IF_CENTRETYPE,EFFECT_NOW"
+		/>
+	<switch name="switchAccount" expression="COMPIX_ACCOUNT" default="0" desc="成员付费关系选择">
+		<case value="0" nextstep="createUserPreview" desc="否"/>
+		<case value="1" nextstep="editGroupAccountInfo" desc="是"/>
+	</switch>
+	<step
+		name="editGroupAccountInfo"
+		desc="付费关系"
+		page="csserv.group.creategroupmember.AccountInfo"
+		listener="initial"
+		nextstep="createUserPreview"
+		nextbutton="bnext"
+		monitor="PayItemPart,pay_PLAN_TYPE_CODE,pay_PLAN_MODE_CODE,itemCodes"
+		transdata="CUST_ID,MEB_USER_ID,MEB_EPARCHY_CODE,TRADE_TYPE_CODE,PRODUCT_ID"
+		submitdata="PayItemPart,pay_PLAN_TYPE_CODE,pay_PLAN_MODE_CODE,itemCodes"
+		/>
+	<step
+		name="createUserPreview"
+		desc="成员新增确认"
+		page="csserv.group.creategroupmember.PreView"
+		listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		submitdata="parm_REMARK,DEVELOP_STAFF_ID"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

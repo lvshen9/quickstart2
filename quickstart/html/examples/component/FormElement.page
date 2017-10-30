@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ailk.quickstart.view.examples.component.FormElement">
+	<property-specification name="condition" type="net.sf.json.JSONObject"/>
+	
+	<property-specification name="cust" type="net.sf.json.JSONObject"/>
+	<property-specification name="custs" type="net.sf.json.JSONArray"/>
+	<property-specification name="rowIndex" type="int"/>
+	<property-specification name="custsCount" type="long" initial-value="0"/>
+	
+	<property-specification name="edit" type="net.sf.json.JSONObject"/>
+</page-specification>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<messagequeue>
+    <productmode>false</productmode>
+    <address>10.154.59.151</address>
+    <port>5672</port>
+</messagequeue>

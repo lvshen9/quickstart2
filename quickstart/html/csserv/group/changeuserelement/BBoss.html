@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link jwcid="@Style"  href="base.css" rel="stylesheet" type="text/css" />
+<script  jwcid="@Script" type="text/javascript" src="scripts/saleserv.js"></script>
+<script  jwcid="@Script" type="text/javascript" src="scripts/group/param/bboss/bboss.js" ></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<form jwcid="@Form">
+
+
+
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 表单 开始 -->
+	<div class="c_form c_form-col-2 c_form-label-7">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">组合包：</span></span>
+				<span class="e_input e_dis"><span><input jwcid="@TextField" name="CUST_NAME" type="text" value="ognl:@com.ailk.biz.util.StaticUtil@getStaticValue(getVisit(), 'TD_B_PRODUCT', 'PRODUCT_ID', 'PRODUCT_NAME', productGoodInfos.GOOD_INFO.BASE_PRODUCT)" title="组合包"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label">商品当前状态：</span>
+				<span class="e_input e_dis"><span><input jwcid="@TextField" name="postatus" type="text" value="ognl:goodsStatus" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">商品操作类型：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="operType" source="ognl:operTypes" valueField="OPER_TYPE" textField="OPER_NAME" value="ognl:info.PRODUCTOPERTYPE" title ="商品操作类型" class="e_select" onchange="resetBbossInfo($(this))"/>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">套餐生效方式：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" id = "PAY_MODE" name="PAY_MODE" source="ognl:@com.ailk.biz.util.StaticUtil@getList(getVisit(), 'TD_B_ATTR_BIZ','ATTR_VALUE','ATTR_NAME',new java.lang.String[]{'ID','ID_TYPE','ATTR_OBJ'},new java.lang.String[]{productGoodInfos.GOOD_INFO.BASE_PRODUCT,'B','CHGPYMDS'})"
+					 valueField="ATTR_VALUE" textField="ATTR_NAME" value="ognl:condition.PAY_MODE" title="套餐生效方式" />
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label">业务保障等级：</span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="BUS_NEED_DEGREE" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('BUS_NEED_DEGREE')"
+							value="ognl:condition.BUS_NEED_DEGREE" valueField="DATA_ID" textField="DATA_NAME" title="业务保障等级" />
+				</span></span></span>
+			</li>
+		</ul>
+	</div>
+	<!-- 表单 结束 -->
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">选择产品</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div class="c_table c_table-row-10" jwcid="powerDiv@Part">
+		<table>
+			<thead>
+				<tr>
+					<th id="col_X_TAG" style="display:none">TAG</th>
+					<th id="col_IS_SELECTED">选择</th>
+					<th id="col_USER_ID">用户ID</th>
+					<th id="col_PRODUCT_ID_B">产品编码</th>
+					<th id="col_PRODUCT_NAME">产品名称</th>
+					<th id="col_PRODUCT_OPER_SET" style="display:none">产品操作类型设置</th>
+					<th id="col_PRODUCT_STATE">产品状态</th>
+					<th id="col_X_OP">操作</th>
+					<th id="col_PAUSE_CONTINUE" style="display:none">启停操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:products" value="ognl:info" element="tr" index="ognl:rowIndex" elementIndex="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'" >
+					<td style="display:none">0</td>
+					<td class="e_center"><input type="checkbox" name="ctag" id="ognl:'ctag'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX" jwcid="@Checkbox" value="ognl:info.PRODUCT_ID_B" checked="ognl:info.IS_EXIST=='true'?'true':''"
+					disabled="ognl:info.IS_EXIST=='true'?'true':''" onclick="crtProductSelect($(this))" oldValue="ognl:info.IS_EXIST=='true'?'true':'false'" isMustSelect="ognl:info.IS_MUST_SELECT"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.USER_ID"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.PRODUCT_ID_B"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.PRODUCT_NAME"/></td>
+					<input type="hidden" jwcid="@Any" desc="判断产品是否已经受理" value="ognl:info.IS_EXIST=='true'?'true':'false'" name="isExist" id="isExist"/>
+					<input type="hidden" jwcid="@Any" desc="选择的产品元素" value="" name="ognl:'selectedElements_'+info.PRODUCT_ID_B" id="ognl:'selectedElements_'+info.PRODUCT_ID_B"/>
+					<input type="hidden" jwcid="@Any" desc="选择的产品参数" value="" name="ognl:'productParam_'+info.PRODUCT_ID_B" id="ognl:'productParam_'+info.PRODUCT_ID_B"/>
+					<td style="display:none"><span jwcid="@Insert" name="PRO_OPER_TYPE" id="ognl:'productOperType_'+info.PRODUCT_ID_B" value="" title="产品操作类型" /></td>
+					<td><span><input jwcid="@TextField" disabled="true" name="productstatus" id="ognl:'productstatus_'+info.PRODUCT_ID_B" type="text" value="ognl:info.PRODUCT_STATUS"/></span></td>
+					<div jwcid="@Conditional" condition="ognl:info.IS_EXIST!='true'">
+						<td class="e_center"><a jwcid="@Redirect" parameters=""  disabled="false" checkId="ognl:'ctag'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX" productId="ognl:info.PRODUCT_ID_B" 
+										    productName="ognl:info.PRODUCT_NAME" method="CrtUs" value="订购产品" onclick="popProductParamPage($(this))" 
+										    productindex="ognl:info.PRODUCT_INDEX" 
+										    afterAction="Wade.page.endFlowOverlay()"/>
+						</td>
+					</div>
+					<div jwcid="@Conditional" condition="ognl:info.IS_EXIST=='true'">
+						<td class="e_center"><a jwcid="@Redirect" parameters=""  disabled="false" force_tag="ognl:info.FORCE_TAG" userId="ognl:info.USER_ID" productstatus="ognl:info.PRODUCT_STATUS"  
+										checkId="ognl:'ctag'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX" 
+										productId="ognl:info.PRODUCT_ID_B" productName="ognl:info.PRODUCT_NAME"  productIdA="ognl:info.PRODUCT_ID_A" 
+										method="ChgUs" value="修改产品" onclick="popProductParamPage($(this))"  productindex="ognl:info.PRODUCT_INDEX" 
+										afterAction="Wade.page.endFlowOverlay()"/>
+						</td>
+					</div>
+					<td style="display:none;" class="e_center">
+						<a jwcid="@Redirect" parameters="" id="ognl:'pause'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX" onclick="setProductStatus($(this))" value =""/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 表格 结束 -->
+    <input type="hidden" jwcid="@Any" name="GROUP_ID" id="GROUP_ID" value="ognl:groupId"/>
+    <input type="hidden" jwcid="@Any" name="selectedCheckBox" id="selectedCheckBox" value=""/>        
+    <input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:productGoodInfos.GOOD_INFO.BASE_PRODUCT"/>
+    <input type="hidden" jwcid="@Any" name="GRP_SN" id="GRP_SN" value="ognl:getData().getString('GRP_SN')"/>
+    <input type="hidden" jwcid="@Any" name="GRP_USER_ID" id="GRP_USER_ID" value="ognl:getData().getString('GRP_USER_ID')"/>
+    <input type="hidden" jwcid="@Any" name="GRP_USER_EPARCHYCODE" id="GRP_USER_EPARCHYCODE" value="ognl:getData().getString('GRP_USER_EPARCHYCODE')"/>
+    <div jwcid="productGoodPart@Part">        
+    	<input style="display:none" jwcid="@TextArea" name="productGoodInfos" id="productGoodInfos" value="ognl:productGoodInfos" desc="商产品信息"/><!--存放商产品信息，改造前是放在TD中的-->
+    </div>
+    <textarea jwcid="@TextArea" name="ESOP_PRODUCT_INFO" id="ESOP_PRODUCT_INFO" value="ognl:esopProductInfo" style="display:none"></textarea>
+    <textarea jwcid="@TextArea" name="EOS" id="EOS" value="ognl:EOS" style="display:none"></textarea>
+    <input type="button" id="bnext" value="下一步" class="e_button" style="display:none" onclick="return validateParamForNext('ChgUs')"/>
+</div>
+<!-- 区域 结束 -->
+</form>
+</div></div></body>
+<!-- 初始化ESOP数据 -->
+<script type="text/javascript">
+	$(document).ready(
+		function(){
+			setProductOper($('#operType').val());
+			setEsopInit();
+		}
+	);
+</script>
+</html>

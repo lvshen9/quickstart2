@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupuser/Power100.js"></script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+
+
+
+
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 参数列表 开始 -->
+	<div class="c_form c_form-text">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">组合包：</span>
+				<span class="text"><span name="POWER100_PACKAGE_ID" id ="POWER100_PACKAGE_ID" jwcid="@Insert" value="ognl:info.PRODUCT_NAME"/></span><!-- 这里用 insert 组件显示纯文本，别用 input 框 -->
+			</li>
+		</ul>
+	</div>
+	<!-- 参数列表 结束 -->
+</div>
+<!-- 区域 结束 -->
+
+
+<div id="powerDiv">
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">必选产品</div>
+		<div class="fn">
+			<button type="button" onclick="return refeshproductPart();"><i class="e_ico-refresh"></i><span>刷新</span></button>
+		</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div jwcid="productPart@Part" id="productPart" element="div">
+	<div class="c_table c_table-row-5">
+		<table  id="power100Table" name="power100Table" jwcid="@Table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="e_checkbox" onclick="javascript:checkBoxChange('productPart', this.checked);"  /></th>
+					<th col="PRODUCT_ID_B">产品编码</th>
+					<th col="PRODUCT_NAME">产品名称</th>
+					<th col="SERIAL_NUMBER">服务号码</th>
+					<th col="USER_ID">用户标识</th>
+					<th col="OPEN_DATE">开户时间</th>
+					<th col="CRTUS">产品订购</th>
+					<th col="CHGUS">产品变更</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:products" value="ognl:temp" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+					<td class="e_center"><input type="checkbox" name="itemcodes" id="itemcodes" jwcid="@Checkbox" class="e_checkbox" value="ognl:temp.PRODUCT_ID_B+','+temp.PRODUCT_NAME+','+temp.USER_ID" disabled="ognl:(temp.IS_EXIST !='true' )?'true':''"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_ID_B"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_NAME"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.SERIAL_NUMBER"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.USER_ID"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.OPEN_DATE"/></td>
+					<td><a jwcid="@Redirect" parameters="ognl:'&PRODUCT_ID=' + temp.PRODUCT_ID_B + '&GROUP_ID=' + info.GROUP_ID" disabled="ognl:temp.IS_EXIST=='true'?'true':''" checkId="ognl:'ctag'+temp.PRODUCT_ID_B" productId="ognl:temp.PRODUCT_ID_B" value="产品订购" cols="20" onclick="openNav('产品订购','csserv.group.creategroupuser.GrpUseOpenFlowMainPower100','',$(this).attr('parameters')+'&CUST_ID='+$('#CUST_ID').val()+'&BUSI_TYPE='+$('#BUSI_TYPE').val()+'&GRP_USER_EPARCHYCODE='+$('#GRP_USER_EPARCHYCODE').val())"/></td>
+					<td><a jwcid="@Redirect" parameters="ognl:'&PRODUCT_ID=' + temp.PRODUCT_ID_B + '&GROUP_ID=' + info.GROUP_ID+'&GRP_USER_ID=' + temp.USER_ID +'&GRP_USER_EPARCHYCODE='+temp.EPARCHY_CODE"  disabled="ognl:temp.IS_EXIST=='true'?'':'true'" checkId="ognl:'ctag'+temp.PRODUCT_ID_B" userId="ognl:temp.USER_ID" productId="ognl:temp.PRODUCT_ID_B" value="产品变更" cols="20" onclick="openNav('产品变更','csserv.group.changeuserelement.GrpUseChgFlowMainPower100','',$(this).attr('parameters')+'&CUST_ID='+$('#CUST_ID').val()+'&BUSI_TYPE=ChgUs')"/></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<!-- 表格 结束 -->
+</div>
+<!-- 区域 结束 -->
+
+
+
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">可选产品</div>
+		<div class="fn">
+			<button type="button" onclick="return refeshcanSelectProductPart();"><i class="e_ico-refresh"></i><span>刷新</span></button>
+		</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div jwcid="canSelectProductPart@Part" id="canSelectProductPart" element="div">
+	<div class="c_table c_table-row-5">
+		<table>
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="e_checkbox" onclick="javascript:checkBoxChange('canSelectProductPart', this.checked);"  /></th>
+					<th>产品编码</th>
+					<th>产品名称</th>
+					<th>服务号码</th>
+					<th>用户标识</th>
+					<th>开户时间</th>
+					<th>产品订购</th>
+					<th>产品变更</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:canSelectProducts" value="ognl:temp" element="tr" index="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'" >
+					<td class="e_center"><input type="checkbox" name="itemcodes" id="itemcodes" jwcid="@Checkbox" class="e_checkbox" value="ognl:temp.PRODUCT_ID_B+','+temp.PRODUCT_NAME+','+temp.USER_ID" disabled="ognl:(temp.IS_EXIST !='true' )?'true':''" checked="ognl:temp.IS_CHECK=='true'?'true':''"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_ID_B"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.PRODUCT_NAME"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.SERIAL_NUMBER"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.USER_ID"/></td>
+					<td><span jwcid="@Insert" value="ognl:temp.OPEN_DATE"/></td>
+					<td ><a jwcid="@Redirect" parameters="ognl:'&PRODUCT_ID=' + temp.PRODUCT_ID_B + '&GROUP_ID=' + info.GROUP_ID" disabled="ognl:temp.IS_EXIST=='true'?'true':''" checkId="ognl:'ctag'+temp.PRODUCT_ID_B" productId="ognl:temp.PRODUCT_ID_B" value="产品订购" cols="20" onclick="openNav('产品订购','csserv.group.creategroupuser.GrpUseOpenFlowMainPower100','',$(this).attr('parameters')+'&CUST_ID='+$('#CUST_ID').val()+'&BUSI_TYPE='+$('#BUSI_TYPE').val()+'&GRP_USER_EPARCHYCODE='+$('#GRP_USER_EPARCHYCODE').val())"/></td>
+					<td ><a jwcid="@Redirect" parameters="ognl:'&PRODUCT_ID=' + temp.PRODUCT_ID_B + '&GROUP_ID=' + info.GROUP_ID+'&GRP_USER_ID=' + temp.USER_ID +'&GRP_USER_EPARCHYCODE='+temp.EPARCHY_CODE"  disabled="ognl:temp.IS_EXIST=='true'?'':'true'" checkId="ognl:'ctag'+temp.PRODUCT_ID_B" userId="ognl:temp.USER_ID" productId="ognl:temp.PRODUCT_ID_B" value="产品变更" cols="20" onclick="openNav('产品变更','csserv.group.changeuserelement.GrpUseChgFlowMainPower100','',$(this).attr('parameters')+'&CUST_ID='+$('#CUST_ID').val()+'&BUSI_TYPE=ChgUs')"/></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<!-- 表格 结束 -->
+	
+</div>
+<!-- 区域 结束 -->
+</div>
+
+		<input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:info.PRODUCT_ID"/>
+        <input type="hidden" jwcid="@Any" name="CUST_ID" id="CUST_ID" value="ognl:info.CUST_ID"/>
+        <input  type="hidden" jwcid="@Any" name="BUSI_TYPE" id="BUSI_TYPE" value="ognl:info.BUSI_TYPE"/>
+        <input type="hidden" jwcid="@Any" name="GROUP_ID" id="GROUP_ID" value="ognl:info.GROUP_ID"/>
+        <textarea jwcid="@TextArea"  name="grpProductTreeSelected" id="grpProductTreeSelected" value="ognl:grpProductTreeSelected" style="display:none;"/>
+      	<textarea  jwcid="@TextArea" name="grpCompixProduct" id="grpCompixProduct" value="ognl:grpCompixProduct" style="display:none;"/>
+        <textarea  jwcid="@TextArea"  name="selectedCheckBox" id="selectedCheckBox" value="" style="display:none;"/>
+        <input  jwcid="@Any" name="BRAND_CODE" id="BRAND_CODE" value="ognl:brandCode"  style="display:none;"/>
+        <input jwcid="@Any" id="GRP_USER_EPARCHYCODE" name="GRP_USER_EPARCHYCODE" value="ognl:info.GRP_USER_EPARCHYCODE" style="display:none;" encode="false" />
+        <input type="button" id="bnext" value="下一步" class="e_button" onclick="if (!getDatasetByCheckBoxValue()){ return false;}" style="display:none;"/>
+
+
+</div></div></body>
+</html>

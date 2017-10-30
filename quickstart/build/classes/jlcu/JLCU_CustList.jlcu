@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-flow>
+  <description>jlcu描述</description>
+  <buf>
+    <var name="inData" type="com.ailk.common.data.IData" iotype="in"/>
+    <var name="outData" type="com.ailk.common.data.IDataset" iotype="out"/>
+  </buf>
+  <nodes>
+    <node id="node1" type="start" desc="开始节点" xPos="212" yPos="69"/>
+    <node id="node2" type="action" desc="节点" xPos="212" yPos="169">
+      <methods>
+        <method type="java" desc="desc" className="com.ailk.quickstart.service.cust.CustService" methodName="queryCusts">
+          <ivars>
+            <varmap name="name" mapname="inData" isclone="false"/>
+          </ivars>
+          <ovars>
+            <varmap name="name" mapname="outData"/>
+          </ovars>
+        </method>
+      </methods>
+    </node>
+    <node id="node3" type="end" desc="结束节点" xPos="212" yPos="269"/>
+  </nodes>
+  <links>
+    <link id="link1" desc="link1Desc" from="node1" to="node2"/>
+    <link id="link2" desc="link2Desc" from="node2" to="node3"/>
+  </links>
+</process-flow>

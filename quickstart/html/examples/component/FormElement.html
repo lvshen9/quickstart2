@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<script src="scripts/examples/component/formelement.js?v=1" type="text/javascript"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<!--
+<span jwcid="@Insert" value="ognl:@com.ailk.biz.util.StaticUtil@getList(visit,'TD_S_SUPERBANK','SUPER_BANK_CODE','SUPER_BANK')" />
+-->
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">客户查询</div>
+	</div>
+	
+	<div class="c_form c_form-col-3 c_form-label-4" id="QueryCond" uiid="cond">
+		<ul class="ul">
+				<li class="li">
+				<span class="label">客户姓名：</span>
+				<span class="e_input"><span><input type="text" jwcid="@TextField" name="custName" value="ognl:condition.custName"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label">选取时间：</span>
+				<span class="e_input"><span><input type="text" jwcid="@DateField" name="toDate" value="ognl:condition.custName"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label">选取部门：</span>
+				<input name="DEPT_CODE" jwcid="@biz:DeptField" />	
+			</li>
+			<li class="li">
+				<span class="label">选取区域：</span>
+				<input name="AREA_CODE" jwcid="@biz:AreaField" />	
+			</li>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit"><button onclick="return queryCusts();" type="button" class="e_button-form"><i class="e_ico-search"></i><span>查询</span></button></div>
+	</div>
+	
+	<div jwcid="QueryPart@Part" element="div" >
+		<div class="c_scroll c_scroll-table-10"><div class="c_table" id="cust" uiid="cust">
+			<table>
+				<thead>
+					<tr>
+						<th>选择客户</th>
+						<th>年龄</th>
+						<th>出生年月</th>
+						<th>手机号码</th>
+						<th>邮箱地址</th>
+						<th>创建时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:custs" value="ognl:cust" index="ognl:rowIndex" element="tr">
+						<td><input jwcid="@Radio" name="custId" id="custId" value="ognl:cust.custId" onclick="checkCust($(this));"/><span jwcid="@Insert" value="ognl:cust.custName" ></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.age"></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.birthDate" format="ognl:getDateFormat('yyyy-mm-dd')"></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.mobileId"></span></td>
+						<td class="e_left"><span jwcid="@Insert" value="ognl:cust.email"></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.createTime" format="ognl:getDateFormat('yyyy-mm-dd')"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div>
+		<div jwcid="@NavBar" name="custnav" cond="QueryCond" part="QueryPart" listener="queryCusts" count="ognl:custsCount"></div>
+	</div>
+	
+	<div class="c_submit" style="display:none">
+		<input id="OPER_TYPE" uiid="OPER_TYPE" name="OPER_TYPE" type="hidden" value="0"/>
+		<button class="e_button-page" id="bback" name="bback"><i class="e_ico-pre"></i><span>上一步</span></button>
+		<button class="e_button-page" id="bnext" name="bnext"><i class="e_ico-next"></i><span>下一步</span></button>
+	</div>
+</div>
+
+</div></div>
+</body>
+</html>

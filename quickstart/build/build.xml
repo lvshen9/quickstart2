@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [<!ENTITY buildfile SYSTEM "file:D:\Study\work\shiyongqiTest\devHN\devHN\ngboss\library\wadelib\build\build_wade4_plus.xml">]>
+<project name="quickstart" default="all" basedir=".">
+	
+	&buildfile;	
+	
+	<target name="all" depends="clean,compile_app,jar_app,compile_web,copy_config,copy_lib,copy_web_resource"/>
+	
+	<target name="all_jar" depends="clean,compile_app,jar_app,clean_classes,compile_web,jar_web,copy_config,copy_lib,copy_web_resource"/>
+
+	<target name="all_war" depends="clean,compile_app,jar_app,clean_classes,compile_web,jar_web,war_app"/>
+	
+	<target name="app_war" depends="clean,compile_app,jar_app,war_app"/>
+
+</project>

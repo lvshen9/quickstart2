@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title><span jwcid="@Label" code="web.tapestry.page.excep.title" /></title>
+</head>
+<body jwcid="@Body">
+
+<div class="c_msg c_msg-full c_msg-h c_msg-error">
+	<div class="wrapper">
+		<div class="emote"></div>
+		<div class="info">
+			<div class="text">
+				<div class="title"><span jwcid="@Label" code="web.tapestry.page.excep.title" /></div>
+				<div class="content"><span jwcid="@Insert" value="ognl:message" raw="false" /></div>
+			</div>
+			<div class="fn">
+				<button id="back" type="button" class="e_button-blue e_button-r" ontap="goBack(this)"><span tag="ico" class="e_ico-back"></span><span tag="text" jwcid="@Label" code="web.tapestry.page.excep.back" /></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<input id="backPage" name="backPage" jwcid="@Hidden" type="hidden" value="ognl:backPage" />
+
+<script jwcid="@Script" src="v5/jcl/tapestry/ui/page/exception.js" wade="true"></script>
+</body>
+</html>

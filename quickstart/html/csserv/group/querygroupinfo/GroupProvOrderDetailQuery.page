@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ailk.csview.group.querygroupinfo.GrpProvCprtDetail">
+    <property-specification name="condition" type="com.ailk.common.data.IData"/>
+    <property-specification name="infos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="info" type="com.ailk.common.data.IData"/>
+    <property-specification name="subInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="merchInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="merchpInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="merchpInfo" type="com.ailk.common.data.IData"/>
+    
+    <property-specification name="attrInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="attrInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="groupInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="respPerson" type="com.ailk.common.data.IData"/>
+   
+    <property-specification name="provCustMags" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="custInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="dealInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="prodInfoModifys" type="com.ailk.common.data.IDataset"/>
+   
+    <property-specification name="prodTrades" type="com.ailk.common.data.IDataset"/>
+   
+    <property-specification name="syncStats" type="com.ailk.common.data.IDataset"/>
+     
+    <property-specification name="poTradeInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="productTradeInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="respPersonfk" type="com.ailk.common.data.IData"/>
+    <property-specification name="provCustMagsfk" type="com.ailk.common.data.IDataset"/>
+     
+    <property-specification name="prodInfoModifysfk" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="custInfosfk" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="dealInfosfk" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="prodTradesfk" type="com.ailk.common.data.IDataset"/>
+     
+     
+    <property-specification name="poAudit" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="contactorInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="poAttraMent" type="com.ailk.common.data.IDataset"/>
+     
+    <property-specification name="discnts" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="rspPersons" type="com.ailk.common.data.IDataset"/>
+   
+	<property-specification name="rowIndexR" type="int"/> 
+	<property-specification name="rowIndex" type="int"/> 
+	<property-specification name="rowIndexP" type="int"/> 
+	<property-specification name="rowIndexD" type="int"/> 
+	<property-specification name="rowIndexF" type="int"/> 
+</page-specification>

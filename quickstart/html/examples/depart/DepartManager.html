@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="textml; charset=utf-8" />
+
+<script jwcid="@Script" language="JavaScript"
+	src="scripts/common/resserv.js"></script>
+<script jwcid="@Script" language="JavaScript"
+	src="scripts/examples/depart/DepartManager.js"></script>
+
+
+</head>
+
+<body jwcid="@Body">
+	<div class="m_wrapper">
+		<div class="m_wrapper2">
+			<!-- 区域 开始 -->
+			<div class="c_box">
+
+
+				<!-- <div region="center" border="false">
+			<table id="grid"></table>
+		</div> -->
+
+
+				<!-- 标题 开始 -->
+				<div class="c_title">
+					<div class="text">部门查询</div>
+				</div>
+				<!-- 标题 结束 -->
+				<!-- 表单 开始 -->
+				<div class="c_form c_form-col-3 c_form-label-5" id="QueryCond2">
+					<ul class="ul" id="conditioinPart">
+
+
+						<li class="li"><span class="label"><span>部门ID：</span></span>
+							<span class="e_input"><span><input type="text"
+									jwcid="@TextField" value="ognl:condition.DEPART_ID"
+									name="condition_DEPART_ID" desc="部门ID" /></span></span></li>
+
+
+						<li class="li"><span class="label"><span>部门编号：</span></span>
+							<span class="e_input"><span><input type="text"
+									jwcid="@TextField" value="ognl:condition.DEPART_CODE"
+									name="condition_DEPART_CODE" desc="部门编号" /></span></span></li>
+
+
+						<li class="li"><span class="label"><span>部门名称：</span></span>
+							<span class="e_input"><span><input type="text"
+									jwcid="@TextField" value="ognl:condition.DEPART_NAME"
+									name="condition_DEPART_NAME" desc="部门名称" /></span></span></li>
+
+
+						<li class="li"><span class="label"><span>部门类型：</span></span>
+							<span class="e_input"><span><input type="text"
+									jwcid="@TextField" value="ognl:condition.DEPART_KIND_CODE"
+									name="condition_DEPART_KIND_CODE" desc="部门类型" /></span></span></li>
+						<li class="li"><span class="label"><span>部门结构：</span></span>
+							<span class="e_input"><span><input type="text"
+									jwcid="@TextField" name="condition_DEPART_FRAME"
+									value="ognl:condition.DEPART_FRAME" desc="部门结构" /></span></span></li>
+
+
+
+
+						<!-- <input type="hidden" jwcid="@TextField" id="condition_STOCK_LEVEL" name="condition_STOCK_LEVEL"  value="P" style="display:none"/>
+			<input type="hidden" jwcid="@TextField" id="condition_MANAGE_STATE" name="condition_MANAGE_STATE"  value="1" style="display:none"/> -->
+					</ul>
+					<div class="submitPlace"></div>
+					<div class="submit">
+						<button class="e_button-form" onclick="queryDepartInfo();">
+							<i class="e_ico-search"></i><span>查询</span>
+						</button>
+						<button class="e_button-form" onclick="removeDepartInfo();">
+							<i class="e_ico-delete"></i><span>删除</span>
+						</button>
+						<button class="e_button-form" onclick="displayShowPopup();">
+							<i class="e_ico-add"></i><span>添加</span>
+						</button>
+						<!-- 通过编辑按钮回显数据到编辑栏 -->
+						<button class="e_button-form" onclick="editDepartInfo();">
+							<i class="e_ico-edit"></i><span>修改</span>
+						</button>
+
+						<!-- <button class="e_button-form" onclick="resetArea('conditioinPart',true);"><i class="e_ico-reset"></i><span>重置</span></button>
+			<button class="e_button-form" onclick="resetArea('conditioinPart',true);"><i class="e_ico-reset"></i><span>删除</span></button>
+			<button class="e_button-form" onclick="resetArea('conditioinPart',true);"><i class="e_ico-reset"></i><span>修改</span></button> -->
+					</div>
+
+
+				</div>
+				<!-- 表单 结束 -->
+
+				<div id="DepartInfo" jwcid="DepartInfo@Part">
+					<!-- 表格 开始 -->
+					<div class="c_scroll c_scroll-x c_scroll-table-5">
+						<div class="c_table">
+							<table id="departTable" jwcid="@Table" name="simCardtable" rowClick=""
+								rowDBClick="" contextMenu="">
+								<thead>
+									<tr>
+
+										<th col="DEPART_ID" name="DEPART_ID">部门ID</th>
+										<th col="DEPART_CODE">部门编号</th>
+										<th col="DEPART_NAME">部门名称</th>
+										<th col="DEPART_KIND_CODE">部门类型</th>
+										<th col="DEPART_FRAME">部门结构</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<!-- 循环显示表格列，并设置行间隔颜色 -->
+
+									<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info"
+										element="tr" index="ognl:rowIndex"
+										class="ognl:rowIndex % 2 == 0 ? '' : 'odd'">
+										<td><span jwcid="@Insert" value="ognl:info.DEPART_ID"
+											raw="false" /></td>
+										<td><span jwcid="@Insert" value="ognl:info.DEPART_CODE"
+											raw="false" /></td>
+										<td><span jwcid="@Insert" value="ognl:info.DEPART_NAME"
+											raw="false" /></td>
+										<td><span jwcid="@Insert"
+											value="ognl:info.DEPART_KIND_CODE" raw="false" /></td>
+										<td><span jwcid="@Insert" value="ognl:info.DEPART_FRAME"
+											raw="false" /></td>
+
+
+										<!-- <td><span jwcid="@Insert" value="ognl:pageutil.getStaticValueDataSource('res','TD_S_RESKIND',new java.lang.String [] {'EPARCHY_CODE','RES_KIND_CODE'},
+					'RES_KIND_NAME',new java.lang.String [] {'ZZZZ',info.RES_KIND_CODE})" raw="false" /></td>
+				    <td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_DEPART','DEPART_ID','DEPART_NAME',info.STOCK_ID)" raw="true"/></td>
+				    <td style="display:none"><span jwcid="@Insert" value="ognl:info.CITY_CODE" raw="false"/></td>
+				    <td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_AREA',new java.lang.String [] {'AREA_LEVEL','AREA_CODE'},
+					'AREA_NAME',new java.lang.String [] {'20',info.EPARCHY_CODE})" raw="false" /></td>
+				    <td><span jwcid="@Insert" value="ognl:pageutil.getStaticValueDataSource('res','TD_S_RESSTATE',new java.lang.String [] {'RES_TYPE_CODE','RES_STATE_CODE'},
+					'RES_STATE_NAME',new java.lang.String [] {'1',info.RES_STATE})" raw="false" /></td>
+				    <td style="display:none"><span jwcid="@Insert" value="ognl:info.MANAGE_STATE" raw="false"/></td>
+				    <td><span jwcid="@Insert" value="ognl:info.MOFFICE_ID" raw="false"/></td>
+				    <td><span jwcid="@Insert" value="ognl:pageutil.getStaticValueDataSource('res','TD_M_RES_CORP',new java.lang.String [] {'EPARCHY_CODE','RES_TYPE_CODE','CORP_NO','ENTERPRISE_TYPE_CODE'},
+					'CORP_NAME',new java.lang.String [] {'ZZZZ','1',info.FACTORY_CODE,'0'})" raw="false" /></td> -->
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+					<!-- 表格 结束 -->
+					<!-- 翻页（替换为页面组件） 开始 -->
+					<div jwcid="@NavBar" name="simnav" cond="QueryCond"
+						part="DepartInfo" listener="queryDepartInfo" count="ognl:count"
+						pageSize="5"></div>
+					<!-- 翻页 结束 -->
+				</div>
+			</div>
+		</div>
+		<!-- 区域 结束 -->
+		<!--------------------------------------------------------------------------------->
+		<!-- 测试代码 -->
+		<!-- 按钮触发模态框 -->
+		<div class="c_popup c_popup-drag" id="my_popup" style="display: none;">
+			<div class="c_popupWrapper">
+				<div class="c_popupHeight"></div>
+				<div class="c_popupBox" style="width: 400px;">
+					<div class="c_popupTitle">
+						<div class="text">添加</div>
+						<div class="fn">
+							<!--窗口的关闭按钮  -->
+							<a class="close" href="javascript:displayShowPopup()"></a>
+						</div>
+					</div>
+					<div class="c_popupContent">
+						<div class="c_popupContentWrapper">
+
+							<!-- 输入区 -->
+							<!--插入的内容  -->
+							<div class="c_form c_form-col-1 c_form-label-5" id="QueryCond">
+								<ul class="ul" id="conditioinPart1">
+									<li class="li"><span class="label"><span>部门ID：</span></span>
+										<span class="e_input"><span><input type="text"
+												jwcid="@TextField" value="ognl:condition.DEPART_ID"
+												name="condition_DEPART_ID" desc="部门ID" /></span></span></li>
+
+
+									<li class="li"><span class="label"><span>部门编号：</span></span>
+										<span class="e_input"><span><input type="text"
+												jwcid="@TextField" value="ognl:condition.DEPART_CODE"
+												name="condition_DEPART_CODE" desc="部门编号" /></span></span></li>
+
+
+									<li class="li"><span class="label"><span>部门名称：</span></span>
+										<span class="e_input"><span><input type="text"
+												jwcid="@TextField" value="ognl:condition.DEPART_NAME"
+												name="condition_DEPART_NAME" desc="部门名称" /></span></span></li>
+
+
+									<li class="li"><span class="label"><span>部门类型：</span></span>
+										<span class="e_input"><span><input type="text"
+												jwcid="@TextField" value="ognl:condition.DEPART_KIND_CODE"
+												name="condition_DEPART_KIND_CODE" desc="部门类型" /></span></span></li>
+									<li class="li"><span class="label"><span>部门结构：</span></span>
+										<span class="e_input"><span><input type="text"
+												jwcid="@TextField" name="condition_DEPART_FRAME"
+												value="ognl:condition.DEPART_FRAME" desc="部门结构" /></span></span></li>
+								</ul>
+
+								<!--提交区域  -->
+								<div class="submitPlace"></div>
+								<div class="submit">
+									<button class="e_button-form" onclick="updateDepartInfo();">
+										<i class="e_ico-ok"></i><span>提交</span>
+									</button>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="c_popupBottom">
+						<div></div>
+					</div>
+					<div class="c_popupShadow"></div>
+				</div>
+			</div>
+			<iframe class="c_popupFrame"></iframe>
+			<div class="c_popupCover"></div>
+		</div>
+
+		<!--------------------------------------------------------------------------------->
+</body>
+<!--------------------------------------------------------------------------------------------------------------------------->
+<!--lvshen的js代码 弹窗显示与关闭  -->
+
+<script language="javascript">
+	function displayShowPopup() {
+		document.getElementById('my_popup').style.display = document
+				.getElementById('my_popup').style.display == "none" ? "block"
+				: "none";
+
+	}
+	
+    //添加
+	function updateDepartInfo() {
+		if (verifyAll("QueryCond")) {
+			rm.ajaxSubmitMsg("QueryCond", "updateDepartInfo", null, null);
+		}
+		
+		
+		
+	}
+    
+    //页面每刷新一次执行一次查询
+	queryDepartInfo();
+	
+	//查询
+	function queryDepartInfo() {
+		rm.ajaxSubmitQry('QueryCond2', 'queryDepartInfo', null, "DepartInfo");
+	}
+	
+	//伪删除
+	function removeDepartInfo() {
+		$.table.get("simCardtable").deleteRow();
+	}
+	
+	//编辑栏
+	function editDepartInfo() {
+		document.getElementById('my_popup').style.display = document
+		.getElementById('my_popup').style.display == "none" ? "block"
+		: "none";
+	}
+	
+	
+		/* $("#departTable").on("click",function(){
+		    var id = $(this).attr("id");
+		    alert(id);
+		}); */
+		
+	
+	
+</script>
+
+<!--------------------------------------------------------------------------------------------------------------------------->
+</html>

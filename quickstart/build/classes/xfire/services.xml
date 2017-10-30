@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+
+	<service>
+		<name>wppoa</name>
+		<namespace>
+			http://interfaces.openapi.ragateway.ccit.com
+		</namespace>
+		<serviceClass>
+			com.ailk.webservice.common.server.WSImpl
+		</serviceClass>
+		<style>wrapped</style>
+		<use>literal</use>
+		<scope>application</scope>
+	</service></beans>

@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupmember/AccountInfo.js"></script>
+<script language="javascript">
+	$(document).ready(function(){
+		initAccountInfo();
+	});
+</script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box" jwcid="hintBar@Part">
+	<div jwcid="@saleserv:HintBar" hintInfo="ognl:hintInfo"/>
+</div>
+<!-- 分栏 开始 -->
+<div class="l_col">
+	<div id="accountinfopart">
+	<!-- 第 1 栏 开始 -->
+	<div class="l_left" style="width:75%;" id="IF_ITEMLIST" >
+		<!-- 区域 开始 -->
+		<div class="c_box">
+			<!-- 标题 开始 -->
+			<div class="c_title">
+				<div class="text">付费账目列表</div>
+				<div class="fn">
+					<button type="button" class="l_ml"><i class="e_ico-delete"></i><span>清空</span></button>
+				</div>
+			</div>
+			<!-- 标题 结束 -->
+		
+			<!-- 表格 开始 -->
+			<div class="c_table c_scroll c_scroll-table-15">
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>付费帐目编码</th>
+							<th>付费帐目名称</th>
+							<th>查看明细</th>
+						</tr>
+					</thead>
+					<tbody id="itemcodepart">
+						<tr jwcid="@Foreach" source="ognl:noteItemList" value="ognl:noteItem" element="tr" index="ognl:rowIndex" >
+							<td class="e_center"><input type="radio" id="itemCodescheck" name="itemCodescheck" jwcid="@Radio" value="ognl:noteItem.NOTE_ITEM_CODE" checked='ognl:noteItem.TAG == "1" ? "true" : "false"'  onclick="$('#itemCodes').val($(this).val())"/></td>
+							<td><span jwcid="@Insert" value="ognl:noteItem.NOTE_ITEM_CODE" raw="false"/></td>
+							<td><span jwcid="@Insert" value="ognl:noteItem.NOTE_ITEM" raw="false"/></td>
+							<td><span>
+	                          	 <a jwcid="@Redirect" note_item_code="ognl:noteItem.NOTE_ITEM_CODE"  note_item = "ognl:noteItem.DETAILITEM"
+ 								  onclick="$.popupPageExternal('group.modifypayrelation.PayrelaDetItem','queryPayrelaAdvChgDetItem', '&PARENT_NOTE_ITEM_CODE=' + $(this).attr('note_item_code') + '&PARENT_NOTE_ITEM=' + $(this).attr('note_item'),'综合账目明细',680,480,'cond_ACCT_ID')">明细</a>
+							</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- 表格 结束 -->
+		</div>
+		<!-- 区域 结束 -->
+	</div>
+	<!-- 第 1 栏 结束 -->
+	
+	<!-- 第 2 栏 开始 -->
+	<div class="l_auto">
+		<!-- 区域 开始 -->
+		<div class="c_box">
+			<!-- 标题 开始 -->
+			<div class="c_title">
+				<div class="text">参数列表</div>
+			</div>
+			<!-- 标题 结束 -->
+			<div jwcid="PayItemPart@Part" element="div">
+			<!-- 表单 开始 -->
+			<div class="c_form c_form-col-1">
+				<ul class="ul">
+					<li class="li l_ml">
+						<label for="IS_CHECK_ALL">
+							<input id="IS_CHECK_ALL" name="IS_CHECK_ALL" jwcid="@Checkbox"
+						 		   checked="ognl:payInfo.IS_CHECK_ALL==1?true:false"/>付费账目全选
+						</label>
+					</li>
+				</ul>
+			</div>
+			<!-- 表单 结束 -->
+			<div class="c_form c_form-label-4 c_form-col-1" style="height:280px;">
+				<ul class="ul">
+					<div id="IF_PAYLIST">
+					<li class="li">
+						<span class="label">费用类别：</span>
+						<span class="e_select"><span><span>
+							<select	jwcid="@Select" name="pay_FEE_TYPE"
+								id="pay_FEE_TYPE" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('PAYRELAADVCHG_FEE_TYPE')" 
+								value="ognl:payInfo.FEE_TYPE" textField="DATA_NAME" valueField="DATA_ID"
+								onchange="feeTypeChg();" addDefault="false" desc="费用类别"
+								>
+							</select>
+						</span></span></span>
+					</li>
+					<li class="li">
+						<span class="label">限定方式：</span>
+						<span class="e_select"><span><span>
+							<select	jwcid="@Select" name="pay_LIMIT_TYPE"
+								id="pay_LIMIT_TYPE" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('PAYRELAADVCHG_LIMIT_TYPE')" 
+								value="ognl:payInfo.LIMIT_TYPE" textField="DATA_NAME" valueField="DATA_ID"
+								disabled="true" desc="限定方式" addDefault="false" 
+								>
+							</select>
+						</span></span></span>
+					</li>
+					<li class="li">
+						<span class="label">限定值：</span>
+						<span class="e_input"><span>
+						<input jwcid="@TextField" name="pay_LIMIT" id="pay_LIMIT" type="text" maxsize="100" disabled="true"
+							   value="ognl:payInfo.LIMIT" title="限定值"/>
+						</span></span>
+					</li>
+					<li class="li">
+						<span class="label">是否补足：</span>
+						<span class="e_select"><span><span>
+							<select	jwcid="@Select" name="pay_COMPLEMENT_TAG"
+								id="pay_COMPLEMENT_TAG" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('PAYRELAADVCHG_COMPLEMENT_TAG')" 
+								value='ognl:payInfo.COMPLEMENT_TAG' textField="DATA_NAME" valueField="DATA_ID"
+								disabled="true" desc="是否补足" addDefault="false">
+							</select>
+						</span></span></span>
+					</li>
+					</div>
+				</ul>
+			</div>
+			<!-- 表单 结束 -->
+			</div>
+		</div>
+		<!-- 区域 结束 -->
+
+	</div>
+	</div>
+	<!-- 第 2 栏 结束 -->
+	<input type="text" id="itemCodes" name="itemCodes" style="display:none"/>
+	<input type="hidden" jwcid="@Any" name="pay_SERIAL_NUMBER" id="pay_SERIAL_NUMBER" value="ognl:cond.MEB_SERIAL_NUMBER"/>
+	<input type="hidden" jwcid="@Any" name="CUST_ID" id="CUST_ID" value='ognl:cond.CUST_ID'/>
+	<input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value='ognl:cond.PRODUCT_ID'/>
+	<input type="hidden" jwcid="@Any" name="TRADE_TYPE_CODE" id="TRADE_TYPE_CODE" value='ognl:cond.TRADE_TYPE_CODE'/>
+	<input type="hidden" jwcid="@Any" name="MEB_USER_ID" id="MEB_USER_ID" value='ognl:cond.MEB_USER_ID'/>
+	<input type="hidden" jwcid="@Any" name="MEB_EPARCHY_CODE" id="MEB_EPARCHY_CODE" value='ognl:cond.MEB_EPARCHY_CODE'/>
+	<textarea jwcid="@TextArea" name="SELECTED_ELEMENTS" id="SELECTED_ELEMENTS" value="ognl:cond.SELECTED_ELEMENTS" style="display:none"></textarea>
+	
+	<input type="hidden" jwcid="@Any" name="pay_GRP_ACCT_ID" id="pay_GRP_ACCT_ID" value='ognl:payInfo.GRP_ACCT_ID'/>
+	<input type="text" jwcid="@TextField" name="pay_PLAN_TYPE_CODE " id="pay_PLAN_TYPE_CODE" value="ognl:planInfo.PLAN_TYPE_CODE" style="display:none" encode="false" desc="付费类型"/>
+	<input type="text" jwcid="@TextField" name="pay_PLAN_MODE_CODE" id="pay_PLAN_MODE_CODE" value="ognl:planInfo.PLAN_MODE_CODE" style="display:none" encode="false" desc="付费模板编码"/>
+	<input type="hidden" jwcid="@Any" name="pay_PLAN_MODE_NAME" id="pay_PLAN_MODE_NAME"  value="ognl:planInfo.PLAN_MODE_CODE == null ? '' :@com.ailk.biz.util.StaticUtil@getStaticValue('PLAN_MODE',planInfo.PLAN_MODE_CODE)"/>
+	
+	<input type="button" id="bnext" value="下一步" class="e_button" onclick="return validateAccount();" style="display:none"/>
+</div>
+<!-- 分栏 结束 -->
+
+
+
+
+</div></div></body>
+</html>

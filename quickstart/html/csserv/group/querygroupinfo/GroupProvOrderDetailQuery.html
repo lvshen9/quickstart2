@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body jwcid="@Body">
+		<!---订单信息--->
+		<!--分页标签开始-->
+		<div id="productParamPart">
+
+			<!-- 标题 开始 -->
+			<div class="c_title c_title-2">
+				<div class="text">
+					客户信息
+				</div>
+			</div>
+			<!-- 标题 结束 -->
+
+			<!-- 表单 开始 -->
+			<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+				<ul class="ul">
+					<li class="li">
+						<span class="label">客户名称：</span>
+						<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CUST_NAME" /></span>
+					</li>
+					<li class="li">
+						<span class="label">客户编码：</span>
+						<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.GROUP_ID" /></span>
+					</li>
+					<li class="li">
+						<span class="label">客户级别：</span>
+						<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CLASS_ID" /></span>
+					</li>
+					<li class="li">
+						<span class="label">服务等级：</span>
+						<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CLASS_ID" /></span>
+					</li>
+					<li class="li">
+						<span class="label">所属省份：</span>
+						<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.PROVINCE_CODE" /></span>
+					</li>
+					<li class="li">
+						<span class="label">联系地址：</span>
+						<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.GROUP_ADDR" /></span>
+					</li>
+				</ul>
+			</div>
+			<!-- 表单 结束 -->
+
+			<!-- 标题 开始 -->
+			<div class="c_title c_title-2">
+				<div class="text">
+					商品信息
+				</div>
+			</div>
+			<!-- 标题 结束 -->
+			<!-- 外框 开始 -->
+			<div class="c_title c_title-3">
+				<div class="text">
+					商品基本信息
+				</div>
+			</div>
+			<!-- 标题 结束 -->
+			<!-- 输入 开始 -->
+			<div class="c_form c_form-text c_form-col-3 c_form-label-10">
+				<ul class="ul">
+					<li class="li">
+						<span class="label"><span class="e_required">商品订单：</span> </span>
+						<span class="e_input e_dis"><span><input disabled="disabled" id="MERCH_ORDER_ID" name="MERCH_ORDER_ID"
+									jwcid="MERCH_ORDER_ID@TextField" value="ognl:merchInfo.MERCH_ORDER_ID" /> </span> </span>
+					</li>
+					<li class="li">
+						<span class="label"><span class="e_required">商品规格编号：</span> </span>
+						<span class="e_input e_dis"><span><input jwcid="MERCH_SPEC_CODE@TextField" id="MERCH_SPEC_CODE" name="MERCH_SPEC_CODE"
+									disabled="disabled" type="text" value="ognl:pageutil.getStaticValue( 'TD_F_PO', 'POSPECNUMBER', 'POSPECNAME',merchInfo.MERCH_SPEC_CODE)" />
+						</span> </span>
+					</li>
+					<li class="li">
+						<span class="label"><span class="e_required">商品订购关系：</span> </span>
+						<span class="e_input e_dis"><span><input jwcid="MERCH_OFFER_ID@TextField" id="MERCH_OFFER_ID" name="MERCH_OFFER_ID"
+									disabled="disabled" value="ognl:merchInfo.MERCH_OFFER_ID" /> </span> </span>
+					</li>
+					<li class="li">
+						<span class="label"><span class="e_required">商品级业务操作：</span> </span>
+						<span class="e_input e_dis"><span><input jwcid="MODIFY_TAG_NAME@TextField" disabled="disabled" id="MODIFY_TAG_NAME"
+									name="MODIFY_TAG_NAME" value="ognl:pageutil.getStaticValue( 'GRP_MODIFY_TAG',merchInfo.MODIFY_TAG)" /> </span> </span>
+					</li>
+					<li class="li">
+						<span class="label"><span class="e_required">业务开展模式：</span> </span>
+						<span class="e_input e_dis"><span><input jwcid="BIZ_MODE_NAME@TextField" disabled="disabled" id="BIZ_MODE_NAME"
+									name="BIZ_MODE_NAME" value="ognl:pageutil.getStaticValue( 'GRP_QADC_PRODORDMODE',merchInfo.BIZ_MODE)" /> </span> </span>
+					</li>
+					<li class="li">
+						<span class="label"><span class="e_required">主办省：</span> </span>
+						<span class="e_input e_dis"><span><input jwcid="HOST_COMPANY@TextField" disabled="disabled" id="HOST_COMPANY" name="HOST_COMPANY"
+									value="ognl:pageutil.getStaticValue( 'SYMTHESIS_PROVINCE_CODE',merchInfo.HOST_COMPANY)" /> </span> </span>
+					</li>
+				</ul>
+			</div>
+			<!-- 输入 结束 -->
+			<!-- 标题 开始 -->
+			<div class="c_title c_title-3">
+				<div class="text">
+					审批信息
+				</div>
+			</div>
+			<!-- 标题 结束 -->
+			<!-- 输入 开始 -->
+			<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+				<span jwcid="@Foreach" source="ognl:poAudit" value="ognl:info" element="ul" index="ognl:rowIndex">
+					<ul class="ul">
+						<li class="li">
+							<span class="label">审批人姓名：</span>
+							<span class="e_input e_dis"><span><input jwcid="Auditor@TextField" id="Auditor" name="Auditor" disabled="disabled" type="text"
+										value="ognl:info.RSRV_STR2" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label">审批时间：</span>
+							<span class="e_input e_dis"><span><input jwcid="AuditTime@TextField" id="AuditTime" name="AuditTime" disabled="disabled"
+										type="text" value="ognl:info.RSRV_STR3" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label">审批意见：</span>
+							<span class="e_input e_dis"><span><input jwcid="AuditDesc@TextField" id="AuditDesc" name="AuditDesc" disabled="disabled"
+										type="text" value="ognl:info.RSRV_STR4" /> </span> </span>
+						</li>
+					</ul> </span>
+			</div>
+			<!-- 输入 结束 -->
+
+			<!-- 标题 开始 -->
+			<div class="c_title c_title-3">
+				<div class="text">
+					附件信息
+				</div>
+			</div>
+			<!-- 标题 结束 -->
+			<!-- 输入 开始 -->
+			<div class="c_form c_form-text c_form-col-3 c_form-label-10">
+				<span jwcid="@Foreach" source="ognl:poAttraMent" value="ognl:info" element="ul" index="ognl:rowIndex">
+					<ul class="ul">
+						<li class="li">
+							<span class="label">附件类型：</span>
+							<span class="e_select"><span><span><select jwcid="POAttType@Select" id="POAttType" name="POAttType" textField="DATA_NAME"
+											valueField="DATA_ID"
+											source="ognl:pageutil.getList('TD_S_STATIC','DATA_ID','DATA_NAME',new java.lang.String[] {'TYPE_ID','DATA_ID'},new java.lang.String[] {'POATT_TYPE',info.RSRV_STR2})"
+											value="ognl:condition.cond_PFK_DealSide" desc="附件类型" addDefault="false" /> </span> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label">合同编码 ：</span>
+							<span class="e_input e_dis"><span><input jwcid="POAttCode@TextField" id="POAttCode" name="POAttCode" disabled="disabled"
+										value="ognl:info.RSRV_STR3" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label">合同名称：</span>
+							<span class="e_input e_dis"><span><input jwcid="ContName@TextField" id="ContName" name="ContName" disabled="disabled"
+										value="ognl:info.RSRV_STR4" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label">商品级相关附件名称：</span>
+							<span class="e_input e_dis"><span><input jwcid="POAttName@TextField" id="POAttName" name="POAttName" disabled="disabled"
+										value="ognl:info.RSRV_STR5" /> </span> </span>
+						</li>
+					</ul> </span>
+			</div>
+			<!-- 输入 结束 -->
+
+			<!-- 标题 开始 -->
+			<div class="c_title c_title-3">
+				<div class="text">
+					联系人信息
+				</div>
+			</div>
+			<!-- 标题 结束 -->
+
+			<!-- 输入 开始 -->
+			<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+				<span jwcid="@Foreach" source="ognl:contactorInfos" value="ognl:info" element="ul" index="ognl:rowIndex">
+					<ul class="ul">
+						<li class="li">
+							<span class="label">联系人类型：</span>
+							<span class="e_select"><span><span><select jwcid="ContactorType@Select" id="ContactorType" name="ContactorType"
+											textField="DATA_NAME" valueField="DATA_ID"
+											source="ognl:pageutil.getList('TD_S_STATIC','DATA_ID','DATA_NAME',new java.lang.String[] {'TYPE_ID','DATA_ID'},new java.lang.String[] {'CONTACTOR_TYPE',info.RSRV_STR2})"
+											value="ognl:condition.cond_PFK_DealSide" desc="联系人类型" addDefault="false" /> </span>
+							</span>
+							</span>
+						</li>
+						<li class="li">
+							<span class="label">联系人姓名：</span>
+							<span class="e_input e_dis"><span><input jwcid="ContactorName@TextField" id="ContactorName" name="ContactorName"
+										disabled="disabled" value="ognl:info.RSRV_STR3" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label">联系人电话：</span>
+							<span class="e_input e_dis"><span><input jwcid="ContactorPhone@TextField" id="ContactorPhone" name="ContactorPhone"
+										disabled="disabled" value="ognl:info.RSRV_STR4" /> </span> </span>
+						</li>
+					</ul> </span>
+			</div>
+			<!-- 输入 结束 -->
+
+
+			<span jwcid="@Foreach" source="ognl:merchpInfos" value="ognl:merchpInfo" index="ognl:rowIndex"> <!-- 标题 开始 -->
+				<div class="c_title c_title-2">
+					<div class="text">
+						产品信息
+					</div>
+				</div> <!-- 标题 结束 --> <!-- 标题 开始 -->
+				<div class="c_title c_title-3" id="ognl:'gd_prodInfo_'+rowIndex">
+					<div class="text">
+						基本信息
+					</div>
+				</div> <!-- 标题 结束 --> <!-- 输入 开始 -->
+				<div class="c_form c_form-text c_form-col-3 c_form-label-10">
+					<ul class="ul" id="ognl:'gd_prodInfo_base_'+rowIndex">
+						<li class="li">
+							<span class="label"><span class="e_required">产品订单号：</span> </span>
+							<span class="e_input e_dis"><span><input disabled="disabled" jwcid="PRODUCT_ORDER_ID@TextField" id="PRODUCT_ORDER_ID"
+										name="PRODUCT_ORDER_ID" value="ognl:merchpInfo.PRODUCT_ORDER_ID" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label"><span class="e_required">产品规格编码：</span> </span>
+							<span class="e_input e_dis"><span><input jwcid="PRODUCT_SPEC_CODE@TextField" disabled="disabled" id="PRODUCT_SPEC_CODE"
+										name="PRODUCT_SPEC_CODE"
+										value="ognl:pageutil.getStaticValue( 'TD_F_POPRODUCT', 'PRODUCTSPECNUMBER', 'PRODUCTSPECNAME',merchpInfo.PRODUCT_SPEC_CODE)" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label"><span class="e_required">产品订购关系：</span> </span>
+							<span class="e_input e_dis"><span><input id="PRODUCT_OFFER_ID" name="PRODUCT_OFFER_ID" jwcid="PRODUCT_OFFER_ID@TextField"
+										disabled="disabled" value="ognl:merchpInfo.PRODUCT_OFFER_ID" /> </span> </span>
+						</li>
+						<li class="li">
+							<span class="label"><span class="e_required">产品级业务操作：</span> </span>
+							<span class="e_input e_dis"><span><input jwcid="PROD_MODIFY_TAG_NAME@TextField" disabled="disabled" id="PROD_MODIFY_TAG_NAME"
+										name="PROD_MODIFY_TAG_NAME" value="ognl:pageutil.getStaticValue( 'GRP_MODIFY_TAG',merchpInfo.MODIFY_TAG)" /> </span> </span>
+						</li>
+					</ul>
+				</div> <!-- 输入 结束 --> <!-- 标题 开始 -->
+				<div class="c_title c_title-3">
+					<div class="text">
+						产品资费
+					</div>
+				</div> <!-- 标题 结束 -->
+				<div jwcid="@Conditional" condition="ognl:discnts.get(rowIndex)!=null">
+					<!-- 输入 开始 -->
+					<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+						<span jwcid="@Foreach" source="ognl:discnts.get(rowIndex)" value="ognl:info" element="ul" index="ognl:rowIndexD">
+							<ul class="ul" id="ognl:'href_gd_prodInfo_zf_'+rowIndex">
+								<li class="li">
+									<span class="label">资费名称:</span>
+									<span class="text"><span jwcid="@Insert" class="text" value="ognl:info.DISCNT_NAME" /></span>
+								</li>
+
+								<li class="li">
+									<span class="label">优惠开始时间:</span>
+									<span class="text"><span jwcid="@Insert" class="text" value="ognl:info.START_DATE" /></span>
+								</li>
+							</ul> </span>
+					</div>
+				</div> <!-- 输入 结束 --> <!-- 标题 开始 -->
+				<div jwcid="@Conditional" condition="ognl:attrInfos.size > 0">
+					<div class="c_title c_title-3">
+						<div class="text">
+							产品属性
+						</div>
+					</div>
+					<!-- 标题 结束 -->
+					<div jwcid="@Conditional" condition="ognl:attrInfos.get(rowIndex)!=null">
+						<!-- 输入 开始 -->
+						<span jwcid="@Foreach" source="ognl:attrInfos.get(rowIndex)" value="ognl:info" index="ognl:rowIndexP">
+							<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+								<ul class="ul" id="ognl:'gd_prodInfo_attr_'+rowIndex">
+									<li class="li">
+										<span class="label"><span jwcid="@Insert" class="text" value="ognl:info.RSRV_STR3">: </span> </span>
+										<span class="e_input e_dis"><span><input type="text" jwcid="@Insert" disabled="disabled" value="ognl:info.ATTR_VALUE" /> </span> </span>
+									</li>
+									<li class="li">
+										<span class="label"><span jwcid="@Insert" class="text" value="ognl:info.RSRV_STR3_0">: </span> </span>
+										<span class="e_input e_dis"><span><input jwcid="@Insert" disabled="disabled" value="ognl:info.ATTR_VALUE_0" /> </span> </span>
+									</li>
+									<li class="li">
+										<span class="label"><span jwcid="@Insert" class="text" value="ognl:info.RSRV_STR3_1">: </span> </span>
+										<span class="e_input e_dis"><span><input type="text" jwcid="@Insert" disabled="disabled" value="ognl:info.ATTR_VALUE_1" /> </span> </span>
+									</li>
+								</ul>
+							</div>
+						</span>
+					</div>
+				</div> <!-- 输入 结束 --> <!-- 外框 结束 --> </span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE service PUBLIC "-//AILK WADE//WADE 4.0//CN"
+  "http://www.wade.com/service/dtd/wade-service.dtd" [
+]>
+
+<service>
+	<path>com.ailk.quickstart.service.examples.ExamplesService@queryDepartsByParent</path>
+	<description>查询区域</description>
+
+	<head>
+		<input>
+			<param>
+				<name>STAFF_ID</name>
+				<desc>操作员工标识</desc>
+			</param>
+			<param>
+				<name>STAFF_NAME</name>
+				<desc>操作员工名称</desc>
+			</param>
+			<param>
+				<name>X_PAGINCOUNT</name>
+				<desc>分页记录总数</desc>
+			</param>
+			<param>
+				<name>X_PAGINSIZE</name>
+				<desc>每页显示条数</desc>
+			</param>
+			<param>
+				<name>X_PAGINCURRENT</name>
+				<desc>当前页</desc>
+			</param>
+			<param>
+				<name>X_PAGINSELCOUNT</name>
+				<desc>是否需要强制COUNT</desc>
+			</param>
+		</input>
+		<output>
+			<param>
+				<name>X_RESULTTYPE</name>
+				<desc>返回结果类型(1:多条[默认值];2:单条)</desc>
+				<value>1</value>
+			</param>
+			<param>
+				<name>X_RESULTCODE</name>
+				<desc>返回结果编码(非0表示成功)</desc>
+				<type>int</type>
+			</param>
+			<param>
+				<name>X_RESULTINFO</name>
+				<desc>返回结果信息</desc>
+			</param>
+			<param>
+				<name>X_PAGINCOUNT</name>
+				<desc>分页记录总数</desc>
+			</param>
+			<param>
+				<name>X_PAGINSIZE</name>
+				<desc>每页显示条数</desc>
+			</param>
+			<param>
+				<name>X_PAGINCURRENT</name>
+				<desc>当前页</desc>
+			</param>
+			<param>
+				<name>X_PAGINSELCOUNT</name>
+				<desc>是否需要强制COUNT</desc>
+			</param>
+		</output>
+	</head>
+	
+	<input>
+		<param>
+			<name>CUST_ID</name>
+			<desc>客户标识</desc>
+		</param>
+		<param>
+			<name>CUST_NAME</name>
+			<desc>客户名称</desc>
+		</param>
+	</input>
+
+	<output>
+		<param>
+			<name>CUST_ID</name>
+			<desc>客户标识</desc>
+		</param>
+		<param>
+			<name>CUST_NAME</name>
+			<desc>客户名称</desc>
+		</param>
+	</output>
+	
+</service>

@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head" includeJs="v4/component/calendar/calendar.js">
+<title><span jwcid="@Label" code="web.v4.tapestry.component.calendar.title" /></title>
+</head>
+<body>
+<input id="curYear" jwcid="@Any" type="hidden" value="ognl:curYear" />
+<input id="curMonth" jwcid="@Any" type="hidden" value="ognl:curMonth" />
+<input id="curDay" jwcid="@Any" type="hidden" value="ognl:curDay" /> 
+<input id="curHour" jwcid="@Any" type="hidden" value="ognl:curHour" />
+<input id="curMinute" jwcid="@Any" type="hidden" value="ognl:curMinute" />
+<input id="curSecond" jwcid="@Any" type="hidden" value="ognl:curSecond" /> 
+
+<input id="tYear" jwcid="@Any" type="hidden" value="ognl:tYear" />
+<input id="tMonth" jwcid="@Any" type="hidden" value="ognl:tMonth" />
+<input id="tDay" jwcid="@Any" type="hidden" value="ognl:tDay" />
+<input id="tHour" jwcid="@Any" type="hidden" value="ognl:tHour" />
+<input id="tMinute" jwcid="@Any" type="hidden" value="ognl:tMinute" />
+<input id="tSecond" jwcid="@Any" type="hidden" value="ognl:tSecond" /> 
+
+<input id="sYear" jwcid="@Any" type="hidden" value="ognl:sYear" />
+<input id="sMonth" jwcid="@Any" type="hidden" value="ognl:sMonth" />
+<input id="sDay" jwcid="@Any" type="hidden" value="ognl:sDay" />
+<input id="sHour" jwcid="@Any" type="hidden" value="ognl:sHour" />
+<input id="sMinute" jwcid="@Any" type="hidden" value="ognl:sMonth" />
+<input id="sSecond" jwcid="@Any" type="hidden" value="ognl:sDay" /> 
+<input id="timeShow" jwcid="@Any" type="hidden" value="ognl:timeShow" /> 
+
+<div class="c_title">
+	<div id="yearsBtn" class="text e_cur-hand" onclick="javascript:cla_showYears();"><span id="span_curYear"><span jwcid="@Insert" value="ognl:curYear" /></span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.year" /></div>
+	<div id="monthsBtn" class="text e_cur-hand" onclick="javascript:cla_showMonths();"><span id="span_curMonth"><span jwcid="@Insert" value="ognl:curMonth" /></span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.month" /></div>
+	<div class="fn">
+		<a href="javascript:prevYear();void(0);" class="e_button e_button-left"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.preyear" /></span></a>
+		<a href="javascript:nextYear();void(0);" class="e_button e_button-right"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.nextyear" /></span></a>
+		<a href="javascript:prevMonth();void(0);" class="e_button e_button-left l_ml"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.premonth" /></span></a>
+		<a href="javascript:nextMonth();void(0);" class="e_button e_button-right"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.nextmonth" /></span></a>
+	</div>
+</div>
+<div class="c_calendar">
+	<ul class="week">
+		<li class="sunday"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.sun" /></span></li>
+		<li><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.mon" /></span></li>
+		<li><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.tue" /></span></li>
+		<li><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.wed" /></span></li>
+		<li><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.thu" /></span></li>
+		<li><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.fri" /></span></li>
+		<li class="saturday"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.sat" /></span></li>
+	</ul>
+	<ul id="daysUL" class="day">
+		<li jwcid="@Foreach" source="ognl:days" value="ognl:day" element="li" class="ognl:day.CLS">
+			<a jwcid="@Any" class="li" href="javascript:void(0)" onclick="ognl:'javascript:cla_setDay(\'' +day.DAY+ '\');'">
+				<span class="g"><span jwcid="@Insert" value="ognl:day.DAY" raw="true" /></span>
+				<span class="l">&nbsp;</span>
+			</a>
+		</li>
+	</ul>
+	
+	<ul id="wade_calendar_timeShow" class="time">
+		<li>
+			<input type="text" jwcid="@Any" id="ipt_curHour" value="ognl:curHour" maxlength="2"/>
+			<span class="label"><span jwcid="@Label" code="web.v4.tapestry.component.datefield.miniHour" /></span>
+		</li>
+		<li>
+			<input type="text" jwcid="@Any" id="ipt_curMinute" value="ognl:curMinute" maxlength="2"/>
+			<span class="label"><span jwcid="@Label" code="web.v4.tapestry.component.datefield.miniMinute" /></span>
+		</li>
+		<li>
+			<input type="text" jwcid="@Any" id="ipt_curSecond" value="ognl:curSecond" maxlength="2"/>
+			<span class="label"><span jwcid="@Label" code="web.v4.tapestry.component.datefield.miniSecond" /></span>
+		</li>
+	</ul>
+	
+</div>
+<div class="c_submit">
+	<button class="e_button-page e_button-page-ok" onclick="javascript:cla_today();"><i></i><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.today" /></span></button>
+	<button class="e_button-page e_button-page-cancel" onclick="javascript:cla_close();"><i></i><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.cancel" /></span></button>
+</div>
+
+<div class="c_option" id="yearsList" style="left:0; top:27px; width:248px; display:none;" >
+	<div class="c_optionContent">
+		<div class="c_fn">
+			<ul id="yearsUL">
+				<li jwcid="@Foreach" source="ognl:years" value="ognl:year" element="li">
+					<a jwcid="@Any" href="ognl:'javascript:toYear(\'' +year.YEAR+ '\');cla_hideYears();void(0);'" class="ognl:year.CLS"><span><span jwcid="@Insert" value="ognl:year.YEAR"/></span></a>
+				</li>
+			</ul>
+		</div>
+		<div class="c_form c_form-label-2">
+			<ul class="ul">
+				<li class="li">
+					<span class="label"><span jwcid="@Label" code="web.v4.tapestry.component.calendar.other" /></span>
+					<span class="e_elements">
+						<a href="javascript:void(0)" class="e_button e_button-right" onclick="javascript:inputYear();"><i class="e_ico-ok"></i><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.ok" /></span></a>
+						<span class="e_input e_input-left"><span><input id="iptYear" type="text"  maxlength="4" /></span></span>
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="c_optionShadow"></div>
+	<!--[if IE 6]><iframe class="c_optionCover"></iframe><![endif]-->
+</div>
+
+<div class="c_option" id="monthsList" style="left:53px; top:27px; width:200px; display:none;" >
+	<div class="c_optionContent">
+		<div class="c_fn">
+			<ul id="monthsUL">
+			<!-- 	<li jwcid="@Foreach" source="ognl:months" value="ognl:month" element="li">
+					<a jwcid="@Any" href="ognl:'javascript:toMonth(\'' + month.MONTH+ '\');cla_hideMonths();void(0);'" class="ognl:month.CLS"><span><span jwcid="@Insert" value="ognl:month.MONTH"/>月</span></a>
+				</li>  -->
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'01\');cla_hideMonths();void(0);'" val="01" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m01" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'02\');cla_hideMonths();void(0);'" val="02" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m02" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'03\');cla_hideMonths();void(0);'" val="03" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m03" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'04\');cla_hideMonths();void(0);'" val="04" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m04" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'05\');cla_hideMonths();void(0);'" val="05" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m05" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'06\');cla_hideMonths();void(0);'" val="06" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m06" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'07\');cla_hideMonths();void(0);'" val="07" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m07" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'08\');cla_hideMonths();void(0);'" val="08" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m08" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'09\');cla_hideMonths();void(0);'" val="09" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m09" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'10\');cla_hideMonths();void(0);'" val="10" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m10" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'11\');cla_hideMonths();void(0);'" val="11" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m11" /></span></a></li>
+				<li><a jwcid="@Any" href="ognl:'javascript:toMonth(\'12\');cla_hideMonths();void(0);'" val="12" class="e_button"><span><span jwcid="@Label" code="web.v4.tapestry.component.calendar.m12" /></span></a></li>
+			</ul>	
+		</div>
+	</div>
+	<div class="c_optionShadow"></div>
+	<!--[if IE 6]><iframe class="c_optionCover"></iframe><![endif]-->
+</div>
+
+<div class="c_option" id="hoursList" style="left: 140px; top: 84px; width: 300px; display:none;"><!-- 小时选择 -->
+	<div class="c_optionContent">
+		<div class="c_fn">
+			<ul id="hoursListDiv">
+				<li><a href="#nogo" class="e_button" val="00"><span>00</span></a></li><li><a href="#nogo" class="e_button" val="01"><span>01</span></a></li><li><a href="#nogo" class="e_button" val="02"><span>02</span></a></li><li><a href="#nogo" class="e_button" val="03"><span>03</span></a></li>
+				<li><a href="#nogo" class="e_button" val="04"><span>04</span></a></li><li><a href="#nogo" class="e_button" val="05"><span>05</span></a></li><li><a href="#nogo" class="e_button" val="06"><span>06</span></a></li><li><a href="#nogo" class="e_button" val="07"><span>07</span></a></li>
+				<li><a href="#nogo" class="e_button" val="08"><span>08</span></a></li><li><a href="#nogo" class="e_button" val="09"><span>09</span></a></li><li><a href="#nogo" class="e_button" val="10"><span>10</span></a></li><li><a href="#nogo" class="e_button" val="11"><span>11</span></a></li>
+				<li><a href="#nogo" class="e_button" val="12"><span>12</span></a></li><li><a href="#nogo" class="e_button" val="13"><span>13</span></a></li><li><a href="#nogo" class="e_button" val="14"><span>14</span></a></li><li><a href="#nogo" class="e_button" val="15"><span>15</span></a></li>
+				<li><a href="#nogo" class="e_button" val="16"><span>16</span></a></li><li><a href="#nogo" class="e_button" val="17"><span>17</span></a></li><li><a href="#nogo" class="e_button" val="18"><span>18</span></a></li><li><a href="#nogo" class="e_button" val="19"><span>19</span></a></li>
+				<li><a href="#nogo" class="e_button" val="20"><span>20</span></a></li><li><a href="#nogo" class="e_button" val="21"><span>21</span></a></li><li><a href="#nogo" class="e_button" val="22"><span>22</span></a></li><li><a href="#nogo" class="e_button" val="23"><span>23</span></a></li>
+			</ul>	
+		</div>
+	</div>
+	<div class="c_optionShadow"></div>
+	<!--[if IE 6]><iframe class="c_optionCover"></iframe><![endif]-->
+</div>
+<div class="c_option" id="minutesList"  style="left: 205px; top: 114px; width: 200px; display:none;"><!-- 分钟选择 -->
+	<div class="c_optionContent">
+		<div class="c_fn">
+			<ul id="minutesListDiv">
+				<li><a href="#nogo" class="e_button" val="00"><span>00</span></a></li><li><a href="#nogo" class="e_button" val="05"><span>05</span></a></li><li><a href="#nogo" class="e_button" val="10"><span>10</span></a></li><li><a href="#nogo" class="e_button" val="15"><span>15</span></a></li>
+				<li><a href="#nogo" class="e_button" val="20"><span>20</span></a></li><li><a href="#nogo" class="e_button" val="25"><span>25</span></a></li><li><a href="#nogo" class="e_button" val="30"><span>30</span></a></li><li><a href="#nogo" class="e_button" val="35"><span>35</span></a></li>
+				<li><a href="#nogo" class="e_button" val="40"><span>40</span></a></li><li><a href="#nogo" class="e_button" val="45"><span>45</span></a></li><li><a href="#nogo" class="e_button" val="50"><span>50</span></a></li><li><a href="#nogo" class="e_button" val="55"><span>55</span></a></li>
+			</ul>	
+		</div>
+	</div>
+	<div class="c_optionShadow"></div>
+	<!--[if IE 6]><iframe class="c_optionCover"></iframe><![endif]-->
+</div>
+<div class="c_option" id="secondsList"  style="left: 269px; top: 114px; width: 200px; display:none;"><!-- 秒选择 -->
+	<div class="c_optionContent">
+		<div class="c_fn">
+			<ul id="secondsListDiv"> 
+				<li><a href="#nogo" class="e_button" val="00"><span>00</span></a></li><li><a href="#nogo" class="e_button" val="05"><span>05</span></a></li><li><a href="#nogo" class="e_button" val="10"><span>10</span></a></li><li><a href="#nogo" class="e_button" val="15"><span>15</span></a></li>
+				<li><a href="#nogo" class="e_button" val="20"><span>20</span></a></li><li><a href="#nogo" class="e_button" val="25"><span>25</span></a></li><li><a href="#nogo" class="e_button" val="30"><span>30</span></a></li><li><a href="#nogo" class="e_button" val="35"><span>35</span></a></li>
+				<li><a href="#nogo" class="e_button" val="40"><span>40</span></a></li><li><a href="#nogo" class="e_button" val="45"><span>45</span></a></li><li><a href="#nogo" class="e_button" val="50"><span>50</span></a></li><li><a href="#nogo" class="e_button" val="55"><span>55</span></a></li>
+			</ul>	
+		</div>
+	</div>
+	<div class="c_optionShadow"></div>
+	<!--[if IE 6]><iframe class="c_optionCover"></iframe><![endif]-->
+</div>
+</body>
+</html>

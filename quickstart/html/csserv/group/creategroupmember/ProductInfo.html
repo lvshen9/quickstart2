@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>集团产品成员新增-产品信息</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/product/productdata.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupmember/ProductInfo.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/grprule/grprule.js"></script> 
+
+<script language="javascript"><!--
+$(document).ready(function(){
+	initProductInfo();
+});
+// --></script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+<div id="productInfoPart">
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 表单 开始 -->
+	<div class="c_form">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">成员角色：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" 	
+						name="ROLE_CODE_B" id="ROLE_CODE_B"	
+						source="ognl:roleList" 
+						textField="ROLE_B" valueField="ROLE_CODE_B" titleField="ROLE_B" desc="成员角色" nullable="no"/>
+				</span></span></span>
+			</li>
+		</ul>
+	</div>
+	<!-- 表单 结束 -->
+</div>
+<!-- 区域 结束 -->
+
+	<!-- 主区域 开始 -->
+	<div class="c_box">
+		<div jwcid="mytab@Tabset" >
+		 
+			<div jwcid="@TabsetContent" id ="productinfotabset" title="产品信息">
+				<div class="l_col s_iframe-lower s_iframe-close">
+					<!-- 第 1 栏 开始 -->
+					<div class="l_left" style="width:49%;">
+						<!-- 区域 开始 -->
+						<div class="c_box">
+							<!-- 标题 开始 -->
+			                <div class="c_title">
+								<div class="text">待选区</div>
+							</div>
+							<!-- 标题 结束 -->
+							<!-- 分栏 开始 -->
+							<div class="l_col l_col-close">
+								<!-- 第 1 栏 开始 -->
+								<div class="l_left" style="width:50%;">
+									<!-- 标题 开始 -->
+			                        <div jwcid="packageList@saleserv:PackageList" 
+			                            element="div" 
+			                            productId="ognl:productId"
+			                            svcParam="ognl:pkgParam"
+			                            afterSelectAction="pkgListAfterSelectAction(package)"
+			                            callSvc="CS.PackageSVC.getMemberProductPackages"></div>
+									<!-- 列表 结束 -->
+								</div>
+								<!-- 第 1 栏 结束 -->
+								<!-- 第 2 栏 开始 -->
+								<div class="l_auto">
+									<div jwcid="pkgElementList@saleserv:PkgElementList" 
+			                            element="div" 
+			                            callSvc="CS.PackageSVC.getMemberPackageElements"  
+			                            packageId=""></div>
+								</div>
+								<!-- 第 2 栏 结束 -->
+							</div>
+							<!-- 分栏 结束 -->
+						</div>
+						<!-- 区域 结束 -->
+					</div>
+				    <div class="l_auto">
+						<!-- 区域 开始 -->
+						<div class="c_box">
+							<!-- 标题 开始 -->
+							<div class="c_title">
+								<div class="text">已选区</div>
+								<div class="fn">
+									<label for="effectNow">
+							            <input type="checkbox" id="EFFECT_NOW" name="EFFECT_NOW" jwcid="@Checkbox" 
+							            onclick="if(this.checked){selectedElements.effectNow();$(this).val('true');}else {selectedElements.unEffectNow();$(this).val('false');}"
+							            		disabled='ognl:info.EFFECT_TAG' value="true" checked="true"/><span>立即生效</span>
+							         </label>
+						       </div>
+							</div>
+			                 <div jwcid="selectedElements@saleserv:SelectedElements" 
+			                    initCallSvc="CS.SelectedElementSVC.getGrpMebOpenElements"
+			                    initParam="ognl:cond" 
+			                    tradeTypeCode="ognl:cond.TRADE_TYPE_CODE"
+			                    callAddElementSvc="CS.SelectedElementSVC.dealSelectedElements" 
+			                    basicStartDateControlId="PRODUCT_PRE_DATE"
+			                    element="div"></div>
+			                     
+			                    
+							<!-- 表格 结束 -->
+						</div>
+						<!-- 区域 结束 -->
+					</div>
+				<!-- 第 2 栏 结束 -->
+				</div>
+				
+				<!-- 分栏 结束 -->
+			</div>
+		
+			<!-- 产品参数 开始 -->
+			<div jwcid="@Conditional" condition="ognl:productCtrlInfo.ParamInfo.ATTR_VALUE != null">
+				<div jwcid="@TabsetContent" id ="prama" title="产品参数信息" >
+					<input jwcid="@Hidden" id ="pramaPage" name="pramaPage" value="ognl:productCtrlInfo.ParamInfo.ATTR_VALUE" />
+					<input jwcid="@Hidden" name="jsFilePath" id="jsFilePath"
+					value="ognl:productCtrlInfo.jsFile.ATTR_VALUE"/>
+					<span jwcid="productParamPart@saleserv:ProductParamDynamicHtml" element="div"
+					param="ognl:dynParam" 
+				       />
+			    </div>
+			</div>
+		
+			<!-- 产品参数 结束 -->
+			
+			<!-- 资源参数开始  -->
+			<div jwcid="@TabsetContent" id ="source" title="资源信息">
+				<span jwcid="@saleserv:ResView" resList="ognl:resList"/>
+			</div>
+			
+		</div>
+	</div>
+			
+	<div jwcid="elementAttr@saleserv:ElementAttr" element="div"></div>
+	<!-- 分栏 结束 -->
+	<input jwcid="@Any" name="PRODUCT_PRE_DATE" id="PRODUCT_PRE_DATE" value="ognl:cond.PRODUCT_PRE_DATE" style="display:none"/>
+	<input jwcid="@Any" name="TRADE_TYPE_CODE" id="TRADE_TYPE_CODE" value="ognl:cond.TRADE_TYPE_CODE" style="display:none"/>
+	<input jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:productId" style="display:none"/>
+	<input jwcid="@Any" name="GROUP_ID" id="GROUP_ID" value="ognl:dynParam.GROUP_ID" style="display:none" />
+	<input jwcid="@Any" name="MEB_SERIAL_NUMBER" id="MEB_SERIAL_NUMBER" value="ognl:dynParam.MEB_SERIAL_NUMBER" style="display:none"/>
+ 	<input jwcid="@Any" name="GRP_USER_ID" id="GRP_USER_ID" value="ognl:dynParam.GRP_USER_ID" style="display:none"/>
+ 	<input jwcid="@Any" name="MEB_USER_ID" id="MEB_USER_ID" value="ognl:dynParam.MEB_USER_ID" style="display:none"/>
+ 	<input jwcid="@Any" name="CUST_ID" id="CUST_ID" value="ognl:dynParam.CUST_ID" style="display:none"/>
+ 	<input jwcid="@Any" name="MEB_CUST_ID" id="MEB_CUST_ID" value="ognl:dynParam.MEB_CUST_ID" style="display:none"/>
+ 	<input jwcid="@Any" name="MEB_EPARCHY_CODE" id="MEB_EPARCHY_CODE" value="ognl:dynParam.MEB_EPARCHY_CODE" style="display:none"/>
+ 	<input jwcid="@Any" name="IF_CENTRETYPE" id="IF_CENTRETYPE" value="ognl:productCtrlInfo.IF_CENTRETYPE" desc="CENTER业务判断" style="display:none" />
+	<input type="hidden" jwcid="@Any" name="COMPIX_ACCOUNT" id="COMPIX_ACCOUNT" value='ognl:info.COMPIX_ACCOUNT'/>
+  	<input type="hidden" name="SELECTED_ELEMENTS" id="SELECTED_ELEMENTS" value="[]"/>
+  	<input type="hidden" name="HIDDEN_NAME" id="HIDDEN_NAME" value=""/>
+	<input type="button" value="新 增" id="bnext" name="bnext" desc="集团客户资料" class="e_button" onclick="productInfoNextCheck(); return false;" style="display:none"/>
+	
+	
+</div>
+</div></div>
+</body>
+</html>

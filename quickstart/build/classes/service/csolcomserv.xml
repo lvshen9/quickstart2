@@ -1,0 +1,9 @@
+<service subsys="csolcomserv">
+	<entity route="routeByEparchy" name="CS.OlcomBeanSVC.specialOpenAndStop" path="com.ailk.csservice.common.olcom.OlcomBeanSVC@specialOpenAndStop"/>
+	<entity route="routeByEparchy" name="CS.OlcomBeanSVC.queryOlcomState" path="com.ailk.csservice.common.olcom.OlcomBeanSVC@queryOlcomState"/>
+	
+	<entity route="routeByEparchy" name="CS.OlcomBeanSVC.wastesmStopAndOpen" path="com.ailk.csservice.common.olcom.OlcomBeanSVC@wastesmStopAndOpen"/>
+	<entity route="routeByEparchy" name="CS.OlcomBeanSVC.wastesmResume" path="com.ailk.csservice.common.olcom.OlcomBeanSVC@wastesmResume"/>
+	<entity route="routeBySn" name="CS.OlcomBeanSVC.queryOpenStopOlcom" path="com.ailk.csservice.common.olcom.OlcomBeanSVC@queryOpenStopOlcom"/>
+	<entity route="routeByEparchy" name="CS.OlcomBeanSVC.greenOpenAndStop" path="com.ailk.csservice.common.olcom.OlcomBeanSVC@greenOpenAndStop"/>
+</service>

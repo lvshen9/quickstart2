@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title><span jwcid="@Label" code="web.v4.tapestry.component.upload.title" /></title>
+<script jwcid="@Script" src="v4/component/upload/swfupload.js"></script>
+<script jwcid="@Script" src="v4/component/upload/swfupload.queue.js"></script>
+<script jwcid="@Script" src="v4/component/upload/handlers.js"></script>
+ 
+</head>
+<body jwcid="@Body">
+
+<!-- 标题 开始 -->
+<div class="c_title">
+	<div class="tip" id="fileHint"></div>
+	<div class="fn">
+		<!--
+		<span class="e_elements l_mr" style="width:220px;">
+			<span class="e_label e_label-left"><span>http(s)</span></span>
+			<span class="e_input e_input-center"><span><input type="text" style="width:91px;"/></span></span>
+			<a class="e_button e_button-right"><span>网络文件</span></a>
+		</span>
+		-->
+		<span id="bupload" name="bupload" ></span>
+	</div>
+</div>
+<!-- 标题 结束 -->
+<!-- 表格 开始 -->
+<div class="c_scroll" style="height:245px">
+<div class="c_table">
+	<table>
+		<thead>
+			<tr>
+				<th><span jwcid="@Label" code="web.v4.tapestry.component.upload.id" /></th>
+				<th><span jwcid="@Label" code="web.v4.tapestry.component.upload.file" /></th>
+				<th><span jwcid="@Label" code="web.v4.tapestry.component.upload.size" /></th>
+				<th><span jwcid="@Label" code="web.v4.tapestry.component.upload.status" /></th>
+				<th style="width:4em;"><span jwcid="@Label" code="web.v4.tapestry.component.upload.operation" /></th>
+			</tr>
+		</thead>
+		<tbody id="filetable">
+		</tbody>
+	</table>
+</div>
+</div>
+<!-- 表格 结束 -->
+<!-- 提交 开始 -->
+<div class="c_submit">
+	<input type="hidden" id="delData" name="delData" />
+	<input type="hidden" id="urlpath" name="urlpath" jwcid="@Any" value="ognl:page.getPageServletPath()" />
+	<input type="hidden" id="uploadField" name="uploadField" jwcid="@Any" value="ognl:info.uploadField" />
+	<input type="hidden" id="fileSize" name="fileSize" jwcid="@Any" value="ognl:info.fileSize" />
+	<input type="hidden" id="fileLimit" name="fileLimit" jwcid="@Any" value="ognl:info.fileLimit" />
+	<input type="hidden" id="fileDelete" name="fileDelete" jwcid="@Any" value="ognl:info.fileDelete" />
+	<input type="hidden" id="filePath" name="filePath" jwcid="@Any" value="ognl:info.filePath" />
+	<input type="hidden" id="ftpSite" name="ftpSite" jwcid="@Any" value="ognl:info.ftpSite" />
+	<input type="hidden" id="fileData" name="fileData" jwcid="@Any" value="ognl:info.fileData" />
+	<input type="hidden" id="fileTypes" name="fileTypes" jwcid="@Any" value="ognl:info.fileTypes" />
+	<input type="hidden" id="fileTypesDesc" name="fileTypesDesc" jwcid="@Any" value="ognl:info.fileTypesDesc" />
+	<input type="hidden" id="afterAction" name="afterAction" jwcid="@Any" value="ognl:info.afterAction" />
+	<input type="hidden" id="needSuffix" name="needSuffix" jwcid="@Any" value="ognl:info.needSuffix" />
+	<button id="bfinish" class="e_button-page e_button-page-ok" onclick="finishUploadFiles()"><i class="e_ico-ok"></i><span><span jwcid="@Label" code="web.v4.tapestry.component.upload.ok" /></span></button>
+	<button id="bclean" class="e_button-page" onclick="cleanUploadFiles()"><i class="e_ico-reset"></i><span><span jwcid="@Label" code="web.v4.tapestry.component.upload.clear" /></span></button>
+	<button id="bcancel" class="e_button-page e_button-page-cancel" onclick="cancelUploadFiles()"><i class="e_ico-cancel"></i><span><span jwcid="@Label" code="web.v4.tapestry.component.upload.cancel" /></span></button>
+</div>
+<!-- 提交 结束 -->
+
+</body>
+</html>

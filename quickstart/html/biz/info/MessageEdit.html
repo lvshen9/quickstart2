@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>消息编辑</title>
+<script jwcid="@Script" src="biz/scripts/info.js" wade="true"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">消息编辑</div>
+	</div>
+
+	<div class="c_form c_form-col-1 c_form-label-4" id="editPart">
+		<ul class="ul">
+				<li class="li">
+				<span class="label">消息主题：</span>
+				<span class="e_input"><span><input type="text" jwcid="@TextField" name="INFO_TOPIC" value="ognl:info.INFO_TOPIC"  nullable="no"  desc="公告主题" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">接收人员：</span>
+				<input name="INFO_RECES" jwcid="@biz:StaffField" value="ognl:info.INFO_AUTH" text="ognl:pageutil.getStaticValue('TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.INFO_AUTH)"/>
+			</li>
+			<li class="li">
+				<span class="label">消息内容：</span>
+				<textarea name="INFO_CONTENT" jwcid="@Editor" />	
+			</li>
+		</ul>
+	</div>
+	
+	<div class="c_submit">
+		<button type="button" class="e_button-page-ok" timelimit="true" onclick="javascript:$.info.updateMessage();"><i class="e_ico-ok"></i><span>提交</span></button>
+	</div>	
+</div>
+
+</div></div>
+</body>
+</html>

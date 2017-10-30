@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ailk.quickstart.view.examples.cust.CustMgr">
+	<property-specification name="condition" type="com.ailk.common.data.IData"/>
+	
+	<property-specification name="cust" type="com.ailk.common.data.IData"/>
+	
+	<property-specification name="custs" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="rowIndex" type="int"/>
+	
+	<property-specification name="custsCount" type="long"/>
+	
+	<property-specification name="edit" type="com.ailk.common.data.IData"/>
+	
+</page-specification>

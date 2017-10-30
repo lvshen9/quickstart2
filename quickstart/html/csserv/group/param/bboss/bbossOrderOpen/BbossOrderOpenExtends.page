@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: BbossOrderOpenExtends.page,v 1.2 2013/04/11 13:30:05 cheny Exp $ -->
+
+<page-specification class="com.ailk.groupview.querygroupinfo.BbossOrderOpenExtends">
+	<property-specification name="condition" type="com.ailk.common.data.IData"/>
+	<property-specification name="infos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="info" type="com.ailk.common.data.IData"/>
+    <property-specification name="poProductExtends" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="index" type="int"/>
+    <property-specification name="orderInfo" type="com.ailk.common.data.IData"/>
+</page-specification>

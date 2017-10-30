@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	database config
+	jetty: jndi = "java:comp/env/jdbc/framework"
+-->
+<database limit="100001">
+	<framework
+		type="dbcp"
+		driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@10.13.3.10:1521:hnancrm"
+		user="UCR_CEN1"
+		passwd="123"
+		initialSize="1"
+		maxActive="10"
+		maxIdle="5"
+		maxWait="1000"
+		/>	
+	<cen1
+		type="dbcp"
+		driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@10.13.3.10:1521:hnancrm"
+		user="UCR_CEN1"
+		passwd="123"
+		initialSize="1"
+		maxActive="10"
+		maxIdle="5"
+		maxWait="1000"
+		/>
+	<!--自连的本地数据库  -->
+	<crm_lvshen
+		type="dbcp"
+		driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@localhost:1521:ORCL"
+		user="crm"
+		passwd="crm"
+		initialSize="1"
+		maxActive="10"
+		maxIdle="5"
+		maxWait="1000"
+		/>
+	<res
+		type="dbcp"
+		driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@10.13.3.10:1521:hnancrm"
+		user="UCR_RES"
+		passwd="123"
+		initialSize="1"
+		maxActive="10"
+		maxIdle="5"
+		maxWait="1000"
+		/>
+	<sys
+		type="dbcp"
+		driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@10.13.3.10:1521:hnancrm"
+		user="UCR_SYS"
+		passwd="123"
+		initialSize="1"
+		maxActive="10"
+		maxIdle="5"
+		maxWait="1000"
+		/>
+</database>

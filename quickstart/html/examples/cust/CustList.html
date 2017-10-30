@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+</head>
+
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box">
+	<div class="c_title">
+		<div class="text"><span jwcid="@Insert" value='客户查询'></span></div>
+	</div>
+	<div class="c_form" id="QueryCond">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">客户名称：</span>
+				<span class="e_input"><span><input type="text" jwcid="@TextField" name="CUST_NAME" value="ognl:condition.custName"/></span></span>
+			</li>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit"><button class="e_button-form" onclick="return queryCusts();"><i class="e_ico-search"></i><span>查询</span></button></div>
+	</div>
+	
+	<div jwcid="QueryPart@Part" id="QueryPart" element="div">
+		<div class="c_scroll c_scroll-table-10">
+		<div class="c_table">
+			<table jwcid="@Table">
+				<thead>
+					<tr>
+						<th col="CHK_CUST_ID" colcss="e_center"><input type="checkbox" onclick="checkedOther('custids');" /></th>
+						<th col="CUST_NAME">客户姓名</th>
+						<th col="CUST_ID">客户标识</th>
+						<th col="VIP_ID">VIP标识</th>
+						<th col="USER_ID">用户标识</th>
+						<th col="VIP_TYPE_CODE_DESC">VIP类型</th>
+						<th col="VIP_TYPE_CODE" style="display:none">VIP类型</th>
+						<th col="JOIN_DATE">创建时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:custs" value="ognl:cust" index="ognl:rowIndex" element="tr">
+						<td class="e_center"><input jwcid="@Checkbox" name="custids" text="ognl:cust.CUST_NAME" value="ognl:cust.CUST_ID" onclick="checkTableRow($(this))"/></td>
+						<td><a jwcid="@Redirect" custId="ognl:cust.CUST_ID" vipId="ognl:cust.VIP_ID" value="ognl:cust.CUST_NAME" cols="40" onclick="javascript:openNav('客户详情','examples.cust.CustEdit','queryCust','&VIP_ID='+$(this).attr('vipId')+'&CUST_ID='+$(this).attr('custId'))" /></td>
+						<td><span jwcid="@Insert" value="ognl:cust.CUST_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.VIP_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:cust.USER_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('VIP_TYPE_CODE', cust.VIP_TYPE_CODE)"></span></td>
+						<td style="display:none"><span jwcid="@Insert" value="ognl:cust.VIP_TYPE_CODE"></span></td>
+						<td><span jwcid="@Insert" value="ognl:formatDate('yyyy-MM-dd',cust.JOIN_DATE)"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		<div jwcid="@NavBar" name="custnav" cond="QueryCond" part="QueryPart" listener="queryCusts" pageSize="10" count="ognl:custsCount"></div>
+	</div>
+</div>
+</div></div>
+</body>
+<script type="text/javascript">
+function queryCusts() {
+	$.beginPageLoading("开始查询");
+	ajaxSubmit('QueryCond','queryCusts',null,'QueryPart');
+	$.endPageLoading();
+}
+function checkTableRow(obj) {
+	setPopupReturnValue(obj.attr('value'), obj.attr('text'));
+}
+</script>
+</html>

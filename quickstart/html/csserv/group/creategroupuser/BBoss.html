@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link jwcid="@Style" href="base.css" rel="stylesheet" type="text/css" />
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+<script  jwcid="@Script" type="text/javascript" src="scripts/saleserv.js"></script>
+<script  jwcid="@Script" type="text/javascript" src="scripts/group/param/bboss/bboss.js" ></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/grprule/grprule.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<form jwcid="@Form">
+
+<!-- 注：弹出部分也在页面里，在代码底部，用 style 隐藏了，自己去掉 style 把它显示出来 --> 
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 表单 开始 -->
+	<div class="c_form c_form-col-2 c_form-label-7">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">组合包：</span></span>
+				<span class="e_input e_dis"><span><input jwcid="@TextField" name="CUST_NAME" value="ognl:@com.ailk.biz.util.StaticUtil@getStaticValue(getVisit(), 'TD_B_PRODUCT', 'PRODUCT_ID', 'PRODUCT_NAME',productGoodInfos.GOOD_INFO.BASE_PRODUCT)" disabled="true" title="组合包"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">商品操作类型：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" id="operType" name="operType" source="ognl:operTypes" valueField="OPER_TYPE" textField="OPER_NAME"  title ="商品操作类型" addDefault="false"/>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">业务开展模式：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="BIZ_MODE" source="ognl:bizModeList" valueField="BIZ_MODE" textField="MODE_NAME" value="ognl:condition.BIZ_MODE" addDefault="false"/>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">套餐生效方式：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" id = "PAY_MODE" name="PAY_MODE" source="ognl:@com.ailk.biz.util.StaticUtil@getList(getVisit(), 'TD_B_ATTR_BIZ','ATTR_VALUE','ATTR_NAME',new java.lang.String[]{'ID','ID_TYPE','ATTR_OBJ'},new java.lang.String[]{productGoodInfos.GOOD_INFO.BASE_PRODUCT,'B','OPNPYMDS'})"
+					 valueField="ATTR_VALUE" textField="ATTR_NAME" value="ognl:condition.PAY_MODE" title="套餐生效方式" addDefault="false"/>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label">业务保障等级：</span>
+				<span class="e_select"><span><span>
+						<select jwcid="@Select" name="BUS_NEED_DEGREE" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('BUS_NEED_DEGREE')"
+							valueField="DATA_ID" textField="DATA_NAME" value="ognl:condition.BUS_NEED_DEGREE" title="业务保障等级" />
+				</span></span></span>
+			</li>
+		</ul>
+	</div>
+	<!-- 表单 结束 -->
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text" ><span align="center">选择产品</span></div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div class="c_table" id="powerDiv">
+		<table id="productTable">
+			<thead>
+				<tr>
+					<th id="col_X_TAG" style="display:none">TAG</th>
+					<th id="col_IS_SELECTED">选择</th>
+					<th id="col_PRODUCT_ID_B">产品编码</th>
+					<th id="col_PRODUCT_NAME">产品名称</th>
+					<th id="col_PRO_OPER_TYPE">产品操作类型</th>
+					<th id="col_PRODUCT_OPER_SET" style="display:none">产品操作类型设置</th>
+					<th id="col_X_OP" colspan='2'>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:products" value="ognl:info" element="tr" index="ognl:rowIndex" elementIndex="ognl:rowIndex" class="ognl:rowIndex % 2 == 0 ? '' : 'odd'" >
+					<td style="display:none;">0</td>
+					<input style="display:none;" type="hidden" jwcid="@Any" desc="判断产品是否已经受理" value="ognl:info.IS_EXIST=='true'?'true':'false'" name="ognl:'isExist'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX" id="ognl:'isExist'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX"/>
+					<td class="e_center"><input type="checkbox" jwcid="@Checkbox" name="ctag" id="ognl:'ctag'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX" value="ognl:info.PRODUCT_ID_B" checked="ognl:info.IS_EXIST=='true'?'true':''" class="e_checkbox" /></td>
+					<td><span jwcid="@Insert" value="ognl:info.PRODUCT_ID_B"/></td>
+					<td><span jwcid="@Insert" value="ognl:info.PRODUCT_NAME"/></td>
+					
+					 <!--  
+					<td><span jwcid="@Insert" name="PRO_OPER_TYPE" id="ognl:'productOperType_'+info.PRODUCT_ID_B" value="" title="产品操作类型" /></td>
+					-->		
+					
+					<td><span jwcid="@Insert" type="text" id="ognl:'productOperType_'+info.PRODUCT_ID_B" 
+					   			value="ognl:proOperTypes.PRO_OPER_NAME" title="产品操作类型" /></td>
+													
+					<td><a jwcid="@Redirect" parameters="ognl:info"  value="订购产品" disabled="ognl:info.IS_EXIST=='true'?'true':''" method="CrtUs" 
+											checkId="ognl:'ctag'+info.PRODUCT_ID_B+ '_' + info.PRODUCT_INDEX" productId="ognl:info.PRODUCT_ID_B" 
+											productindex="ognl:info.PRODUCT_INDEX" productName="ognl:info.PRODUCT_NAME"
+											onclick="popProductParamPage($(this))" afterAction="Wade.page.endFlowOverlay()"/>
+					</td>
+					<div jwcid="@Conditional" condition="ognl:info.CAN_MANY != null && info.CAN_MANY == 'muti' && info.PRODUCT_INDEX != null && info.PRODUCT_INDEX">
+						<td>
+							<a jwcid="@Any"
+								href="javascript:void(0);"
+								productid="ognl:info.PRODUCT_ID_B" 
+								productindex ="ognl:info.PRODUCT_INDEX" 
+								elementcnt="100"
+								onclick="copyElement(this)">
+								<span>增加产品</span>
+							</a>
+						</td>
+					</div>
+				</tr>
+			</tbody>
+		</table>
+		<input type="hidden" jwcid="@Any" name="CUST_ID" id="CUST_ID" value="ognl:custId"/>
+		<input type="hidden" jwcid="@Any" name="GROUP_ID" id="GROUP_ID" value="ognl:groupId"/>
+        <input style="display:none" jwcid="@TextArea" name="grpCompixProduct" id="grpCompixProduct" value="ognl:grpCompixProduct"/>        
+        <input type="hidden" jwcid="@Any" name="selectedCheckBox" id="selectedCheckBox" value=""/>
+        <input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:productGoodInfos.GOOD_INFO.BASE_PRODUCT"/>
+        <input type="hidden" jwcid="@Any" name="PROD_OP_TYPE" id="PROD_OP_TYPE" value="ognl:prodOpType"/>
+        <div jwcid="productGoodPart@Part">        
+    	<input style="display:none" jwcid="@TextArea" name="productGoodInfos" id="productGoodInfos" value="ognl:productGoodInfos" desc="商产品信息"/><!--存放商产品信息，改造前是放在TD中的-->
+		</div>
+        <textarea jwcid="@TextArea" name="EOS" id="EOS" value="ognl:EOS" style="display:none"></textarea>
+        <input type="button" id="bnext" value="下一步" class="e_button" style="display:none" onclick="return validateParamForNext('CrtUs');"/>
+                
+	</div>
+	<!-- 表格 结束 -->
+</div>
+</form>
+<!-- 区域 结束 -->
+</div></div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>工单状态查询</title>
+<script jwcid="@Script" language="JavaScript" src="scripts/csserv/common/trademgr/tradequery.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">订单状态查询</div>
+		<div class="tip"><span class="e_tip">子订单标识不能为空</span></div>
+	</div>
+	<div class="c_form c_form-label-12 c_form-col-2" jwcid="QueryCondPart@Part">
+		<ul class="ul">
+			
+			<li class="li">
+			<span class="label"><span class="e_required">订单标识(TRADE_ID)：</span></span>
+			<span class="e_input"><span>
+					<input jwcid="@TextField" name="cond_TRADE_ID" id="cond_TRADE_ID" value="ognl:condition.cond_TRADE_ID" />
+			</span></span>
+			</li>
+		</ul>
+
+		<div class="submitPlace"></div>
+		<div class="submit">
+			<button class="e_button-form" type="button" onclick="return queryTradeStateInfo();"><i class="e_ico-search"></i><span>查询</span></button>
+		</div>
+	</div>
+</div>
+
+<!-- 返回信息 -->
+<div class="c_box">
+	<div class="c_form c_form-label-5 c_form-col-1" jwcid="TradeStateResultPart@Part">
+		<ul class="ul">
+			<li class="li">
+			<span class="label">返回信息：</span>
+			<span class="e_textarea">
+				<span class="e_textareaTop""><span></span></span>
+				<span class="e_textareaContent">
+					<textarea type="text" readonly="true" jwcid="@TextArea" id="RESULTS" name="RESULTS" value="ognl:tipInfo" nullable="yes" rows="10" maxsize="20000" desc="返回信息" style="height:250px;"/>
+				</span>
+				<span class="e_textareaBottom"><span></span></span>
+			</span>
+			</li>
+		</ul>
+	</div>
+	
+	<!-- 翻页 开始 -->
+	<!--
+	 <div jwcid="@NavBar"  name="pagin" id="pagin" listener="invokeInterface" pageSize="10" cond="QueryCondPart,PageInfoCondPart" part="InterfaceResultPart" count="ognl:count"/>
+	-->
+	<!-- 翻页 结束 -->
+</div>
+<!-- 错误信息 结束 -->
+</div></div>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/grprule/grprule.js"></script> 
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupuser/BaseInfo.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+<div id="baseInfoPart">
+<!-- 集团客户信息 开始 -->
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">集团客户查询</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表单 开始 -->
+	<div class="c_form">
+		<ul class="ul">
+			<li class="li">
+			
+			   <span jwcid="@Conditional" condition="ognl:condition.ESOP_PRODUCT_ID==null">
+					<span jwcid="@saleserv:SelectGroup" afterErrorAction="selectGroupErrorAfterAction();" afterAction="selectGroupAfterAction(data);"/>
+			   </span>
+			   <span jwcid="@Conditional" condition="ognl:condition.ESOP_PRODUCT_ID!=null">
+			   
+				   	<span class="label"><span>集团客户编码：</span></span>
+					<span class="e_input">
+						<input jwcid="@TextField"  id="cond_GROUP_ID" name="cond_GROUP_ID" value="ognl:condition.cond_GROUP_ID" 
+								readOnly="true" disabled="true"/>
+						<input jwcid="@TextField"  id="ESOP_PRODUCT_ID" name="ESOP_PRODUCT_ID" value="ognl:condition.ESOP_PRODUCT_ID" 
+								style="display:none"/>
+						<input jwcid="@TextField"  id="ESOP_PRODUCT_NAME" name="ESOP_PRODUCT_NAME" value="ognl:condition.ESOP_PRODUCT_NAME" 
+								style="display:none"/>
+						<input jwcid="@TextField"  id="ESOP_USER_ID" name="ESOP_USER_ID" value="ognl:condition.ESOP_USER_ID" 
+								style="display:none"/>
+						<textarea jwcid="@TextArea" name="EOS" id="EOS" value="ognl:condition.EOS" 
+								style="display:none"></textarea>
+					</span>
+
+			   </span>
+			</li>
+  		</ul>
+	</div>
+	<!-- 表单 结束 -->
+	<!-- 表单 开始 -->
+	<input type="text" jwcid="@saleserv:GroupCustInfo" groupUserInfo="ognl:groupInfo" hasTitle="false"/>
+	<!-- 表单 结束 -->
+</div>
+<!-- 集团客户信息 结束 -->
+<!-- 分栏 开始 -->
+<div class="l_col">
+	<!-- 第 1 栏 开始 -->
+	<div class="l_left" style="width:300px;">
+		
+	<!-- 产品列表 开始 -->
+	<div class="c_box" id="treePar">
+		<span jwcid="@saleserv:GroupProductsTree"
+				    parentTypeCode="1000"
+				    multiSelect="false"
+				    operType="GROUP_CREATE_USER"
+				    checkboxAction="queryProduct(nodedata);"
+				    init="false"
+				    method="loadGroupProductsTreeForAll"
+				    treeHight="310px;"
+				    rootName="集团产品"/>
+	</div>
+	<!-- 产品列表 结束 -->
+	</div>
+	<!-- 第 1 栏 结束 -->
+	<!-- 第 2 栏 开始 -->
+	<div class="l_auto">
+
+		<!-- 产品详情 开始 -->
+			<div jwcid="CompProductInfoPart@Part" element="div" style="display:none">
+				<div class="c_box" >
+					<span jwcid="@saleserv:ProductExplain" productInfo="ognl:productInfo"/>
+					<div jwcid="@Conditional" condition="ognl:productCtrlInfo.IfCentreType.ATTR_VALUE != null">	 
+					
+						<!-- 表单 开始 -->
+						<div class="c_form">
+							<ul class="ul">
+								<li class="li">
+										<span class="label">融合IMS信息：</span>
+										<span class="e_select"><span><span>
+										  		<select	jwcid="@Select" name="param_IF_CENTRETYPE" id="param_IF_CENTRETYPE"  addDefault="false"
+												        source="ognl:@com.ailk.biz.util.StaticUtil@getList(getVisit(),'TD_B_ATTR_ITEMB','ATTR_FIELD_CODE','ATTR_FIELD_NAME',new java.lang.String[] {'ID','ATTR_CODE'},new java.lang.String[] {productInfo.PRODUCT_ID,productCtrlInfo.IfCentreType.RSRV_STR1})"
+													    textField="ATTR_FIELD_NAME" valueField="ATTR_FIELD_CODE" desc="IMS信息" >
+												</select>
+										</span></span></span>
+								</li>
+							</ul>
+						</div>
+						<!-- 表单 结束 -->
+			
+				</div>
+				</div>
+				<div class="c_box" >
+					<span jwcid="@saleserv:GrpUserList" useInfos="ognl:useInfos" ifCheck="false" titleInfo="ognl:productInfo.PRODUCT_NAME" clickAction="" />
+				</div>
+				
+		</div>
+		<!-- 产品详情 结束 -->
+
+
+
+	</div>
+	<!-- 第 2 栏 结束 -->
+</div>
+<!-- 分栏 结束 -->
+  <input type="hidden" name="flag" id="flag" value="false"/>
+  <input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:condition.PRODUCT_ID"/>
+  <input type="hidden" name="BUSI_TYPE" id="BUSI_TYPE" value="CrtUs"/>
+  <input jwcid="@Any" id="GRP_USER_EPARCHYCODE" name="GRP_USER_EPARCHYCODE" value="ognl:condition.GRP_USER_EPARCHYCODE"  style="display:none;"  encode="false" />
+  <input type="button" id="bnext" value="下一步" class="e_button" onclick="isSelectedProducts(); return false;" style="display:none;"/>
+</div>
+</div></div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	if(typeof($("#ESOP_PRODUCT_ID").val()) !='undefined'){
+	   initTreeByProductInfo($("#ESOP_PRODUCT_NAME").val(),$("#ESOP_PRODUCT_ID").val());
+	   var obj=$("#CompProductInfoPart").css("display","");
+   }
+	
+});
+</script>
+</html>

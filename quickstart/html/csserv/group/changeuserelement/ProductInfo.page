@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: ProductInfo.page,v 1.4 2013/04/22 02:13:30 liming2 Exp $ -->
+
+<page-specification class="com.ailk.csview.group.changeuserelement.ProductInfo">
+	<property-specification name="productId" type="java.lang.String"/>
+	<property-specification name="info" type="com.ailk.common.data.IData"/>
+	<property-specification name="productCtrlInfo" type="com.ailk.common.data.IData"/>	
+	<property-specification name="extendElements" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="plusProducts" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="resList" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="relawwList" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="useTag" type="java.lang.String"/> 
+    <property-specification name="dynParam" type="com.ailk.common.data.IData"/> 
+    <property-specification name="cond" type="com.ailk.common.data.IData"/> 
+    <property-specification name="infos" type="com.ailk.common.data.IData"/>
+</page-specification>

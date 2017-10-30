@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>查看公告</title>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box">
+
+<div class="c_article c_article-big">
+	<div class="title"><span jwcid="@Insert" value="ognl:info.INFO_TOPIC" /></div>
+	<div class="info">发布时间：<span jwcid="@Insert" value="ognl:@com.ailk.common.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.SEND_TIME)"/> &nbsp;&nbsp;发布人：<span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.INFO_AUTH)"/></div>
+	<div class="content">
+		<span jwcid="@Insert" value="ognl:info.INFO_CONTENT" raw="true" />
+	</div>
+</div>
+
+</div>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: EntireCustomerUserParamInfo.page,v 1.1 2012/01/04 03:30:10 jiangwei5 Exp $ -->
+
+<page-specification class="com.ailk.csview.group.creategroupuser.EntireCustomerUserParamInfo">
+	<property-specification name="condition" type="com.ailk.common.data.IData"/>
+    <property-specification name="attInfos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="attInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="auditorInfos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="auditorInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="contactorInfos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="contactorInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="addAttInfo" type="com.ailk.common.data.IData"/>    
+    <property-specification name="addAuditorInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="addContactorInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="rowIndex" type="int"/>
+    <property-specification name="productCtrlInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="attInfoTag" type="boolean" initial-value="false"/>
+    <property-specification name="auditorInfoTag" type="boolean" initial-value="false"/>
+    <property-specification name="contactorInfoTag" type="boolean" initial-value="false"/>
+    <property-specification name="productGoodInfos" type="com.ailk.common.data.IData"/>
+    <property-specification name="merchpParam" type="com.ailk.common.data.IData"/>
+     <property-specification name="info" type="com.ailk.common.data.IData"/>
+    <property-specification name="hintInfo" type="java.lang.String"/>
+</page-specification>

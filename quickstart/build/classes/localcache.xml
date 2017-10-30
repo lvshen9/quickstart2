@@ -1,0 +1,51 @@
+﻿<?xml version = '1.0' encoding = 'UTF-8'?>
+
+<localcaches>
+    
+    <readonly>
+		<cache className="com.ailk.biz.cache.LogCfgCache" init="true" />
+        <cache className="com.ailk.biz.cache.BizEnvCache" init="true" />
+        <cache className="com.ailk.biz.cache.DBSystemTimeCache" init="true" />
+        <cache className="com.ailk.biz.cache.errcode.ErrorCodeCache" init="false" />
+        <cache className="com.ailk.biz.cache.StaticDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.CrmCodeCodeCache" init="false" />
+        <cache className="com.ailk.biz.cache.ActCodeCodeCache" init="false" />
+        <cache className="com.ailk.biz.cache.CrmCacheTablesCache" init="false" />
+        <cache className="com.ailk.biz.cache.ActCacheTablesCache" init="false" />
+		<cache className="com.ailk.biz.cache.safe.ServicePrivCache" init="false" />
+        <cache className="com.ailk.biz.cache.safe.AjaxPrivCache" init="false" />
+		<cache className="com.ailk.biz.cache.safe.PagePrivCache" init="false" />
+
+        <!--START:FOR StaticUtil-->
+        <cache className="com.ailk.biz.cache.AreaDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.BankDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.SuperBankDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.BrandDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.VipTypeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.VipClassDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.ServiceStateDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.ProductDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.UserTypeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.PlatsvcDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.TagDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.ResTypeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.TradeTypeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.ProductCompDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.ServiceDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.ProductTypeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.RelationDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.PtypeProductDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.PayModeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.CustCityDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.ScoreTypeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.InmodeDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.RelationRoleDataCache" init="false" />
+        <cache className="com.ailk.biz.cache.StaffOperTypeDataCache" init="false" />
+        <!--END:FOR StaticUtil-->
+    </readonly>
+    
+    <readwrite>
+        <cache name="COMMON_CACHE" maxSize="100000" />
+    </readwrite>
+
+</localcaches>

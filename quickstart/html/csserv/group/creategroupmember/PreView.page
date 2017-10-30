@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: PreView.page,v 1.4 2013/04/19 03:50:21 liming2 Exp $ -->
+
+<page-specification class="com.ailk.csview.group.creategroupmember.PreView">
+	<property-specification name="condition" type="com.ailk.common.data.IData"/>
+	<property-specification name="infos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="info" type="com.ailk.common.data.IData"/>
+
+	<property-specification name="userProduct" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="memberProduct" type="com.ailk.common.data.IData"/>
+
+	<property-specification name="rowIndex" type="int"/>
+	<property-specification name="pamRemark" type="java.lang.String"/>
+    <property-specification name="grpFeeList" type="java.lang.String"/>	
+	
+    <property-specification name="grpCustInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="mebUserInfo" type="com.ailk.common.data.IData"/>
+	<property-specification name="payShow" type="com.ailk.common.data.IData"/>
+	
+</page-specification>

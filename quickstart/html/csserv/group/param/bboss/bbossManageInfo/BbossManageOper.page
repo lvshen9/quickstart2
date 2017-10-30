@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: BbossManageOper.page,v 1.4 2013/04/28 01:59:58 weixb3 Exp $ -->
+
+<page-specification class="com.ailk.csview.group.bbossmanageinfo.BbossManageOper">
+	<property-specification name="cond" type="com.ailk.common.data.IData"/>
+	<property-specification name="condition" type="com.ailk.common.data.IData"/>
+	<property-specification name="infos" type="com.ailk.common.data.IData"/>
+	<property-specification name="info" type="com.ailk.common.data.IData"/>
+	<property-specification name="productDisInfos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="poInfos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="poList" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="productInfos" type="com.ailk.common.data.IDataset"/>	
+	<property-specification name="purchaseInfos" type="com.ailk.common.data.IDataset"/>	
+	<property-specification name="rowIndex" type="int"/>
+	<property-specification name="pOProductPlus" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="oldPOProductPlus" type="com.ailk.common.data.IDataset"/>	
+	<property-specification name="productId" type="java.lang.String"/>
+	<property-specification name="productCtrlInfo" type="com.ailk.common.data.IData"/>
+	<property-specification name="extendElements" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="resList" type="com.ailk.common.data.IDataset"/>	
+	<property-specification name="userDiffCodes" type="com.ailk.common.data.IDataset"/>   
+	<property-specification name="advValidate" type="java.lang.String"/>
+	<property-specification name="useTag" type="java.lang.String"/>
+	<property-specification name="relawwList" type="com.ailk.common.data.IDataset"/>   
+	<property-specification name="forcetag" type="java.lang.String"/>
+	<property-specification name="flowInfo" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="manageInfo" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="oldsetDataset" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="BossManageInfo" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="plusProducts" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="tradeId" type="java.lang.String"/> 
+	<property-specification name="merchTradeId" type="java.lang.String"/> 
+	<property-specification name="orderId" type="java.lang.String"/> 
+	<property-specification name="grpUserEparchycode" type="java.lang.String"/> 
+	<property-specification name="bbossUserId" type="java.lang.String"/> 
+	<property-specification name="flowPoint" type="java.lang.String"/> 
+	<property-specification name="myFlag" type="java.lang.String"/>
+	<property-specification name="ibsysid" type="java.lang.String"/>
+</page-specification>

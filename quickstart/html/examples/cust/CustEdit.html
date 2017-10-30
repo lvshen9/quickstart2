@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head" includeJs="ognl:'js/i18n.' + getLanguage() + '.js'">
+<script jwcid="@Script" src="scripts/examples/cust/custlist.js"></script>
+</head>
+
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box" id="EditPart">
+	<div class="c_title">
+		<div class="text">客户详情</div>
+	</div>
+	<div class="c_form c_form-col-2 c_form-label-5">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">客户姓名：</span></span>
+				<span class="e_input"><span><input type="text" name="CUST_NAME" jwcid="@TextField" value="ognl:edit.CUST_NAME" desc="客户姓名"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label">创建时间：</span>
+				<span class="e_elements">
+					<span class="e_input e_input-left"><span>
+						<input type="text" name="JOIN_DATE" jwcid="@DatePopup" value="ognl:edit.JOIN_DATE" desc="出生年月" datatype="date" format="yyyy-MM-dd" afterAction="afterPopupAction()"/>
+					</span></span>
+				</span>
+			</li>
+			<li class="li">
+				<span class="label">VIP标识：</span>
+				<span class="e_input"><span><input type="text" name="VIP_ID" jwcid="@TextField" value="ognl:edit.VIP_ID" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">客户标识：</span>
+				<span class="e_input"><span><input type="text" name="CUST_ID" jwcid="@TextField" value="ognl:edit.CUST_ID" /></span></span>
+			</li>
+			<li class="li col-2">
+				<span class="label">备注：</span>
+				<span class="e_textarea">
+					<span class="e_textareaTop"><span></span></span>
+					<span class="e_textareaContent"><textarea jwcid="@TextArea" name="REMARK" value="ognl:cust.REMARK" style="height:30px;"></textarea></span>
+					<span class="e_textareaBottom"><span></span></span>
+				</span>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="c_submit">
+		<button class="e_button-page e_button-page-ok" id="bupdate" name="bupdate" onclick="return editCust();"><i></i><span>保存</span></button>
+		<button class="e_button-page e_button-page-cancel" id="bclose" name="bdelete" onclick="return $.nav.close();"><i></i><span>关闭</span></button>
+	</div>
+</div>
+</div></div>
+</body>
+</html>

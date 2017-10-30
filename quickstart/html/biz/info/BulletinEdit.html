@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>公告编辑</title>
+<script jwcid="@Script" src="biz/scripts/info.js" wade="true"></script> 
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">公告编辑</div>
+	</div>
+
+	<div class="c_form c_form-col-2 c_form-label-4" id="editPart">
+		<ul class="ul">
+			<li class="li col-2">
+				<span class="label">公告主题：</span>
+				<span class="e_input"><span><input type="text" jwcid="@TextField" name="INFO_TOPIC" value="ognl:info.INFO_TOPIC"  nullable="no"  desc="公告主题" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">发布区域：</span>
+				<input name="INFO_RECES" jwcid="@biz:AreaField" checkBoxType="checkbox" nullable="no" desc="发布区域"/>
+			</li>
+			<li class="li">
+				<span class="label">到期时间：</span>
+				<span class="e_input"><span><input type="text" jwcid="@DateField" name="END_TIME" value="ognl:info.END_TIME" desc="到期时间" /></span></span>
+			</li>
+			<li class="li col-2">
+				<span class="label">公告内容：</span>
+				<textarea name="INFO_CONTENT" jwcid="@Editor" bbcode="true" />	
+			</li>
+		</ul>
+	</div>
+	
+	<div class="c_submit">
+		<button type="button" class="e_button-page-ok" timelimit="true" onclick="javascript:$.info.updateBulletin();"><i class="e_ico-ok"></i><span>提交</span></button>
+		<!--
+		<button type="button" class="e_button-page-cancel" timelimit="true" onclick="javascript:$.info.deleteBulletin();"><i class="e_ico-cancel"></i><span>删除</span></button>
+		-->
+	</div>
+</div>
+
+</div></div>
+</body>
+</html>

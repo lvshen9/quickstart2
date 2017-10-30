@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>工单查询</title>
+<script jwcid="@Script" language="JavaScript" src="scripts/csserv/common/trademgr/tradequery.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/businesstip/businesstip.js"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">订单查询</div>
+		<div class="tip"><span class="e_tip">服务号码/主订单标识/子订单标识不能同时为空</span></div>
+	</div>
+	<div class="c_form c_form-label-12 c_form-col-2" jwcid="QueryCondPart@Part">
+		<ul class="ul">
+			<li class="li">
+			<span class="label"><span class="">主订单标识(ORDER_ID)：</span></span>
+			<span class="e_input"><span>
+					<input jwcid="@TextField" name="cond_ORDER_ID" id="cond_ORDER_ID" value="ognl:condition.cond_ORDER_ID" />
+			</span></span>
+
+			</li>
+			<li class="li">
+			<span class="label"><span class="">子订单标识(TRADE_ID)：</span></span>
+			<span class="e_input"><span>
+					<input jwcid="@TextField" name="cond_TRADE_ID" id="cond_TRADE_ID" value="ognl:condition.cond_TRADE_ID" />
+			</span></span>
+			</li>
+
+			<li class="li">
+			<span class="label"><span class="">服务号码(SERIAL_NUMBER)：</span></span>
+			<span class="e_input"><span>
+					<input jwcid="@TextField" name="cond_SERIAL_NUMBER" id="cond_SERIAL_NUMBER" value="ognl:condition.cond_SERIAL_NUMBER" />
+			</span></span>
+
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">归属库：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" source="ognl:pageutil.getStaticList('ORDER_AREA_CODE')"
+							name="cond_ROUTE_ID" id="cond_ROUTE_ID"
+							textField="DATA_NAME" valueField="DATA_ID"
+							value="0731"
+							desc="库名" />
+				</span></span></span>
+			</li>
+		</ul>
+
+		<div class="submitPlace"></div>
+		<div class="submit">
+			<button class="e_button-form" type="button" onclick="return queryTradeInfo();"><i class="e_ico-search"></i><span>查询</span></button>
+		</div>
+	</div>
+	
+	
+	<!-- 表格 开始 -->
+	<div jwcid="TradeTablePart@Part">
+		<div class="c_scroll c_scroll-table-5"><div class="c_table">
+			<table jwcid="@Table" name="tradeTable" id="tradeTable" scroll="true" >
+				<thead>
+					<tr>
+						<th col="ORDER_ID">主订单标识(ORDER_ID)</th>
+						<th col="TRADE_ID">子订单标识(TRADE_ID)</th>
+						<th col="ACCEPT_MONTH">受理月份</th>
+						<th col="TRADE_TYPE_CODE">业务类型</th>
+						<th col="ACCEPT_DATE">受理时间</th>
+						<th col="USER_ID">用户标识</th>
+						<th col="SERIAL_NUMBER">服务号码</th>
+						<th col="EPARCHY_CODE">归属地州</th>
+						<th col="ROUTE_ID">归属库</th>
+						<th col="SUBSCRIBE_STATE_NAME">订单状态</th>
+						<th col="OLCOM_TAG">指令标记</th>
+						<th col="PF_WAIT">开闭环标记</th>
+						<th col="SUBSCRIBE_STATE" style="display: none">订单状态(trade)</th>
+						<th col="ORDER_STATE" style="display: none">订单状态(order)</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyId">
+					<tr jwcid="@Foreach" source="ognl:tradeinfos" value="ognl:tradeinfo" id="tradeinfos" index="ognl:rowIndex" element="tr">
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.ORDER_ID"></span></td>
+						<td><a jwcid="@Redirect"
+        				value="ognl:tradeinfo.TRADE_ID"  trade_id ="ognl:tradeinfo.TRADE_ID" onclick="$.redirect.toPage('csserv.common.ucamgr.UcaCacheClear')"/></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.ACCEPT_MONTH"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.TRADE_TYPE_NAME"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.ACCEPT_DATE"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.USER_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.SERIAL_NUMBER"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.EPARCHY_CODE"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.ROUTE_ID"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.SUBSCRIBE_STATE_NAME"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.OLCOM_TAG_NAME"></span></td>
+						<td><span jwcid="@Insert" value="ognl:tradeinfo.PF_WAIT_NAME"></span></td>
+						<td style="display: none"><span jwcid="@Insert" value="ognl:tradeinfo.SUBSCRIBE_STATE"></span></td>
+						<td style="display: none"><span jwcid="@Insert" value="ognl:tradeinfo.ORDER_STATE"></span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div>
+	</div>
+	<!-- 表格 结束 -->
+	
+	<!-- 翻页 开始 -->
+	<!--
+	 <div jwcid="@NavBar"  name="pagin" id="pagin" listener="invokeInterface" pageSize="10" cond="QueryCondPart,PageInfoCondPart" part="InterfaceResultPart" count="ognl:count"/>
+	-->
+	<!-- 翻页 结束 -->
+	<div class="c_submit">
+		<button class="e_button-page-ok" type="button" id="tradPf" name="tradPf" onclick="return tradPf();"><i class="e_ico-reset"></i><span>工单重跑</span></button>
+		<button class="e_button-page" type="button" onclick="return queryError();"><i class="e_ico-search"></i><span>错误查询</span></button>
+	</div>
+
+
+</div>
+<!-- 错误信息 开始 -->
+<div class="c_box" jwcid="errorMsgPart@Part">
+<div class="c_title">
+	<div class="text">错误信息</div>
+</div>
+<div class="c_form c_form-label-5 c_form-col-1">
+	<ul class="ul">
+		<li class="li"> 
+		<span class="e_textarea">
+			<span class="e_textareaTop""><span></span></span>
+			<span class="e_textareaContent">
+				<textarea type="text" readonly="true" jwcid="@TextArea" id="errorMsg" name="errorMsg" value="ognl:errInfos" nullable="yes" rows="10" maxsize="20000" desc="错误信息" style="height:250px;"/>
+			</span>
+			<span class="e_textareaBottom"><span></span></span>
+		</span>
+		</li>
+	</ul>
+</div>
+</div>
+<!-- 错误信息 结束 -->
+</div></div>
+</body>
+
+</html>

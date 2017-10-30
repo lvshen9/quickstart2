@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>员工选择</title>
+<script jwcid="@Script" src="biz/scripts/org.js" wade="true"></script> 
+</head>
+<body jwcid="@Body">
+<div class="c_box">
+	<div id="QueryCond" class="c_form c_form-col-3 c_form-label-5">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">业务区：</span></span>
+				<input name="cond_AREA_CODE" jwcid="@biz:AreaField" desc="业务区" nullable="no"/>
+			</li>
+			<li class="li col-2">
+				<span class="label">归属部门：</span>
+				<input name="cond_DEPART_ID" jwcid="@biz:DeptField" />
+			</li>
+			<li class="li">
+				<span class="label">员工名称：</span>
+				<span class="e_input"><span><input type="text" name="cond_STAFF_NAME" jwcid="@TextField" value="ognl:condition.cond_STAFF_NAME" enterAction="$.org.queryStaffs();" /> </span></span>
+			</li>
+			<li class="li">
+				<span class="label">性别：</span>
+				<span class="e_select"><span><span>
+					<select name="cond_SEX" jwcid="@Select" source="ognl:pageutil.getStaticList('STAFF_SEX')" textField="DATA_NAME" valueField="DATA_ID" value="ognl:condition.cond_SEX" desc="性别" />
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label">服务号码：</span>
+				<span class="e_input"><span><input type="text" name="cond_SERIAL_NUMBER" jwcid="@TextField" value="ognl:condition.cond_SERIAL_NUMBER" enterAction="$.org.queryStaffs();"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label">员工工号：</span>
+				<span class="e_input"><span><input type="text" name="cond_STAFF_ID" jwcid="@TextField" value="ognl:condition.cond_STAFF_ID" enterAction="$.org.queryStaffs();" /></span></span>
+			</li>
+		</ul>
+		<input jwcid="@Any" type="hidden" id="check_dept_kind" name="check_dept_kind" value="ognl:getParameter('check_dept_kind', 'false')" />
+		<input jwcid="@Any" type="hidden" id="need_stafftag" name="need_stafftag" value="ognl:getParameter('need_stafftag', 'false')"/>
+		<input jwcid="@Any" type="hidden" id="staff_tags" name="staff_tags" value="ognl:getParameter('staff_tags', '1')" />
+		<input jwcid="@Any" type="hidden" id="multi" name="multi" value="ognl:getParameter('multi')" />
+		
+		<div class="submitPlace"></div>
+		<div class="submit"><button type="button" class="e_button-form" onclick="return $.org.queryStaffs();"><i class="e_ico-search"></i><span>查询</span></button></div>
+	</div>
+	
+	<div jwcid="staffsPart@Part" element="div" >
+		<div class="c_scroll c_scroll-table-10"><div class="c_table" id="cust" uiid="cust">
+			<table>
+				<thead>
+					<tr>
+						<div jwcid="@Conditional" condition="ognl:'true'.equals(getParameter('multi'))">
+	      					<th><input type="checkbox" name="staffs_ctrl" onclick="javascript:checkedAll('staffs', checked)" /></th>
+	      				</div>
+						<th>员工工号</th>
+						<th>员工名称</th>
+						<th>服务号码</th>
+						<th>性别</th>
+						<th>归属部门</th>
+						<th>归属业务区</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" index="ognl:rowIndex" element="tr">
+						<div jwcid="@Conditional" condition="ognl:'true'.equals(getParameter('multi'))">
+							<td><input type="checkbox" name="staffs" jwcid="@Checkbox" value="ognl:info.STAFF_ID + ',' + info.STAFF_NAME" /></td>
+						</div>
+						<td><a jwcid="@Redirect" value="ognl:info.STAFF_ID" staff_id="ognl:info.STAFF_ID" staff_name="ognl:info.STAFF_NAME" onclick="javascript:$.org.setStaffPopupReturnValue(this.getAttribute('staff_id'), this.getAttribute('staff_name'))"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.STAFF_NAME" raw="false" /></td>
+						<td><span jwcid="@Insert" value="ognl:info.SERIAL_NUMBER" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('STAFF_SEX', info.SEX)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_DEPART', 'DEPART_ID', 'DEPART_NAME', info.DEPART_ID)" raw="false"/></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.CITY_CODE)" raw="false" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div>
+		<div jwcid="@NavBar" name="staffnav" cond="QueryCond" part="staffsPart" listener="queryStaffs" count="ognl:staffsCount" loadingTxt="正在加载员工数据..."></div>
+	</div>
+	
+	<div class="c_submit"><!--c_submit height=40px -->
+		<div jwcid="@Conditional" condition="ognl:getParameter('multi') == 'true'">
+				<a href="#nogo" class="e_button e_button-page-ok" onclick="$.org.setStaffPopupReturnValue();"><i></i><span>确定</span></a>
+		</div>
+		<a href="#nogo" class="e_button e_button-page-cancel" onclick="$.closePopupPage(true);"><i></i><span>取消</span></a>
+	</div>
+</div>
+<input name="field_name" jwcid="@Hidden" type="hidden" value="ognl:getParameter('field_name','')" />
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.wade.web.v4.tapestry.component.calendar.CalendarPage">
+	<property-specification name="days" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="day" type="com.ailk.common.data.IData"/>
+	<property-specification name="years" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="year" type="com.ailk.common.data.IData"/>
+	<property-specification name="months" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="month" type="com.ailk.common.data.IData"/>
+	
+	<property-specification name="curYear" type="java.lang.String"/>
+	<property-specification name="curMonth" type="java.lang.String"/>
+	<property-specification name="curDay" type="java.lang.String"/>
+	<property-specification name="curHour" type="java.lang.String"/>
+	<property-specification name="curMinute" type="java.lang.String"/>
+	<property-specification name="curSecond" type="java.lang.String"/>
+	
+	<property-specification name="tYear" type="java.lang.String"/>
+	<property-specification name="tMonth" type="java.lang.String"/>
+	<property-specification name="tDay" type="java.lang.String"/>
+	<property-specification name="tHour" type="java.lang.String"/>
+	<property-specification name="tMinute" type="java.lang.String"/>
+	<property-specification name="tSecond" type="java.lang.String"/>
+	
+	<property-specification name="sYear" type="java.lang.String"/>
+	<property-specification name="sMonth" type="java.lang.String"/>
+	<property-specification name="sDay" type="java.lang.String"/>
+	<property-specification name="sHour" type="java.lang.String"/>
+	<property-specification name="sMinute" type="java.lang.String"/>
+	<property-specification name="sSecond" type="java.lang.String"/>
+	<property-specification name="timeShow" type="java.lang.String"/>
+	
+</page-specification>

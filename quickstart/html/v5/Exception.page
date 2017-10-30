@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.wade.web.v5.tapestry.BasePageException">
+	<property-specification name="message" type="java.lang.String"/>
+	<property-specification name="backPage" type="java.lang.String"/>
+	<property-specification name="exdesc" type="org.apache.tapestry.util.exception.ExceptionDescription"/>
+	<property-specification name="stack" type="java.lang.String[]"/>
+	<property-specification name="stackIndex" type="int"/>
+	<property-specification name="exdeIndex" type="int"/>
+</page-specification>

@@ -1,0 +1,104 @@
+<service subsys="common">
+    <entity name="SYS_Security_GetStaffInfo" path="com.ailk.biz.service.security.SecurityService@getStaffInfo" />
+    <entity name="SYS_Security_StaffLoginCheck" path="com.ailk.biz.service.security.SecurityService@staffLoginCheck" />
+    <entity name="SYS_Security_Logout" path="com.ailk.biz.service.security.SecurityService@logout" />
+    <entity name="SYS_Security_CreateStaffLog" path="com.ailk.biz.service.security.SecurityService@createStaffLog" />
+    <entity name="SYS_Security_UpdateStaffLog" path="com.ailk.biz.service.security.SecurityService@updateStaffLog" />
+    <entity name="SYS_Security_HasPriv" path="com.ailk.biz.service.security.SecurityService@hasPriv" />
+	
+	<entity name="SYS_Menu_GetAllStaffMenu" path="com.ailk.biz.service.menu.MenuService@getAllStaffMenu" />
+    <entity name="SYS_Menu_AddFavoriteMenu" path="com.ailk.biz.service.menu.MenuService@addFavoriteMenu" />
+    <entity name="SYS_Menu_DeleteFavoriteMenus" path="com.ailk.biz.service.menu.MenuService@deleteFavoriteMenus" />
+    <entity name="SYS_Menu_QueryFavoriteMenus" path="com.ailk.biz.service.menu.MenuService@queryFavoriteMenus" />
+    
+    <entity name="SYS_CrmCodeCode_GetList" path="com.ailk.biz.service.codecode.CodeCodeService@queryCrmCodeCodeData" />
+    <entity name="SYS_ActCodeCode_GetList" path="com.ailk.biz.service.codecode.CodeCodeService@queryActCodeCodeData" />
+    <entity name="SYS_CrmCacheTables_GetList" path="com.ailk.biz.service.codecode.CodeCodeService@queryCrmCacheTablesData" />
+    <entity name="SYS_ActCacheTables_GetList" path="com.ailk.biz.service.codecode.CodeCodeService@queryActCacheTablesData" />
+    
+    <entity name="SYS_Org_GetAreaByStaff" path="com.ailk.biz.service.org.OrgService@getAreaByStaff"/>
+    <entity name="SYS_Org_GetAreaRangeByArea" path="com.ailk.biz.service.org.OrgService@getAreaRangeByArea"/>
+    <entity name="SYS_Org_GetAreasByParent" path="com.ailk.biz.service.org.OrgService@getAreasByParent"/>
+    <entity name="SYS_Org_GetGrantPrivsByStaff" path="com.ailk.biz.service.org.OrgService@getGrantPrivsByStaff"/>
+    <entity name="SYS_Org_GetAreasByGrant" path="com.ailk.biz.service.org.OrgService@getAreasByGrant"/>
+    <entity name="SYS_Org_GetRootAreaByGrant" path="com.ailk.biz.service.org.OrgService@getRootAreaByGrant"/>
+    <entity name="SYS_Org_GetDeptsByParent" path="com.ailk.biz.service.org.OrgService@getDeptsByParent"/>
+    <entity name="SYS_Org_GetDeptsByGrant" path="com.ailk.biz.service.org.OrgService@getDeptsByGrant"/>
+    <entity name="SYS_Org_QueryStaffs" path="com.ailk.biz.service.org.OrgService@queryStaffs"/>
+    <entity name="SYS_JLCU_Service" path="com.ailk.biz.service.jlcu.JlcuService@callService"/>
+    
+    <entity name="SYS_Info_QueryBulletin" path="com.ailk.biz.service.info.InfoService@queryBulletin"/>
+    <entity name="SYS_Info_CreateBulletin" path="com.ailk.biz.service.info.InfoService@createBulletin"/>
+    <entity name="SYS_Info_DeleteBulletins" path="com.ailk.biz.service.info.InfoService@deleteBulletins"/>
+    <entity name="SYS_Info_QueryBulletins" path="com.ailk.biz.service.info.InfoService@queryBulletins"/>	
+    <entity name="SYS_Info_QueryMessage" path="com.ailk.biz.service.info.InfoService@queryMessage"/>
+    <entity name="SYS_Info_CreateMessage" path="com.ailk.biz.service.info.InfoService@createMessage"/>
+    <entity name="SYS_Info_DeleteMessages" path="com.ailk.biz.service.info.InfoService@deleteMessages"/>
+    <entity name="SYS_Info_QueryMessages" path="com.ailk.biz.service.info.InfoService@queryMessages"/>
+    <entity name="SYS_Info_UpdateReadStatus" path="com.ailk.biz.service.info.InfoService@updateReadStatus"/>
+    <entity name="SYS_Info_QueryNoReadInfos" path="com.ailk.biz.service.info.InfoService@queryNoReadInfos"/>
+    
+    <entity name="SYS_Static_GetSysTime" path="com.ailk.biz.service.staticparam.BizSystemTimeService@getSysTime"/>
+    <entity name="SYS_Static_GetAllStaticData" path="com.ailk.biz.service.staticparam.StaticParamService@getAllStaticData"/>
+    <entity name="SYS_Static_GetStaticData" path="com.ailk.biz.service.staticparam.StaticParamService@getStaticData"/>
+    <entity name="SYS_Static_GetStaticValue" path="com.ailk.biz.service.staticparam.StaticParamService@getStaticValue" />
+    <entity name="SYS_Static_GetList" path="com.ailk.biz.service.staticparam.StaticParamService@getList" />
+    <entity name="SYS_Static_GetAllAareData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllAreaData" />
+    <entity name="SYS_Static_GetAllDepartData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllDepartData" />
+    <entity name="SYS_Static_GetAllBankData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllBankData" />
+    <entity name="SYS_Static_GetAllSuperBankData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllSuperBankData" />
+    <entity name="SYS_Static_GetAllBrandData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllBrandData" />
+    <entity name="SYS_Static_GetAllVipTypeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllVipTypeData" />
+    <entity name="SYS_Static_GetAllVipClassData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllVipClassData" />
+    <entity name="SYS_Static_GetAllServiceStateData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllServiceStateData" />
+    <entity name="SYS_Static_GetAllProductData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllProductData" />
+    <entity name="SYS_Static_GetAllUserTypeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllUserTypeData" />
+    <entity name="SYS_Static_GetAllPlatsvcData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllPlatsvcData" />
+    <entity name="SYS_Static_GetAllTagData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllTagData" />
+    <entity name="SYS_Static_GetAllResTypeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllResTypeData" />
+    <entity name="SYS_Static_GetAllTradeTypeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllTradeTypeData" />
+    <entity name="SYS_Static_GetAllProductCompData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllProductCompData" />
+    <entity name="SYS_Static_GetAllPackageData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllPackageData" />
+    <entity name="SYS_Static_GetAllServiceData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllServiceData" />
+    <entity name="SYS_Static_GetAllProductTypeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllProductTypeData" />
+    <entity name="SYS_Static_GetAllRelationData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllRelationData" />
+    <entity name="SYS_Static_GetAllPtypeProductData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllPtypeProductData" />
+    <entity name="SYS_Static_GetAllPayModeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllPayModeData" />
+    <entity name="SYS_Static_GetAllCustCityData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllCustCityData" />
+    <entity name="SYS_Static_GetAllScoreTypeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllScoreTypeData" />
+    <entity name="SYS_Static_GetAllDiscntData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllDiscntData" />
+    <entity name="SYS_Static_GetAllInmodeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllInmodeData" />
+    <entity name="SYS_Static_GetAllRelationRoleData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllRelationRoleData" />
+    <entity name="SYS_Static_GetAllStaffOperTypeData" path="com.ailk.biz.service.staticparam.StaticParamService@queryAllStaffOperTypeData" />
+    <entity name="SYS_Static_GetBizEnvData" path="com.ailk.biz.service.staticparam.BizEnvService@queryAllBizEnvData" />
+    <entity name="SYS_Logger_GetCfg" path="com.ailk.biz.service.log.LogService@queryLogCfg" />
+    
+    <entity name="SYS_Code_GetAllErrorCode" path="com.ailk.biz.service.errcode.ErrorCodeService@queryErrorCode" />
+    
+    <entity name="SYS_FtpFileMgr" path="com.ailk.biz.service.file.FileService@service" />
+    <entity name="SYS_ImpExp_CreateLog" path="com.ailk.biz.service.impext.ImpExpService@createImpExpLog" />
+    <entity name="SYS_ImpExp_UpdateLog" path="com.ailk.biz.service.impext.ImpExpService@updateImpExpLogById" />
+    <entity name="SYS_ImpExp_CreateId" path="com.ailk.biz.service.impext.ImpExpService@createLogId" />
+    <entity name="SYS_ImpExp_QueryLog" path="com.ailk.biz.service.impext.ImpExpService@queryImpExpLogById" />
+    <entity name="SYS_ImpExp_QueryTaskById" path="com.ailk.biz.service.impext.ImpExpService@queryTaskById" />
+
+	<entity name="SYS_reloadStaffPriv_service" path="com.ailk.privm.privservice.PrivSerivce@reloadStaffPriv" />
+    <entity name="SYS_updateStaffsPriv_service" path="com.ailk.privm.privservice.PrivSerivce@updateStaffsPriv" />
+    <entity name="SYS_updateStaffPriv_service" path="com.ailk.privm.privservice.PrivSerivce@updateStaffPriv" />
+    
+
+    <entity name="PRIV_realLoadStaffRightData_service" path="com.ailk.privm.privservice.PrivDbService@realLoadStaffRightData" />
+    <entity name="PRIV_loadStaffFuncRight_service" path="com.ailk.privm.privservice.PrivDbService@loadStaffFuncRight" />
+    <entity name="PRIV_loadStaffOpRoleRight_service" path="com.ailk.privm.privservice.PrivDbService@loadStaffOpRoleRight" />
+    <entity name="PRIV_loadStaffProdRight_service" path="com.ailk.privm.privservice.PrivDbService@loadStaffProdRight" />
+    <entity name="PRIV_loadStaffServiceRight_service" path="com.ailk.privm.privservice.PrivDbService@loadStaffServiceRight" />
+    <entity name="PRIV_loadStaffDistncRight_service" path="com.ailk.privm.privservice.PrivDbService@loadStaffDistncRight" />
+    <entity name="PRIV_loadStaffPackageRight_service" path="com.ailk.privm.privservice.PrivDbService@loadStaffPackageRight" />
+    <entity name="PRIV_loadStaffFieldRight_service" path="com.ailk.privm.privservice.PrivDbService@loadStaffFieldRight" />
+    
+	<entity name="SYS_LoadPagePrivs" path="com.ailk.biz.service.safe.PagePrivService@queryPagePrivs" />
+    <entity name="SYS_LoadAjaxPrivs" path="com.ailk.biz.service.safe.AjaxPrivService@queryAjaxPrivs" />
+	<entity name="SYS_LoadServicePrivs" path="com.ailk.biz.service.safe.ServicePrivService@queryServicePrivs" />
+	<entity name="SYS_Security_GetStaffPasswd" path="com.ailk.biz.service.security.SecurityService@getStaffPasswd" />
+
+</service>

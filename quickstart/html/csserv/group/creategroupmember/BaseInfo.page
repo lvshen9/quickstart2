@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: BaseInfo.page,v 1.7 2013/03/29 08:56:23 liming2 Exp $ -->
+
+<page-specification class="com.ailk.csview.group.creategroupmember.BaseInfo">
+	<property-specification name="condition" type="com.ailk.common.data.IData"/>
+	<property-specification name="infos" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="info" type="com.ailk.common.data.IData"/>
+	<property-specification name="productInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="productCtrlInfo" type="com.ailk.common.data.IData"/>
+	<property-specification name="userInfo" type="com.ailk.common.data.IData"/>
+	<property-specification name="acctInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="useInfos" type="com.ailk.common.data.IDataset"/>
+    <property-specification name="rowIndex" type="int"/>
+</page-specification>

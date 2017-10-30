@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>集团开户-产品受理确认</title>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/fee/FeeMgr.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/groupfee/GroupFee.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupuser/PreView.js"></script>
+<script language="javascript">
+	$(document).ready(function(){
+		initGrpFeeList();
+	});
+</script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+
+<!-- 基本信息 开始 -->
+<div class="c_box">
+	
+	<input type="text" jwcid="@saleserv:GroupCustInfo" groupUserInfo="ognl:groupCustInfo"/>
+	
+	<div class="c_form c_form-col-3 c_form-label-6">
+		<ul class="ul">
+			<span jwcid="@Conditional" condition="ognl:info.DEVELOP_FLAG == 0">
+				<li class="li">
+					<span class="label">推荐人：</span>
+					<span class="e_elements"><span>
+						<input jwcid="@biz:StaffField" id="DEVELOP_STAFF_ID" name="DEVELOP_STAFF_ID" type="text" 
+							   value="ognl:info.STAFF_ID" desc="推荐人"/>
+					</span></span>
+				</li>
+			</span>
+			<span jwcid="@Conditional" condition="ognl:info.L_FLAG == 0">
+				<li class="li">
+					<span class="label">产品级别：</span>
+					<span class="e_elements"><span><span>
+						<input type="text" jwcid="@TextField" id="PRODUCT_LEVEL_NAME" name="PRODUCT_LEVEL_NAME" value="ognl:info.PRODUCT_LEVEL_NAME" disabled="true"/>
+					</span></span></span>
+				</li>
+			</span>
+			<li class="li col-3">
+				<span class="label">备注：</span>
+				<span class="e_textarea">
+					<span class="e_textareaTop"><span></span></span>
+					<span class="e_textareaContent">
+						<textarea
+							jwcid="@TextArea" 
+							name="param_REMARK"
+							type="text"
+							value="ognl:pamRemark"
+							title="备注"
+							raw="true">
+						</textarea>
+					</span>
+					<span class="e_textareaBottom"><span></span></span>
+				</span>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 基本信息 结束 -->
+<!-- 基本信息 开始 -->
+<div jwcid="@saleserv:ProductElementView" model="ognl:userProduct" headText="（集团产品）" headField="PRODUCT_NAME" showHeads="包名,元素标识,元素类型,元素名称" showFields="PACKAGE_NAME,ELEMENT_ID,ELEMENT_TYPE_NAME,ELEMENT_NAME" />
+
+<!-- 基本信息 结束 -->
+<!-- 基本信息 开始 -->
+
+<div jwcid="@saleserv:ProductElementView" model="ognl:memberProduct" headText="（成员附加产品）" headField="PRODUCT_NAME" showHeads="包名,元素标识,元素类型,元素名称" showFields="PACKAGE_NAME,ELEMENT_ID,ELEMENT_TYPE_NAME,ELEMENT_NAME"/>
+
+<!-- 基本信息 结束 -->
+<input jwcid="@TextArea" id="GRP_FEE_LIST" name="GRP_FEE_LIST" value="ognl:grpFeeList" type="text" style="display:none"/>
+<textarea jwcid="@TextArea" name="grpCompixProduct" id="grpCompixProduct" value="ognl:getData().getString('POWER100_PRODUCT_INFO')" style="display:none"></textarea>
+
+</div></div>
+</body>
+</html>

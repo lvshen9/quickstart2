@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link jwcid="@Style" href="base.css" rel="stylesheet" type="text/css" />
+<script  jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupuser/entireCustomerUserParamInfo.js"/>
+<script  jwcid="@Script" type="text/javascript" src="scripts/csserv/group/creategroupuser/onValueChange.js"/>
+<script  jwcid="@Script" type="text/javascript" src="scripts/saleserv.js"></script>
+<script jwcid="@Script" type="text/javascript" src="scripts/group/param/bboss/bboss.js" ></script>
+</head>
+<body jwcid="@Body"><div class="m_wrapper"><div class="m_wrapper2">
+	<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 提示区 -->
+	<div jwcid="hintBar@Part">
+		<div jwcid="@saleserv:HintBar" hintInfo="ognl:hintInfo"/>
+	</div>
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">附件信息</div>
+		<div class="tip">
+			<!-- 变更、注销以及预受理选填 -->
+			<span jwcid="@Conditional" condition="ognl:(condition.METHOD != 'BbossManageCrtUs' && (condition.METHOD != 'CrtUs' || condition.ISPRE))">
+				<span class="e_tip">[选填]</span>
+			</span>
+			<!-- 产品订购或受理报文必填 -->
+			<span jwcid="@Conditional" condition="ognl:(condition.METHOD == 'CrtUs' && !condition.ISPRE) || condition.METHOD == 'BbossManageCrtUs'">
+				<span style="font-weight: normal;color: red;">[必填][合同附件必须填写]</span>
+			</span>
+		</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div class="c_table c_table-row-3">
+		<table id="dataList" jwcid="@Table" name="dataList">
+			<thead>
+				<tr>
+					<th col="ATT_TYPE_CODE" style="display:none">附件类型</th>
+	      			<th col="ATT_TYPE">附件类型</th>
+	      			<th col="ATT_NAME_filename">商品级附件名称</th>
+	      			<th col="ATT_CODE">合同编码</th>
+	      			<th col="CONT_NAME">合同名称</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:attInfos" value="ognl:attInfo" element="tr">
+					<td style="display:none"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 表格 结束 -->
+	<!-- 表单 开始 -->
+	<div jwcid="ATT@Part">
+		<div class="c_form c_form-col-3 c_form-label-4">
+			<ul class="ul">
+				<li class="li">
+					<span class="label">附件类型：</span>
+					<span class="e_select"><span><span>
+						<select id = "ATT_TYPE_CODE" name="ATT_TYPE_CODE" jwcid="@Select" source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('POATT_TYPE')" valueField="DATA_ID" addDefault="false" textField="DATA_NAME"
+						 value="ognl:addAttInfo.ATT_TYPE_CODE"  title="附件类型" onchange="attTypeChange(this)"/>
+					</span></span></span>
+					<span>
+						<input type="hidden" jwcid="@Any" value="" id="ATT_TYPE" name="ATT_TYPE"/>
+					</span>
+				</li>
+				<li class="li col-2">
+					<span class="label">附件名称：</span>
+					<span class="e_elements">
+						<input id="ATT_NAME" name="ATT_NAME" jwcid="@SimpleUpload"  value="ognl:addAttInfo.ATT_NAME" needSuffix="true" desc="商品级相关附件名称" fileTotal="2"  filePath="BBOSS" ftpSite="groupserv" />
+					</span>
+				</li>
+				<span id="contArea" style="display:block;">
+				<li class="li">
+					<span class="label">合同编码：</span>
+					<span class="e_input"><span>
+						<input type="text" name="ATT_CODE" jwcid="@TextField" value="ognl:addAttInfo.ATT_CODE" desc="合同编码"/>
+					</span></span>
+				</li>
+				<li class="li">
+					<span class="label">合同名称：</span>
+					<span class="e_input"><span>
+						<input type="text" name="CONT_NAME" jwcid="@TextField" value="ognl:addAttInfo.CONT_NAME" desc="合同名称"/>
+					</span></span>
+				</li>
+				</span>
+			</ul>
+			<div class="submitPlace"></div>
+			<div class="submit">
+				<button type="button" class="e_button-form" onclick="return createAttInfo(this);" id="bcreate" name="bcreate">
+					<i class="e_ico-add"></i><span>新增</span>
+				</button>
+				<button type="button" class="e_button-form" onclick="return deleteAttInfo(this)" id="bdelete" name="bdelete">
+					<i class="e_ico-delete"></i><span>删除</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<!-- 表单 结束 -->
+</div>
+<!-- 区域 结束 -->
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">审批信息</div>
+		<div class="tip"><span class="e_tip">选填</span></div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div class="c_table c_table-row-3">
+		<table  id="dataList2" jwcid="@Table" name="dataList2">
+			<thead>
+				<tr>
+	      			<th col="AUDITOR">审批人姓名</th>
+	      			<th col="AUDITOR_TIME">审批时间</th>
+	      			<th col="AUDITOR_DESC">审批意见</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:auditorInfos" value="ognl:auditorInfo" element="tr">
+						<td></td>
+						<td></td>
+						<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 表格 结束 -->
+	<!-- 表单 开始 -->
+	<div jwcid="AUDITOR@Part">
+	<div class="c_form">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">审批人姓名：</span>
+				<span class="e_input" style="width:120px;"><span>
+					<input type="text" name ="AUDITOR" jwcid="@TextField" value="ognl:addAuditorInfo.AUDITOR" desc="审批人姓名"/>
+				</span></span>
+			</li>
+			<li class="li">
+				<span class="label">审批时间：</span>
+				<span class="e_input" style="width:120px;"><span>
+					<input name = "AUDITOR_TIME" jwcid="@DateField" format="yyyyMMddHHmmss" value="ognl:addAuditorInfo.AUDITOR_TIME" desc="审批时间"/>
+				</span></span>
+			</li>
+			<li class="li">
+				<span class="label">审批意见：</span>
+				<span class="e_input" style="width:120px;"><span>
+					<input type="text" name = "AUDITOR_DESC" jwcid="@TextField" value="ognl:addAuditorInfo.AUDITOR_DESC" desc="审批意见"/>
+				</span></span>
+			</li>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit">
+			<button type="button" class="e_button-form" onclick="return createAuditorInfo(this);" id="bcreate" name="bcreate">
+				<i class="e_ico-add"></i><span>新增</span>
+			</button>
+			<button type="button" class="e_button-form" onclick="return deleteAuditorInfo(this)" id="bdelete" name="bdelete">
+				<i class="e_ico-delete"></i><span>删除</span>
+			</button>
+		</div>
+	</div>
+	</div>
+	<!-- 表单 结束 -->
+</div>
+<!-- 区域 结束 -->
+<!-- 区域 开始 -->
+<div class="c_box">
+	<!-- 标题 开始 -->
+	<div class="c_title">
+		<div class="text">联系人信息</div>
+		<div class="tip">
+			<span style="font-weight: normal;color: red;">[必填][客户经理和订单提交人必填]</span>
+		</div>
+	</div>
+	<!-- 标题 结束 -->
+	<!-- 表格 开始 -->
+	<div class="c_table c_table-row-3">
+		<table id="dataList3" jwcid="@Table" name="dataList3">
+			<thead>
+				<tr>
+					<th col="CONTACTOR_TYPE_CODE" style="display:none">联系人类型</th>
+	      			<th col="CONTACTOR_TYPE">联系人类型</th>
+	      			<th col="CONTACTOR_NAME">联系人姓名</th>
+	      			<th col="CONTACTOR_PHONE">联系人电话</th>
+	      			<div jwcid="@Conditional" condition="ognl:condition.IFIESOP != null && condition.IFIESOP == 1">
+	      				<th col="STAFF_NUMBER">总部用户名</th>
+	      			</div>
+				</tr>
+			</thead>
+			<tbody>
+				<tr jwcid="@Foreach" source="ognl:contactorInfos" value="ognl:contactorInfo" element="tr">
+					<td style="display:none"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+	      			<div jwcid="@Conditional" condition="ognl:condition.IFIESOP != null && condition.IFIESOP == 1">
+						<td>!-</td>
+					</div>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 表格 结束 -->
+	<!-- 表单 开始 -->
+	<div jwcid="CONTACTOR@Part">
+	<div class="c_form">
+		<ul class="ul">
+			<li class="li">
+				<span class="label">联系人类型：</span>
+				<span class="e_select"><span><span>
+					<select name="CONTACTOR_TYPE_CODE" id="CONTACTOR_TYPE_CODE" jwcid="@Select"  source="ognl:@com.ailk.biz.util.StaticUtil@getStaticList('CONTACTOR_TYPE')" valueField="DATA_ID" textField="DATA_NAME"
+					 value="ognl:addContactorInfo.CONTACTOR_TYPE_CODE"  desc="联系人类型"  onchange="contactorTypeChange(this)"/>
+				</span></span></span>
+				<input type="hidden" jwcid="@Any" value="" id="CONTACTOR_TYPE" name="CONTACTOR_TYPE"/>
+			</li>
+			<li class="li">
+				<span class="label">姓名：</span>
+				<span id="staffFieldArea">
+					<input type="text" id="CONTACTOR_NAME" name="CONTACTOR_NAME" jwcid="@biz:StaffField" value="ognl:addContactorInfo.CONTACTOR_NAME" afterAction="queryStaffNumber(this);"/>
+				</span>
+				<span id="staffFieldInputArea" style="display:none;" class="e_input"><span>				
+					<input type="text" id="CONTACTOR_NAME_INPUT" name = "CONTACTOR_NAME_INPUT" value="" jwcid="@TextField" onchange="$('#CONTACTOR_NAME').val(this.value)" />
+				</span></span>
+			</li>
+			<li class="li">
+				<span class="label">电话：</span>
+				<span class="e_input"><span>
+					<input type="text" id="CONTACTOR_PHONE" name="CONTACTOR_PHONE" readonly="readonly" jwcid="@TextField" value="ognl:addContactorInfo.CONTACTOR_PHONE" desc="联系人电话"/>
+				</span></span>			
+			</li>
+			<span id="staffNumberArea" style="display:none;">
+				<li class="li">
+					<span class="label">总部用户名：</span>
+					<span class="e_input"><span>
+						<input type="text" id="STAFF_NUMBER" name="STAFF_NUMBER" jwcid="@TextField" value="ognl:addContactorInfo.STAFF_NUMBER" desc="总部用户名"/>
+					</span></span>			
+				</li>
+		   </span>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit">
+			<button type="button" class="e_button-form" onclick="return createContactorInfo(this);" id="bcreate" name="bcreate">
+				<i class="e_ico-add"></i><span>新增</span>
+			</button>
+			<button type="button" class="e_button-form" onclick="return deleteContactorInfo(this)" id="bdelete" name="bdelete">
+				<i class="e_ico-delete"></i><span>删除</span>
+			</button>
+		</div>
+	</div>
+	</div>
+	<!-- 表单 结束 -->
+</div>
+<!-- 区域 结束 -->
+
+<!-- 区域 开始 -->								  
+<div jwcid="@Conditional" condition="ognl:condition.merchpParams!=null&&condition.merchpParams.size()>0" >
+	<div class="c_box">	
+		<!-- 标题 开始 -->
+		<div class="c_title">
+			<div class="text">产品特殊参数</div>
+			<div class="tip">
+			<span style="font-weight: normal;color: red;">[特殊参数]</span>
+		     </div>
+		</div>
+		<!-- 标题 结束 -->
+		<!-- 表格 开始 -->
+			<div  id="paraminfotabset" title="订购信息">
+		<div class="c_table c_table-row-5"  >
+			<table id="dataList4" jwcid="@Table" name="dataList4">
+				<thead>
+					<tr>
+						<th col="PRODUCT_NAME">产品名</th>
+						<th col="PRODUCT_ID" style="display:none">产品编码</th>
+		      			<th col="PARAM_NAME">参数名</th>
+		      			<th col="PARAM_VALUE">参数值</th>
+		      			<th col="INPUT">输入</th>
+		      			<th col="PARAM_CODE" style="display:none">参数代码</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:condition.merchpParams" value="ognl:info" element="tr">
+						<td><span jwcid="@Insert" value="ognl:info.PRODUCT_NAME"/></td>
+						<td style="display:none"><span jwcid="@Insert" value="ognl:info.PRODUCT_ID"/></td>
+					
+						<td class="wrap">
+						<span jwcid="@Insert" class="ognl:(info.MANDATORY==0)?'e_required':''" id="ognl:'PARAM_NAME_'+info.ATTR_CODE" value="ognl:info.ATTR_NAME" />
+						</td>
+						<td class="wrap"><span jwcid="@Insert" value="ognl:info.ATTR_VALUE"/></td>
+							<td class="edit" id="ognl:'div_'+info.ATTR_CODE" name="ognl:'div_'+info.ATTR_CODE" jwcid="@Any">
+
+													<div jwcid="@Conditional" condition="ognl:info.VALUE_LIST != null">
+														<!-- 说明是下拉列表 -->
+														<span class="e_select"><span><span><select name="ognl:'input_'+info.ATTR_CODE" id="ognl:'input_'+info.ATTR_CODE"
+																		disabled="ognl:(info.READONLY==1)?true:false" jwcid="@Select" source="ognl:info.VALUE_LIST" valueField="OPTION_VALUE"
+																		textField="OPTION_NAME" value="ognl:info.ATTR_VALUE" paraCode="ognl:info.ATTR_CODE" initMethodName="ognl:info.ONCHANGE_JS"
+																		commitMethodName="ognl:info.ONSUBMIT_JS" onchange="changeValue(this);" desc="ognl:info.ATTR_NAME"
+																		nullable="ognl:info.MANDATORY==0?'no':''" addDefault="false"/>
+															</span><span>
+														</span>
+													</div>
+
+													<div jwcid="@Conditional" condition="ognl:info.VALUE_LIST == null">
+														<!--非下拉列表 -->
+														<div jwcid="@Conditional" condition="ognl:info.EDIT_TYPE == 'DATE'">
+															<span class="e_input"><span><input name="ognl:'input_'+info.ATTR_CODE" id="ognl:'input_'+info.ATTR_CODE" jwcid="@DateField"
+																	initMethodName="ognl:info.ONCHANGE_JS" commitMethodName="ognl:info.ONSUBMIT_JS" value="ognl:info.ATTR_VALUE" format="ognl:info.FORMAT"
+																	nullable="ognl:info.MANDATORY==0?'no':''" afterAction="changeValue(this);" desc="ognl:info.ATTR_NAME"/>
+															</span></span>
+														</div>
+														<div jwcid="@Conditional" condition="ognl:info.EDIT_TYPE == 'TEXT'">
+															<span class="e_input"><span><input jwcid="@TextField" id="ognl:'input_'+info.ATTR_CODE"
+																		name="ognl:'input_'+info.ATTR_CODE" disabled="ognl:(info.READONLY==1)?true:false" paraCode="ognl:info.ATTR_CODE"
+																		initMethodName="ognl:info.ONCHANGE_JS" commitMethodName="ognl:info.ONSUBMIT_JS"
+																		onfocusout="onValueChangeUnit(this);changeValue(this);" value="ognl:info.ATTR_VALUE" desc="ognl:info.ATTR_NAME"
+																		format="ognl:info.FORMAT" datatype="ognl:info.TYPE" nullable="ognl:info.MANDATORY==0?'no':''" maxsize="512" />
+															</span>
+															</span>
+														</div>
+														<div jwcid="@Conditional" condition="ognl:info.EDIT_TYPE == 'UPLOAD'">
+															<span class="e_elements"><input jwcid="@SimpleUpload" ftpSite="groupserv" id="ognl:'input_'+info.ATTR_CODE" desc="ognl:info.ATTR_NAME" fileName="ognl:pageutil.getFtpFile(info.ATTR_VALUE).FILE_NAME"
+																name="ognl:'input_'+info.ATTR_CODE" afterAction="changeValueForUpload" filePath="BBOSS" needSuffix="true" value="ognl:info.ATTR_VALUE" nullable="ognl:info.MANDATORY==0?'no':''"/></span>
+														</div>
+													</div>
+
+												</td>
+													<td style="display:none"><span jwcid="@Insert" value="ognl:info.ATTR_CODE"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+		<!-- 表格 结束 -->
+	</div>
+</div>
+<!-- 区域 结束 -->
+<!--传值域 开始-->
+<div style="display:none;">
+	<input type="hidden" jwcid="@Any" name="ISPRE" id="ISPRE" value="ognl:condition.ISPRE"/>
+	<input type="hidden" jwcid="@Any" name="ATT_INFOS" id="ATT_INFOS" value="ognl:attInfos"/>
+    <input type="hidden" jwcid="@Any" name="AUDITOR_INFOS" id="AUDITOR_INFOS" value="ognl:auditorInfos"/>
+    <input type="hidden" jwcid="@Any" name="CONTACTOR_INFOS" id="CONTACTOR_INFOS" value="ognl:contactorInfos"/>
+    <textarea jwcid="@TextArea" id="productGoodInfos" name="productGoodInfos" value="ognl:productGoodInfos" style="display:none"/>
+    <input  jwcid="@Any" name="ATT_INFO_TAG" id="ATT_INFO_TAG" value="ognl:attInfoTag"/>
+    <input  jwcid="@Any" name="AUDITOR_INFO_TAG" id="AUDITOR_INFO_TAG" value="ognl:auditorInfoTag"/>
+    <input  jwcid="@Any" name="CONTACTOR_INFO_TAG" id="CONTACTOR_INFO_TAG" value="ognl:contactorInfoTag"/>
+    <input type="hidden" jwcid="@Any" name="PRODUCT_ID" id="PRODUCT_ID" value="ognl:getData().getString('PRODUCT_ID')"/>
+    <input type="hidden" jwcid="@Any" name="GROUP_ID" id="GROUP_ID" value="ognl:getData().getString('GROUP_ID')"/>
+    <input type="hidden" jwcid="@Any" name="CUST_ID" id="CUST_ID" value="ognl:getData().getString('CUST_ID')"/>
+    <input type="hidden" jwcid="@Any" name="GRP_USER_ID" id="GRP_USER_ID" value="ognl:getData().getString('GRP_USER_ID')"/>
+    <input type="hidden" jwcid="@Any" name="GRP_USER_EPARCHYCODE" id="GRP_USER_EPARCHYCODE" value="ognl:getData().getString('GRP_USER_EPARCHYCODE')"/>
+    <input type="hidden" jwcid="@Any" name="METHOD" id="METHOD" value="ognl:condition.METHOD"/>
+    <input type="hidden" jwcid="@Any" name="BUSI_TYPE" id="BUSI_TYPE" value="ognl:getData().getString('BUSI_TYPE')"/>
+     <input type="hidden" jwcid="@Any" name="operType" id="operType" value="ognl:getData().getString('operType')"/>
+    <input type="hidden" jwcid="@Any" name="GRP_SN" id="GRP_SN" value="ognl:getData().getString('GRP_SN')"/>
+    <input type="hidden" jwcid="@Any" name="BBossParamInfo" id="BBossParamInfo" value=""/>
+    <input type="button" id="bnext" value="下一步" class="e_button" METHOD="ognl:condition.METHOD" onclick="return validateParamPage($('#METHOD').val(), $('#ISPRE').val());" style="display:none;"/>
+  	
+</div>
+<!--传值域 结束-->
+</div></div></body>
+
+
+</html>

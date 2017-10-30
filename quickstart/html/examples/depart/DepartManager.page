@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+
+<page-specification class="com.ailk.quickstart.view.examples.depart.DepartMangager">
+
+	<property-specification name="info"
+		type="com.ailk.common.data.IData" />
+	<property-specification name="infos"
+		type="com.ailk.common.data.IDataset" />
+	<property-specification name="condition"
+		type="com.ailk.common.data.IData" />
+	<property-specification name="condit"
+		type="com.ailk.common.data.IData" />
+	<property-specification name="cond"
+		type="com.ailk.common.data.IData" />
+	<property-specification name="parent"
+		type="com.ailk.common.data.IData" />
+	<property-specification name="tabinfos"
+		type="com.ailk.common.data.IDataset" />
+	<property-specification name="tabinfo"
+		type="com.ailk.common.data.IData" />
+	<property-specification name="count" type="long" />
+	<property-specification name="rowIndex" type="int" />
+	<property-specification name="right"
+		type="com.ailk.common.data.IData" />
+</page-specification>

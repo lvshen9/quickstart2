@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<flow name="ChangeMemElement" desc="成员优惠变更">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="editBaseDatum"
+		/>
+	<step
+		name="editBaseDatum"
+		desc="基本资料"
+		page="csserv.group.changememelement.BaseInfo"
+		listener="initial"
+		nextstep="switchProduct"
+		nextbutton="bnext"
+		transdata="CUST_ID,PRODUCT_ID,GRP_USER_ID,GRP_SN,MEB_USER_ID,MEB_SERIAL_NUMBER,BUSI_TYPE,MEB_EPARCHY_CODE,GROUP_ID,param_IF_CENTRETYPE"
+		submitdata="PRODUCT_ID,GRP_USER_ID,MEB_SERIAL_NUMBER,EOS,MEB_EPARCHY_CODE"
+		monitor="cond_SERIAL_NUMBER,MEB_SERIAL_NUMBER,PRODUCT_ID,GRP_USER_ID"
+		/>
+	<switch name="switchProduct" expression="COMPIX_PRODUCT" default="0" desc="选择修改其他资料">
+		<case value="0" nextstep="chooseProductElement" desc="否"/>
+		<case value="B" nextstep="processBBossProduct" desc="是"/>
+	</switch>
+	<step
+		name="processBBossProduct"
+		desc="BBOSS产品成员变更"
+		page="csserv.group.changememelement.BBoss"
+	    listener="initial"
+		nextstep="Preview"
+		nextbutton="bnext"
+		transdata="PRODUCT_ID,GRP_USER_ID,GRP_SN,MEB_USER_ID,MEB_SERIAL_NUMBER,MEB_EPARCHY_CODE,editBaseDatum@CUST_ID"
+		submitdata="productGoodInfos"
+		monitor="ALL"
+		/>		
+	<step
+		name="chooseProductElement"
+		desc="产品订购"
+		page="csserv.group.changememelement.ProductInfo"
+	    listener="initial"
+		nextstep="Preview"
+		nextbutton="bnext"
+		monitor="SELECTED_ELEMENTS,PRODUCT_ID,MEB_USER_ID,GRP_USER_ID"
+		transdata="PRODUCT_ID,GRP_USER_ID,MEB_USER_ID,SELECTED_ELEMENTS,editBaseDatum@CUST_ID,editBaseDatum@MEB_EPARCHY_CODE"
+		submitdata="DYNATABLE_RES_RECORD,SELECTED_ELEMENTS,productParamPart,IF_CENTRETYPE,SKIP_FORCE_PACKAGE_FOR_PRODUCT"
+		/>
+	<step
+		name="Preview"
+		desc="变更确认"
+		page="csserv.group.changememelement.PreView"
+		listener="initial"
+		nextstep="end"
+		backbutton="bback"
+		submitdata="parm_REMARK"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

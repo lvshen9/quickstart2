@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head">
+<title>我的公告</title>
+<script jwcid="@Script" src="biz/scripts/info.js" wade="true"></script>
+</head>
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">公告查询</div>
+	</div>
+
+	<div id="QueryCond" class="c_form c_form-col-2 c_form-label-4">
+		<ul class="ul">
+				<li class="li">
+				<span class="label">开始时间：</span>
+				<span class="e_input"><span><input type="text" jwcid="@DateField" name="cond_START_DATE" value="ognl:condition.cond_START_DATE"  desc="开始时间" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">结束时间：</span>
+				<span class="e_input"><span><input type="text" jwcid="@DateField" name="cond_END_DATE" value="ognl:condition.cond_END_DATE"  desc="结束时间" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">公告主题：</span>
+				<span class="e_input"><span><input type="text" jwcid="@TextField" name="cond_INFO_TOPIC" value="ognl:condition.cond_INFO_TOPIC" desc="公告主题" /></span></span>
+			</li>
+			<li class="li">
+				<span class="label">公告状态：</span>
+				<span class="e_select"><span><span>
+				<select name="cond_INST_STATUS" jwcid="@Select" source="ognl:pageutil.getStaticList('INFOINSTANCE_INSTSTATUS')" titleField="DATA_NAME" textField="DATA_NAME" valueField="DATA_ID" value="ognl:condition.cond_INST_STATUS" desc="消息状态" />
+				</span></span></span>			
+			</li>
+			<div jwcid="@Conditional" condition="ognl:hasPriv('BULLETIN_EDIT')">	
+			<li class="li">
+				<span class="label">删除状态：</span>
+				<span class="e_select"><span><span>
+				<select name="cond_INFO_STATUS" jwcid="@Select" source="ognl:pageutil.getStaticList('INFO_BULLETINSTATUS')" addDefault="false" titleField="DATA_NAME" textField="DATA_NAME" valueField="DATA_ID" value="ognl:condition.cond_INFO_STATUS" desc="公告状态" />
+				</span></span></span>			
+			</li>
+			</div>
+		</ul>
+		<div class="submitPlace"></div>
+		<div class="submit"><button id="btn_query" onclick="return $.info.queryBulletins();" type="button" class="e_button-form"><i class="e_ico-search"></i><span>查询</span></button></div>
+	</div>
+</div>
+
+<div class="c_box">
+	<div class="c_title">
+		<div class="text">公告列表</div>
+		<div class="fn">
+			<div jwcid="@Conditional" condition="ognl:hasPriv('BULLETIN_EDIT')">
+			<a href="#nogo" class="e_button e_button-left" onclick="javascript:openNav('新增公告','biz.info.BulletinEdit','')"><i class="e_ico-add"></i><span>新增</span></a>
+			<a href="#nogo" class="e_button e_button-right" onclick="javascript:$.info.deleteBulletins();"><i class="e_ico-delete"></i><span>删除</span></a>
+			</div>
+		</div>
+	</div>
+
+	<div jwcid="QueryPart@Part" element="div" >
+		<div class="c_scroll c_scroll-table-10"><div class="c_table">
+			<table>
+				<thead>
+					<tr>
+						<th><input type="checkbox" onclick="javascript:checkedAll('info_id',this.checked)"/></th>
+						<th style="width:50%">公告主题</th>
+						<th>状态</th>
+						<th>发布区域</th>
+						<th>发布人</th>
+						<th>发布时间</th>
+						<th>到期时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr jwcid="@Foreach" source="ognl:infos" value="ognl:info" index="ognl:rowIndex" element="tr" class="ognl:rowIndex % 2 == 0 ? '' : 'even'">
+						<td class="check"><input jwcid="@Any" type="checkbox" name="info_id" value="ognl:info.INFO_ID"/></td>
+						<td><a jwcid="@Redirect" parameters="ognl:info" keys="INFO_ID" value="ognl:info.INFO_TOPIC" onclick="javascript:openNav('查看公告-' + $(this).text(),'biz.info.BulletinView', 'queryBulletin', this.getAttribute('parameters'))"/></td>
+						<td jwcid="@Any" class="ognl:0==info.INST_STATUS?'e_red':'e_green'"><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('INFOINSTANCE_INSTSTATUS', info.INST_STATUS)" /></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_AREA', 'AREA_CODE', 'AREA_NAME', info.CITY_CODE)" /></td>
+						<td><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('TD_M_STAFF', 'STAFF_ID', 'STAFF_NAME', info.INFO_AUTH)"/></td>
+						<td><span jwcid="@Insert" value="ognl:@com.ailk.common.util.Utility@decodeTimestamp('yyyy-MM-dd HH:mm', info.SEND_TIME)"/></td>
+						<td><span jwcid="@Insert" value="ognl:info.END_TIME!=null?@com.ailk.common.util.Utility@decodeTimestamp('yyyy-MM-dd', info.END_TIME):''"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div></div>
+
+		<div jwcid="@NavBar" name="infonav" cond="QueryCond" part="QueryPart" listener="queryBulletins" count="ognl:infosCount"></div>
+	</div>
+</div>
+</div></div>
+</body>
+</html>

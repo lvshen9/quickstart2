@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>集团产品成员退订</title>
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/component/group/grprule/grprule.js"></script> 
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/destroygroupmember/BaseInfo.js"></script>
+	</head>
+	<body jwcid="@Body">
+	<div jwcid="SelectGroupPart@Part">
+		<span jwcid="@saleserv:PopupGrpSnList" infos="ognl:infos" hidden='ognl:hidden' grprefreshPart="GroupInfoPart" errorJsMethod="clearGroupUserInfo();clearGroupCustInfo();"/>
+	</div>
+	<div class="m_wrapper"><div class="m_wrapper2">
+		<!-- 区域 开始 -->
+		<div class="c_box">
+	 		
+	 		<!-- 成员订购集团产品查询信息 -->
+			<span jwcid="@saleserv:SelectMebOrderInfo"  successJsMethod="selectMemberInfoAfterAction(data)" errorJsMethod="selectMemberInfoErrAfterAction()"/>
+			
+		 
+			<!-- 集团客户信息  -->
+			<div jwcid="GroupInfoPart@Part">
+				<span jwcid="@saleserv:GroupCustInfo" groupUserInfo="ognl:groupInfo" titleLev="2"/>
+				<span jwcid="@saleserv:GroupUserInfo" groupUserInfo="ognl:userInfo" titleLev="2"/>
+				<textarea jwcid="@TextArea" name="IF_CENTRETYPE" id="IF_CENTRETYPE" value="ognl:productCtrlInfo.IF_CENTRETYPE" style="display:none"></textarea>
+			</div>
+
+			<!-- 成员信息 -->
+			<div jwcid="PersonInfoPart@Part">
+				<span jwcid="@saleserv:MemberCustInfo"  titleLev="2"/>
+				<span jwcid="@saleserv:MemberUserInfo"  titleLev="2"/>
+			</div>
+	        
+		</div>
+		<!-- 区域 结束 -->
+		<input type="button" id="bnext" value="下一步" class="e_button" onclick="isSelectedProducts(); return false;" style="display:none"/>
+	</div></div>
+
+	
+	</body>
+</html>

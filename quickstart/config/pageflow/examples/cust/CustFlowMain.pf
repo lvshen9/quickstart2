@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="CustFlow" desc="客户资料管理">
+	<step
+		name="begin"
+		desc="开始"
+		nextstep="editBaseInfo"
+		/>
+	<step
+		name="editBaseInfo"
+		desc="基本信息"
+		page="examples.cust.CustFlowBase"
+		nextstep="needMailInfo"
+		nextbutton="bnext"
+		monitor="base"
+		transdata="NEED_MAIL"
+		submitdata="base"
+		/>
+	<switch name="needMailInfo" expression="NEED_MAIL" default="1" desc="是否需要填写邮寄信息">
+		<case value="0" nextstep="editLogInfo" desc="日志信息"/>
+		<case value="1" nextstep="editMailInfo" desc="邮寄信息"/>
+	</switch>
+	<step
+		name="editMailInfo"
+		desc="邮寄信息"
+		page="examples.cust.CustFlowMail"
+		transdata="editBaseInfo@MAIN_PARAMS"
+		nextstep="editLogInfo"
+		nextbutton="bnext"
+		submitdata="mail"
+		/>
+	<step
+		name="editLogInfo"
+		desc="日志信息"
+		page="examples.cust.CustFlowLog"
+		nextstep="end"
+		nextbutton="bnext"
+		submitdata="log"
+		/>
+	<step
+		name="end"
+		desc="结束"
+		/>
+</flow>

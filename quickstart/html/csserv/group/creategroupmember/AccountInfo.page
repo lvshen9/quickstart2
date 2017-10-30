@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 3.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_3_0.dtd">
+<!-- $Id: AccountInfo.page,v 1.4 2013/04/17 01:22:21 liming2 Exp $ -->
+
+<page-specification class="com.ailk.csview.group.creategroupmember.AccountInfo">
+    <property-specification name="cond" type="com.ailk.common.data.IData"/>
+    <property-specification name="payInfo" type="com.ailk.common.data.IData"/>
+    <property-specification name="hintInfo" type="java.lang.String"/>
+	<property-specification name="noteItemList" type="com.ailk.common.data.IDataset"/>
+	<property-specification name="noteItem" type="com.ailk.common.data.IData"/>
+	<property-specification name="rowIndex" type="int"/>
+	<property-specification name="planInfo" type="com.ailk.common.data.IData"/>
+</page-specification>

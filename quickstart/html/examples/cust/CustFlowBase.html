@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head jwcid="@Head" includeJs="ognl:'js/i18n.' + getLanguage() + '.js'">
+<script jwcid="@Script" src="scripts/examples/cust/custlist.js"></script>
+</head>
+
+<body jwcid="@Body">
+<div class="m_wrapper"><div class="m_wrapper2">
+<div class="c_box" id="base">
+	<div class="c_title">
+		<div class="text">基本信息</div>
+	</div>
+	<div class="c_form c_form-col-2 c_form-label-5">
+		<ul class="ul">
+			<li class="li">
+				<span class="label"><span class="e_required">客户姓名：</span></span>
+				<span class="e_input"><span><input type="text" name="CUST_NAME" jwcid="@TextField" value="ognl:base.CUST_NAME" desc="客户姓名" nullable="no"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">手机号码：</span></span>
+				<span class="e_input"><span><input type="text" name="SERIAL_NUMBER" jwcid="@TextField" value="ognl:base.SERIAL_NUMBER" desc="手机号码" nullable="no"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">证件类型：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="USEPSPT_TYPE_CODE" textField="DATA_NAME" valueField="DATA_ID" source="ognl:pageutil.getStaticList('PSPT_TYPE_CODE')" desc="证件类型" value="ognl:base.USEPSPT_TYPE_CODE" nullable="no"></select>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">证件号码：</span></span>
+				<span class="e_input"><span><input type="text" name="USEPSPT_ID" jwcid="@TextField" value="ognl:base.USEPSPT_ID" desc="证件号码" nullable="no"/></span></span>
+			</li>
+			<li class="li">
+				<span class="label"><span class="e_required">VIP类型：</span></span>
+				<span class="e_select"><span><span>
+					<select jwcid="@Select" name="VIP_TYPE_CODE" textField="DATA_NAME" valueField="DATA_ID" source="ognl:pageutil.getStaticList('VIP_TYPE_CODE')" desc="VIP类型" value="ognl:base.VIP_TYPE_CODE" nullable="no"></select>
+				</span></span></span>
+			</li>
+			<li class="li">
+				<span class="label"></span>
+				<label for="NEED_MAIL"><input id="NEED_MAIL" name="NEED_MAIL" jwcid="@Checkbox" type="checkbox" checked="true"/>需要邮寄</label>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="c_submit" style="display:none">
+		<button class="e_button-page" id="bback" name="bback"><i class="e_ico-pre"></i><span>上一步</span></button>
+		<button class="e_button-page" id="bnext" name="bnext"><i class="e_ico-next"></i><span>下一步</span></button>
+	</div>
+	
+	<div style="display:none" id="MAIN_PARAMS">
+		<input jwcid="@Any" name="PARAM_A" id="PARAM_A" value="ognl:getParameter('a')" />
+		<input jwcid="@Any" name="PARAM_C" id="PARAM_C" value="ognl:getParameter('c')" />
+	</div>
+</div>
+</div></div>
+</body>
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	$("#bnext").bind("click",function(){
+		$('#NEED_MAIL').val($('#NEED_MAIL').attr('checked') ? "1" : "0");
+		return $.validate.verifyAll("base");
+	});
+});
+</script>
+</html>

@@ -1,0 +1,655 @@
+
+<service subsys="resserv">
+	<entity name="RM.SimCardInResaleSvc.qryResaleSimByImsi" 		path="com.ailk.resservice.service.simcard.SimCardInResaleSvc@qryResaleSimByImsi"/>
+	<entity name="RM.SimCardInResaleSvc.desResaleSimByImsi" 		path="com.ailk.resservice.service.simcard.SimCardInResaleSvc@desResaleSimByImsi"/>
+
+	<!-- ParaUtil 服务 start -->
+ 	<entity name="RM.ParaUtilSvc.getEparchyCode" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getEparchyCode"/>
+	<entity name="RM.ParaUtilSvc.queryCityList" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@queryCityList"/>
+	<entity name="RM.ParaUtilSvc.getEparchyStockList" 	path="com.ailk.resservice.service.core.util.ParaUtilSvc@getEparchyStockList"/>
+    <entity name="RM.ParaUtilSvc.queryResParaCrm" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@queryResParaCrm"/>
+	<entity name="RM.ParaUtilSvc.getResType" 			path="com.ailk.resservice.service.core.util.ParaUtilSvc@getResType"/>
+	<entity name="RM.ParaUtilSvc.getDepartLevel" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getDepartLevel"/>
+	<entity name="RM.ParaUtilSvc.getTradeType" 			path="com.ailk.resservice.service.core.util.ParaUtilSvc@getTradeType"/>
+	<entity name="RM.ParaUtilSvc.getResState" 			path="com.ailk.resservice.service.core.util.ParaUtilSvc@getResState"/>
+	<entity name="RM.ParaUtilSvc.getResTypePoint"       path="com.ailk.resservice.service.core.util.ParaUtilSvc@getResTypePoint"/>
+	<entity name="RM.ParaUtilSvc.getCorp" 				path="com.ailk.resservice.service.core.util.ParaUtilSvc@getCorp"/>
+	<entity name="RM.ParaUtilSvc.getOperType" 			path="com.ailk.resservice.service.core.util.ParaUtilSvc@getOperType" />
+	<entity name="RM.ParaUtilSvc.getProductInfos" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getProductInfos" />
+	<entity name="RM.ParaUtilSvc.getProductor" 			path="com.ailk.resservice.service.core.util.ParaUtilSvc@getProductor" />
+	<entity name="RM.ParaUtilSvc.getKindByType" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getKindByType" />
+	<entity name="RM.ParaUtilSvc.getResChildType" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getResChildType" />
+	<entity name="RM.ParaUtilSvc.queryCityListOneEparchy" 			path="com.ailk.resservice.service.core.util.ParaUtilSvc@queryCityListOneEparchy" />
+	<entity name="RM.ParaUtilSvc.getResPara" 			path="com.ailk.resservice.service.core.util.ParaUtilSvc@getResPara" />
+	<entity name="RM.ParaUtilSvc.getEparchyCode_1" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getEparchyCode_1" />
+	<entity name="RM.ParaUtilSvc.getCityList_1" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getCityList_1" />
+	<entity name="RM.ParaUtilSvc.getBillTradeType" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getBillTradeType"/>
+	
+	<!-- ParaUtil 服务 end-->
+	
+	<!-- SeqUtil 服务 start -->
+	 <entity name="RM.SeqUtilSvc.getSequence" path="com.ailk.resservice.service.core.util.SeqUtilSvc@getSequence"  />
+	<!-- SeqUtil 服务 end -->
+	
+	<!--  实体卡 -->
+	<entity name="RM.WlanCardInSvc.saveData" 		path="com.ailk.resservice.service.entitycard.wlancard.WlanCardInSvc@saveData" />
+	
+	<!-- 资源盘点 -->
+	<entity name="RM.ResInventorySvc.queryValueCard" 		path="com.ailk.resservice.service.inventory.ResInventorySvc@queryValueCard" />
+    <entity name="RM.ResInventorySvc.querySimCard"			path="com.ailk.resservice.service.inventory.ResInventorySvc@querySimCard" />
+<!--    <entity name="RM.ResInventorySvc.queryTermin"			path="com.ailk.resservice.service.inventory.ResInventorySvc@queryTermin" />-->
+    <entity name="RM.ResInventorySvc.queryGoods"			path="com.ailk.resservice.service.inventory.ResInventorySvc@queryGoods" />
+    <entity name="RM.ResInventorySvc.importValueCard" 		path="com.ailk.resservice.service.inventory.ResInventorySvc@importValueCard" />	
+    <entity name="RM.ResInventorySvc.importSimCard" 		path="com.ailk.resservice.service.inventory.ResInventorySvc@importSimCard" />	
+    <entity name="RM.ResInventorySvc.importGoods" 			path="com.ailk.resservice.service.inventory.ResInventorySvc@importGoods" />
+<!--    <entity name="RM.ResInventorySvc.importTerminal" 		path="com.ailk.resservice.service.inventory.ResInventorySvc@importTerminal" />-->
+	
+	<!-- 端口管理 -->
+	<entity name="RM.CMessagePortMgrSvc.saveData" 				path="com.ailk.resservice.service.port.CMessagePortMgrSvc@saveData" />
+    <entity name="RM.CMessagePortMgrSvc.queryAssignBackPort" 	path="com.ailk.resservice.service.port.CMessagePortMgrSvc@queryAssignBackPort" />
+    <entity name="RM.CMessagePortMgrSvc.assignPort" 			path="com.ailk.resservice.service.port.CMessagePortMgrSvc@assignPort" />
+    <entity name="RM.CMessagePortMgrSvc.backPort" 				path="com.ailk.resservice.service.port.CMessagePortMgrSvc@backPort" />
+    <entity name="RM.CMessagePortMgrSvc.queryOccupyPort" 		path="com.ailk.resservice.service.port.CMessagePortMgrSvc@queryOccupyPort" />
+    <entity name="RM.CMessagePortMgrSvc.occupyFreePort" 		path="com.ailk.resservice.service.port.CMessagePortMgrSvc@occupyFreePort" />
+    <entity name="RM.CMessagePortMgrSvc.queryPortInfo" 			path="com.ailk.resservice.service.port.CMessagePortMgrSvc@queryPortInfo" />
+    <entity name="RM.CMessagePortMgrSvc.queryProduct" 			path="com.ailk.resservice.service.port.CMessagePortMgrSvc@queryProduct" />
+    <entity name="RM.CMessagePortMgrSvc.invalidRecoverPort" 	path="com.ailk.resservice.service.port.CMessagePortMgrSvc@invalidRecoverPort" />
+    
+    <!-- 端口接口 -->
+    <entity name="RM.ResPortIntfSvc.autoGetValiPort" 		path="com.ailk.resservice.service.intf.ResPortIntfSvc@autoGetValiPort" />
+    <entity name="RM.ResPortIntfSvc.portPreOccupy" 			path="com.ailk.resservice.service.intf.ResPortIntfSvc@portPreOccupy" />
+    <entity name="RM.ResPortIntfSvc.portPreRelease" 		path="com.ailk.resservice.service.intf.ResPortIntfSvc@portPreRelease" />
+    <entity name="RM.ResPortIntfSvc.portOccupy" 			path="com.ailk.resservice.service.intf.ResPortIntfSvc@portOccupy" />
+    <entity name="RM.ResPortIntfSvc.portOccupyRelease" 		path="com.ailk.resservice.service.intf.ResPortIntfSvc@portOccupyRelease" />
+    <entity name="RM.ResPortIntfSvc.portRelease" 			path="com.ailk.resservice.service.intf.ResPortIntfSvc@portRelease" />
+    
+	<!-- 号码参数维护 -->
+	<entity name="RM.PhoneParameterSvc.queryBrandRuleMaintain" path="com.ailk.resservice.service.phone.phoneparameter.PhoneParameterSvc@queryBrandRuleMaintain"/>
+	<entity name="RM.PhoneParameterSvc.dealBrandRuleMaintain" path="com.ailk.resservice.service.phone.phoneparameter.PhoneParameterSvc@dealBrandRuleMaintain"/>
+	<entity name="RM.SpecialEndFeeRuleSvc.querySpecialEndFeeRule" path="com.ailk.resservice.service.phone.phoneparameter.SpecialEndFeeRuleSvc@querySpecialEndFeeRule"/>
+	<entity name="RM.SpecialEndFeeRuleSvc.queryLimitInfoByClassid" path="com.ailk.resservice.service.phone.phoneparameter.SpecialEndFeeRuleSvc@queryLimitInfoByClassid"/>
+	<entity name="RM.SpecialEndFeeRuleSvc.specialEndFeeRule" path="com.ailk.resservice.service.phone.phoneparameter.SpecialEndFeeRuleSvc@specialEndFeeRule"/>
+	<entity name="RM.PhoneSegmentNetFilterSvc.queryPhoneSegmentNetFilter" path="com.ailk.resservice.service.phone.phoneparameter.PhoneSegmentNetFilterSvc@queryPhoneSegmentNetFilter"/>
+	<entity name="RM.PhoneSegmentNetFilterSvc.phoneSegmentNetFilter" path="com.ailk.resservice.service.phone.phoneparameter.PhoneSegmentNetFilterSvc@phoneSegmentNetFilter"/>
+	<entity name="RM.PhoneSegmentNetFilterSvc.delPhoneSegmentNetFilter" path="com.ailk.resservice.service.phone.phoneparameter.PhoneSegmentNetFilterSvc@delPhoneSegmentNetFilter"/>
+	
+	
+	<entity name="RM.FeeRuleManagerSvc.queryFeeRuleManager" path="com.ailk.resservice.service.phone.phoneparameter.FeeRuleManagerSvc@queryFeeRuleManager"/>
+	<entity name="RM.FeeRuleManagerSvc.queryFeeSubAjax" path="com.ailk.resservice.service.phone.phoneparameter.FeeRuleManagerSvc@queryFeeSubAjax"/>
+	<entity name="RM.FeeRuleManagerSvc.feeRuleManager" path="com.ailk.resservice.service.phone.phoneparameter.FeeRuleManagerSvc@feeRuleManager"/>
+
+	
+	<!--号码查询-->
+	<entity name="RM.PhoneQuantityQuerySvc.queryPhoneQuantityQuery" path="com.ailk.resservice.service.phone.phonequery.PhoneQuantityQuerySvc@queryPhoneQuantityQuery"/>
+	<entity name="RM.PhoneLocationQuerySvc.queryPhoneLocationQuery" path="com.ailk.resservice.service.phone.phonequery.PhoneLocationQuerySvc@queryPhoneLocationQuery"/>
+	<entity name="RM.PhoneNumberQuerySvc.queryPhoneNumberQuery" path="com.ailk.resservice.service.phone.phonequery.PhoneNumberQuerySvc@queryPhoneNumberQuery"/>
+	<entity name="RM.PhoneNumberQuerySvc.queryCardNumberQuery" path="com.ailk.resservice.service.phone.phonequery.PhoneNumberQuerySvc@queryCardNumberQuery"/>
+	<entity name="RM.PhoneNumberQuerySvc.queryDepartNumberQuery" path="com.ailk.resservice.service.phone.phonequery.PhoneNumberQuerySvc@queryDepartNumberQuery"/>
+	<entity name="RM.PhoneDistubuteQuerySvc.queryPhoneDistubuteQuery" path="com.ailk.resservice.service.phone.phonequery.PhoneDistubuteQuerySvc@queryPhoneDistubuteQuery"/>
+	<entity name="RM.PhonePoolSegQuerySvc.queryPhonePoolSegQuery" path="com.ailk.resservice.service.phone.phonequery.PhonePoolSegQuerySvc@queryPhonePoolSegQuery"/>
+	<entity name="RM.PhoneAssignLogQuerySvc.queryPhoneAssignLogQuery" path="com.ailk.resservice.service.phone.phonequery.PhoneAssignLogQuerySvc@queryPhoneAssignLogQuery"/>
+	<entity name="RM.PhoneAssignLogQuerySvc.queryPhoneAssignLogDetail" path="com.ailk.resservice.service.phone.phonequery.PhoneAssignLogQuerySvc@queryPhoneAssignLogDetail"/>
+	
+	
+	<!-- 号码 -->
+	<entity name="RM.PhoneCenAddSvc.AddPhoneSegment" path="com.ailk.resservice.service.phone.phonecenadd.PhoneCenAddSvc@AddPhoneSegment"/>
+ 	<entity name="RM.PhoneCenAddSvc.changeResKindCode" path="com.ailk.resservice.service.phone.phonecenadd.PhoneCenAddSvc@changeResKindCode"/>
+    
+    
+    <entity name="RM.PhoneCenAssignSvc.queryCenSegmentInfo" path="com.ailk.resservice.service.phone.phonecenadd.PhoneCenAssignSvc@queryCenSegmentInfo"/> 
+	<entity name="RM.PhoneCenAssignSvc.phoneCenAssign" path="com.ailk.resservice.service.phone.phonecenadd.PhoneCenAssignSvc@phoneCenAssign"/> 
+	<entity name="RM.PhoneCenAssignBackSvc.queryCenSegmentBackInfo" path="com.ailk.resservice.service.phone.phonecenadd.PhoneCenAssignBackSvc@queryCenSegmentBackInfo"/> 
+	<entity name="RM.PhoneCenAssignBackSvc.phoneCenAssignBack" path="com.ailk.resservice.service.phone.phonecenadd.PhoneCenAssignBackSvc@phoneCenAssignBack"/> 
+	<entity name="RM.PhoneClearPhoneSegmentSvc.queryClearPhoneSegment" path="com.ailk.resservice.service.phone.phonecenadd.PhoneClearPhoneSegmentSvc@queryClearPhoneSegment"/> 
+	<entity name="RM.PhoneClearPhoneSegmentSvc.clearPhoneSegment" path="com.ailk.resservice.service.phone.phonecenadd.PhoneClearPhoneSegmentSvc@clearPhoneSegment"/> 
+
+	<entity name="RM.PhoneAssignSvc.queryPhoneInfos" path="com.ailk.resservice.service.phone.phoneassign.PhoneAssignSvc@queryPhoneInfos"/> 
+	<entity name="RM.PhoneAssignSvc.phoneAssign" path="com.ailk.resservice.service.phone.phoneassign.PhoneAssignSvc@phoneAssign"/> 
+	<entity name="RM.PhoneBrandManageSvc.queryPhoneBrandManage" path="com.ailk.resservice.service.phone.phonebrand.PhoneBrandManageSvc@queryPhoneBrandManage"/> 
+	<entity name="RM.PhoneBrandManageSvc.phoneBrandManage" path="com.ailk.resservice.service.phone.phonebrand.PhoneBrandManageSvc@phoneBrandManage"/> 
+	<entity name="RM.PhoneTempoccupySelectSvc.queryPhoneTempoccupySelect" path="com.ailk.resservice.service.phone.phonetempoccupyselect.PhoneTempoccupySelectSvc@queryPhoneTempoccupySelect"/> 
+	<entity name="RM.PhoneTempoccupySelectSvc.phoneTempoccupySelect" path="com.ailk.resservice.service.phone.phonetempoccupyselect.PhoneTempoccupySelectSvc@phoneTempoccupySelect"/> 
+	<entity name="RM.PhoneTempoccupyClearSvc.queryPhoneTempoccupyClear" path="com.ailk.resservice.service.phone.phonetempoccupyselect.PhoneTempoccupyClearSvc@queryPhoneTempoccupyClear"/> 
+	<entity name="RM.PhoneTempoccupyClearSvc.phoneTempoccupyClear" path="com.ailk.resservice.service.phone.phonetempoccupyselect.PhoneTempoccupyClearSvc@phoneTempoccupyClear"/> 
+	
+	<entity name="RM.PhoneFeeRuleDealSvc.queryPhoneFeeRuleDeal" path="com.ailk.resservice.service.phone.phonefeerule.PhoneFeeRuleDealSvc@queryPhoneFeeRuleDeal"/> 
+	<entity name="RM.PhoneFeeRuleDealSvc.queryFeeRules" path="com.ailk.resservice.service.phone.phonefeerule.PhoneFeeRuleDealSvc@queryFeeRules"/> 
+	<entity name="RM.PhoneFeeRuleDealSvc.phoneFeeRuleDeal" path="com.ailk.resservice.service.phone.phonefeerule.PhoneFeeRuleDealSvc@phoneFeeRuleDeal"/> 
+	<entity name="RM.PhoneFeeRuleDealSvc.phoneFeeRuleBatDeal" path="com.ailk.resservice.service.phone.phonefeerule.PhoneFeeRuleDealSvc@phoneFeeRuleBatDeal"/> 
+	<entity name="RM.PhoneSpecialModifySvc.querySpecialPhoneModify" path="com.ailk.resservice.service.phone.phonespecial.PhoneSpecialModifySvc@querySpecialPhoneModify"/> 
+	<entity name="RM.PhoneSpecialModifySvc.specialPhoneModify" path="com.ailk.resservice.service.phone.phonespecial.PhoneSpecialModifySvc@specialPhoneModify"/> 
+
+	<entity name="RM.PhoneSpecialOperSvc.specialPhoneOperArea" path="com.ailk.resservice.service.phone.phonespecial.PhoneSpecialOperSvc@specialPhoneOperArea"/> 
+
+	<entity name="RM.PhoneSpecialOperSvc.specialPhoneOperPoint" path="com.ailk.resservice.service.phone.phonespecial.PhoneSpecialOperSvc@specialPhoneOperPoint"/> 
+    <entity name="RM.PhoneSpecialOperSvc.querySpecialPhoneOperArea" path="com.ailk.resservice.service.phone.phonespecial.PhoneSpecialOperSvc@querySpecialPhoneOperArea"/> 
+    <entity name="RM.PhoneSpecialOperSvc.querySpecialPhoneOperPoint" path="com.ailk.resservice.service.phone.phonespecial.PhoneSpecialOperSvc@querySpecialPhoneOperPoint"/> 
+    <entity name="RM.PhoneDestroyBackSvc.queryPhoneDestroyBack" path="com.ailk.resservice.service.phone.phonedestroyback.PhoneDestroyBackSvc@queryPhoneDestroyBack"/> 
+    <entity name="RM.PhoneDestroyBackSvc.phoneDestroyBack" path="com.ailk.resservice.service.phone.phonedestroyback.PhoneDestroyBackSvc@phoneDestroyBack"/> 
+ 	<entity name="RM.PhoneDestroyBackSvc.phoneDestroyBackRegain" path="com.ailk.resservice.service.phone.phonedestroyback.PhoneDestroyBackSvc@phoneDestroyBackRegain"/> 
+    <entity name="RM.PhoneDestroyBackSvc.queryPhoneDestroyBackRegain" path="com.ailk.resservice.service.phone.phonedestroyback.PhoneDestroyBackSvc@queryPhoneDestroyBackRegain"/> 
+   
+    <entity name="RM.PhoneSimcardPreSvc.queryPhoneSimcardPre" path="com.ailk.resservice.service.phone.phoneother.PhoneSimcardPreSvc@queryPhoneSimcardPre"/> 
+    <entity name="RM.PhoneSimcardPreSvc.phoneSimcardPre" path="com.ailk.resservice.service.phone.phoneother.PhoneSimcardPreSvc@phoneSimcardPre"/> 
+    <entity name="RM.PhoneNumberModifySvc.phoneNumberModify" path="com.ailk.resservice.service.phone.phoneother.PhoneNumberModifySvc@phoneNumberModify"/> 
+    <entity name="RM.PhoneStoragePrecentSvc.phoneStoragePrecent" path="com.ailk.resservice.service.phone.phoneother.PhoneStoragePrecentSvc@phoneStoragePrecent"/> 
+    <entity name="RM.PhoneStoragePrecentSvc.queryPhoneStoragePrecent" path="com.ailk.resservice.service.phone.phoneother.PhoneStoragePrecentSvc@queryPhoneStoragePrecent"/> 
+    <entity name="RM.PhoneStoragePrecentSvc.queryDepartInfo" path="com.ailk.resservice.service.phone.phoneother.PhoneStoragePrecentSvc@queryDepartInfo"/> 
+
+
+	<entity name="RM.MphoneCodeGroupMgrSvc.queryGroupInfoResPara1045" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@queryGroupInfoResPara1045"/>
+    <entity name="RM.MphoneCodeGroupMgrSvc.delGroupInfoResPara1045" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@delGroupInfoResPara1045"  />
+    <entity name="RM.MphoneCodeGroupMgrSvc.addGroupInfoResPara1045" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@addGroupInfoResPara1045" />
+    <entity name="RM.MphoneCodeGroupMgrSvc.updateGroupInfoResPara1045" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@updateGroupInfoResPara1045" />
+    <entity name="RM.MphoneCodePoolMgrSvc.queryPool" 		path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@queryPool" />
+    <entity name="RM.MphoneCodePoolMgrSvc.MphoneCodePoolDel" 		path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@MphoneCodePoolDel"  />
+    <entity name="RM.MphoneCodePoolMgrSvc.CheckMphoneCodePoolValid" 		path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@CheckMphoneCodePoolValid" />
+    <entity name="RM.MphoneCodePoolMgrSvc.MphoneCodePoolAdd" 		path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@MphoneCodePoolAdd"  />
+    <entity name="RM.MphoneCodePoolMgrSvc.MphoneCodePoolModify" 		path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@MphoneCodePoolModify" />
+    
+    <entity name="RM.MphoneCodeGroupMgrSvc.queryRelaBetweenGrpAndDpt" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@queryRelaBetweenGrpAndDpt" />
+    <entity name="RM.MphoneCodeGroupMgrSvc.delRelaBetweenGrpAndDpt" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@delRelaBetweenGrpAndDpt" />
+    <entity name="RM.MphoneCodeGroupMgrSvc.updateRelaBetweenGrpAndDpt" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@updateRelaBetweenGrpAndDpt" />
+    <entity name="RM.MphoneCodeGroupMgrSvc.addRelaBetweenGrpAndDpt" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@addRelaBetweenGrpAndDpt" />
+    
+    <entity name="RM.MphoneCodeGroupMgrSvc.queryPoolDepart" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@queryPoolDepart"/>
+    <entity name="RM.MphoneCodeGroupMgrSvc.mphoneCodePoolDepartDel" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@mphoneCodePoolDepartDel"  />
+    <entity name="RM.MphoneCodeGroupMgrSvc.checkMphonePoolDptValid" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@checkMphonePoolDptValid" />
+    <entity name="RM.MphoneCodeGroupMgrSvc.mphoneCodePoolDptModify" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@mphoneCodePoolDptModify"  />
+    <entity name="RM.MphoneCodeGroupMgrSvc.mphoneCodePoolDepartAdd" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@mphoneCodePoolDepartAdd"  />
+    
+    <entity name="RM.MphoneCodeGroupMgrSvc.queryRelaBetweenPoolAndGrp" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@queryRelaBetweenPoolAndGrp"  />
+    <entity name="RM.MphoneCodeGroupMgrSvc.delRelaBetweenPoolAndGrp" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@delRelaBetweenPoolAndGrp" />
+    <entity name="RM.MphoneCodeGroupMgrSvc.updateRelaBetweenPoolAndGrp" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@updateRelaBetweenPoolAndGrp" />
+    <entity name="RM.MphoneCodeGroupMgrSvc.addRelaBetweenPoolAndGrp" 		path="com.ailk.resservice.service.phone.mphonecodegroup.MphoneCodeGroupMgrSvc@addRelaBetweenPoolAndGrp" />
+    
+    <entity name="RM.MphoneCodePoolMgrSvc.queryNumCanAssignToPool"    path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@queryNumCanAssignToPool"  />
+    <entity name="RM.MphoneCodePoolMgrSvc.assignNumberToNormalPool" 		path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@assignNumberToNormalPool"  />
+    <entity name="RM.MphoneCodePoolMgrSvc.backNumberPool" 		path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@backNumberPool" />
+    <entity name="RM.MphoneCodePoolMgrSvc.queryNumCanAssignToNetPool"    path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@queryNumCanAssignToNetPool" />
+    <entity name="RM.MphoneCodePoolMgrSvc.assignNumberPool" 	path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@assignNumberPool"  />
+    <entity name="RM.MphoneCodePoolMgrSvc.queryNumCanAssignToAsynPlaceCommonPool"    path="com.ailk.resservice.service.phone.mphonecodepool.MphoneCodePoolMgrSvc@queryNumCanAssignToAsynPlaceCommonPool" />
+   
+    <entity name="RM.MphoneCodePoolDepartNetSvc.queryPoolNetDepart" 	path="com.ailk.resservice.service.phone.mphonecodepooldepart.MphoneCodePoolDepartNetSvc@queryPoolNetDepart"  />
+    <entity name="RM.MphoneCodePoolDepartNetSvc.mphoneCodePoolDepartAdd" 	path="com.ailk.resservice.service.phone.mphonecodepooldepart.MphoneCodePoolDepartNetSvc@mphoneCodePoolDepartAdd"  />
+    <entity name="RM.MphoneCodePoolDepartNetSvc.queryPoolNetDepartModify" path="com.ailk.resservice.service.phone.mphonecodepooldepart.MphoneCodePoolDepartNetSvc@queryPoolNetDepartModify" />
+    <entity name="RM.MphoneCodePoolDepartNetSvc.mphoneCodePoolDepartModify" 	path="com.ailk.resservice.service.phone.mphonecodepooldepart.MphoneCodePoolDepartNetSvc@mphoneCodePoolDepartModify"  />
+    <entity name="RM.MphoneCodePoolDepartNetSvc.mphoneCodePoolDepartDel" 	path="com.ailk.resservice.service.phone.mphonecodepooldepart.MphoneCodePoolDepartNetSvc@mphoneCodePoolDepartDel"/>
+    
+    <entity name="RM.PhonePreOccupyQuerySvc.queryPhonePreOccupy" path="com.ailk.resservice.service.phone.phonequery.PhonePreOccupyQuerySvc@queryPhonePreOccupy" />
+    
+    <entity name="RM.OneCardManyNumImportSvc.importOneCardManyNum" path="com.ailk.resservice.service.phone.phoneother.OneCardManyNumImportSvc@importOneCardManyNum" />
+	<entity name="RM.OneCardManyNumImportSvc.instockOneCardManyNum" path="com.ailk.resservice.service.phone.phoneother.OneCardManyNumImportSvc@instockOneCardManyNum" />
+    <entity name="RM.OneCardManyNumImportSvc.queryOneCardManyNum" path="com.ailk.resservice.service.phone.phoneother.OneCardManyNumImportSvc@queryOneCardManyNum" />
+    <entity name="RM.CMNetResImportSvc.instockCMNetSingle" path="com.ailk.resservice.service.phone.phoneother.CMNetResImportSvc@instockCMNetSingle" />
+	<entity name="RM.CMNetResImportSvc.instockCMNetBatch" path="com.ailk.resservice.service.phone.phoneother.CMNetResImportSvc@instockCMNetBatch" />
+	<entity name="RM.CMNetResImportSvc.queryCMNetResInfo" path="com.ailk.resservice.service.phone.phoneother.CMNetResImportSvc@queryCMNetResInfo" />
+	<entity name="RM.TietMphoneImportSvc.importTietMphone" path="com.ailk.resservice.service.phone.phoneother.TietMphoneImportSvc@importTietMphone" />
+	<entity name="RM.TietMphoneImportSvc.instockTietMphone" path="com.ailk.resservice.service.phone.phoneother.TietMphoneImportSvc@instockTietMphone" />
+	<entity name="RM.TietMphoneImportSvc.queryTietByNum" path="com.ailk.resservice.service.phone.phoneother.TietMphoneImportSvc@queryTietByNum" />
+	<entity name="RM.OneCardMoreImportSvc.importOneCardMore" path="com.ailk.resservice.service.phone.phoneother.OneCardMoreImportSvc@importOneCardMore" />
+	<entity name="RM.OneCardMoreImportSvc.instockOneCardMore" path="com.ailk.resservice.service.phone.phoneother.OneCardMoreImportSvc@instockOneCardMore" />
+	<entity name="RM.OneCardMoreImportSvc.queryOneCardMore" path="com.ailk.resservice.service.phone.phoneother.OneCardMoreImportSvc@queryOneCardMore" />
+	<entity name="RM.TempSNPreOpenSvc.preOpenMphone" path="com.ailk.resservice.service.phone.phoneother.TempSNPreOpenSvc@preOpenMphone" />
+	
+	<!-- 其他资源 -->
+	<entity name="RM.MofficeSvc.queryMoffice" path="com.ailk.resservice.service.phone.phoneother.MofficeSvc@queryMoffice" />
+	<entity name="RM.MofficeSvc.addMoffice" path="com.ailk.resservice.service.phone.phoneother.MofficeSvc@addMoffice" />
+	<entity name="RM.MofficeSvc.delMoffice" path="com.ailk.resservice.service.phone.phoneother.MofficeSvc@delMoffice" />
+	<entity name="RM.MofficeSvc.modifyMoffice" path="com.ailk.resservice.service.phone.phoneother.MofficeSvc@modifyMoffice" />
+	
+	<!-- 资源维护 -->
+    <entity name="RM.TypeMainTainSvc.queryTypeTree" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@queryTypeTree"/>
+    <entity name="RM.TypeMainTainSvc.queryResKind" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@queryResKind"/>
+    <entity name="RM.TypeMainTainSvc.queryResType" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@queryResType"/>
+    <entity name="RM.TypeMainTainSvc.modifyResType" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@modifyResType"/>
+    <entity name="RM.TypeMainTainSvc.addResType" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@addResType"/>
+    <entity name="RM.TypeMainTainSvc.delResKind" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@delResKind"/>
+    <entity name="RM.TypeMainTainSvc.editResKind" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@editResKind"/>
+    <entity name="RM.TypeMainTainSvc.addResKind" path="com.ailk.resservice.service.paramers.TypeMainTainSvc@addResKind"/>
+    
+    <entity name="RM.ResSaleRuleSvc.queryResSaleRule" path="com.ailk.resservice.service.paramers.ResSaleRuleSvc@queryResSaleRule"/>
+    <entity name="RM.ResSaleRuleSvc.queryResSaleRuleByID" path="com.ailk.resservice.service.paramers.ResSaleRuleSvc@queryResSaleRuleByID"/>
+    <entity name="RM.ResSaleRuleSvc.addResSaleRule" path="com.ailk.resservice.service.paramers.ResSaleRuleSvc@addResSaleRule"/>
+    <entity name="RM.ResSaleRuleSvc.modifyResSaleRule" path="com.ailk.resservice.service.paramers.ResSaleRuleSvc@modifyResSaleRule"/>
+    
+    <entity name="RM.ResCommMaintenSvc.queryResCommon" 				path="com.ailk.resservice.service.paramers.ResCommMaintenSvc@queryResCommon" />
+    <entity name="RM.ResCommMaintenSvc.addCommonParam" 				path="com.ailk.resservice.service.paramers.ResCommMaintenSvc@addCommonParam" />
+    <entity name="RM.ResCommMaintenSvc.queryResCommonInfo" 			path="com.ailk.resservice.service.paramers.ResCommMaintenSvc@queryResCommonInfo" />
+    <entity name="RM.ResCommMaintenSvc.updateCommonParam" 			path="com.ailk.resservice.service.paramers.ResCommMaintenSvc@updateCommonParam" />
+    <entity name="RM.ResCommMaintenSvc.deleteResCommonParam" 		path="com.ailk.resservice.service.paramers.ResCommMaintenSvc@deleteResCommonParam" />
+    
+    <entity name="RM.ResourceTraderMaintenSvc.queryResTrade" 				path="com.ailk.resservice.service.paramers.ResourceTraderMaintenSvc@queryResTrade" />
+    <entity name="RM.ResourceTraderMaintenSvc.addParam" 				path="com.ailk.resservice.service.paramers.ResourceTraderMaintenSvc@addParam" />
+    <entity name="RM.ResourceTraderMaintenSvc.updateParam" 				path="com.ailk.resservice.service.paramers.ResourceTraderMaintenSvc@updateParam" />
+   	<entity name="RM.ResourceTraderMaintenSvc.deleteParam" 				path="com.ailk.resservice.service.paramers.ResourceTraderMaintenSvc@deleteParam" />
+   	
+   	
+   	<entity name="RM.ResAssignRuleSvc.loadDepartTree" 		path="com.ailk.resservice.service.paramers.ResAssignRuleSvc@loadDepartTree" />
+    <entity name="RM.ResAssignRuleSvc.queryResTradeCode" 	path="com.ailk.resservice.service.paramers.ResAssignRuleSvc@queryResTradeCode" />
+    <entity name="RM.ResAssignRuleSvc.queryDepartInfo" 		path="com.ailk.resservice.service.paramers.ResAssignRuleSvc@queryDepartInfo" />
+    <entity name="RM.ResAssignRuleSvc.queryDepart" 			path="com.ailk.resservice.service.paramers.ResAssignRuleSvc@queryDepart" />
+    <entity name="RM.ResAssignRuleSvc.createDepart" 		path="com.ailk.resservice.service.paramers.ResAssignRuleSvc@createDepart" />
+    <entity name="RM.ResAssignRuleSvc.removeDepart" 		path="com.ailk.resservice.service.paramers.ResAssignRuleSvc@removeDepart" />
+   	
+   	<entity name="RM.ResTradeMaintenSvc.queryResTrade" 		path="com.ailk.resservice.service.paramers.ResTradeMaintenSvc@queryResTrade" />
+    <entity name="RM.ResTradeMaintenSvc.queryResTradeInfo" 	path="com.ailk.resservice.service.paramers.ResTradeMaintenSvc@queryResTradeInfo" />
+    <entity name="RM.ResTradeMaintenSvc.addTrade" 			path="com.ailk.resservice.service.paramers.ResTradeMaintenSvc@addTrade" />
+    <entity name="RM.ResTradeMaintenSvc.updateResTrade" 	path="com.ailk.resservice.service.paramers.ResTradeMaintenSvc@updateResTrade" />
+    <entity name="RM.ResTradeMaintenSvc.deleteResTrade" 	path="com.ailk.resservice.service.paramers.ResTradeMaintenSvc@deleteResTrade" />
+   	
+   	<entity name="RM.ResStateMaintenSvc.queryResState" 		path="com.ailk.resservice.service.paramers.ResStateMaintenSvc@queryResState" />
+    <entity name="RM.ResStateMaintenSvc.addState" 			path="com.ailk.resservice.service.paramers.ResStateMaintenSvc@addState" />
+    <entity name="RM.ResStateMaintenSvc.queryResStateInfo" 	path="com.ailk.resservice.service.paramers.ResStateMaintenSvc@queryResStateInfo" />
+    <entity name="RM.ResStateMaintenSvc.updateResState" 	path="com.ailk.resservice.service.paramers.ResStateMaintenSvc@updateResState" />
+    <entity name="RM.ResStateMaintenSvc.deleteResState" 	path="com.ailk.resservice.service.paramers.ResStateMaintenSvc@deleteResState" />
+   	
+   	<entity name="RM.AutoPutRuleMaintenSvc.queryAutoPutRule" 		path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@queryAutoPutRule" />
+   	<entity name="RM.AutoPutRuleMaintenSvc.addAutoPutRule" 			path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@addAutoPutRule" />
+   	<entity name="RM.AutoPutRuleMaintenSvc.queryAutoPutRuleInfo" 	path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@queryAutoPutRuleInfo" />
+   	<entity name="RM.AutoPutRuleMaintenSvc.updateAutoPutRule" 		path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@updateAutoPutRule" />
+   	<entity name="RM.AutoPutRuleMaintenSvc.deleteAutoPutRule" 		path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@deleteAutoPutRule" />
+   	<entity name="RM.AutoPutRuleMaintenSvc.queryRemoveNumberRule" path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@queryRemoveNumberRule" />
+	<entity name="RM.AutoPutRuleMaintenSvc.deleteRemoveNumberRule" path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@deleteRemoveNumberRule" />
+	<entity name="RM.AutoPutRuleMaintenSvc.addRemoveNumberRule" path="com.ailk.resservice.service.paramers.AutoPutRuleMaintenSvc@addRemoveNumberRule" />
+
+	
+	<!-- popup Area start 组件-->
+    <entity name="RM.PopupSvc.queryAgentOneCity" 			path="com.ailk.resservice.service.popup.PopupSvc@queryAgentOneCity"/>
+    <entity name="RM.AssignDepartSvc.queryDepart" 			path="com.ailk.resservice.service.popup.AssignDepartSvc@queryDepart" />
+	<entity name="RM.AssignEmpSvc.queryEmps" 				path="com.ailk.resservice.service.popup.AssignEmpSvc@queryEmps" />
+	<entity name="RM.AssignPoolSvc.queryPool" 				path="com.ailk.resservice.service.popup.AssignPoolSvc@queryPool"  />
+	<entity name="RM.AssignRuleTreeSvc.queryAssignRuleTree" path="com.ailk.resservice.service.popup.AssignRuleTreeSvc@queryAssignRuleTree" />
+	<entity name="RM.AssignRuleTreeSvc.queryStocksByParentOnlyOneLevel" path="com.ailk.resservice.service.popup.AssignRuleTreeSvc@queryStocksByParentOnlyOneLevel" />
+	<entity name="RM.AssignRuleTreeSvc.getStockInfo" path="com.ailk.resservice.service.popup.AssignRuleTreeSvc@getStockInfo"  />
+	<entity name="RM.ParaUtilSvc.getAssignResTypeCode" 	    path="com.ailk.resservice.service.core.util.ParaUtilSvc@getAssignResTypeCode" />
+	<entity name="RM.PopupSvc.getDepartInfo" path="com.ailk.resservice.service.popup.PopupSvc@getDepartInfo" svc="res/popup/QRM_PopupSvc_getDptInfo.svc" />
+	<entity name="RM.ProductSelectSvc.queryProduct" path="com.ailk.resservice.service.popup.ProductSelectSvc@queryProduct" svc="resmanm/popup/QRM_ProductSelectQry.svc" />
+	<entity name="RM.PopupSvc.queryResType" path="com.ailk.resservice.service.popup.PopupSvc@queryResType" svc="resmanm/popup/QRM_ResTypeTree.svc" />
+	<entity name="RM.PopupSvc.queryResKind" path="com.ailk.resservice.service.popup.PopupSvc@queryResKind" svc="resmanm/popup/QRM_ResKindTree.svc" />
+    <entity name="RM.PopupSvc.getDataNameByDataId" path="com.ailk.resservice.service.popup.PopupSvc@getDataNameByDataId"/>
+    <entity name="RM.PopupSvc.getDataIdByKind" path="com.ailk.resservice.service.popup.PopupSvc@getDataIdByKind"/>
+    <entity name="RM.StockOrgUtilSvc.queryParentOfDepart" 				path="com.ailk.resservice.service.core.util.StockOrgUtilSvc@queryParentOfDepart" />
+    <entity name="RM.StockOrgUtilSvc.getStockInfo" 						path="com.ailk.resservice.service.core.util.StockOrgUtilSvc@getStockInfo" />
+    <entity name="RM.StockOrgUtilSvc.queryStocksOfParentOnlyOneLevel" 	path="com.ailk.resservice.service.core.util.StockOrgUtilSvc@queryStocksOfParentOnlyOneLevel" />
+    <entity name="RM.StockOrgUtilSvc.getRelevantStockOfBossOrg" 		path="com.ailk.resservice.service.core.util.StockOrgUtilSvc@getRelevantStockOfBossOrg" />
+	<entity name="RM.PortOccupySelectSvc.queryPortOccupySel" 			path="com.ailk.resservice.service.popup.PortOccupySelectSvc@queryPortOccupySel" />
+	<entity name="RM.PortOccupySelectSvc.occupySelectPort" 				path="com.ailk.resservice.service.popup.PortOccupySelectSvc@occupySelectPort" />
+	<!-- popup Area end -->
+	
+	<!-- TICKET 票据管理 -->
+	<entity name="RM.TicketImportSvc.queryTicketInfos" 			path="com.ailk.resservice.service.ticket.TicketImportSvc@queryTicketInfos" />
+    <entity name="RM.TicketImportSvc.selectMethod" 				path="com.ailk.resservice.service.ticket.TicketImportSvc@selectMethod" />
+    <entity name="RM.TicketAssignSvc.queryAssignTicketInfos" 	path="com.ailk.resservice.service.ticket.TicketAssignSvc@queryAssignTicketInfos" />
+    <entity name="RM.TicketAssignSvc.assignTickets" 			path="com.ailk.resservice.service.ticket.TicketAssignSvc@assignTickets" />
+    <entity name="RM.TicketAssignStaffSvc.queryTicketInfos" 	path="com.ailk.resservice.service.ticket.TicketAssignStaffSvc@queryTicketInfos" />
+    <entity name="RM.TicketAssignStaffSvc.assignToStaff" 		path="com.ailk.resservice.service.ticket.TicketAssignStaffSvc@assignToStaff" />
+    <entity name="RM.TicketManagerSvc.queryTicketInfos" 		path="com.ailk.resservice.service.ticket.TicketManagerSvc@queryTicketInfos" />
+    <entity name="RM.TicketManagerSvc.ticketManager" 			path="com.ailk.resservice.service.ticket.TicketManagerSvc@ticketManager" />
+    <entity name="RM.TicketInvalidSvc.queryTicketInfos" 		path="com.ailk.resservice.service.ticket.TicketInvalidSvc@queryTicketInfos" />
+    <entity name="RM.TicketInvalidSvc.invalidTickets" 			path="com.ailk.resservice.service.ticket.TicketInvalidSvc@invalidTickets" />
+    <entity name="RM.TicketDistributeSvc.queryTicketbadInfos" 		path="com.ailk.resservice.service.ticket.TicketDistributeSvc@queryTicketbadInfos" />
+    <entity name="RM.TicketDistributeSvc.invalidTicketApply" 		path="com.ailk.resservice.service.ticket.TicketDistributeSvc@invalidTicketApply" />
+    <entity name="RM.TicketDiscardConfirmSvc.queryTicketbadInfos" 	path="com.ailk.resservice.service.ticket.TicketDiscardConfirmSvc@queryTicketbadInfos" />
+    <entity name="RM.TicketDiscardConfirmSvc.agreeDiscardTickets" 	path="com.ailk.resservice.service.ticket.TicketDiscardConfirmSvc@agreeDiscardTickets" />
+    <entity name="RM.TicketStaffValidateSvc.getStaffTicketInfo" 	path="com.ailk.resservice.service.ticket.TicketStaffValidateSvc@getStaffTicketInfo" />
+    <entity name="RM.TicketStaffValidateSvc.ticketStaffValidate" 	path="com.ailk.resservice.service.ticket.TicketStaffValidateSvc@ticketStaffValidate" />
+	
+	<!-- TICKET 接口-->
+	<entity name="RM.ResTicketIntfSvc.getTicketByStaff"  		path="com.ailk.resservice.service.intf.ResTicketIntfSvc@getTicketByStaff" />
+    <entity name="RM.ResTicketIntfSvc.getTicketByKey" 			path="com.ailk.resservice.service.intf.ResTicketIntfSvc@getTicketByKey" />
+    <entity name="RM.ResTicketIntfSvc.checkTicket"  			path="com.ailk.resservice.service.intf.ResTicketIntfSvc@checkTicket" />
+	<entity name="RM.ResTicketIntfSvc.useTicket"  				path="com.ailk.resservice.service.intf.ResTicketIntfSvc@useTicket" />
+	<entity name="RM.ResTicketIntfSvc.ticketRecover"  			path="com.ailk.resservice.service.intf.ResTicketIntfSvc@ticketRecover" />
+    <entity name="RM.ResTicketIntfSvc.ticketInvalid"  			path="com.ailk.resservice.service.intf.ResTicketIntfSvc@ticketInvalid" />
+    <entity name="RM.ResTicketIntfSvc.getTicketPrintInfo"  		path="com.ailk.resservice.service.intf.ResTicketIntfSvc@getTicketPrintInfo" />
+    <entity name="RM.ResTicketIntfSvc.ticketRed"  				path="com.ailk.resservice.service.intf.ResTicketIntfSvc@ticketRed" />
+    <entity name="RM.ResTicketIntfSvc.getTax"  					path="com.ailk.resservice.service.intf.ResTicketIntfSvc@getTax" />
+    <entity name="RM.ResTicketIntfSvc.useTicketForPost"  		path="com.ailk.resservice.service.intf.ResTicketIntfSvc@useTicketForPost" />
+
+    
+    <!-- TICKET 票据管理新 -->
+    <entity name="RM.TicketStaffValidateSvc.getStaffTicketInfoNew" 	path="com.ailk.resservice.service.newticket.TicketStaffValidateSvc@getStaffTicketInfoNew" />
+    <entity name="RM.TicketStaffValidateSvc.ticketStaffValidateNew" 	path="com.ailk.resservice.service.newticket.TicketStaffValidateSvc@ticketStaffValidateNew" />
+	<entity name="RM.TicketImportSvc.addOrDelTicket" 			path="com.ailk.resservice.service.newticket.TicketImportSvc@addOrDelTicket" />
+	<entity name="RM.TicketAssignSvc.queryTicketInfos" 			path="com.ailk.resservice.service.newticket.TicketAssignSvc@queryTicketInfos" />
+	<entity name="RM.TicketBillSvc.queryTicketBills" 			path="com.ailk.resservice.service.newticket.TicketBillSvc@queryTicketBills" />
+	<entity name="RM.TicketBillSvc.queryBillDetail" 			path="com.ailk.resservice.service.newticket.TicketBillSvc@queryBillDetail" />
+	<entity name="RM.TicketBillSvc.operBill" 					path="com.ailk.resservice.service.newticket.TicketBillSvc@operBill" />
+	<entity name="RM.TicketAssignSvc.ticketAssignBack" 			path="com.ailk.resservice.service.newticket.TicketAssignSvc@ticketAssignBack" />
+	<entity name="RM.TicketLostInvalidSvc.queryTicketInfos" 	path="com.ailk.resservice.service.newticket.TicketLostInvalidSvc@queryTicketInfos" />
+	<entity name="RM.TicketLostInvalidSvc.ticketLostInvalid" 	path="com.ailk.resservice.service.newticket.TicketLostInvalidSvc@ticketLostInvalid" />
+	<entity name="RM.TicketBillAuditSvc.queryTicketBills" 		path="com.ailk.resservice.service.newticket.TicketBillAuditSvc@queryTicketBills" />
+	<entity name="RM.TicketBillAuditSvc.queryBillAuditDetail" 	path="com.ailk.resservice.service.newticket.TicketBillAuditSvc@queryBillAuditDetail" />
+	<entity name="RM.TicketBillAuditSvc.operBill" 				path="com.ailk.resservice.service.newticket.TicketBillAuditSvc@operBill" />
+    <entity name="RM.TicketAssignStaffSvc.queryTicketInfosNew" 	path="com.ailk.resservice.service.newticket.TicketAssignStaffSvc@queryTicketInfosNew" />
+    <entity name="RM.TicketAssignStaffSvc.assignToStaffNew" 		path="com.ailk.resservice.service.newticket.TicketAssignStaffSvc@assignToStaffNew" />
+    <entity name="RM.TicketQuerySvc.queryTicketInfos" 		path="com.ailk.resservice.service.newticket.TicketQuerySvc@queryTicketInfos" />
+    <entity name="RM.TicketStaffBillSvc.queryTicketStaffBills" 		path="com.ailk.resservice.service.newticket.TicketStaffBillSvc@queryTicketStaffBills" />
+    <entity name="RM.TicketStaffBillSvc.operStaffBill" 		path="com.ailk.resservice.service.newticket.TicketStaffBillSvc@operStaffBill" />
+    <entity name="RM.ParaUtilSvc.getStaffTicketTradeType" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@getStaffTicketTradeType" />
+    <entity name="RM.TicketCheckOldSvc.checkOldAndDestory" 		path="com.ailk.resservice.service.newticket.TicketCheckOldSvc@checkOldAndDestory" />
+    <entity name="RM.TicketQuerySvc.exportTicketInfos" 		path="com.ailk.resservice.service.newticket.TicketQuerySvc@exportTicketInfos" />
+    <!-- 员工分配-->
+    <entity name="RM.StaffAssignSvc.queryResInfos" 		path="com.ailk.resservice.service.staff.StaffAssignSvc@queryResInfos" />
+    <entity name="RM.StaffAssignSvc.assignToStaff" 		path="com.ailk.resservice.service.staff.StaffAssignSvc@assignToStaff" />
+    <entity name="RM.StaffBillSvc.queryStaffBills" 		path="com.ailk.resservice.service.staff.StaffBillSvc@queryStaffBills" />
+    <entity name="RM.StaffBillSvc.queryStaffBillDetail" 		path="com.ailk.resservice.service.staff.StaffBillSvc@queryStaffBillDetail" />
+	<entity name="RM.StaffBillSvc.operStaffBill" 		path="com.ailk.resservice.service.staff.StaffBillSvc@operStaffBill" />
+	<entity name="RM.StaffAssignBackSvc.queryResInfos" 		path="com.ailk.resservice.service.staff.StaffAssignBackSvc@queryResInfos" />
+	<entity name="RM.StaffAssignBackSvc.assignBackStaffRes" 		path="com.ailk.resservice.service.staff.StaffAssignBackSvc@assignBackStaffRes" />
+	<entity name="RM.StaffBackBillSvc.queryStaffBills" 		path="com.ailk.resservice.service.staff.StaffBackBillSvc@queryStaffBills" />
+    <entity name="RM.StaffBackBillSvc.queryStaffBillDetail" 		path="com.ailk.resservice.service.staff.StaffBackBillSvc@queryStaffBillDetail" />
+	<entity name="RM.StaffBackBillSvc.operStaffBill" 		path="com.ailk.resservice.service.staff.StaffBackBillSvc@operStaffBill" />
+	
+  	<!-- 新增DepartManager服务 -by lvshen-->
+  	<entity name="RM.DepartManagerSvc.updateDepartInfo" 		path="com.ailk.quickstart.service.depart.DepartManagerSvc@updateDepartInfo" />
+  	<entity name="RM.DepartManagerSvc.queryDepartInfo" 		path="com.ailk.quickstart.service.depart.DepartManagerSvc@queryDepartInfo" />
+  	<entity name="RM.DepartManagerSvc.removeDepartInfo" 		path="com.ailk.quickstart.service.depart.DepartManagerSvc@removeDepartInfo" />
+  	
+  	
+	<entity name="RM.SimcardAssignSvc.getSimCardIdleByPK" 		path="com.ailk.resservice.service.simcard.SimcardAssignSvc@getSimCardIdleByPK" />
+	<entity name="RM.SimcardCenAssignSvc.querySimcardIdleList" 		path="com.ailk.resservice.service.simcard.SimcardCenAssignSvc@querySimcardIdleList" />
+	<entity name="RM.SimcardCenAssignSvc.querySimcardList" 		path="com.ailk.resservice.service.simcard.SimcardCenAssignSvc@querySimcardList" />
+	<entity name="RM.ParaUtilSvc.queryMofficeList" 		path="com.ailk.resservice.service.core.util.ParaUtilSvc@queryMofficeList" />
+	<entity name="RM.SimCardInStockSvc.importCardCen" 		path="com.ailk.resservice.service.simcard.SimCardInStockSvc@importCardCen" />
+	<entity name="RM.SimcardCenAssignSvc.assignSimcard" 		path="com.ailk.resservice.service.simcard.SimcardCenAssignSvc@assignSimcard" />
+	<entity name="RM.SimcardCenAssignSvc.getBackCenSimcard" 		path="com.ailk.resservice.service.simcard.SimcardCenAssignSvc@getBackCenSimcard" />
+	<entity name="RM.SimcardAssignSvc.assignSimcard" 		path="com.ailk.resservice.service.simcard.SimcardAssignSvc@assignSimcard" />
+	<entity name="RM.SimcardCenDeleteSvc.deleteCenSimcard" 		path="com.ailk.resservice.service.simcard.SimcardCenDeleteSvc@deleteCenSimcard" />
+	<entity name="RM.SimcardInfoSubmitSvc.simCardOrderAccept" 		path="com.ailk.resservice.service.simcard.SimcardInfoSubmitSvc@simCardOrderAccept" />
+	<entity name="RM.SimLogQuerySvc.querySimLog" 		path="com.ailk.resservice.service.simcard.SimLogQuerySvc@querySimLog" />
+	<entity name="RM.SimLogQuerySvc.querySimLogDetail" 		path="com.ailk.resservice.service.simcard.SimLogQuerySvc@querySimLogDetail" />
+	<entity name="RM.SimcardInfoModifySvc.querySimcardIdleList" 		path="com.ailk.resservice.service.simcard.SimcardInfoModifySvc@querySimcardIdleList" />
+	<entity name="RM.SimcardInfoModifySvc.modifySimcard" 		path="com.ailk.resservice.service.simcard.SimcardInfoModifySvc@modifySimcard" />
+	<entity name="RM.SimcardInfoQuerySvc.querySimcardInfo" 		path="com.ailk.resservice.service.simcard.SimcardInfoQuerySvc@querySimcardInfo" />
+	<entity name="RM.SimcardInfoQuerySvc.querySimcardInfoByNum" 		path="com.ailk.resservice.service.simcard.SimcardInfoQuerySvc@querySimcardInfoByNum" />
+	<entity name="RM.SimLogQuerySvc.queryEmptyLogDetail" path="com.ailk.resservice.service.simcard.SimLogQuerySvc@queryEmptyLogDetail"/>
+	<entity name="RM.SimLogQuerySvc.querySaleLog" 		path="com.ailk.resservice.service.simcard.SimLogQuerySvc@querySaleLog" />
+	<entity name="RM.SimcardInfoQuerySvc.querySimcardDouble" 		path="com.ailk.resservice.service.simcard.SimcardInfoQuerySvc@querySimcardDouble" />
+	<entity name="RM.SimLogQuerySvc.exportSaleLog" 		path="com.ailk.resservice.service.simcard.SimLogQuerySvc@exportSaleLog" />
+	<!--add by xuxf20140508 -->
+	<entity name="RM.SimcardInfoQuerySvc.querySimcardInfoEparchy" 		path="com.ailk.resservice.service.simcard.SimcardInfoQuerySvc@querySimcardInfoEparchy" />
+	<!--end by xuxf20140508 -->
+	
+	<!-- 有价卡分段查询 -->
+	<entity name="RM.ValueCardImportSvc.valueCardImport" path="com.ailk.resservice.service.paycard.ValueCardImportSvc@valueCardImport"/>
+	<entity name="RM.ValueCardImportSvc.valuecardImportTask" path="com.ailk.resservice.service.paycard.ValueCardImportSvc@valuecardImportTask"/>
+	<entity name="RM.ValueCardCenAssignSvc.queryValueCardSegInfo" path="com.ailk.resservice.service.paycard.ValueCardCenAssignSvc@queryValueCardSegInfo"/>
+	<entity name="RM.ValueCardCenAssignSvc.valueCardCenAssign" path="com.ailk.resservice.service.paycard.ValueCardCenAssignSvc@valueCardCenAssign"/>
+	<entity name="RM.ValueCardAssignSvc.queryValueCardInfo" path="com.ailk.resservice.service.paycard.ValueCardAssignSvc@queryValueCardInfo"/>
+	<entity name="RM.ValueCardAssignSvc.queryValueCardInfoAbolish" path="com.ailk.resservice.service.paycard.ValueCardAssignSvc@queryValueCardInfoAbolish"/>
+	<entity name="RM.ValueCardAssignSvc.valueCardAssign" path="com.ailk.resservice.service.paycard.ValueCardAssignSvc@valueCardAssign"/>
+	<entity name="RM.EntityCardInStockFromPlatSvc.entityCardCenInStock" path="com.ailk.resservice.service.paycard.EntityCardInStockFromPlatSvc@entityCardCenInStock"/>
+	<entity name="RM.EntityCardInStockFromPlatSvc.valueCardCenInStock" path="com.ailk.resservice.service.paycard.EntityCardInStockFromPlatSvc@valueCardCenInStock"/>
+	<entity name="RM.EntityCardInStockFromPlatSvc.ggValueCardCenInStock" path="com.ailk.resservice.service.paycard.EntityCardInStockFromPlatSvc@ggValueCardCenInStock"/>
+	<entity name="RM.EntityCardInStockFromPlatSvc.ggCardImportTask" path="com.ailk.resservice.service.paycard.EntityCardInStockFromPlatSvc@ggCardImportTask"/>
+	<entity name="RM.ValueCardLockMgrSvc.valueCardLock" path="com.ailk.resservice.service.paycard.ValueCardLockMgrSvc@valueCardLock"/>
+	<entity name="RM.ValueCardUpdateSvc.updateValueCard" path="com.ailk.resservice.service.paycard.ValueCardUpdateSvc@updateValueCard"/>
+	<entity name="RM.ValueCardDelaySvc.queryValueCardInfo" path="com.ailk.resservice.service.paycard.ValueCardDelaySvc@queryValueCardInfo"/>
+	<entity name="RM.ValueCardDelaySvc.delayValueCard" path="com.ailk.resservice.service.paycard.ValueCardDelaySvc@delayValueCard"/>
+	<entity name="RM.ValueCardCenStockSvc.valueCardCenStockClean" path="com.ailk.resservice.service.paycard.ValueCardCenStockSvc@valueCardCenStockClean"/>
+	<entity name="RM.ValuecardCenDelByImpSvc.valueCardCenDel" path="com.ailk.resservice.service.paycard.ValuecardCenDelByImpSvc@valueCardCenDel"/>	
+	<entity name="RM.ParaUtilSvc.getValueCardCorp" path="com.ailk.resservice.service.core.util.ParaUtilSvc@getValueCardCorp"/>
+	<entity name="RM.ParaUtilSvc.getLockType" path="com.ailk.resservice.service.core.util.ParaUtilSvc@getLockType"/>
+	<entity name="RM.ParaUtilSvc.getCardDiscardReason" path="com.ailk.resservice.service.core.util.ParaUtilSvc@getCardDiscardReason"/>
+	<entity name="RM.ValueCardOrderMgrSvc.queryValueCardOrderMgr" path="com.ailk.resservice.service.paycard.ValueCardOrderMgrSvc@queryValueCardOrderMgr"/>
+	<entity name="RM.ValueCardOrderMgrSvc.queryValueCardOrderMgrDetail" path="com.ailk.resservice.service.paycard.ValueCardOrderMgrSvc@queryValueCardOrderMgrDetail"/>
+	<entity name="RM.ValueCardInfoQuerySvc.queryValueCardInfo" path="com.ailk.resservice.service.paycard.ValueCardInfoQuerySvc@queryValueCardInfo"/>
+	<entity name="RM.ValueCardInfoQuerySvc.infoQueryExportExcel" path="com.ailk.resservice.service.paycard.ValueCardInfoQuerySvc@infoQueryExportExcel"/>
+	<entity name="RM.ValueCardOrderMgrSvc.valueCardOrderRefuse" path="com.ailk.resservice.service.paycard.ValueCardOrderMgrSvc@valueCardOrderRefuse"/>
+	<entity name="RM.ValueCardOrderMgrSvc.valueCardOrderAccept" path="com.ailk.resservice.service.paycard.ValueCardOrderMgrSvc@valueCardOrderAccept"/>
+	<entity name="RM.ValueCardAssignLogQuerySvc.queryValueCardAssignLog" path="com.ailk.resservice.service.paycard.ValueCardAssignLogQuerySvc@queryValueCardAssignLog" />
+	<entity name="RM.ValueCardAssignLogQuerySvc.queryValueCardAssignLogDetail" path="com.ailk.resservice.service.paycard.ValueCardAssignLogQuerySvc@queryValueCardAssignLogDetail" />
+	<entity name="RM.ValueCardBalanceQrySvc.balanceAuditQuery" path="com.ailk.resservice.service.paycard.ValueCardBalanceQrySvc@balanceAuditQuery" />
+	<entity name="RM.ValueCardBlackCancelSvc.cancelBlackList"  path="com.ailk.resservice.service.paycard.ValueCardBlackCancelSvc@cancelBlackList" /> 
+	<entity name="RM.ValueCardBlackCancelSvc.queryValueCardBlacklist"  path="com.ailk.resservice.service.paycard.ValueCardBlackCancelSvc@queryValueCardBlacklist" /> 
+	<entity name="RM.ValueCardBlackCancelSvc.cancelRechargeList" path="com.ailk.resservice.service.paycard.ValueCardBlackCancelSvc@cancelRechargeList" />
+	<entity name="RM.ValueCardBlackCancelSvc.queryRechargeDegree" path="com.ailk.resservice.service.paycard.ValueCardBlackCancelSvc@queryRechargeDegree" />
+	<entity name="RM.ValueCardUseQuerySvc.queryValueCardUse" path="com.ailk.resservice.service.paycard.ValueCardUseQuerySvc@queryValueCardUse" />
+	<entity name="RM.ValueCardUseQuerySvc.queryValueCardAscriptionVC" path="com.ailk.resservice.service.paycard.ValueCardUseQuerySvc@queryValueCardAscriptionVC" />
+	<entity name="RM.ValueCardUseQuerySvc.queryValueCardUserRechargeRec" path="com.ailk.resservice.service.paycard.ValueCardUseQuerySvc@queryValueCardUserRechargeRec" />
+	<entity name="RM.ValueCardUseQuerySvc.queryMPCardStatus" path="com.ailk.resservice.service.paycard.ValueCardUseQuerySvc@queryMPCardStatus" />
+	<entity name="RM.ValueCardInfoQuerySvc.queryFileList" path="com.ailk.resservice.service.paycard.ValueCardInfoQuerySvc@queryFileList" />
+	<entity name="RM.ResLostRegistSvc.queryLostRegistInfo" path="com.ailk.resservice.service.paycard.ResLostRegistSvc@queryLostRegistInfo" />
+	<entity name="RM.ResLostRegistSvc.addResLostInfo" path="com.ailk.resservice.service.paycard.ResLostRegistSvc@addResLostInfo" />
+	<entity name="RM.ResLostRegistSvc.updResLostInfo" path="com.ailk.resservice.service.paycard.ResLostRegistSvc@updResLostInfo" />
+	
+	<!-- 有价卡接口 -->
+	<entity name="RM.ResPayCardIntfSvc.queryValuecardInfo" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@queryValuecardInfo" />
+	<entity name="RM.ResPayCardIntfSvc.queryValuecardInfoCH" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@queryValuecardInfoCH" />
+	<entity name="RM.ResPayCardIntfSvc.queryVcInfo" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@queryVcInfo" />
+    <entity name="RM.ResPayCardIntfSvc.getResInfo" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@getResInfo" />
+    <entity name="RM.ResPayCardIntfSvc.getEntityInfo" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@getEntityInfo" />
+    <entity name="RM.ResPayCardIntfSvc.getVirtualInfo" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@getVirtualInfo" />
+    <entity name="RM.ResPayCardIntfSvc.modifyValueCardSaleInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modifyValueCardSaleInfo" />
+    <entity name="RM.ResPayCardIntfSvc.modifyEntityCardSaleInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modifyEntityCardSaleInfo" />
+    <entity name="RM.ResPayCardIntfSvc.modifyVitualCardSaleInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modifyVitualCardSaleInfo" />
+    <entity name="RM.ResPayCardIntfSvc.getReturnResInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@getReturnResInfo" />
+    <entity name="RM.ResPayCardIntfSvc.getReturnVirtualResInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@getReturnVirtualResInfo" />
+    <entity name="RM.ResPayCardIntfSvc.getReturnEntityResInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@getReturnEntityResInfo" />
+    <entity name="RM.ResPayCardIntfSvc.modifyValuecardReturnInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modifyValuecardReturnInfo" />
+    <entity name="RM.ResPayCardIntfSvc.modifyEntitycardReturnInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modifyEntitycardReturnInfo" />
+    <entity name="RM.ResPayCardIntfSvc.modifyVitualcardReturnInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modifyVitualcardReturnInfo" />    
+    <entity name="RM.ResPayCardIntfSvc.changeValuecardReturnInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@changeValuecardReturnInfo" />
+    <entity name="RM.ResPayCardIntfSvc.changeVitualcardReturnInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@changeVitualcardReturnInfo" />
+    <entity name="RM.ResPayCardIntfSvc.changeEntitycardReturnInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@changeEntitycardReturnInfo" />
+  	<entity name="RM.ResPayCardIntfSvc.checkPayCardChargeStateByResId" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@checkPayCardChargeStateByResId" />
+  	<entity name="RM.ResPayCardIntfSvc.payCardReLoadStateByResId" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@payCardReLoadStateByResId" />
+  	<entity name="RM.ResPayCardIntfSvc.valuecardDelay" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@valuecardDelay" />
+  	<entity name="RM.ResPayCardIntfSvc.validateChangeCardInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@validateChangeCardInfo" />
+	<entity name="RM.ResPayCardIntfSvc.getEleCardInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@getEleCardInfo" />
+	<entity name="RM.ResPayCardIntfSvc.modifyEleCardSaleInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modifyEleCardSaleInfo" />
+	<entity name="RM.ResPayCardIntfSvc.valueCardRechargeByPhone" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@valueCardRechargeByPhone" />
+	<entity name="RM.ResPayCardIntfSvc.updReviewResInfo" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@updReviewResInfo" />
+	<entity name="RM.ResPayCardIntfSvc.queryStaffResouce" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@queryStaffResouce" />
+	<entity name="RM.ResPayCardIntfSvc.updateCardsReceiver" path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@updateCardsReceiver" />
+	
+	<entity name="RM.ResPayCardIntfSvc.wlanCardOccupySel" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@wlanCardOccupySel" />
+    <entity name="RM.ResPayCardIntfSvc.wlanCardOccupy" 		path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@wlanCardOccupy" />
+    <entity name="RM.ResPayCardIntfSvc.disValuecardInfo" 		path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@disValuecardInfo" />
+    
+	<!-- 物品页面下拉列表查询-->
+	<entity name="RM.ParaUtilSvc.queryFactoryList" path="com.ailk.resservice.service.core.util.ParaUtilSvc@queryFactoryList"/>
+	<entity name="RM.ParaUtilSvc.queryEnterpriseList" path="com.ailk.resservice.service.core.util.ParaUtilSvc@queryEnterpriseList"/>
+	<entity name="RM.ParaUtilSvc.queryEparchyList" path="com.ailk.resservice.service.core.util.ParaUtilSvc@queryEparchyList"/>
+	<entity name="RM.ParaUtilSvc.getGoodsKindComp" 	path="com.ailk.resservice.service.core.util.ParaUtilSvc@getGoodsKindComp"/>
+	
+	<!-- 物品-->
+	<entity name="RM.GoodsOrdersSvc.addGoodsOrders" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@addGoodsOrders"/>
+	<entity name="RM.GoodsCrmInputBatSvc.queryContracts" 	path="com.ailk.resservice.service.goods.GoodsCrmInputBatSvc@queryContracts"/>
+	<entity name="RM.GoodsCrmInputBatSvc.addGoodsCrmPara" 	path="com.ailk.resservice.service.goods.GoodsCrmInputBatSvc@addGoodsCrmPara"/>
+	<entity name="RM.GoodsOrdersSvc.queryGoodsOrdersByContract" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@queryGoodsOrdersByContract"/>
+	<entity name="RM.GoodsAssignSvc.assignGoodsBatch" 	path="com.ailk.resservice.service.goods.GoodsAssignSvc@assignGoodsBatch"/>
+	<entity name="RM.GoodsCrmInputBatSvc.addGoodsCrmPrint" 	path="com.ailk.resservice.service.goods.GoodsCrmInputBatSvc@addGoodsCrmPrint"/>
+	<entity name="RM.GoodsAssignSvc.queryGoods" 	path="com.ailk.resservice.service.goods.GoodsAssignSvc@queryGoods"/>
+	<entity name="RM.GoodsAssignSvc.transferGoodsBatch" 	path="com.ailk.resservice.service.goods.GoodsAssignSvc@transferGoodsBatch"/>
+	<entity name="RM.GoodsAssignSvc.queryGoodsInfoConfirm" 	path="com.ailk.resservice.service.goods.GoodsAssignSvc@queryGoodsInfoConfirm"/>
+	<entity name="RM.GoodsAssignSvc.saveConfirmGoods" 	path="com.ailk.resservice.service.goods.GoodsAssignSvc@saveConfirmGoods"/>
+	<entity name="RM.GoodsCrmCancelSvc.queryGoodsForCancel" 	path="com.ailk.resservice.service.goods.GoodsCrmCancelSvc@queryGoodsForCancel"/>
+	<entity name="RM.GoodsCrmCancelSvc.deleteGoods" 	path="com.ailk.resservice.service.goods.GoodsCrmCancelSvc@deleteGoods"/>
+	<entity name="RM.GoodsCrmCancelSvc.deleteGoodsCrmPrint" 	path="com.ailk.resservice.service.goods.GoodsCrmCancelSvc@deleteGoodsCrmPrint"/>
+	<entity name="RM.GoodsOrdersSvc.queryGoodsOrders" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@queryGoodsOrders"/>
+	<entity name="RM.GoodsOrdersSvc.deleteGoodsOrders" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@deleteGoodsOrders"/>
+	<entity name="RM.GoodsOrdersSvc.updateGoodsOrdersInfo" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@updateGoodsOrdersInfo"/>
+	<entity name="RM.GoodsModifySvc.modifyGoodsCrm" 	path="com.ailk.resservice.service.goods.GoodsModifySvc@modifyGoodsCrm"/>
+	<entity name="RM.GoodsModifySvc.queryGoodsCrm" 	path="com.ailk.resservice.service.goods.GoodsModifySvc@queryGoodsCrm"/>
+	<entity name="RM.GoodsBasicInfoQuerySvc.queryGoodsBasicInfo" 	path="com.ailk.resservice.service.goods.GoodsBasicInfoQuerySvc@queryGoodsBasicInfo"/>
+	<entity name="RM.GoodsAssignLogQuerySvc.queryGoodsAssignLog" 	path="com.ailk.resservice.service.goods.GoodsAssignLogQuerySvc@queryGoodsAssignLog"/>
+	<entity name="RM.GoodsBasicInfoQuerySvc.exportGoodsInfo" 	path="com.ailk.resservice.service.goods.GoodsBasicInfoQuerySvc@exportGoodsInfo"/>
+	<entity name="RM.GoodsAssignLogQuerySvc.exportGoodsAssignInfo" 	path="com.ailk.resservice.service.goods.GoodsAssignLogQuerySvc@exportGoodsAssignInfo"/>
+	<entity name="RM.GoodsOrdersSvc.ryResKindByKindCode" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@qryResKindByKindCode"/>
+	<entity name="RM.GoodsModifySvc.exportGoodsCrm" 	path="com.ailk.resservice.service.goods.GoodsModifySvc@exportGoodsCrm"/>
+	<entity name="RM.GoodsCrmCancelSvc.exportGoodsForCancel" 	path="com.ailk.resservice.service.goods.GoodsCrmCancelSvc@exportGoodsForCancel"/>
+	<entity name="RM.GoodsOrdersSvc.queryGoodsOrderLimit" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@queryGoodsOrderLimit"/>
+	<entity name="RM.GoodsOrdersSvc.modifyOrderLimit" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@modifyOrderLimit"/>
+	
+	<!-- add by zhouch HXYD-YZ-REQ-20161020-009-->
+	<entity name="RM.GoodsOrdersSvc.queryGoodsStock" 	path="com.ailk.resservice.service.goods.GoodsOrdersSvc@queryGoodsStock"/>
+	<!-- end  -->
+	
+	<!-- 物品接口-->
+	<entity name="RM.ResGoodsIntfSvc.preOccupyGoods" 	path="com.ailk.resservice.service.intf.ResGoodsIntfSvc@preOccupyGoods"/>
+	<entity name="RM.ResGoodsIntfSvc.occupyGoods" 	path="com.ailk.resservice.service.intf.ResGoodsIntfSvc@occupyGoods"/>
+	<entity name="RM.ResGoodsIntfSvc.queryGoods" 	path="com.ailk.resservice.service.intf.ResGoodsIntfSvc@queryGoods"/>
+	<entity name="RM.ResGoodsIntfSvc.returnSaleGoods" 	path="com.ailk.resservice.service.intf.ResGoodsIntfSvc@returnSaleGoods"/>
+	<entity name="RM.ResGoodsIntfSvc.releaseGoodsPreOccupy" 	path="com.ailk.resservice.service.intf.ResGoodsIntfSvc@releaseGoodsPreOccupy"/>
+	
+	<!-- 其他接口-->
+	<entity name="RM.ResOtherIntfSvc.releaseResNo" 	path="com.ailk.resservice.service.intf.ResOtherIntfSvc@releaseResNo"/>
+	
+	<!-- vip卡-->
+	<entity name="RM.VipCardImportSvc.vipcardImport" 	path="com.ailk.resservice.service.vipcard.VipCardImportSvc@vipcardImport"/>
+	<entity name="RM.VipCardImportSvc.vipcardInStor" 	path="com.ailk.resservice.service.vipcard.VipCardImportSvc@vipcardInStor"/>
+	<entity name="RM.VipCardAssignSvc.queryVipCard" 	path="com.ailk.resservice.service.vipcard.VipCardAssignSvc@queryVipCard"/>
+	<entity name="RM.VipCardAssignSvc.assignVipcard" 	path="com.ailk.resservice.service.vipcard.VipCardAssignSvc@assignVipcard"/>
+	<entity name="RM.VipCardAssignSvc.assignCard" 	path="com.ailk.resservice.service.vipcard.VipCardAssignSvc@assignCard"/>
+	<entity name="RM.VipCardClearSvc.vipCardClearNum" 	path="com.ailk.resservice.service.vipcard.VipCardClearSvc@vipCardClearNum"/>
+	<entity name="RM.VipCardInfoModifySvc.modifyVipCard" 	path="com.ailk.resservice.service.vipcard.VipCardInfoModifySvc@modifyVipCard"/>
+	<entity name="RM.VipCardLogQuerySvc.queryVipCardLogInfo" 	path="com.ailk.resservice.service.vipcard.VipCardLogQuerySvc@queryVipCardLogInfo"/>
+	<entity name="RM.VipCardLogQuerySvc.queryVipCardModifyDetial" 	path="com.ailk.resservice.service.vipcard.VipCardLogQuerySvc@queryVipCardModifyDetial"/>
+	<entity name="RM.VipCardLogQuerySvc.queryVipCardAssignInfo" 	path="com.ailk.resservice.service.vipcard.VipCardLogQuerySvc@queryVipCardAssignInfo"/>
+	
+	<!--代理商-->
+	<entity name="RM.SimCardAgentSaleSvc.querySimCard" path="com.ailk.resservice.service.agent.SimCardAgentSaleSvc@querySimCard"/>
+	<entity name="RM.SimCardAgentSaleSvc.querySimCardPage" path="com.ailk.resservice.service.agent.SimCardAgentSaleSvc@querySimCardPage"/>
+	<entity name="RM.SimCardAgentSaleSvc.operSimCard" path="com.ailk.resservice.service.agent.SimCardAgentSaleSvc@operSimCard"/>
+	<entity name="RM.EmptyCardAgentSaleSvc.queryEmptyCard" path="com.ailk.resservice.service.agent.EmptyCardAgentSaleSvc@queryEmptyCard" />
+	<entity name="RM.EmptyCardAgentSaleSvc.queryEmptyCardPage" path="com.ailk.resservice.service.agent.EmptyCardAgentSaleSvc@queryEmptyCardPage" />
+    <entity name="RM.EmptyCardAgentSaleSvc.operEmptyCard" path="com.ailk.resservice.service.agent.EmptyCardAgentSaleSvc@operEmptyCard" />
+	<entity name="RM.ValueCardAgentSaleSvc.queryValueCard" path="com.ailk.resservice.service.agent.ValueCardAgentSaleSvc@queryValueCard"  />
+    <entity name="RM.ValueCardAgentSaleSvc.commitValeCardSale" path="com.ailk.resservice.service.agent.ValueCardAgentSaleSvc@commitValeCardSale" />
+    <entity name="RM.ValueCardAgentSaleSvc.queryValueCardAgentSaleDetail" path="com.ailk.resservice.service.agent.ValueCardAgentSaleSvc@queryValueCardAgentSaleDetail" />
+    <entity name="RM.SimCardSalePrintSvc.queryResTradeFeeInfo"  path="com.ailk.resservice.service.agent.SimCardSalePrintSvc@queryResTradeFeeInfo"/>
+    
+	<!-- 白卡 -->
+	<entity name="RM.EmptyCardCenAddSvc.queryCenEmptyCardInfo" path="com.ailk.resservice.service.emptycard.EmptyCardCenAddSvc@queryCenEmptyCardInfo" />
+    <entity name="RM.EmptyCardCenAddSvc.emptyCardCenAdd" path="com.ailk.resservice.service.emptycard.EmptyCardCenAddSvc@emptyCardCenAdd"/>
+    <entity name="RM.EmptyCardCenAddSvc.queryCenAssignEmptyCardInfo" path="com.ailk.resservice.service.emptycard.EmptyCardCenAddSvc@queryCenAssignEmptyCardInfo"/>
+    <entity name="RM.EmptyCardCenAddSvc.queryCenBackEmptyCardInfo" path="com.ailk.resservice.service.emptycard.EmptyCardCenAddSvc@queryCenBackEmptyCardInfo"/>
+    <entity name="RM.EmptyCardCenAddSvc.emptyCardCenDistribute" path="com.ailk.resservice.service.emptycard.EmptyCardCenAddSvc@emptyCardCenDistribute"/>
+    <entity name="RM.EmptyCardAssignSvc.queryEmptyCardInfo" path="com.ailk.resservice.service.emptycard.EmptyCardAssignSvc@queryEmptyCardInfo"/>
+    <entity name="RM.EmptyCardAssignSvc.emptyCardAssgin" path="com.ailk.resservice.service.emptycard.EmptyCardAssignSvc@emptyCardAssgin"/>
+    <entity name="RM.EmptyCardCenDeleteSvc.queryCenEmptyCardInfo" path="com.ailk.resservice.service.emptycard.EmptyCardCenDeleteSvc@queryCenEmptyCardInfo"/>
+    <entity name="RM.EmptyCardCenDeleteSvc.deleteCenEmptycard" path="com.ailk.resservice.service.emptycard.EmptyCardCenDeleteSvc@deleteCenEmptycard"/>
+    <entity name="RM.EmptyCardInfoQuerySvc.queryEmptyCardInfo" path="com.ailk.resservice.service.emptycard.EmptyCardInfoQuerySvc@queryEmptyCardInfo"/>
+    <entity name="RM.EmptyCardInfoQuerySvc.exportEmptyCardInfo" path="com.ailk.resservice.service.emptycard.EmptyCardInfoQuerySvc@exportEmptyCardInfo"/>
+    <entity name="RM.EmptyCardInfoQuerySvc.queryEmptyCardUserNumber" path="com.ailk.resservice.service.emptycard.EmptyCardInfoQuerySvc@queryEmptyCardUserNumber"/>
+
+    <!-- interface start-->
+    <!-- 号码接口 -->
+    <entity name="RM.ResPhoneIntfSvc.returnDestroyNum"  			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@returnDestroyNum"/>
+    <entity name="RM.ResPhoneIntfSvc.selOccupyPhoneNum" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@selOccupyPhoneNum" />
+    <entity name="RM.ResPhoneIntfSvc.preOccupyPhoneNum" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@preOccupyPhoneNum" />
+    <entity name="RM.ResPhoneIntfSvc.useOccupyPhoneNum" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@useOccupyPhoneNum" />
+    <entity name="RM.ResPhoneIntfSvc.useOccupyPhoneNumSim" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@useOccupyPhoneNumSim" />
+    <entity name="RM.ResPhoneIntfSvc.releasePhoneSimForPost" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@releasePhoneSimForPost" />
+
+    <entity name="RM.ResPhoneIntfSvc.getMphonecodeInfo" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getMphonecodeInfo"  />
+    <entity name="RM.ResPhoneIntfSvc.getMphoneSimInfo"  			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getMphoneSimInfo"  />
+   	<entity name="RM.ResPhoneIntfSvc.cancelMphonecode"  			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@cancelMphonecode" />
+   	<entity name="RM.ResPhoneIntfSvc.getPhoneMoffice"   			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getPhoneMoffice" />
+    <entity name="RM.ResPhoneIntfSvc.updateMphonecodeStateDestory"  path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@updateMphonecodeStateDestory"  />
+    <entity name="RM.ResPhoneIntfSvc.updateMphonecodeStateRestore"  path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@updateMphonecodeStateRestore"  />
+    <entity name="RM.ResPhoneIntfSvc.updateMphoneSimInfo"  			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@updateMphoneSimInfo"/>
+    <entity name="RM.ResPhoneIntfSvc.checkMphoneRestore"  			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@checkMphoneRestore"/>
+    <entity name="RM.ResPhoneIntfSvc.selOccupyOneCardNum"  			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@selOccupyOneCardNum"/>
+    <entity name="RM.ResPhoneIntfSvc.releaseOneCardNum"  			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@releaseOneCardNum"/>
+    <entity name="RM.ResPhoneIntfSvc.getSelProvManyNumInfo"  		path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getSelProvManyNumInfo"/>
+    <entity name="RM.ResPhoneIntfSvc.getTietMphoneCodeInfo"  		path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getTietMphoneCodeInfo"/>
+    <entity name="RM.ResPhoneIntfSvc.getPhoneNetSelInfo" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getPhoneNetSelInfo" />
+    <entity name="RM.ResPhoneIntfSvc.PhoneNetSelTempOccupy" 		path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@phoneNetSelTempOccupy" />
+    <entity name="RM.ResPhoneIntfSvc.PhoneAgentTempOccupy" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@phoneAgentTempOccupy" />
+ 	<entity name="RM.ResPhoneIntfSvc.getMphoneDepRoutePoolNumInfo" 	path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getMphoneDepRoutePoolNumInfo" />
+ 	<entity name="RM.ResPhoneIntfSvc.getSelTempOccupyNum" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getSelTempOccupyNum" />
+   	<entity name="RM.ResPhoneIntfSvc.releaseOccupyByNum" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@releaseOccupyByNum" />
+   	<entity name="RM.ResPhoneIntfSvc.releaseNetOccupyByNum" 		path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@releaseNetOccupyByNum" />
+   	<entity name="RM.ResPhoneIntfSvc.matchSimNumMgr" 				path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@matchSimNumMgr" />
+   	<entity name="RM.ResPhoneIntfSvc.useOccupyOneCardNum" 			path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@useOccupyOneCardNum" />
+   	<entity name="RM.ResPhoneIntfSvc.recycleTempSN" 				path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@recycleTempSN" />
+   	<entity name="RM.ResPhoneIntfSvc.openTempSN" 					path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@openTempSN" />
+	<entity name="RM.ResPhoneIntfSvc.checkMphoneUse"  			    path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@checkMphoneUse"/>
+	<entity name="RM.ResPhoneIntfSvc.matchkFeeCode"  			    path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@matchkFeeCode"/>
+	<entity name="RM.PhoneInfoIntfSvc.getONMTInfo" 		            path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@getONMTInfo" />
+    <!-- interface end -->
+    
+    <!-- SIM卡接口 -->
+    <entity name="RM.ResSimCardIntfSvc.selOccupySimCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@selOccupySimCard"/>
+    <entity name="RM.ResSimCardIntfSvc.preOccupySimCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@preOccupySimCard"/>
+    <entity name="RM.ResSimCardIntfSvc.useOccupySimCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@useOccupySimCard"/>
+    <entity name="RM.ResSimCardIntfSvc.getWriteSimCardInfo" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@getWriteSimCardInfo"/>
+    <entity name="RM.ResSimCardIntfSvc.backWriteSimCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@backWriteSimCard"/>
+    <entity name="RM.ResSimCardIntfSvc.checkEmptyCardAvailable" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@checkEmptyCardAvailable"/>
+    <entity name="RM.ResSimCardIntfSvc.getSimcardInfo" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@getSimcardInfo"/>
+    <entity name="RM.ResSimCardIntfSvc.getEmptycardInfo" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@getEmptycardInfo"/>
+    <entity name="RM.ResSimCardIntfSvc.checkReuseResSimUse" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@checkReuseResSimUse" />
+    <entity name="RM.ResSimCardIntfSvc.realeaseSim" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@realeaseSim" />
+    <entity name="RM.ResSimCardIntfSvc.realeaseSimBatch" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@realeaseSimBatch" />
+    <entity name="RM.ResSimCardIntfSvc.openUndoSim" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@openUndoSim" />
+    <entity name="RM.ResSimCardIntfSvc.selOccupyEmptyCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@selOccupyEmptyCard" />
+    <entity name="RM.ResSimCardIntfSvc.preOccupyEmptyCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@preOccupyEmptyCard" />
+    <entity name="RM.ResSimCardIntfSvc.useOccupyEmptyCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@useOccupyEmptyCard" />
+    <entity name="RM.ResSimCardIntfSvc.updateSimProperty" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@updateSimProperty" />
+    <entity name="RM.ResSimCardIntfSvc.resetEmptyCard" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@resetEmptyCard" />
+    <entity name="RM.ResSimCardIntfSvc.undoSim" path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@undoSim" />
+    <entity name="RM.ResSimCardIntfSvc.getPreSNByResNo" 		path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@getPreSNByResNo" />   
+    <entity name="RM.ResSimCardIntfSvc.upKOByImsi" 		path="com.ailk.resservice.service.intf.ResSimCardIntfSvc@upKOByImsi" /> 
+    
+    <!-- add by luojh end   interface --> 
+    <entity name="RM.InterfaceInfoSVC.queryAllInterfaces"  path="com.ailk.resservice.service.paramers.InterfaceInfoSVC@queryAllInterfaces"/>
+    <entity name="RM.InterfaceInfoSVC.queryInterfaceById"  path="com.ailk.resservice.service.paramers.InterfaceInfoSVC@queryInterfaceById"/>
+    <entity name="RM.InterfaceInfoSVC.getInterfaceParam"  path="com.ailk.resservice.service.paramers.InterfaceInfoSVC@getInterfaceParam"/>
+    <entity name="RM.InterfaceInfoSVC.getSceneById"  path="com.ailk.resservice.service.paramers.InterfaceInfoSVC@getSceneById"/>
+    <entity name="RM.InterfaceInfoSVC.getSceneInfoById"  path="com.ailk.resservice.service.paramers.InterfaceInfoSVC@getSceneInfoById"/>
+    <entity name="RM.InterfaceInfoSVC.upInterfaceResultById"  path="com.ailk.resservice.service.paramers.InterfaceInfoSVC@upInterfaceResultById"/>
+    
+     <!-- add by litj3 end   interface -->
+     <entity name="RM.ResCheckVarNumIntSvc.getAdminNumInfo"  path="com.ailk.resservice.service.intf.ResCheckVarNumIntSvc@getAdminNumInfo" />
+     <entity name="RM.ResCheckVarNumIntSvc.selTempOccupyRes"  path="com.ailk.resservice.service.intf.ResCheckVarNumIntSvc@selTempOccupyRes" />
+     <entity name="RM.ResCheckVarNumIntSvc.updateCmnetModifyState"  path="com.ailk.resservice.service.intf.ResCheckVarNumIntSvc@updateCmnetModifyState" />
+     <entity name="RM.ResCheckVarNumIntSvc.cmnetModifyStateInfo"  path="com.ailk.resservice.service.intf.ResCheckVarNumIntSvc@cmnetModifyStateInfo" />
+     <entity name="RM.ResParaIntfSvc.getParaValue"  path="com.ailk.resservice.service.intf.ResParaIntfSvc@getParaValue" />
+     <entity name="RM.ResCardNumIntSvc.getCardNumInfo"  path="com.ailk.resservice.service.intf.ResCardNumIntSvc@getCardNumInfo" />
+     <entity name="RM.ValueCardActivateSvc.allCardsAudithAMouth"  path="com.ailk.resservice.service.paycard.ValueCardActivateSvc@allCardsAudithAMouth" />
+     <entity name="RM.ValueCardActivateSvc.allCardsChargeAudithADay"  path="com.ailk.resservice.service.paycard.ValueCardActivateSvc@allCardsChargeAudithADay" />
+     <entity name="RM.ValueCardActivateSvc.allCardsActiveAudithADay"  path="com.ailk.resservice.service.paycard.ValueCardActivateSvc@allCardsActiveAudithADay" />
+    <!-- Interface Area end -->
+    
+    <!-- channel-->
+    <entity name="RM.ChnlInfoSvc.queryChnlInfo"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@queryChnlInfo" />
+    <entity name="RM.ChnlInfoSvc.updateChnlInfo"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@updateChnlInfo" />
+    <entity name="RM.ChnlInfoSvc.addChnlInfo"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@addChnlInfo" />
+    <entity name="RM.ChnlInfoSvc.queryStockMaxRuleInfo"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@queryStockMaxRuleInfo" />
+    <entity name="RM.ChnlInfoSvc.addChnlStockMaxRule"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@addChnlStockMaxRule" />
+    <entity name="RM.ChnlInfoSvc.updateChnlStockMax"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@updateChnlStockMax" />
+    <entity name="RM.ChnlInfoSvc.delChnlStockMaxInfo"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@delChnlStockMaxInfo" />
+    <entity name="RM.ChnlInfoSvc.queryStockMaxByID"  path="com.ailk.resservice.service.paramers.ChnlInfoSvc@queryStockMaxByID" />
+    
+    <entity name="RM.ParaUtilSvc.getResParaByAttrCode1"  path="com.ailk.resservice.service.core.util.ParaUtilSvc@getResParaByAttrCode1" />
+	<!--add by xuxf20140715-->
+	<entity name="RM.ValueCardInfoQuerySvc.queryResCostInfo"  path="com.ailk.resservice.service.paycard.ValueCardInfoQuerySvc@queryResCostInfo"/>
+	<!--end by xuxf20140715-->
+	 <entity name="RM.SimCardInResaleSvc.importCardCen" 		path="com.ailk.resservice.service.simcard.SimCardInResaleSvc@importCardCen" />
+	 
+	 <entity name="RM.SimCardInStockSvc.importCardCenAuto" 		path="com.ailk.resservice.service.simcard.SimCardInStockSvc@importCardCenAuto" />
+	 <entity name="RM.EmptyCardCenAddSvc.emptyCardCenAddAuto" path="com.ailk.resservice.service.emptycard.EmptyCardCenAddSvc@emptyCardCenAddAuto"/>
+	 <entity name="RM.ValueCardImportSvc.valueCardImportAuto" path="com.ailk.resservice.service.paycard.ValueCardImportSvc@valueCardImportAuto"/>
+	 <entity name="RM.TempCardReceiveSvc.queryTempCardByEmpId" 		path="com.ailk.resservice.service.emptycard.TempCardReceiveSvc@queryTempCardByEmpId" />
+	 <entity name="RM.TempCardReceiveSvc.emptyCardCenDistribute" 		path="com.ailk.resservice.service.emptycard.TempCardReceiveSvc@emptyCardCenDistribute" />
+	 <entity name="RM.TempCardSaleSvc.queryTempCardByEmpIdSn" 		path="com.ailk.resservice.service.emptycard.TempCardSaleSvc@queryTempCardByEmpIdSn" />
+	 <entity name="RM.TempCardSaleSvc.tempCardSale" 		path="com.ailk.resservice.service.emptycard.TempCardSaleSvc@tempCardSale" />
+	 
+	 <entity name="RM.ResPayCardIntfSvc.modEntityCardActiTag" 		path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@modEntityCardActiTag" />
+	 <entity name="RM.EntityCardActiveSvc.entityCardActive" 		path="com.ailk.resservice.service.paycard.EntityCardActiveSvc@entityCardActive" />
+	 <!-- WLAN电子卡报废接口 -->
+	 <entity name="RM.ValueCardIntfSvc.discardWlanByDate" 	path="com.ailk.resservice.service.intf.ResPayCardIntfSvc@discardWlanByDate" />
+	 <entity name="RM.OldChnlAssignSvc.queryDistribute" 	path="com.ailk.resservice.service.pub.OldChnlAssignSvc@queryDistribute" />
+	 <entity name="RM.OldChnlAssignSvc.assignChnl"     	path="com.ailk.resservice.service.pub.OldChnlAssignSvc@assignChnl" />
+	 
+	 <entity name="RM.PhoneFeeRuleReMathSvc.phoneFeeRuleMath"     	path="com.ailk.resservice.service.phone.phonefeerule.PhoneFeeRuleReMathSvc@phoneFeeRuleMath" />
+	 <entity name="RM.ResParaIntfSvc.getFeeRule1032ByPara"     	path="com.ailk.resservice.service.intf.ResParaIntfSvc@getFeeRule1032ByPara" />
+
+     <!-- 转售业务查询 -->	
+	 <entity name="RM.ResPhoneIntfSvc.queryResellInfo" path="com.ailk.resservice.service.intf.ResPhoneIntfSvc@queryResellInfo"></entity>
+     
+</service>

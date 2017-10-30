@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head jwcid="@Head">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script jwcid="@Script" type="text/javascript" src="scripts/csserv/group/querygroupinfo/GrpProvCprt.js"></script>
+	</head>
+	<body jwcid="@Body">
+
+		<!-- 区域 开始 -->
+		<div class="c_box">
+			<div class="c_scroll c_scroll-table-15">
+				<!-- 表单 开始 -->
+				<div jwcid="mytab@Tabset" switchAction="myTabSwitchAction(ptitle,title)">
+
+					<iframe id="frameProductOrder" name="frameProductOrder" jwcid="@TabsetFrame" height="640" title="订单信息"
+						page="csserv.group.querygroupinfo.GroupProvOrderDetailQuery" listener="initalOrder" frameborder=no
+						params="ognl:'TRADE_ID='+info.TRADE_ID+'&MP_GROUP_CUST_CODE='+info.MP_EC_CODE" />
+
+					<div jwcid="@TabsetContent" title="下发信息">
+						<!-- 标题 开始 -->
+						<div class="c_title c_title-2">
+							<div class="text">
+								客户信息
+							</div>
+						</div>
+						<!-- 标题 结束 -->
+						<!-- 表单 开始 -->
+						<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+							<ul class="ul">
+								<li class="li">
+									<span class="label">客户名称：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CUST_NAME" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">客户编码：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.GROUP_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">客户级别：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CLASS_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">服务等级：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CLASS_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">所属省份：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.PROVINCE_CODE" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">联系地址：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.GROUP_ADDR" /> </span>
+								</li>
+							</ul>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div class="c_title c_title-2">
+							<div class="text">
+								商品信息
+							</div>
+						</div>
+						<!-- 标题 结束 -->
+						<!-- 表单 开始 -->
+						<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+							<ul class="ul">
+								<li class="li">
+									<span class="label">商品订单：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:poTradeInfo.PO_ORDER_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">商品规格编号：</span>
+									<span class="text"><span jwcid="@Insert"
+										value="ognl:pageutil.getStaticValue('TD_F_PO', 'POSPECNUMBER', 'POSPECNAME',merchInfo.MERCH_SPEC_CODE)" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">商品订购关系：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:merchInfo.MERCH_OFFER_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">业务开展模式：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('GRP_QADC_PRODORDMODE',merchInfo.BIZ_MODE)" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">主办省：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('SYMTHESIS_PROVINCE_CODE',merchInfo.HOST_COMPANY)" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">当前状态：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('GRP_STATE_TYPE', condition.PRE_SYNC_STATE)" /> </span>
+								</li>
+							</ul>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div jwcid="@Conditional" condition="ognl:rspPersons!=null">
+							<div class="c_title c_title-2">
+								<div class="text">
+									当前状态负责人信息
+								</div>
+							</div>
+							<!-- 标题 结束 -->
+							<!-- 表单 开始 -->
+							<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+								<div jwcid="@Foreach" source="ognl:rspPersons" value="ognl:info" element="ul">
+									<ul class="ul">
+										<li class="li">
+											<span class="label">姓名：</span>
+											<span class="text"><span jwcid="@Insert" value="ognl:info.NAME" /> </span>
+										</li>
+										<li class="li">
+											<span class="label">电话：</span>
+											<span class="text"><span jwcid="@Insert" value="ognl:info.PHONE" /> </span>
+										</li>
+										<li class="li">
+											<span class="label">单位及部门：</span>
+											<span class="text"><span jwcid="@Insert" value="ognl:info.DEPARTMENT" /> </span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div jwcid="@Foreach" source="ognl:prodTrades" value="ognl:info" index="ognl:rowIndexD">
+							<div class="c_title c_title-2">
+								<div class="text">
+									产品信息
+								</div>
+							</div>
+							<!-- 标题 结束 -->
+							<!-- 标题 开始 -->
+							<div class="c_title c_title-3">
+								<div class="text">
+									基本信息
+								</div>
+							</div>
+							<!-- 标题 结束 -->
+							<!-- 表单 开始 -->
+							<div class="c_form c_form-text c_form-col-3 c_form-label-8">
+								<ul class="ul">
+									<li class="li">
+										<span class="label">产品订单号：</span>
+										<span class="text"><span jwcid="@Insert" value="ognl:info.ORDER_NUMBER" /> </span>
+									</li>
+									<li class="li">
+										<span class="label">电路代号：</span>
+										<span class="text"><span jwcid="@Insert" value="ognl:info.CIRCUIT_CODE" /> </span>
+									</li>
+									<li class="li">
+										<span class="label">所处状态完成结果：</span>
+										<span class="e_select"><span><span><select jwcid="@Select" name="sel_1"
+														source="ognl:pageutil.getList('TD_S_STATIC','DATA_ID','DATA_NAME',new java.lang.String[] {'TYPE_ID','DATA_ID'},new java.lang.String[] {'GRP_PFK_RESULT_CODE',info.RESULT_CODE})"
+														value="ognl:info.RESULT_CODE" desc="所处状态完成结果" addDefault="false" textField="DATA_NAME" valueField="DATA_ID" /> </span> </span> </span>
+									</li>
+									<li class="li">
+										<span class="label">所处状态原因描述：</span>
+										<span class="text"><span jwcid="@Insert" value="ognl:info.RESULT_INFO" /> </span>
+									</li>
+								</ul>
+							</div>
+							<!-- 表单 结束 -->
+							<!-- 标题 开始 -->
+							<div jwcid="@Conditional" condition="ognl:provCustMags!=null && !provCustMags.isEmpty()">
+								<div class="c_title c_title-3">
+									<div class="text">
+										产品对应的客户经理
+									</div>
+								</div>
+								<!-- 标题 结束 -->
+								<!-- 表单 开始 -->
+								<div class="c_form c_form-text c_form-col-3 c_form-label-8">
+									<div jwcid="@Foreach" source="ognl:provCustMags.getDataset(rowIndexD)" value="ognl:info" element="ul" index="ognl:rowIndex">
+										<ul class="ul">
+											<li class="li">
+												<span class="label">客户经理类型：</span>
+												<span class="e_select"><span><span><select jwcid="@Select" name="sel_2"
+																source="ognl:pageutil.getList('TD_S_STATIC','DATA_ID','DATA_NAME',new java.lang.String[] {'TYPE_ID','DATA_ID'},new java.lang.String[] {'GRP_PFK_MagType',info.MagType})"
+																value="ognl:condition.cond_PFK_DealSide" desc="客户经理类型" addDefault="false" /> </span> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label">姓名：</span>
+												<span class="text"><span jwcid="@Insert" value="ognl:info.MagName" /> </span>
+											</li>
+											<li class="li">
+												<span class="label">电话：</span>
+												<span class="text"><span jwcid="@Insert" value="ognl:info.MagPhone" /> </span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!--配合省落实情况反馈，需显示-->
+							<div jwcid="@Conditional" condition="ognl:custInfos!=null && !custInfos.isEmpty()">
+								<div class="c_title c_title-3">
+									<div class="text">
+										产品受理涉及的客户信息
+									</div>
+								</div>
+								<!-- 标题 结束 -->
+								<!-- 表单 开始 -->
+								<div class="c_form c_form-text c_form-col-3 c_form-label-8">
+									<div jwcid="@Foreach" source="ognl:custInfos.getDataset(rowIndexD)" value="ognl:info" element="ul" index="ognl:rowIndex">
+										<ul class="ul">
+											<li class="li">
+												<span class="label">客户类型：</span>
+												<span class="e_select"><span><span><select jwcid="@Select" name="sel_3"
+																source="ognl:pageutil.getList('TD_S_STATIC','DATA_ID','DATA_NAME',new java.lang.String[] {'TYPE_ID','DATA_ID'},new java.lang.String[] {'GRP_PFK_CustType',info.CustType})"
+																value="ognl:condition.cond_PFK_CustType" desc="客户类型" addDefault="false" /> </span> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label">客户编码：</span>
+												<span class="text"><span jwcid="@Insert" value="ognl:info.CustCode" /> </span>
+											</li>
+											<li class="li">
+												<span class="label">客户名称：</span>
+												<span class="text"><span jwcid="@Insert" value="ognl:info.CustName" /> </span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- 表单 结束 -->
+							<!-- 标题 开始 -->
+							<div jwcid="@Conditional" condition="ognl:dealInfos!=null && !dealInfos.isEmpty()">
+								<div class="c_title c_title-3">
+									<div class="text">
+										反馈产品受理的落实情况
+									</div>
+								</div>
+								<!-- 标题 结束 -->
+								<!-- 表单 开始 -->
+								<div class="c_form c_form-text c_form-col-3 c_form-label-8">
+									<div jwcid="@Foreach" source="ognl:dealInfos.getDataset(rowIndexD)" value="ognl:info" element="ul">
+										<ul class="ul">
+											<li class="li">
+												<span class="label">产品落实侧：</span>
+												<span class="e_select"><span><span><select jwcid="@Select" name="sel_4"
+																source="ognl:pageutil.getList('TD_S_STATIC','DATA_ID','DATA_NAME',new java.lang.String[] {'TYPE_ID','DATA_ID'},new java.lang.String[] {'GRP_PFK_DealSide',info.DealSide})"
+																value="ognl:condition.cond_PFK_CustType" desc="客户类型" addDefault="false" /> </span> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label">当前状态处理说明：</span>
+												<span class="text"><span jwcid="@Insert" value="ognl:info.DealDatail" /> </span>
+											</li>
+											<li class="li">
+												<span class="label">当前状态涉及附件：</span>
+												<span class="text"><span jwcid="@Insert" value="ognl:info.Attachment" /> </span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- 表单 结束 -->
+							<!-- 标题 开始 -->
+							<div jwcid="@Conditional" condition="ognl:prodInfoModifys!=null && !prodInfoModifys.isEmpty()">
+								<div class="c_title c_title-3">
+									<div class="text">
+										产品信息修正
+									</div>
+								</div>
+								<!-- 标题 结束 -->
+								<!-- 表单 开始 -->
+								<div class="c_form c_form-text c_form-col-3 c_form-label-8">
+									<div jwcid="@Foreach" source="ognl:prodInfoModifys.getDataset(rowIndexD)" value="ognl:info" element="ul">
+										<ul class="ul">
+											<li class="li">
+												<span class="label">修正产品信息类别：</span>
+												<span class="e_select"><span><span><select jwcid="@Select" name="sel_5"
+																source="ognl:pageutil.getList('TD_S_STATIC','DATA_ID','DATA_NAME',new java.lang.String[] {'TYPE_ID','DATA_ID'},new java.lang.String[] {'GRP_PFK_ModiType',info.ModiType})"
+																value="ognl:condition.cond_PFK_CustType" desc="修正的产品信息类别" addDefault="false" textField="DATA_NAME" valueField="DATA_ID" /> </span> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label">修正后的值：</span>
+												<span class="text"><span jwcid="@Insert" value="ognl:info.ModiValue" /> </span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 表单 结束 -->
+					</div>
+					<div jwcid="@Conditional" condition="ognl:syncStats!=null">
+					<div jwcid="@TabsetContent" title="工单反馈">
+						<!-- 标题 开始 -->
+						<div class="c_title c_title-2">
+							<div class="text">
+								客户信息
+							</div>
+						</div>
+						<!-- 标题 结束 -->
+						<!-- 表单 开始 -->
+						<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+							<ul class="ul">
+								<li class="li">
+									<span class="label">客户名称：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CUST_NAME" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">客户编码：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.GROUP_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">客户级别：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CLASS_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">服务等级：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.CLASS_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">所属省份：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.PROVINCE_CODE" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">联系地址：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:groupInfo.GROUP_ADDR" /> </span>
+								</li>
+							</ul>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div class="c_title c_title-3">
+							<div class="text">
+								商品基本信息
+							</div>
+						</div>
+						<!-- 标题 结束 -->
+						<!-- 表单 开始 -->
+						<div class="c_form c_form-text c_form-col-3 c_form-label-7">
+							<ul class="ul">
+								<li class="li">
+									<span class="label">商品订单：</span>
+									<span class="e_input e_dis"><span><input name="MERCH_ORDER_ID_3" jwcid="@TextField" disabled="disabled"
+												value="ognl:poTradeInfo.PO_ORDER_ID" /> </span> </span>
+								</li>
+								<li class="li">
+									<span class="label">商品规格编号：</span>
+									<span class="text"><span jwcid="@Insert"
+										value="ognl:pageutil.getStaticValue('TD_F_PO', 'POSPECNUMBER', 'POSPECNAME',merchInfo.MERCH_SPEC_CODE)" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">商品订购关系：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:merchInfo.MERCH_OFFER_ID" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">商品业务操作：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('GRP_MODIFY_TAG',merchInfo.MODIFY_TAG)" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">业务开展模式：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('GRP_QADC_PRODORDMODE',merchInfo.BIZ_MODE)" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">主办省：</span>
+									<span class="text"><span jwcid="@Insert" value="ognl:pageutil.getStaticValue('SYMTHESIS_PROVINCE_CODE',merchInfo.HOST_COMPANY)" /> </span>
+								</li>
+								<li class="li">
+									<span class="label">同步状态：</span>
+									<span class="e_select"><span><span><select jwcid="@Select" name="StateType" textField="PARA_CODE1"
+													valueField="PARA_CODE2" source="ognl:syncStats" value="ognl:info.PARA_CODE20" nullable="no" addDefault="false" /> </span> </span> </span>
+								</li>
+							</ul>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div class="c_title c_title-3">
+							<div class="text">
+								当前状态负责人信息
+							</div>
+						</div>
+						<!-- 标题 结束 -->
+						<!-- 表单 开始 -->
+						<div class="c_form c_form-col-3 c_form-label-6">
+							<ul class="ul">
+								<li class="li">
+									<span class="label"><span class="e_required">姓名：</span> </span>
+									<span class="e_input"><span> <input type="text" name="Name_3" jwcid="@TextField" value="ognl:respPersonfk.Name" /> </span> </span>
+								</li>
+								<li class="li">
+									<span class="label"><span class="e_required">电话：</span> </span>
+									<span class="e_input"><span> <input type="text" name="Phone_3" jwcid="@TextField" value="ognl:respPersonfk.Phone" /> </span> </span>
+								</li>
+								<li class="li">
+									<span class="label"><span class="e_required">单位及部门：</span> </span>
+									<span class="e_input"><span> <input type="text" name="Department_3" jwcid="@TextField" value="ognl:respPersonfk.Department" />
+									</span> </span>
+								</li>
+							</ul>
+						</div>
+						<!-- 表单 结束 -->
+
+						<input type="hidden" jwcid="@Any" name="PFK_CUST_NAME" id="PFK_CUST_NAME" value='ognl:groupInfo.CUST_NAME' />
+						<input type="hidden" jwcid="@Any" name="PFK_MERCH_SPEC_CODE" id="PFK_MERCH_SPEC_CODE" value='ognl:merchInfo.MERCH_SPEC_CODE' />
+						<input type="hidden" jwcid="@Any" name="TRADE_ID" id="TRADE_ID" value='ognl:condition.TRADE_ID' />
+						<input type="hidden" jwcid="@Any" name="SYNC_SEQUENCE" id="SYNC_SEQUENCE" value='ognl:condition.SYNC_SEQUENCE' />
+						<input type="hidden" jwcid="@Any" name="MP_EC_CODE" id="MP_EC_CODE" value='ognl:condition.MP_EC_CODE' />
+						<input type="hidden" jwcid="@Any" name="PKF_PROD_SIZE" id="PKF_PROD_SIZE" value='ognl:condition.PKF_PROD_SIZE' />
+
+						<!-- 标题 开始 -->
+						<div class="c_title c_title-2">
+							<div class="text">
+								产品信息
+							</div>
+						</div>
+						<!-- 标题 结束 -->
+						<!-- 标题 开始 -->
+						<div class="c_title c_title-3">
+							<div class="text">
+								基本信息
+							</div>
+						</div>
+						<!-- 标题 结束 -->
+						<!-- 表单 开始 -->
+						<div class="c_form c_form-col-2 c_form-label-9">
+							<ul class="ul">
+								<li class="li">
+									<span class="label"><span class="e_required">产品订单号：</span> </span>
+									<span class="e_input e_dis"><span> <input id="PFK_PRODUCT_ORDER_ID" name="PFK_PRODUCT_ORDER_ID" disabled="disabled"
+												jwcid="@TextField" value="ognl:info.ORDER_NUMBER" /> </span> </span>
+								</li>
+								<li class="li">
+									<span class="label"><span class="e_required">电路代号：</span> </span>
+									<span class="e_input e_dis"><span> <input id="PFK_CIRCUIT_CODE" name="PFK_CIRCUIT_CODE" disabled="disabled" jwcid="@TextField"
+												value="ognl:info.CIRCUIT_CODE" /> </span> </span>
+								</li>
+								<li class="li">
+									<span class="label"><span class="e_required">状态完成结果：</span> </span>
+									<span class="e_select"><span><span> <select jwcid="@Select" id="PFK_RESULT_CODE" name="PFK_RESULT_CODE"
+													source="ognl:pageutil.getStaticList('GRP_PFK_RESULT_CODE')" textField="DATA_NAME" valueField="DATA_ID" value="ognl:info.RESULT_CODE"
+													desc="状态完成结果" addDefault="false" /> </span> </span> </span>
+								</li>
+								<li class="li">
+									<span class="label"><span class="e_required">所处状态原因：</span> </span>
+									<span class="e_input"><span> <input type="text" id="PFK_RESULT_INFO" name="PFK_RESULT_INFO" jwcid="@TextField"
+												value="ognl:info.RESULT_INFO" /> </span> </span>
+								</li>
+							</ul>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div jwcid="@Conditional" condition="ognl:syncStats!=null">
+							<div jwcid="@Conditional" condition='ognl:syncStats.get(0).getString("PARA_CODE2").equals("5")'>
+								<div class="c_title c_title-3">
+									<div class="text">
+										产品对应的客户经理
+									</div>
+									<div class="fn">
+										<button type="button" id="ognl:'button_provCustMags_'+rowIndexP" onclick="addRow(this)">
+											<i class="e_ico-add"></i><span>增加</span>
+										</button>
+									</div>
+								</div>
+								<!-- 标题 结束 -->
+								<!-- 表单 开始 -->
+								<div jwcid="@Any" class="c_form c_form-col-3 c_form-label-9" id="ognl:'provCustMags_'+rowIndexP">
+									<div jwcid="@Foreach" source="ognl:provCustMagsfk.get(rowIndexP)" value="ognl:info" element="ul" index="ognl:rowIndex">
+										<ul class="ul">
+											<li class="li">
+												<span class="label"><span class="e_required">客户经理类型：</span> </span>
+												<span class="e_select"><span><span> <select jwcid="@Select" id="PFK_MagType" name="PFK_MagType" textField="DATA_NAME"
+																valueField="DATA_ID" source="ognl:pageutil.getStaticList('GRP_PFK_MagType')" value="ognl:info.MagType" desc="客户经理类型"
+																addDefault="false" /> </span> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label"><span class="e_required">姓名：</span> </span>
+												<span class="e_input"><span> <input id="PFK_MagName" name="PFK_MagName" class="PFK_MagName" jwcid="@TextField"
+															value="ognl:info.MagName" /> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label"><span class="e_required">电话：</span> </span>
+												<span class="e_input"><span> <input id="PFK_MagPhone" name="PFK_MagPhone" jwcid="@TextField" value="ognl:info.MagPhone" />
+												</span> </span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div jwcid="@Conditional" condition="ognl:syncStats!=null">
+							<div jwcid="@Conditional" condition='ognl:syncStats.getData(0).getString("PARA_CODE2").equals("6")'>
+								<div class="c_title c_title-3">
+									<div class="text">
+										产品受理涉及的客户信息
+									</div>
+									<div class="fn">
+										<button type="button" id="ognl:'button_CustInfo_'+rowIndexP" onclick="addRow(this)">
+											<i class="e_ico-add"></i><span>增加</span>
+										</button>
+									</div>
+								</div>
+								<!-- 标题 结束 -->
+								<!-- 表单 开始 -->
+								<div class="c_form c_form-col-3 c_form-label-9" id="ognl:'CustInfo_'+rowIndexP">
+									<div jwcid="@Foreach" source="ognl:custInfosfk.get(rowIndexP)" value="ognl:info" element="ul" index="ognl:rowIndex">
+										<ul class="ul">
+											<li class="li">
+												<span class="label"><span class="e_required">客户类型：</span> </span>
+												<span class="e_select"><span><span> <select jwcid="@Select" id="PFK_CustType" name="PFK_CustType"
+																source="ognl:pageutil.getStaticList('GRP_PFK_CustType')" textField="DATA_NAME" valueField="DATA_ID" value="ognl:info.CustType" desc="客户经理类型" addDefault="false" /> </span> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label"><span class="e_required">客户编码：</span> </span>
+												<span class="e_input"><span> <input id="PFK_CustCode" name="PFK_CustCode" jwcid="@TextField" value="ognl:info.CustCode" />
+												</span> </span>
+											</li>
+											<li class="li">
+												<span class="label"><span class="e_required">客户名称：</span> </span>
+												<span class="e_input"><span> <input id="PFK_CustName" name="PFK_CustName" jwcid="@TextField" value="ognl:info.CustName" />
+												</span> </span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div jwcid="@Conditional" condition="ognl:syncStats!=null">
+							<div jwcid="@Conditional" condition='ognl:syncStats.getData(0).getString("PARA_CODE2").equals("6")'>
+								<div class="c_title c_title-3">
+									<div class="text">
+										反馈产品受理的落实情况
+									</div>
+								</div>
+								<!-- 标题 结束 -->
+								<!-- 表单 开始 -->
+								<div class="c_form c_form-col-3 c_form-label-9" id="ognl:'DealInfo_'+rowIndexP">
+									<div jwcid="@Foreach" source="ognl:dealInfosfk.get(rowIndexP)" value="ognl:info" element="ul" index="ognl:rowIndex">
+										<ul class="ul">
+											<li class="li">
+												<span class="label"><span class="e_required">产品落实侧：</span> </span>
+												<span class="e_select"><span><span> <select jwcid="@Select" id="PFK_DealSide" name="PFK_DealSide"
+																source="ognl:pageutil.getStaticList('GRP_PFK_DealSide')" textField="DATA_NAME" valueField="DATA_ID" value="ognl:info.DealSide" desc="产品落实侧" addDefault="false" /> </span> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label"><span class="e_required">当前状态处理说明：</span> </span>
+												<span class="e_input"><span> <input id="PFK_DealDatail" name="PFK_DealDatail" jwcid="@TextField"
+															value="ognl:info.DealDatail" /> </span> </span>
+											</li>
+											<li class="li">
+												<span class="label"><span class="e_required">当前状态涉及附件：</span> </span>
+												<span class="e_elements"><span><input jwcid="@SimpleUpload" ftpSite="groupserv" id="PFK_Attachment" fileName="ognl:pageutil.getFtpFile(info.ATTR_VALUE).FILE_NAME"
+													name="PFK_Attachment"  filePath="BBOSS" value=""/></span></span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 表单 结束 -->
+						<!-- 标题 开始 -->
+						<div jwcid="@Conditional" condition="ognl:prodInfoModifysfk.size()>0">
+							<div class="c_title c_title-3">
+								<div class="text">
+									产品信息修正
+								</div>
+								<div class="fn">
+									<button type="button" id="ognl:'button_ProdInfoModify_'+rowIndexP" onclick="addRow(this)">
+										<i class="e_ico-add"></i><span>增加</span>
+									</button>
+								</div>
+							</div>
+							<!-- 标题 结束 -->
+							<!-- 表单 开始 -->
+							<div jwcid="@Conditional" condition="ognl:prodInfoModifys!=null">
+							<div class="c_form c_form-col-2 c_form-label-9" id="ognl:'ProdInfoModify_'+rowIndexP">
+								<div jwcid="@Foreach" source="ognl:prodInfoModifysfk.get(rowIndexP)" value="ognl:info" element="ul" index="ognl:rowIndex">
+									<ul class="ul">
+										<li class="li">
+											<span class="label"><span class="e_required">修正产品信息类别：</span> </span>
+											<span class="e_select"><span><span> <select jwcid="@Select" id="GRP_PFK_ModiType" name="GRP_PFK_ModiType"
+															source="ognl:pageutil.getStaticList('GRP_PFK_ModiType')" value="ognl:condition.cond_PFK_DealSide" desc="修正的产品信息类别" addDefault="false"
+															textField="DATA_NAME" valueField="DATA_ID" /> </span> </span> </span>
+										</li>
+										<li class="li">
+											<span class="label"><span class="e_required">修正后的值：</span> </span>
+											<span class="e_input"><span> <input id="PFK_ModiValue" name="PFK_ModiValue" type="text" jwcid="@TextField"
+														value="ognl:info.ModiValue" /> </span> </span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<!-- 表单 结束 -->
+			</div>
+		</div>
+		<!-- 区域 结束 -->
+		<div class="c_submit">
+			<div jwcid="@Conditional" condition='"0".equals(info.IF_ANS)'>
+				<button id="sub_btn" class="e_button-page-ok" onclick="makeSureAnsw(this)">
+					<i></i><span>确定</span>
+				</button>
+			</div>
+			<button class="e_button-page-cancel" onclick="setPopupReturnValue('', '')">
+				<i></i><span>关闭</span>
+			</button>
+		</div>
+	</body>
+	<script>
+		function myTabSwitchAction(ptitle,title){
+			//返回false,则不会做切换动作
+			return true;
+		}
+		
+		/*
+		 * add by weixb3 at 2013-5-2
+		 * 添加一行产品信息修正
+		 */
+		function addRow(e)
+		{
+			var div = $(e).parent().parent().next()
+			var ul = $(div).find('ul')[0]
+			
+			var cre_ul = document.createElement('ul')
+			cre_ul.className = 'ul';
+			
+			$(ul).find('input,select').each(function (i){
+			
+				//new
+				var cre_li = document.createElement('li')
+				cre_li.className = 'li'
+				
+				var lab_span = document.createElement('span')
+				lab_span.className = 'label'
+				
+				var e_required_span = document.createElement('span')
+				e_required_span.className = 'e_required'
+					
+				if ('INPUT' == $(this).attr('nodeName'))
+				{
+					//label text
+					var inText = $(this).parent().parent().prev().find('span').text()
+					$(e_required_span).text(inText)
+					var e_input_span = document.createElement('span')
+					e_input_span.className = 'e_input'
+					var o_span = document.createElement('span')
+					var s_input = document.createElement('input')
+					s_input.type = 'text'
+					s_input.jwcid = '@TextField'
+					s_input.value = ''
+					s_input.id = $(this).attr('id')
+					s_input.name = $(this).attr('name')
+					
+					lab_span.appendChild(e_required_span)
+					o_span.appendChild(s_input)
+					e_input_span.appendChild(o_span)
+					cre_li.appendChild(lab_span)
+					cre_li.appendChild(e_input_span)
+				}
+				else if ('SELECT' == $(this).attr('nodeName'))
+				{
+					//label text
+					var inText = $(this).parent().parent().parent().prev().find('span').text()
+					$(e_required_span).text(inText)
+					var e_select_span = document.createElement('span')
+					e_select_span.className = 'e_select'
+					var o_span = document.createElement('span')
+					var o2_span = document.createElement('span')
+					var s_select = document.createElement('select')
+					s_select.jwcid = '@Select'
+					var opt = $(this).attr('options')
+					s_select.id = $(this).attr('id')
+					s_select.name = $(this).attr('name')
+					
+					for (var i = 0; i < opt.length; i++)
+					{
+						var opt2 = document.createElement('option')
+						opt2.text = opt[i].text
+						opt2.value = opt[i].value
+						s_select.add(opt2)
+					}
+					
+					lab_span.appendChild(e_required_span)
+					o2_span.appendChild(s_select)
+					o_span.appendChild(o2_span)
+					e_select_span.appendChild(o_span)
+					cre_li.appendChild(lab_span)
+					cre_li.appendChild(e_select_span)
+				}
+				
+				cre_ul.appendChild(cre_li)
+				
+			})
+			
+			//add
+			$(div).append(cre_ul)
+			
+		}
+	</script>
+</html>
+
